@@ -1,0 +1,24 @@
+step 1 --> make organized folder system
+step 2 --> python -m venv venv
+step 3 --> venv\Scripts\activate
+step 4 --> pip install Flask
+step 5 --> setup.py
+step 6 --> MANIFEST.in
+step 7 --> schema.sql (think of database structure)
+step 8 --> __init__.py
+step 9 --> test basic route
+--set FLASK_APP=nickdima
+--set FLASK_ENV=development
+--flask run
+step 10 --> db.py
+step 11 --> add db.init_app(app) to __init__.py
+step 12 --> test flask init-db
+
+---Repeatable pattern Create Blueprint/Register/Make Template---
+step 13 --> Make auth blueprint (define BP, define all routes, write view functions)
+step 14 --> Register the blueprint within app factory
+step 15 --> create the templates for the blueprint
+
+---Repeatable pattern Create Blueprint/Register/Make Template---
+step 16 --> Make posts blueprint (define BP, define all routes, write view functions)
+step 17 --> Register blueprint within app factory

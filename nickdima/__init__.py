@@ -1,0 +1,59 @@
+import os
+from flask import Flask
+
+# Application factory "create_app" or "make_app"
+def create_app(test_config=None):
+    '''
+    Create your application
+    Load configuration files
+    Import / register blueprints
+    Register your database
+    '''
+
+    # Configuration loaded from instance/ directory when set to true
+    app = Flask(__name__, instance_relative_config=True)
+
+    # Secret_key is used to sign cookies so session info can't be modified
+    # use a random_number for deployment
+    # Database is the path to your database (in the instance folder here)
+    app.config.from_mapping(
+        SECRET_KEY = 'dev',
+        DATABASE = os.path.join(app.instance_path, 'nickdb.sqlite')
+    )
+
+    # Use configuration from config.py unless a testing config is supplied
+    if test_config is None:
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    # If instance folder doesn't exist, make it
+    # Will usually make it one directory above __init__.py so that it is not
+    # available to clients
+    try:
+        os.makedirs(app.instance_path)
+    except OSError:
+        pass
+
+    # Create a simple test routes / easter eggs
+    @app.route('/hello')
+    def hello():
+        return "You should not be here.<br><br>How did you find this, please leave immediately."
+
+    @app.route('/hayley')
+    def hayley():
+        return "Hi my darling <3"
+
+    # Register Database for teardown context / CLI command
+    # Local import (checks within package first to avoid using wrong lib)
+    from . import db 
+    db.init_app(app)
+
+    # Reguster blueprints
+    from . import auth
+    app.register_blueprint(auth.bp)
+
+    from . import posts
+    app.register_blueprint(posts.bp)
+
+    return app

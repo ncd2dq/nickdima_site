@@ -1,0 +1,15 @@
+nickdima
+|
+|--static
+|||--{game_name}
+|||||--js
+|||||||--libraries
+|||||--assets
+|
+|
+|--templates
+|||--auth
+|||--posts
+|||--lunchbreak
+|||||--games
+|||||||--{game_name}
