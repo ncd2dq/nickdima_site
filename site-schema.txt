@@ -13,3 +13,34 @@ nickdima
 |||--lunchbreak
 |||||--games
 |||||||--{game_name}
+#^ functional
+
+
+#v divisional
+full_package
+nickdima
+|
+|-home/
+|
+|
+|-posts/
+|
+|
+|-lunchbreak/
+
+
+
+|
+|--static
+|||--{game_name}
+|||||--js
+|||||||--libraries
+|||||--assets
+|
+|
+|--templates
+|||--auth
+|||--posts
+|||--lunchbreak
+|||||--games
+|||||||--{game_name}

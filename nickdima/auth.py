@@ -49,13 +49,41 @@ def login():
         else:
             flash(error) # store the error for access in the template
 
-    return 'welcome to the login page'
+    return render_template('auth/login.html')
 
 
-@bp.route('/register')
+@bp.route('/register', methods=('GET', 'POST'))
 def register():
-    
-    return 'welcome to the register page'
+    # database the username, password_hash
+    # if successful redirect them to home_page
+    if request.method == 'POST':
+        db = get_db()
+        username = request.form['username']
+        password = request.form['password']
+        error = None
+
+        if not username:
+            error = 'Username is required'
+        elif not password:
+            error = 'Password is requried'
+
+        elif db.execute(
+                'SELECT * FROM users WHERE username = ?', (username,)
+            ).fetchone():
+            error = 'Username taken, please choose another.'
+
+        if error == None:
+            db.execute(
+                'INSERT INTO users (username, password) VALUES (?, ?)', (username, generate_password_hash(password))
+            )
+            db.commit()
+
+            return redirect(url_for(('auth.login')))
+
+        else:
+            flash(error)
+
+    return render_template('auth/register.html')
 
 @bp.route('/logout')
 def logout():
