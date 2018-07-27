@@ -45,7 +45,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id'] # Just store user id to query database later with
-            return redirect(url_for('auth.logout'))
+            return redirect(url_for('home.home_index'))
         else:
             flash(error) # store the error for access in the template
 
@@ -54,8 +54,9 @@ def login():
 
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
-    # database the username, password_hash
-    # if successful redirect them to home_page
+    '''
+    Ensure no user with same username exists, put username/pass_hash in db.
+    '''
     if request.method == 'POST':
         db = get_db()
         username = request.form['username']
@@ -85,10 +86,14 @@ def register():
 
     return render_template('auth/register.html')
 
-@bp.route('/logout')
-def logout():
 
-    return 'Welcome to the logout page'
+@bp.route('/logout', methods=('GET',))
+def logout():
+    if request.method == 'GET':
+        g.user = None
+        session.clear()
+
+    return redirect(url_for('auth.login'))
 
 def login_required(view):
     '''

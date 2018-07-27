@@ -7,8 +7,8 @@
 		{% if g.user %}
 			<li><span>{{ g.user['username'] }}</span>
 				<li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-				<li><a href="{{ url_for(' POSTS_BP ')}}">Posts</a>
-				<li><a href="{{ url_for(' LUNCH_BP ')}}">Lunchbreak Arcade</a>
+				<!--<li><a href="READD CURLY url_for(' POSTS_BP ') ">Posts</a>-->
+				<!--<li><a href=" url_for(' LUNCH_BP ') ">Lunchbreak Arcade</a>-->
 		{% else %}
 			<li><a href="{{ url_for('auth.register') }}">Register</a>
 			<li><a href="{{ url_for('auth.login') }}">Log In</a>

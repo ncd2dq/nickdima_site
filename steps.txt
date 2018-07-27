@@ -22,3 +22,7 @@ step 15 --> create the templates for the blueprint
 ---Repeatable pattern Create Blueprint/Register/Make Template---
 step 16 --> Make posts blueprint (define BP, define all routes, write view functions)
 step 17 --> Register blueprint within app factory
+
+
+deploy:
+http://www.gtlambert.com/blog/deploy-flask-app-to-heroku
