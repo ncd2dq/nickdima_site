@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, redirect, url_for
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
@@ -58,5 +58,9 @@ def create_app(test_config=None):
 
     import home
     app.register_blueprint(home.bp)
+
+    @app.route('/')
+    def home_redir():
+        return redirect(url_for('home.home_index'))
 
     return app
