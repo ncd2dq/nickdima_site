@@ -7,7 +7,7 @@ from flask import (
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from nickdima.db import get_db
+from db import get_db
 # Blueprint to group similar view functions / code used for those functions
 # flash to store error messages avaiable in template / across request
 # g to store data across requests

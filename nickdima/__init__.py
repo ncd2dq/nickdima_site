@@ -46,17 +46,17 @@ def create_app(test_config=None):
 
     # Register Database for teardown context / CLI command
     # Local import (checks within package first to avoid using wrong lib)
-    from . import db 
+    import db 
     db.init_app(app)
 
     # Reguster blueprints
-    from . import auth
+    import auth
     app.register_blueprint(auth.bp)
 
-    from . import posts
+    import posts
     app.register_blueprint(posts.bp)
 
-    from . import home
+    import home
     app.register_blueprint(home.bp)
 
     return app
