@@ -26,3 +26,11 @@ step 17 --> Register blueprint within app factory
 
 deploy:
 http://www.gtlambert.com/blog/deploy-flask-app-to-heroku
+
+Procfile tells gunicorn where your app lives
+if using the application factory, make a wsgi.py file that will import the app
+
+find out the root directory of your webserver and then do the import sys trick
+
+heroku domains: add nickdima.com
+get the DNS target name from heroku dash and add that in advanced DNS for namescheap.com
