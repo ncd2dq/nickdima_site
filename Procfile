@@ -1,1 +1,1 @@
-web: gunicorn app:nickdima
+web: gunicorn __init__.py:app
