@@ -1,1 +1,1 @@
-web: gunicorn --chdir nickdima wsgi.py:app
+web: gunicorn --chdir nickdima wsgi:app
