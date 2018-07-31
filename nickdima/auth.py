@@ -42,7 +42,7 @@ def login():
         if user is None:
             error = 'Incorrect Username'
         elif not check_password_hash(user['password'], password):
-            error = 'Incorrect Password'
+            error = 'Incorrect Password' + user['password']
 
         if error is None:
             session.clear()
@@ -131,7 +131,7 @@ def load_logged_in_user():
     else:
         cur, con = get_db()
         cur.execute(
-            'SELECT id, username FROM users WHERE id = ?', (user_id,)
+            'SELECT id, username FROM users WHERE id = %s', (user_id,)
         )
         g.user = cur.fetchone()
 
