@@ -22,7 +22,8 @@ def create_app(test_config=None):
         MYSQL_HOST = 'sql9.freemysqlhosting.net',
         MYSQL_USER = 'sql9249883',
         MYSQL_PASSWORD = 'xwzfPYlGVy',
-        MYSQL_DB = 'sql9249883'
+        MYSQL_DB = 'sql9249883',
+        MYSQL_CURSORCLASS = 'DictCursor'
     )
     #nicholas.dima1@gmail.com
     #VyK^gPRirq*Q)&TV
