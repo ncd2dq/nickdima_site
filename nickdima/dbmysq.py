@@ -18,7 +18,7 @@ def get_db():
         g.cur = db.connection.cursor()
         g.con = db.connection
 
-    return g.db, g.con
+    return g.cur, g.con
 
 
 def close_db(e=None):

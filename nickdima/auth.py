@@ -58,7 +58,7 @@ def register():
     Ensure no user with same username exists, put username/pass_hash in db.
     '''
     if request.method == 'POST':
-        db, con = get_db()
+        cur, con = get_db()
         username = request.form['username']
         password = request.form['password']
         error = None
@@ -69,14 +69,14 @@ def register():
             error = 'Password is requried'
 
         else: 
-            db.execute(
+            cur.execute(
                 'SELECT * FROM users WHERE username = %s', (username,)
             )
-            if db.fetchone():
+            if cur.fetchone():
                 error = 'Username taken, please choose another.'
 
         if error == None:
-            db.execute(
+            cur.execute(
                 'INSERT INTO users (username, password) VALUES (%s, %s)', (username, generate_password_hash(password))
             )
             con.commit()
