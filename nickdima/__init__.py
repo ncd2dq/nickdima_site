@@ -18,8 +18,14 @@ def create_app(test_config=None):
     # Database is the path to your database (in the instance folder here)
     app.config.from_mapping(
         SECRET_KEY = 'dev',
-        DATABASE = os.path.join(app.instance_path, 'nickdb.sqlite')
+        #DATABASE = os.path.join(app.instance_path, 'nickdb.sqlite')
+        MYSQL_HOST = 'sql9.freemysqlhosting.net',
+        MYSQL_USER = 'sql9249883',
+        MYSQL_PASSWORD = 'xwzfPYlGVy',
+        MYSQL_DB = 'sql9249883'
     )
+    #nicholas.dima1@gmail.com
+    #VyK^gPRirq*Q)&TV
 
     # Use configuration from config.py unless a testing config is supplied
     if test_config is None:
@@ -46,8 +52,11 @@ def create_app(test_config=None):
 
     # Register Database for teardown context / CLI command
     # Local import (checks within package first to avoid using wrong lib)
-    import db 
-    db.init_app(app)
+    import dbmysq
+    dbmysq.init_it(app)
+
+    #import dbmysq 
+    #dbmysq.init_app(app)
 
     # Reguster blueprints
     import auth

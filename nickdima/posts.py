@@ -7,7 +7,7 @@ from flask import (
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from db import get_db
+from dbmysq import get_db
 
 bp = Blueprint('posts', __name__, url_prefix='/posts')
 
