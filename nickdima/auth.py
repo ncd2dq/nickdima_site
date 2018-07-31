@@ -69,13 +69,13 @@ def register():
             error = 'Password is requried'
 
         elif db.execute(
-                'SELECT * FROM users WHERE username = ?', (username,)
+                'SELECT * FROM users WHERE username = %s', (username,)
             ).fetchone():
             error = 'Username taken, please choose another.'
 
         if error == None:
             db.execute(
-                'INSERT INTO users (username, password) VALUES (?, ?)', (username, generate_password_hash(password))
+                'INSERT INTO users (username, password) VALUES (%s, %s)', (username, generate_password_hash(password))
             )
             db.commit()
 
