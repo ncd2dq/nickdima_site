@@ -31,11 +31,13 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        db = get_db()
+        cur, con = get_db()
         error = None
-        user = db.execute(
+        
+        cur.execute(
             'SELECT * FROM users WHERE username = ?', (username,)
-        ).fetchone()
+        )
+        user = cur.fetchone()
 
         if user is None:
             error = 'Incorrect Username'
@@ -127,9 +129,11 @@ def load_logged_in_user():
     if user_id is None:
         g.user = None
     else:
-        g.user = get_db().execute(
+        cur, con = get_db()
+        cur.execute(
             'SELECT id, username FROM users WHERE id = ?', (user_id,)
-        ).fetchone()
+        )
+        g.user = cur.fetchone()
 
 
 
