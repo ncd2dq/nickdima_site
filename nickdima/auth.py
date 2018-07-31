@@ -58,7 +58,7 @@ def register():
     Ensure no user with same username exists, put username/pass_hash in db.
     '''
     if request.method == 'POST':
-        db = get_db()
+        db, con = get_db()
         username = request.form['username']
         password = request.form['password']
         error = None
@@ -79,7 +79,7 @@ def register():
             db.execute(
                 'INSERT INTO users (username, password) VALUES (%s, %s)', (username, generate_password_hash(password))
             )
-            db.connect().commit()
+            con.commit()
 
             return redirect(url_for(('auth.login')))
 

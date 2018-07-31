@@ -14,10 +14,11 @@ def get_db():
 
     This avoids unecessary connections and reuses connections
     '''
-    if 'db' not in g:
-        g.db = db.connection.cursor()
+    if 'cur' not in g:
+        g.cur = db.connection.cursor()
+        g.con = db.connection
 
-    return g.db
+    return g.db, g.con
 
 
 def close_db(e=None):
