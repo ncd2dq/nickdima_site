@@ -68,10 +68,12 @@ def register():
         elif not password:
             error = 'Password is requried'
 
-        elif db.execute(
+        else: 
+            db.execute(
                 'SELECT * FROM users WHERE username = %s', (username,)
-            ).fetchone():
-            error = 'Username taken, please choose another.'
+            )
+            if db.fetchone():
+                error = 'Username taken, please choose another.'
 
         if error == None:
             db.execute(
