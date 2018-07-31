@@ -79,7 +79,7 @@ def register():
             db.execute(
                 'INSERT INTO users (username, password) VALUES (%s, %s)', (username, generate_password_hash(password))
             )
-            db.commit()
+            db.connect().commit()
 
             return redirect(url_for(('auth.login')))
 
