@@ -29,7 +29,7 @@ def close_db(e=None):
 
 def init_it(app):
     '''Specific for flask_mysql db'''
-    db.init_db(app)
+    db.init_app(app)
 
 
 
