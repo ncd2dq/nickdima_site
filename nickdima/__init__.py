@@ -51,7 +51,7 @@ def create_app(test_config=None):
     def hayley():
         return "Hi my darling <3"
 
-    @app.route('imupset')
+    @app.route('/imupset')
     def upset():
         return "Ligma"
 
