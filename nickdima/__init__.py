@@ -51,6 +51,10 @@ def create_app(test_config=None):
     def hayley():
         return "Hi my darling <3"
 
+    @app.route('imupset')
+    def upset():
+        return "Ligma"
+
     # Register Database for teardown context / CLI command
     # Local import (checks within package first to avoid using wrong lib)
     import dbmysq
