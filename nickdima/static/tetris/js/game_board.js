@@ -392,13 +392,13 @@ class GameBoard{
     
     create_saved_dict(){
         let save_dict = {};
-        save_dict['L'] = loadImage('assets/L.png');
-        save_dict['L_L'] = loadImage('assets/L_L.png');
-        save_dict['L_R'] = loadImage('assets/L_R.png');
-        save_dict['S_L'] = loadImage('assets/S_L.png');
-        save_dict['S_R'] = loadImage('assets/S_R.png');
-        save_dict['SQ'] = loadImage('assets/SQ.png');
-        save_dict['T'] = loadImage('assets/T.png');
+        save_dict['L'] = loadImage('https://www.nickdima.com/static/tetris/assets/L.png');
+        save_dict['L_L'] = loadImage('https://www.nickdima.com/static/tetris/assets/L_L.png');
+        save_dict['L_R'] = loadImage('https://www.nickdima.com/static/tetris/assets/L_R.png');
+        save_dict['S_L'] = loadImage('https://www.nickdima.com/static/tetris/assets/S_L.png');
+        save_dict['S_R'] = loadImage('https://www.nickdima.com/static/tetris/assets/S_R.png');
+        save_dict['SQ'] = loadImage('https://www.nickdima.com/static/tetris/assets/SQ.png');
+        save_dict['T'] = loadImage('https://www.nickdima.com/static/tetris/assets/T.png');
         return save_dict;
     }
     
