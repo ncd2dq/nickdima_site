@@ -12,5 +12,6 @@ bp = Blueprint('lunchbreak', __name__, url_prefix='/lunchbreak')
 @bp.route('/')
 def home():
 
-
     return render_template('lunchbreak/index.html')
+
+
