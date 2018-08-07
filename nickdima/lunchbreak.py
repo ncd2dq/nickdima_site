@@ -21,7 +21,7 @@ def tetris():
     return render_template('lunchbreak/games/tetris/index.html')
 
 
-@bp.route('/<string:game_name>')
-def tetris():
+@bp.route('/snake')
+def snake():
 
-    return render_template('lunchbreak/games/' + game_name + '/index.html')
+    return render_template('lunchbreak/games/snake/index.html')
