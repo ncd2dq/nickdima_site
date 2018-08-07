@@ -1,0 +1,19 @@
+
+{% block head %}
+    <!--Dependencies-->
+    <script src="{{ url_for('static', filename='snake/libraries/p5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='snake/libraries/p5.sound.min.js') }}"></script>
+    
+    <!--Game Logic-->
+    <script src="{{ url_for('static', filename='snake/js/sketch.js') }}"></script>
+    <script src="{{ url_for('static', filename='snake/js/snake.js') }}"></script>
+    <script src="{{ url_for('static', filename='snake/js/food.js') }}"></script>
+
+    
+{% endblock %}
+{% block content %}
+    <div id="sketch-holder">
+    <!-- p5.js sketch here -->
+    </div>
+{% endblock %}
+

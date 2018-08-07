@@ -19,3 +19,9 @@ def home():
 def tetris():
 
     return render_template('lunchbreak/games/tetris/index.html')
+
+
+@bp.route('/<string:game_name>')
+def tetris():
+
+    return render_template('lunchbreak/games/' + game_name + '/index.html')
