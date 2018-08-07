@@ -73,6 +73,9 @@ def create_app(test_config=None):
     import home
     app.register_blueprint(home.bp)
 
+    import lunchbreak
+    app.register_blueprint(lunchbreak.bp)
+
     @app.route('/')
     def home_redir():
         return redirect(url_for('home.home_index'))
