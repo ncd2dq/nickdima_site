@@ -31,3 +31,19 @@ def snake():
 def junglerun():
 
     return render_template('lunchbreak/games/jungle_run/index.html')
+
+
+@bp.route('/minesweeper')
+def minesweeper():
+
+    return render_template('lunchbreak/games/minesweeper/index.html')
+
+@bp.route('/asteroids')
+def asteroids():
+
+    return render_template('lunchbreak/games/asteroids/index.html')
+
+@bp.route('/neuro_flappybird')
+def neuro_flappybird():
+
+    return render_template('lunchbreak/games/neuro_flappybird/index.html')

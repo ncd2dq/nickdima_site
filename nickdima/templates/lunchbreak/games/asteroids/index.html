@@ -1,0 +1,18 @@
+{% block head %}
+    <!--Dependencies-->
+    <script src="{{ url_for('static', filename='asteroids/libraries/p5.min.js') }}"></script>
+    
+    <!--Game Logic-->
+    <script src="{{ url_for('static', filename='asteroids/js/gamedata.js') }}"></script>
+    <script src="{{ url_for('static', filename='asteroids/js/vectors.js') }}"></script>
+    <script src="{{ url_for('static', filename='asteroids/js/asteroid.js') }}"></script>
+    <script src="{{ url_for('static', filename='asteroids/js/bullet.js') }}"></script>
+    <script src="{{ url_for('static', filename='asteroids/js/ship.js') }}"></script>
+    <script src="{{ url_for('static', filename='asteroids/js/sketch.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div id="sketch-holder">
+    <!-- p5.js sketch here -->
+    </div>
+{% endblock %}
+
