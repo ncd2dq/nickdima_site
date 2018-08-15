@@ -5,22 +5,22 @@ class IndustrialBackground{
         this.position2 = 697.5 ;
         this.position3 = 697.5 * 2;
         
-        this.b0 = loadImage('assets/environments/industrial/layer0.png');
+        this.b0 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/industrial/layer0.png');
         this.b0x = this.position1;
         this.b0x2 = this.position2;
         this.b0x3 = this.position3;
         
-        this.b1 = loadImage('assets/environments/industrial/layer1.png');
+        this.b1 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/industrial/layer1.png');
         this.b1x = this.b0x;
         this.b1x2 = this.b0x2;
         this.b1x3 = this.b0x3
         
-        this.b2 = loadImage('assets/environments/industrial/layer2.png');
+        this.b2 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/industrial/layer2.png');
         this.b2x = this.b0x;
         this.b2x2 = this.b0x2;
         this.b2b3 = this.b0x3;
         
-        this.b3 = loadImage('assets/environments/industrial/layer3.png');
+        this.b3 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/industrial/layer3.png');
         this.b3x = this.b0x;
         this.b3x2 = this.b0x2;
         this.b3x3 = this.b0x3;

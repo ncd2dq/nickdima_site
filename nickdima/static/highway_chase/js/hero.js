@@ -22,8 +22,8 @@ class Hero{
     create_animation_dictionary(){
         //Load all hero sprite images and create a dictionary containing lists of the images in chronological order for animation
         let animation_dict = {};
-        let prefix_right = 'assets/hero/ellie frames/right/Ellie frame_';
-        let prefix_left = 'assets/hero/ellie frames/left/Ellie frame_';
+        let prefix_right = 'http://www.nickdima.com/static/highway_chase/assets/hero/ellie frames/right/Ellie frame_';
+        let prefix_left = 'http://www.nickdima.com/static/highway_chase/assets/hero/ellie frames/left/Ellie frame_';
         let suffix = '.png';
         
         animation_dict['aim_right'] =   [];

@@ -49,7 +49,7 @@ class SpriteSheetEnemy{
     
     load_animation_dictionary(directions){
         //directions = {'directory': '/assets/enemies/____', 'animations': {'attack': 18, 'dead': 15, ...}}
-        let prefix = 'assets/enemies/';
+        let prefix = 'http://www.nickdima.com/static/highway_chase/assets/enemies/';
         let suffix_l = '_l.png';
         let suffix_r = '_r.png';
         

@@ -53,7 +53,7 @@ class Vehicle{
     }
     
     load_animation_dictionary(file_path){
-        let prefix = 'assets/vehicles';
+        let prefix = 'http://www.nickdima.com/static/highway_chase/assets/vehicles';
         let animation_dict = {'body': [], 'tire': []};
         
         if(this.land_vehicle == true){
