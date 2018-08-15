@@ -47,3 +47,8 @@ def asteroids():
 def neuro_flappybird():
 
     return render_template('lunchbreak/games/neuro_flappybird/index.html')
+
+@bp.route('/highway_chase')
+def highway_chase():
+
+    return render_template('lunchbreak/games/highway_chase/index.html')
