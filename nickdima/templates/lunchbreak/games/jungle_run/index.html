@@ -1,0 +1,27 @@
+{% block head %}
+        <!--Dependencies-->
+        <script src="{{ url_for('static', filename='jungle_run/libraries/p5.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='jungle_run/libraries/p5.sound.min.js') }}"></script>
+        
+        <!--Game Logic-->
+        <script src="{{ url_for('static', filename='jungle_run/js/background_class.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/hero_class.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/coin_class.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/obstacle_class.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/object_generator.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/game_state.js') }} "></script>
+        <script src="{{ url_for('static', filename='jungle_run/js/sketch.js') }} "></script>
+
+    
+{% endblock %}
+{% block content %}
+        <p id="score_dom">Score: 0</p>
+        
+        <div id="sketch-holder">
+        <!-- p5.js sketch here -->
+        </div>
+        
+        <input id="powerupbutton" type="button" value="dank" onclick="powerup();"/>
+        <input id="pausebutton" type="button" value="pause/instructions" onclick="pause_game();"/>
+{% endblock %}
+

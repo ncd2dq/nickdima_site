@@ -25,3 +25,9 @@ def tetris():
 def snake():
 
     return render_template('lunchbreak/games/snake/index.html')
+
+
+@bp.route('/junglerun')
+def junglerun():
+
+    return render_template('lunchbreak/games/jungle_run/index.html')
