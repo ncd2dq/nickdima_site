@@ -5,14 +5,14 @@ bp = Blueprint('homepage', __name__, url_prefix='/thai/home')
 @bp.route('/', methods=['GET'])
 def home():
 
-    return render_template('homepage/home.html')
+    return render_template('silk_thai/homepage/home.html')
 
 @bp.route('/about', methods=['GET'])
 def about():
 
-    return render_template('homepage/about.html')
+    return render_template('silk_thai/homepage/about.html')
 
 @bp.route('/contact', methods=['GET'])
 def contact():
 
-    return render_template('homepage/feedback_form.html')
+    return render_template('silk_thai/homepage/feedback_form.html')

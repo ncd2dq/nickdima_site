@@ -7,10 +7,10 @@ def summary():
     if request.method == 'POST':
         return redirect(url_for('checkout.confirmation'))
 
-    return render_template('checkout/order_summary.html')
+    return render_template('silk_thai/checkout/order_summary.html')
 
 @bp.route('/confirmation', methods=['GET'])
 def confirmation():
 
-    return render_template('checkout/order_confirmation.html')
+    return render_template('silk_thai/checkout/order_confirmation.html')
 #change where the form sends people in the static>assets>formoid>formoid.min.js
