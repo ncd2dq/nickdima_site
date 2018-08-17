@@ -76,6 +76,17 @@ def create_app(test_config=None):
     import lunchbreak
     app.register_blueprint(lunchbreak.bp)
 
+    #import thai restauraunt stuff
+
+    import silk_thai.checkout
+    app.register_blueprint(silk_thai.checkout.bp)
+    
+    import silk_thai.homepage
+    app.register_blueprint(silk_thai.homepage.bp)
+
+    import silk_thai.menu
+    app.register_blueprint(silk_thai.menu.bp)
+
     @app.route('/')
     def home_redir():
         return redirect(url_for('home.home_index'))
