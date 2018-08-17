@@ -87,8 +87,4 @@ def create_app(test_config=None):
     import silk_thai.menu
     app.register_blueprint(silk_thai.menu.bp)
 
-    @app.route('/')
-    def home_redir():
-        return redirect(url_for('home.home_index'))
-
     return app
