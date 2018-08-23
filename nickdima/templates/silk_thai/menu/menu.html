@@ -78,7 +78,7 @@
 
 
 <script>
- function add(){
+ function add_item(){
   let item_name = document.getElementById('select_menu').value;
   let elm = document.getElementById('cart_quantity');
   if (!elm.innerHTML.includes(item_name)){
@@ -87,7 +87,7 @@
  }
 </script>
 
-<select id="select_menu" onchange="add();">
+<select id="select_menu" onchange="add_item();">
   <option value="Pad Thai">Pad Thai</option>
   <option value="Pad Thai 2">Pad Thai 2</option>
   <option value="Calamari">Calamari</option>
