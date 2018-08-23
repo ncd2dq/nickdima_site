@@ -77,6 +77,7 @@
 
 
 
+<!--Below here handles the drop down menu and entering item quantity-->
 <script>
  function add_item(){
   let item_name = document.getElementById('select_menu').value;
@@ -88,13 +89,14 @@
   }
  }
 </script>
-
+<div>
+<div>
 <select id="select_menu" onchange="add_item();">
-  <option value="Pad Thai">Pad Thai</option>
-  <option value="Pad Thai 2">Pad Thai 2</option>
+  <option value="Pad Thai - Chicken">Pad Thai</option>
+  <option value="Pad Thai - Beef">Pad Thai 2</option>
   <option value="Calamari">Calamari</option>
-  <option value="Yellow Curry">Yellow Curry</option>
-  <option value="Yellow Curry 2">Yellow Curry 2</option>
+  <option value="Yellow Curry - Chicken">Yellow Curry</option>
+  <option value="Yellow Curry - Beef">Yellow Curry 2</option>
   <option value="Silk Calamari">Silk Calamari</option>
   <option value="Pad See Ew">Pad See Ew</option>
   <option value="Drunken Noodle">Drunken Noodle</option>
@@ -106,7 +108,8 @@
   </form>
 
 </div>
-
+</div>
+</div>
 
 
 
