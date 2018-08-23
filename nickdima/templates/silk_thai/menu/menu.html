@@ -82,7 +82,7 @@
   let item_name = document.getElementById('select_menu').value;
   let elm = document.getElementById('cart_quantity');
   if (!elm.innerHTML.includes(item_name)){
-    elm.innerHTML += item_name + ": <input type='number' name=" + item_name + "min='0' max='10' step='1' value='0'>";
+    elm.innerHTML += "<br>" +item_name + ": <input type='number' name=" + item_name + "min='0' max='10' step='1' value='0'> <br>";
   }
  }
 </script>
