@@ -11,7 +11,7 @@ def menu():
 
         for key in keys:
             if request.form[key] != 0:
-                items.appen((key, request.form[key]))
+                items.append((key, request.form[key]))
 
         session['cart'] = items
 
