@@ -81,10 +81,10 @@
 <script>
  function add_item(){
   let item_name = document.getElementById('select_menu').value;
-  console.log(item_name);
+
   let elm = document.getElementById('cart_quantity');
   if (!elm.innerHTML.includes(item_name)){
-    elm.innerHTML = "<br>" +item_name + ": <input class='item_inp' type='number' name=" + item_name + " min='0' max='10' step='1' value='0'> <br>" + elm.innerHTML;
+    elm.innerHTML = "<br>" +item_name + ": <input class='item_inp' type='number' name='" + item_name + "' min='0' max='10' step='1' value='0'> <br>" + elm.innerHTML;
 
     window.scrollTo(0,document.body.scrollHeight);
   }
