@@ -75,38 +75,36 @@
 
 </section>
 
-<div>
-  <form action="#">
-    Pad Thai:
-    <input type="number" name="padthai"
-     min="0" max="10" step="1" value="0">
-    Calamari:
-    <input type="number" name="calamari"
-     min="0" max="10" step="1" value="0">
-    Yellow Curry:
-    <input type="number" name="yellowcurry"
-     min="0" max="10" step="1" value="0">
-    Yellow Curry 2:
-    <input type="number" name="yellowcurry2"
-     min="0" max="10" step="1" value="0">
-    Pad Thai 2:
-    <input type="number" name="padthai2"
-     min="0" max="10" step="1" value="0">
-    Silk Calamari:
-    <input type="number" name="silkcalamari"
-     min="0" max="10" step="1" value="0">
-    Pad See Ew:
-    <input type="number" name="padseeew"
-     min="0" max="10" step="1" value="0">
-    Drunken Noodle:
-    <input type="number" name="drunkennoodle"
-     min="0" max="10" step="1" value="0">
-    
-    <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Update Cart</button></span>
 
+
+<script>
+ function add(item_name){
+  let elm = document.getElementById('cart_quantity');
+  if !elm.innerHTML.includes(item_name){
+    elm.innerHTML += item_name + ": <input type='number' name=" + item_name + "min='0' max='10' step='1' value='0'";
+  }
+ }
+</script>
+
+<select onchange="add(window[this.value]);">
+  <option value="Pad Thai">Pad Thai</option>
+  <option value="Pad Thai 2">Pad Thai 2</option>
+  <option value="Calamari">Calamari</option>
+  <option value="Yellow Curry">Yellow Curry</option>
+  <option value="Yellow Curry 2">Yellow Curry 2</option>
+  <option value="Silk Calamari">Silk Calamari</option>
+  <option value="Pad See Ew">Pad See Ew</option>
+  <option value="Drunken Noodle">Drunken Noodle</option>
+</select>
+
+<div>
+  <form action="#" id="cart_quantity">
+    <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Update Cart</button></span>
   </form>
 
 </div>
+
+
 
 
   <script src="{{ url_for('static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
