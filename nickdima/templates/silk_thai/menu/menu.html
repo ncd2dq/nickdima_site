@@ -80,7 +80,7 @@
 <script>
  function add(item_name){
   let elm = document.getElementById('cart_quantity');
-  if !elm.innerHTML.includes(item_name){
+  if (!elm.innerHTML.includes(item_name)){
     elm.innerHTML += item_name + ": <input type='number' name=" + item_name + "min='0' max='10' step='1' value='0'";
   }
  }
