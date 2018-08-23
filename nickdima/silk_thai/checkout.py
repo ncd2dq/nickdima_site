@@ -4,10 +4,11 @@ bp = Blueprint('checkout', __name__, url_prefix='/thai/order')
 
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
+    items = session['cart']
     if request.method == 'POST':
         return redirect(url_for('checkout.confirmation'))
 
-    return render_template('silk_thai/checkout/order_summary.html')
+    return render_template('silk_thai/checkout/order_summary.html', items=items)
 
 @bp.route('/confirmation', methods=['GET'])
 def confirmation():

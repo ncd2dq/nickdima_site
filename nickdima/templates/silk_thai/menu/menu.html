@@ -107,18 +107,18 @@
 <div class="center-div">
 <div>
 <select id="select_menu" onchange="add_item();">
-  <option value="Pad Thai - Chicken">Pad Thai</option>
-  <option value="Pad Thai - Beef">Pad Thai 2</option>
+  <option value="Pad Thai - Chicken">Pad Thai - Chicken</option>
+  <option value="Pad Thai - Beef">Pad Thai - Beef</option>
   <option value="Calamari">Calamari</option>
-  <option value="Yellow Curry - Chicken">Yellow Curry</option>
-  <option value="Yellow Curry - Beef">Yellow Curry 2</option>
+  <option value="Yellow Curry - Chicken">Yellow Curry - Chicken</option>
+  <option value="Yellow Curry - Beef">Yellow Curry - Beef</option>
   <option value="Silk Calamari">Silk Calamari</option>
   <option value="Pad See Ew">Pad See Ew</option>
   <option value="Drunken Noodle">Drunken Noodle</option>
 </select>
 
 <div>
-  <form action="#" id="cart_quantity">
+  <form action="{{ url_for('menu.menu') }}" method="post" id="cart_quantity">
     <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Update Cart</button></span>
   </form>
 
