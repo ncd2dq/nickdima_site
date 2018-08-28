@@ -40,7 +40,7 @@
                     <a class="btn btn-md btn-white-outline display-4" href="https://mobirise.com">Personal Life</a></div>
             </div>
             <div class="mbr-figure pt-5">
-                <img src="{{url_for('static', filename='main_assets/images/homepage-box-720x960.jpg" alt="Mobirise" title="" style="width: 60%;">
+                <img src="{{url_for('static', filename='main_assets/images/homepage-box-720x960.jpg')}}" alt="Mobirise" title="" style="width: 60%;">
             </div>
         </div>
     </div>
@@ -126,8 +126,7 @@
     </div>
 </section>
 
-
-  <script src="{{url_for('static', filename='main_assets/web/assets/jquery/jquery.min.js')}}"></script>
+  <script src="{{ url_for('static', filename='main_assets/web/assets/jquery/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='main_assets/popper/popper.min.js')}}"></script>
   <script src="{{url_for('static', filename='main_assets/tether/tether.min.js')}}"></script>
   <script src="{{url_for('static', filename='main_assets/bootstrap/js/bootstrap.min.js')}}"></script>
