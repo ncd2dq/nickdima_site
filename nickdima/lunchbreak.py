@@ -52,3 +52,8 @@ def neuro_flappybird():
 def highway_chase():
 
     return render_template('lunchbreak/games/highway_chase/index.html')
+
+@bp.route('/towerdefense')
+def towerdefense():
+
+    return render_template('lunchbreak/games/tower_defense/index.html')
