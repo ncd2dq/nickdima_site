@@ -73,6 +73,10 @@ def create_app(test_config=None):
     import home
     app.register_blueprint(home.bp)
 
+    @app.route('/'):
+    def home():
+        return url_for('home.home_index')
+
     import lunchbreak
     app.register_blueprint(lunchbreak.bp)
 

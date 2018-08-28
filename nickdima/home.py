@@ -16,4 +16,4 @@ def home_index():
     if g.user is not None:
         username = g.user['username']
 
-    return render_template('home/home.html')
+    return render_template('home/home2.html')
