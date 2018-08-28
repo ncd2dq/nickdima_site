@@ -1,0 +1,31 @@
+{% block head %}
+    <head>
+        <!--Dependencies-->
+        <script src="{{url_for{'static', filename='/tower_defense/libraries/p5.js')}}"></script>
+        <!--Game Logic-->
+        <script src="{{url_for{'static', filename='/tower_defense/js/vectors.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/gameData.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/wavecontroller.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/steering.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/cannon_bullets.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/cannon.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/flamethrower_bullets.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/flamethrower.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/machinegun_bullets.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/armory/machinegun.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/enemies/enemy_spawner.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/enemies/bomber_bomb.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/enemies/small_flock.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/enemies/simple_enemy.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/enemies/bomber.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/structures/tower.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/structures/barrier.js')}}"></script>
+        <script src="{{url_for{'static', filename='/tower_defense/js/sketch.js')}}"></script>
+
+{% endblock %}
+{% block content %}
+        <form action="www.nickdima.com/lunchbreak">
+            <input type="submit" value="Homepage">
+        </form>
+        <hr>
+{% endblock %}
