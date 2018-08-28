@@ -1,1 +1,17 @@
-<p> Coming Soon!</p>
+{% block header %}
+    <!--Dependencies-->
+    <script src="{{url_for('static', filename='libraries/p5.js')}}"></script>
+    <!-- Game Logic-->
+    <script src="{{url_for('static', filename='js/cell.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sketch.js')}}"></script>
+      
+    <style> body {padding: 0; margin: 0;} </style>
+{% endblock %}
+{% block content %}
+    <form action="http://www.nickdima.com/lunchbreak">
+        <input type="submit" value="Homepage">
+    </form>
+    <hr>
+{% endblock %}
+<!--in order for this program to run, you need to link
+in the tags to the dependencies *listed as libraries above*-->
