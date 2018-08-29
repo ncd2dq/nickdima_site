@@ -17,3 +17,8 @@ def home_index():
         username = g.user['username']
 
     return render_template('home/home2.html')
+
+@bp.route('/about')
+def about():
+
+    return render_template('home/about.html')
