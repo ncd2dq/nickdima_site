@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v4.8.1, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/logo4.png" type="image/x-icon">
+  <link rel="shortcut icon" href="{{url_for('static', filename=main_assets/images/logo4.png')}}" type="image/x-icon">
   <meta name="description" content="Website Builder Description">
-  <title>Lunchbreak</title>
+  <title>Nick Dima - Lunchbreak Arcade</title>
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/web/assets/mobirise-icons/mobirise-icons.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/tether/tether.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/bootstrap/css/bootstrap.min.css')}}">
@@ -18,7 +18,13 @@
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/dropdown/css/style.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/theme/css/style.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='main_assets/mobirise/css/mbr-additional.css')}}" type="text/css">
-  
+    
+    <meta property="og:site_name" content="Lunch Break Arcade">
+    <meta property="og:title" content="Lunch Break Arcade">
+    <meta property="og:description" content="A directory of free online games created by Nick Dima with javascript">
+    <meta property="og:url" content="https://www.nickdima.com/lunchbreak">
+    <meta property="og:type" content="games">
+    <meta property="og:image" content="{{ url_for('static', filename='lunchbreak/assets/website_thumbnail.png') }}">
   
 </head>
 <body>
@@ -35,16 +41,16 @@
                 <span></span>
             </div>
         </button>
-        <div class="menu-logo">
+        <!--ITEM ON LEFT OF NAV BAR<div class="menu-logo">
             <div class="navbar-brand">
-                
+                ITEM ON LEFT OF NAV BAR
                 <span class="navbar-caption-wrap">
                     <a class="navbar-caption text-white display-4" href="https://mobirise.com">
                         MOBIRISE
                     </a>
                 </span>
             </div>
-        </div>
+        </div>-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
                     <a class="nav-link link text-white display-4" href="https://mobirise.com">
@@ -95,20 +101,38 @@
     
     
 
-    
+    <!--TOP OF PAGE CONTAINERS FOR GAME IMAGES -->
     <div class="container-fluid">
         <div class="media-container-row">
+            <!--NEED ONE OF THESE FOR EVERY GAME-->
             <div class="card p-3 col-12 col-md-6 col-lg-2">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/01.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/snake_capture.png')}}" alt="snake">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            No Coding
+                            <a href="{{url_for('lunchbreak.snake')}}">Snake</a>
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
+                            Eat as much food as you can, but don't hit your tail!
+                        </p>
+                    </div>
+                </div>
+            </div>
+                <!--END NEED ONE OF THESE EVERY GAME-->
+
+            <div class="card p-3 col-12 col-md-6 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/minesweeper_capture.png')}}" alt="minesweeper">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                            Minesweeper
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Clear all boxes, but don't press on a bomb!
                         </p>
                     </div>
                 </div>
@@ -117,14 +141,14 @@
             <div class="card p-3 col-12 col-md-6 col-lg-2">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/02.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/asteroids_capture.png')}}" alt="asteroids">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            Mobile Friendly
+                            Asteroids
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
+                            Destroy all asteroids and advance levels, but don't get hit by the debris!
                         </p>
                     </div>
                 </div>
@@ -133,30 +157,14 @@
             <div class="card p-3 col-12 col-md-6 col-lg-2">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/03.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/neuro_flappybird.png')}}" alt="neuroflappybird">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            Unique Styles
+                            Neuro-Evolutionary Flappy Bird
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            Mobirise offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card p-3 col-12 col-md-6 col-lg-2">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/04.jpg')}}" alt="Mobirise">
-                    </div>
-                    <div class="card-box">
-                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            Unlimited Sites
-                        </h4>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                           Mobirise gives you the freedom to develop as many websites as you like given the fact that it is a desktop app.
+                           Watch your computer learn to play flappy bird!
                         </p>
                     </div>
                 </div>
@@ -164,14 +172,14 @@
             <div class="card p-3 col-12 col-md-6 col-lg-2">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/01.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/jungle_run_capture2.png')}}" alt="junglerun">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            No Coding
+                            Jungle Run
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
+                            Collect as many gold coins as you can, try not to fall!
                         </p>
                     </div>
                 </div>
@@ -179,14 +187,14 @@
             <div class="card p-3 col-12 col-md-6 col-lg-2">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/02.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/tetris_capture.png')}}" alt="tetris">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            Mobile Friendly
+                            Tetris
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
+                            Clear as many layers as you can before you get overwhelmed!
                         </p>
                     </div>
                 </div>
@@ -219,43 +227,45 @@
     
     <div class="container">
         <div class="media-container-row">
+            <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME-->
             <div class="card p-3 col-12 col-md-6">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/01.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/towerdefense_capture.png')}}" alt="towerdefense">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-7">
-                            No Coding
+                            Tower Defense
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            Mobirise is an easy website builder - just drop site elements to your page, add content and style it to look the way you like.
+                            Use different weapons to protect your tower from enemy forces!
                         </p>
                     </div>
                     <div class="mbr-section-btn text-center">
                         <a href="https://mobirise.com" class="btn btn-primary display-4">
-                            Learn More
+                            Play Beta
                         </a>
                     </div>
                 </div>
             </div>
+            <!--END NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME-->
 
             <div class="card p-3 col-12 col-md-6">
                 <div class="card-wrapper">
                     <div class="card-img">
-                        <img src="{{url_for('static', filename='main_assets/images/02.jpg')}}" alt="Mobirise">
+                        <img src="{{url_for('static', filename='lunchbreak/assets/highway_capture.png')}}" alt="highwaychase">
                     </div>
                     <div class="card-box">
                         <h4 class="card-title mbr-fonts-style display-7">
-                            Mobile Friendly
+                            Highway Chase
                         </h4>
                         <p class="mbr-text mbr-fonts-style display-7">
-                            All sites you make with Mobirise are mobile-friendly. You don't have to create a special mobile version of your site.
+                            Advance through levels killing as many enemies as possible!
                         </p>
                     </div>
                     <div class="mbr-section-btn text-center">
                         <a href="https://mobirise.com" class="btn btn-primary display-4">
-                            Learn More
+                            Play Beta
                         </a>
                     </div>
                 </div>
@@ -284,15 +294,15 @@
                     
                     
                 <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white mbr-bold" href="#" target="_blank">About us</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7">
+                        <a class="text-white mbr-bold" href="{{url_for('home.about')}}" target="_blank">About Me</a>
+                    </li><!--<li class="foot-menu-item mbr-fonts-style display-7">
                         <a class="text-white mbr-bold" href="#" target="_blank">Services</a>
                     </li><li class="foot-menu-item mbr-fonts-style display-7">
                         <a class="text-white mbr-bold" href="#" target="_blank">Get In Touch</a>
                     </li><li class="foot-menu-item mbr-fonts-style display-7">
                         <a class="text-white mbr-bold" href="#" target="_blank">Careers</a>
-                    </li><li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white mbr-bold" href="#" target="_blank">Work</a>
+                    </li>--><li class="foot-menu-item mbr-fonts-style display-7">
+                        <a class="text-white mbr-bold" href="#" target="_blank">Contact Me</a>
                     </li></ul>
             </div>
             <div class="row social-row">
@@ -304,35 +314,30 @@
                     
                     
                 <div class="soc-item">
-                        <a href="https://twitter.com/mobirise" target="_blank">
-                            <span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+                        <a href="https://www.linkedin.com/in/nicholas-dima-975070115/" target="_blank">
+                            <span class="socicon-linkedin socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://www.facebook.com/pages/Mobirise/1616226671953247" target="_blank">
-                            <span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+                        <a href="https://github.com/ncd2dq" target="_blank">
+                            <span class="socicon-github socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
-                    </div><div class="soc-item">
-                        <a href="https://www.youtube.com/c/mobirise" target="_blank">
+                    </div><!--<div class="soc-item">
+                        <a href="#" target="_blank">
                             <span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://instagram.com/mobirise" target="_blank">
+                        <a href="#" target="_blank">
                             <span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://plus.google.com/u/0/+Mobirise" target="_blank">
+                        <a href="#" target="_blank">
                             <span class="socicon-googleplus socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
                     </div><div class="soc-item">
-                        <a href="https://www.behance.net/Mobirise" target="_blank">
+                        <a href="#" target="_blank">
                             <span class="socicon-behance socicon mbr-iconfont mbr-iconfont-social"></span>
                         </a>
-                    </div></div>
-            </div>
-            <div class="row row-copirayt">
-                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
-                    © Copyright 2017 Mobirise - All Rights Reserved
-                </p>
+                    </div>--></div>
             </div>
         </div>
     </div>
