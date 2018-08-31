@@ -17,4 +17,4 @@ def menu():
 
         return redirect(url_for('checkout.summary'))
 
-    return render_template('silk_thai/menu/menu.html')
+    return render_template('menu/menu.html')
