@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<title>{% block title %}{% endblock %} - nickdima</title>
+<head>{% block head %}{% endblock %}</head>
+<nav>
+	<h1>nickdima</h1>
+	<ul>
+		{% if g.user %}
+			<li><span>{{ g.user['username'] }}</span>
+				<li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+				<!--<li><a href="READD CURLY url_for(' POSTS_BP ') ">Posts</a>-->
+				<!--<li><a href=" url_for(' LUNCH_BP ') ">Lunchbreak Arcade</a>-->
+		{% else %}
+			<li><a href="{{ url_for('auth.register') }}">Register</a>
+			<li><a href="{{ url_for('auth.login') }}">Log In</a>
+		{% endif %}
+	</ul>
+</nav>
+<section class="content">
+	<header>
+		{% block header %}{% endblock %}
+	</header>
+	{% for message in get_flashed_messages() %}
+		<div class="flash">{{ message }}</div>
+	{% endfor %}
+    <form action="https://www.nickdima.com/lunchbreak">
+        <input type="submit" value="Homepage">
+    </form>
+    <hr>
+	{% block content %}
+	{% endblock %}
+</section>
+</html>

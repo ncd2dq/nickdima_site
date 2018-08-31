@@ -1,0 +1,40 @@
+{% block head %}
+    <!--Dependencies-->
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/libraries/p5.min.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/libraries/p5.sound.min.js') }}"></script>
+    
+    <!--Game Logic-->
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/industrial_background.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/punk_background.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/hero.js') }}"></script>
+    
+    <!--Vehicle Code-->
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/vehicle_specifics/vehicle.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/vehicle_specifics/v_humvee.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/vehicle_specifics/moto_commuter.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/vehicle_specifics/moto_naked.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/vehicle_specifics/v_jet.js') }}"></script>
+    
+    <!--Enemies Code-->
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/enemy_specifics/sprite_sheet_enemies.js') }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/enemy_specifics/skeleton_code.js') }}"></script>
+    
+    <!--Sketch-->
+    <script src="{{ url_for('lunchbreak.static', filename='highway_chase/js/sketch.js') }}"></script>
+    
+{% endblock %}
+{% block content %}
+    <form action="http://www.nickdima.com/lunchbreak">
+        <input type="submit" value="Homepage">
+    </form>
+    <hr>
+    <div>
+        <input id="powerupbutton" type="button" value="change level" onclick="change_level();"/>
+        <input id="pausebutton" type="button" value="pause/instructions" onclick="pause_game();"/>
+    </div>
+    
+    <div id="sketch-holder">
+    <!-- p5.js sketch here -->
+    </div>
+{% endblock %}
+

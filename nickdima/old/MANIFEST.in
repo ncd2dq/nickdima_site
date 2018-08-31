@@ -1,0 +1,4 @@
+include nickdima/schema.sql
+graft nickdima/static
+graft nickdima/templates
+global-exclude *.pyc

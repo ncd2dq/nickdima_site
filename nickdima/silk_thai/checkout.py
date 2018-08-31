@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 
-bp = Blueprint('checkout', __name__, url_prefix='/thai/order')
+bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
