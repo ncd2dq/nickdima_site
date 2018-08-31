@@ -70,15 +70,15 @@ def create_app(test_config=None):
     import posts
     app.register_blueprint(posts.bp)
 
-    import home
-    app.register_blueprint(home.bp)
+    import home.home
+    app.register_blueprint(home.home.bp)
 
     @app.route('/')
     def home():
         return redirect(url_for('home.home_index'))
 
-    import lunchbreak
-    app.register_blueprint(lunchbreak.bp)
+    import lunchbreak.lunchbreak
+    app.register_blueprint(lunchbreak.lunchbreak.bp)
 
     #import thai restauraunt stuff
 
