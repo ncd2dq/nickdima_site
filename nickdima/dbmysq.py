@@ -1,10 +1,11 @@
-from flask_mysqldb import MySQL
+#from flask_mysqldb import MySQL
 
 import click
 from flask import current_app, g
 from flask.cli import with_appcontext
 
-db = MySQL()
+#db = MySQL()
+
 #flask MySQL automatically closes a connection at the end of
 # a request, no need to add teardown context
 
