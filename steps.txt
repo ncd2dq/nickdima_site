@@ -34,3 +34,9 @@ find out the root directory of your webserver and then do the import sys trick
 
 heroku domains: add nickdima.com
 get the DNS target name from heroku dash and add that in advanced DNS for namescheap.com
+
+
+for websockets
+gunicorn 19.9.0 or 18.0.0
+profile:
+--no-sendfile
