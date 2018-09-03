@@ -59,8 +59,8 @@ def create_app(test_config=None):
 
     # Register Database for teardown context / CLI command
     # Local import (checks within package first to avoid using wrong lib)
-    import dbmysq
-    dbmysq.init_it(app)
+    #import dbmysq
+    #dbmysq.init_it(app)
 
     #import dbmysq 
     #dbmysq.init_app(app)
@@ -97,5 +97,5 @@ def create_app(test_config=None):
     app.register_blueprint(test_pong.pong.bp)
 
     socketio.init_app(app)
-    
+
     return app
