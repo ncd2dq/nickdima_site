@@ -2,10 +2,16 @@ from flask import Blueprint, render_template
 from test_pong.pong_db import get_db
 
 #CAUSES PROBLEM
-#from flask_socketio import send, emit
+from flask_socketio import send, emit
 #CAUSES PROBLEM
-#from nickdima.__init__ import socker
+from nickdima.__init__ import socker
 
+'''
+if __name__ == '__main__':
+    #fetch the environment variable so it works on heroku
+    socketio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
+
+'''
 
 bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='static', template_folder='template')
 
@@ -15,7 +21,7 @@ def test_pong_game():
 
     return render_template('indexpong.html')
 
-'''
+#CAUSES PROBLEM
 #data_base: {'id': {'x': 10, 'y': 50}, 'id2': {'x': 390, 'y': 50}}
 @socker.on('connect')
 def handle_connect():
@@ -61,5 +67,3 @@ def handle_increment(data):
     data_base = get_db()
     data_base['x_1'] += data['value']
     print(data_base)
-
-'''

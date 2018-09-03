@@ -2,10 +2,10 @@ import os
 from flask import Flask, redirect, url_for
 
 #CAUSES PROBLEM
-#from flask_socketio import SocketIO
+from flask_socketio import SocketIO
 
 #CAUSES PROBLEM
-#socker = SocketIO()
+socker = SocketIO()
 
 
 # Application factory "create_app" or "make_app"
@@ -102,6 +102,6 @@ def create_app(test_config=None):
     app.register_blueprint(test_pong.pong.bp)
 
     #CAUSES PROBLEM
-    #socker.init_app(app)
+    socker.init_app(app)
 
     return app
