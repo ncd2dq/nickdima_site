@@ -1,8 +1,12 @@
 import os
 from flask import Flask, redirect, url_for
-#from flask_socketio import SocketIO
 
-#socker = SocketIO()
+#CAUSES PROBLEM
+from flask_socketio import SocketIO
+
+#CAUSES PROBLEM
+socker = SocketIO()
+
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
@@ -97,6 +101,7 @@ def create_app(test_config=None):
     import test_pong.pong 
     app.register_blueprint(test_pong.pong.bp)
 
-    #socker.init_app(app)
+    #CAUSES PROBLEM
+    socker.init_app(app)
 
     return app
