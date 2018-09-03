@@ -48,7 +48,7 @@ class Hero{
     }
     
     create_running_array(){
-        let prefix = 'http://www.nickdima.com/static/jungle_run/assets/hero/run-cycle-inked2_xcf-Frame_';
+        let prefix = 'http://www.nickdima.com/lunchbreak/static/jungle_run/assets/hero/run-cycle-inked2_xcf-Frame_';
         let suffix = '__100ms___replace_.png';
         let images = [];
         
