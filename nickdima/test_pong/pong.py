@@ -10,7 +10,7 @@ bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='st
 @bp.route('/test_pong_game')
 def test_pong_game():
 
-    return render_template('test_pong.index.html')
+    return render_template('indexpong.html')
 
 #data_base: {'id': {'x': 10, 'y': 50}, 'id2': {'x': 390, 'y': 50}}
 @socketio.on('connect')
