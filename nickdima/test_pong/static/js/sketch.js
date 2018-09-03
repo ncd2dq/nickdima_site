@@ -65,6 +65,7 @@ function setup(){
 	});
 }
 function draw(){
+	console.log('in drawloop');
 	background(0, 0, 0);
 	if(!player_2_connected){
 
