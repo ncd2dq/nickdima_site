@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from flask_socketio import send, emit
+#from flask_socketio import send, emit
 from test_pong.pong_db import get_db
 #from nickdima.__init__ import socker
 
