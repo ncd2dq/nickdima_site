@@ -3,7 +3,7 @@ class Obstacle{
         this.x = x;
         this.y = y;
         
-        this.self_image = loadImage('http://www.nickdima.com/static/jungle_run/assets/obstacles/obstacle_block1.png');
+        this.self_image = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/obstacles/obstacle_block1.png');
         
         this.resized_x = 100;
         this.resized_y = 100;

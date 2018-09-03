@@ -7,13 +7,13 @@ class backgroundParralax{
         
         //floor is 9x units - this is 144 pixels per unit, need about 5.3 to always be on screen
         //floor is 2y units
-        this.b0 = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/plx-1.png');
-        this.b1 = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/plx-2.png');
-        this.b2 = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/plx-3.png');
-        this.b3 = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/plx-4.png');
-        this.b4 = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/plx-5.png');
+        this.b0 = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/plx-1.png');
+        this.b1 = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/plx-2.png');
+        this.b2 = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/plx-3.png');
+        this.b3 = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/plx-4.png');
+        this.b4 = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/plx-5.png');
         
-        this.grass = loadImage('http://www.nickdima.com/static/jungle_run/assets/background/extract_floor.png');
+        this.grass = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/background/extract_floor.png');
         
         this.initial_width = 384;
         this.image_resizing = 2;

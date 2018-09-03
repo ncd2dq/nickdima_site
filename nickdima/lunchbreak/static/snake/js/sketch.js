@@ -13,7 +13,7 @@ var song;
 
 function preload(){
     soundFormats('mp3');
-    song = loadSound("http://www.nickdima.com/static/snake/assets/snake_music.mp3");
+    song = loadSound("http://www.nickdima.com/lunchbreak/static/snake/assets/snake_music.mp3");
 } 
 
 

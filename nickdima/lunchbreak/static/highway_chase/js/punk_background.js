@@ -1,9 +1,9 @@
 class PunkBackground{
     constructor(){
         this.name = 'Punk';
-        this.b0 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/cyberpunk/layer0.png');
-        this.b1 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/cyberpunk/layer1.png');
-        this.b2 = loadImage('http://www.nickdima.com/static/highway_chase/assets/environments/cyberpunk/layer2.png');
+        this.b0 = loadImage('http://www.nickdima.com/lunchbreak/static/highway_chase/assets/environments/cyberpunk/layer0.png');
+        this.b1 = loadImage('http://www.nickdima.com/lunchbreak/static/highway_chase/assets/environments/cyberpunk/layer1.png');
+        this.b2 = loadImage('http://www.nickdima.com/lunchbreak/static/highway_chase/assets/environments/cyberpunk/layer2.png');
         //Iteration 0
         this.b0x = 0;
         this.b0x2 = 486;

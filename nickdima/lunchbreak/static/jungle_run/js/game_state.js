@@ -9,8 +9,8 @@ class gameState{
     constructor(){
         this.instruction1 = "Collect these coins:";
         this.instruction2 = "Avoid these coins:";
-        this.good_coin = loadImage('http://www.nickdima.com/static/jungle_run/assets/goldcoins/Coin1.png');
-        this.bad_coin = loadImage('http://www.nickdima.com/static/jungle_run/assets/goldcoins/eCoin1.png');
+        this.good_coin = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/goldcoins/Coin1.png');
+        this.bad_coin = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/goldcoins/eCoin1.png');
         
         this.level = 1;
         this.remaining_coins = 0;

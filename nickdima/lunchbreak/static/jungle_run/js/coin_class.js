@@ -22,10 +22,10 @@ class goldCoin{
     create_coin_array(){
         let prefix, suffix;
         if(!this.evil){
-            prefix = 'http://www.nickdima.com/static/jungle_run/assets/goldcoins/Coin';
+            prefix = 'http://www.nickdima.com/lunchbreak/static/jungle_run/assets/goldcoins/Coin';
             suffix = '.png';
         } else if (this.evil){
-            prefix = 'http://www.nickdima.com/static/jungle_run/assets/goldcoins/eCoin';
+            prefix = 'http://www.nickdima.com/lunchbreak/static/jungle_run/assets/goldcoins/eCoin';
             suffix = '.png';
         }
 

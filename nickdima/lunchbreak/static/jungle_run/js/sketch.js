@@ -40,16 +40,16 @@ let course_length = 15;
 
 function preload(){
     soundFormats('mp3');
-    background_sound = loadSound("http://www.nickdima.com/static/jungle_run/assets/soundtrack/background_nofade.mp3");
+    background_sound = loadSound("http://www.nickdima.com/lunchbreak/static/jungle_run/assets/soundtrack/background_nofade.mp3");
     background_sound.setVolume(0.6);
-    running_sound = loadSound("http://www.nickdima.com/static/jungle_run/assets/soundtrack/running_effect.mp3");
+    running_sound = loadSound("http://www.nickdima.com/lunchbreak/static/jungle_run/assets/soundtrack/running_effect.mp3");
     running_sound.setVolume(1.5);
     running_sound.rate(run_speed_sound);
-    coin_sound = loadSound("http://www.nickdima.com/static/jungle_run/assets/soundtrack/coin_effect.mp3");
+    coin_sound = loadSound("http://www.nickdima.com/lunchbreak/static/jungle_run/assets/soundtrack/coin_effect.mp3");
     coin_sound.setVolume(0.3);
     //Power up stuff
-    powerup_sound_intro = loadSound("http://www.nickdima.com/static/jungle_run/assets/soundtrack/powerup_with_intro.mp3");
-    powerup_sound = loadSound("http://www.nickdima.com/static/jungle_run/assets/soundtrack/powerup_repeat.mp3");
+    powerup_sound_intro = loadSound("http://www.nickdima.com/lunchbreak/static/jungle_run/assets/soundtrack/powerup_with_intro.mp3");
+    powerup_sound = loadSound("http://www.nickdima.com/lunchbreak/static/jungle_run/assets/soundtrack/powerup_repeat.mp3");
 }
 
 function setup() {
@@ -58,7 +58,7 @@ function setup() {
     backgroundObject = new backgroundParralax();
     ground_floor_speed = backgroundObject.floor_bottom_speed;
     heroObject = new Hero();
-    powerup_visual = loadImage('http://www.nickdima.com/static/jungle_run/assets/powerup/harambe.jpg');
+    powerup_visual = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/powerup/harambe.jpg');
     gState = new gameState();
     
     if(background_sound.isLoaded() == true){

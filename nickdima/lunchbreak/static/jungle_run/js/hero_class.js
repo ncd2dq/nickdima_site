@@ -6,7 +6,7 @@ class Hero{
         this.jumping_frame_change_every = 8;
         //power up 
         this.power_up_change_frame_every = 1;
-        this.dank_glass = loadImage('http://www.nickdima.com/static/jungle_run/assets/hero/dankglass.png');
+        this.dank_glass = loadImage('http://www.nickdima.com/lunchbreak/static/jungle_run/assets/hero/dankglass.png');
         //end power up
         this.change_frame_every = this.running_frame_change_every;
         this.animation_list = this.create_running_array();
