@@ -1,1 +1,1 @@
-web: gunicorn --chdir nickdima wsgi:app
+web: gunicorn --worker-class eventlet -w 1 --chdir nickdima wsgi:app
