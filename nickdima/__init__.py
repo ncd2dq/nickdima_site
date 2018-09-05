@@ -1,6 +1,7 @@
 import os
 from flask import Flask, redirect, url_for
-
+import eventlet
+eventlet.monkey_patch()
 #CAUSES PROBLEM
 from flask_socketio import SocketIO
 

@@ -25,7 +25,7 @@ def test_pong_game():
 #data_base: {'id': {'x': 10, 'y': 50}, 'id2': {'x': 390, 'y': 50}}
 @socker.on('connect')
 def handle_connect():
-    print('Player connected')
+    socker.emit('testing', {'hello': 'hi'})
 
 @socker.on('player_connect')
 def handle_player_connect(data):

@@ -17,6 +17,10 @@ function setup(){
 		console.log('I have connected with ID ' + player_id);
 	});
 
+	your_sock.on('testing', function(data){
+		console.log(data);
+	}
+
 	your_sock.on('what_player', function(data){
 		console.log('recieved player number ' + data['player_number']);
 		if(data['id'] == player_id){
