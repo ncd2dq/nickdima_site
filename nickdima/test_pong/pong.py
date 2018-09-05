@@ -19,6 +19,8 @@ bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='st
 @bp.route('/test_pong_game')
 def test_pong_game():
 
+    print('hello logs')
+
     return render_template('indexpong.html')
 
 #CAUSES PROBLEM
