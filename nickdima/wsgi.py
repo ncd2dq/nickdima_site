@@ -7,7 +7,8 @@
 #app = create_app()
 #socker.run(app, host='0.0.0.0', port=5000, debug=True)
 
-
+import sys
+sys.path.insert(0, "/app/nickdima")
 import os
 from flask import Flask, redirect, url_for
 import eventlet
