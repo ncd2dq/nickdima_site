@@ -50,4 +50,6 @@ def create_app():
 
         print('TRIED TO EMIT')
 
+    return app
+
 app = create_app()
