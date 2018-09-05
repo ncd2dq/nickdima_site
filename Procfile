@@ -1,1 +1,1 @@
-web: gunicorn --worker-class eventlet -w 1 --no-sendfile --log-file=- --chdir nickdima wsgi:app
+web: gunicorn --worker-class eventlet -w 1 --no-sendfile --log-file=- --preload --chdir nickdima wsgi:app
