@@ -8,6 +8,9 @@ from flask_socketio import SocketIO
 #CAUSES PROBLEM
 socker = SocketIO()
 
+#New
+from flask_heroku import Heroku
+
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
@@ -36,6 +39,8 @@ def create_app(test_config=None):
     #nicholas.dima1@gmail.com
     #VyK^gPRirq*Q)&TV
 
+    #new
+    heroku = Heroku(app)
     # Use configuration from config.py unless a testing config is supplied
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
@@ -106,3 +111,7 @@ def create_app(test_config=None):
     socker.init_app(app)
 
     return app
+
+if __name__ == '__main__':
+    app = create_app()
+    socker.run(app)
