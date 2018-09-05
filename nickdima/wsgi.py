@@ -22,7 +22,9 @@ socker = SocketIO()
 #New
 from flask_heroku import Heroku
 
-code =  '''<script>your_sock.on('connect', function(){
+code =  '''<script>
+    let your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');
+    your_sock.on('connect', function(){
         console.log('I have connected with ID ' + player_id);
     });
 
