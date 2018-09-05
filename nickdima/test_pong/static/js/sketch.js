@@ -19,6 +19,7 @@ function setup(){
 
 	your_sock.on('testing', function(data){
 		console.log(data);
+		console.log('here');
 	});
 
 	your_sock.on('what_player', function(data){
@@ -69,7 +70,6 @@ function setup(){
 	});
 }
 function draw(){
-	console.log('Draw looping');
 	background(0, 0, 0);
 	if(!player_2_connected){
 
