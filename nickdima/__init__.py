@@ -113,7 +113,46 @@ def create_app(test_config=None):
     #    print('connected server')
     #    socker.emit('testing', {'data': 'hi'})
 
+    #
+    # FOR SOME REASON I NEED ALL SOCKET EVENTS HERE
+    #
+    @socker.on('connect')
+    def handle_connect():
+        print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
+        socker.emit('testing', {'hello': 'hi'})
 
+
+    @socker.on('player_connect')
+    def handle_player_connect(data):
+        print('received player_connect event')
+        data_base = get_db()
+        if data_base['count'] == 0:
+            data_base[data['id']] = {'player_number': 1}
+            data_base[data['id']]['x'] = 10
+            data_base[data['id']]['y'] = 50
+            data_base['count'] += 1
+            socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']})
+        elif data_base['count'] == 1:
+            data_base[data['id']] = {'player_number': 2}
+            data_base[data['id']]['x'] = 375
+            data_base[data['id']]['y'] = 50
+            data_base['count'] += 1
+            socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']})
+
+            #all players connected
+            print('SENDING ALL PLAYERS CONNECTED SIGNAL')
+            socker.emit('all_players', data_base)
+
+    @socker.on('move_request')
+    def handle_move_request(data):
+        data_base = get_db()
+        data_base[data['id']]['y'] += data['y']
+
+        socker.emit('all_info', data_base)
+
+    #
+    # END OF ALL SOCKET EVENTS FOR SOME REASON
+    #
 
     #new
     heroku = Heroku(app)

@@ -2,7 +2,7 @@ from flask import Blueprint, render_template
 from test_pong.pong_db import get_db
 
 #CAUSES PROBLEM
-#from flask_socketio import send, emit
+from flask_socketio import send, emit
 #CAUSES PROBLEM
 from nickdima.__init__ import socker
 
@@ -17,6 +17,7 @@ def test_pong_game():
 
     return render_template('indexpong.html')
 
+'''
 #CAUSES PROBLEM
 #data_base: {'id': {'x': 10, 'y': 50}, 'id2': {'x': 390, 'y': 50}}
 @socker.on('connect')
@@ -52,16 +53,4 @@ def handle_move_request(data):
     data_base[data['id']]['y'] += data['y']
 
     socker.emit('all_info', data_base)
-
-@socker.on('message')
-def handle_message(message):
-    print('recieved: {}'.format(message))
-
-    send('This is from flask:' + message)
-
-
-@socker.on('increment')
-def handle_increment(data):
-    data_base = get_db()
-    data_base['x_1'] += data['value']
-    print(data_base)
+'''
