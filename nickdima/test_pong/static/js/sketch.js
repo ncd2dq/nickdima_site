@@ -179,7 +179,7 @@ function move_ball(ball_loc){
 	} else if (ball_loc['y'] < 0){
 		ball_loc['y_s'] *= -1;
 	} else if (ball_loc['x'] > 400 || ball_loc['x'] < 0){
-		ball_loc = {'x': 200, 'y': 200, 'x_s': 2, 'y_s': 2};
+		ball_loc = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6};
 	}
 
 	let keys_vals = Object.keys(players);
