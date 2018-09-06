@@ -160,15 +160,13 @@ def create_app(test_config=None):
                 if ball['x'] > x and ball['x'] < x + 15:
                     if ball['y'] > y and ball['y'] < y + 50:
                         ball['x_s'] *= -1
-                        
-        print('ABOUT TO SEND BALL LOCATION')
+
         socker.emit('recieve_ball_loc', ball)
 
     def run_pong():
-        print('INSIDE PONG LOGIC LOOP')
         while True:
             run_pong_inner()
-            eventlet.sleep(1)
+            eventlet.sleep(0.025)
     #UGLY THREADING CODE
 
 
