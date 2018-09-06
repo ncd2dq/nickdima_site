@@ -11,6 +11,9 @@ socker = SocketIO()
 #New
 from flask_heroku import Heroku
 
+#REALLY UGLY
+from test_pong.pong_gb import get_db
+
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
