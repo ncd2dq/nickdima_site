@@ -28,7 +28,9 @@
 		<script src="{{url_for('test_pong.static', filename='js/ball.js')}}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/sketch.js')}}"></script>
 
-		<script> function add_chat(mes){
+		<script> 
+
+		function add_chat(mes){
 			let elm = document.getElementById('chatbox');
 			elm.innerHTML = mes['chat'] + '<br>' + elm.innerHTML;
 		}
@@ -36,6 +38,7 @@
 		your_sock.on('recv_chat', function(data){
 			add_chat(data);
 		});
+		
 		</script>
 
 	</head>

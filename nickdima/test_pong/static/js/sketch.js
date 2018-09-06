@@ -30,7 +30,16 @@ function setup(){
 		console.log(data);
 		get_out();
 
-	})
+	});
+
+	function add_chat(mes){
+		let elm = document.getElementById('chatbox');
+		elm.innerHTML = mes['chat'] + '<br>' + elm.innerHTML;
+	}
+
+	your_sock.on('recv_chat', function(data){
+		add_chat(data);
+	});
 
 	your_sock.on('what_player', function(data){
 		console.log('recieved player number ' + data['player_number']);
