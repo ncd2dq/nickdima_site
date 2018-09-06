@@ -9,7 +9,13 @@ let players = {};
 
 player_id = Math.round(Math.random() * 5000);
 let your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
-your_sock.on('connect', function(){
+
+
+your_sock.on('connect', function(){console.log('connection function');});
+
+your_sock.on('testing', function(data){console.log(data);});
+
+/*your_sock.on('connect', function(){
 	your_sock.emit('player_connect', {'id': player_id});
 	console.log('I have connected with ID ' + player_id);
 });
@@ -18,6 +24,8 @@ your_sock.on('testing', function(data){
 	console.log(data);
 	console.log('here');
 });
+
+*/
 
 function setup(){
 	createCanvas(400, 400);
