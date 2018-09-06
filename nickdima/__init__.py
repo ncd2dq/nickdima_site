@@ -140,12 +140,10 @@ def create_app(test_config=None):
         ball = get_ball()
         db = get_db()
 
-        ball['x'] += ball['x_s']
-        ball['y'] += ball['y_s']
-
         #determine if ball hits walls of space
         if ball['y'] > 400 or ball['y'] < 0:
             ball['y_s'] *= - 1
+
         elif ball['x'] > 400 or ball['x'] < 0:
             #ball = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6}
             ball['x_s'] *= -1
@@ -161,6 +159,9 @@ def create_app(test_config=None):
                 if ball['x'] > x and ball['x'] < x + 15:
                     if ball['y'] > y and ball['y'] < y + 50:
                         ball['x_s'] *= -1
+
+        ball['x'] += ball['x_s']
+        ball['y'] += ball['y_s']
 
         socker.emit('recieve_ball_loc', ball)
 
