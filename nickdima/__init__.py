@@ -11,8 +11,8 @@ socker = SocketIO()
 #New
 from flask_heroku import Heroku
 
-#REALLY UGLY
-from test_pong.pong_db import get_db
+#REALLY 
+from test_pong.pong_db import get_db, restart_db
 
 
 # Application factory "create_app" or "make_app"
@@ -152,6 +152,10 @@ def create_app(test_config=None):
         data_base[data['id']]['y'] += data['y']
 
         socker.emit('all_info', data_base)
+
+    @socker.on('disconnect')
+    def handle_disconnect():
+        restart_db()
 
     #
     # END OF ALL SOCKET EVENTS FOR SOME REASON
