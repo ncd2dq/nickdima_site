@@ -7,6 +7,8 @@ let move_down = false;
 
 let players = {};
 
+let ball_location = {'x': 200, 'y': 200, 'x_s': 0.5, 'y_s': 0.5};
+
 
 function setup(){
 	createCanvas(400, 400);
@@ -76,7 +78,10 @@ function setup(){
 		}
 	});
 
-	your_sock.on('disconnet')
+	your_sock.on('recieve_ball_loc', function(ball){
+		ball_location = ball;
+	});
+
 	
 }
 function draw(){
@@ -108,6 +113,10 @@ function draw(){
 		}
 
 	}
+
+	//the magic but currently a client is acting as the server
+	move_ball(ball_location);
+
 }
 
 function keyPressed(){
@@ -138,4 +147,13 @@ function keyReleased(){
     } else if (keyCode === UP_ARROW){
         move_up = false;
     }
+}
+
+function move_ball(ball_loc){
+
+	ball_loc['x'] += ball_loc['x_s'];
+	ball_loc['y'] += ball_loc['y_s'];
+
+	your_sock.emit('send_ball_loc', ball_loc);
+
 }
