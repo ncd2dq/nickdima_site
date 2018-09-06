@@ -126,9 +126,9 @@ function draw(){
 		}
 
 		//the magic but currently a client is acting as the server
-		if(players[player_id]['num'] == 1){
-			move_ball(ball_location);
-		}
+		//if(players[player_id]['num'] == 1){
+		//	move_ball(ball_location);
+		//}
 
 	}
 
@@ -167,6 +167,8 @@ function keyReleased(){
     }
 }
 
+
+/*
 function move_ball(ball_loc){
 
 	ball_loc['x'] += ball_loc['x_s'];
@@ -201,3 +203,4 @@ function move_ball(ball_loc){
 	your_sock.emit('send_ball_loc', ball_loc);
 
 }
+*/

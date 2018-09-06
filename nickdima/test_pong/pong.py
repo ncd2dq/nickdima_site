@@ -6,7 +6,6 @@ from flask_socketio import send, emit
 #CAUSES PROBLEM
 from nickdima.__init__ import socker
 
-
 bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='static', template_folder='template')
 
 

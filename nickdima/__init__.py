@@ -12,7 +12,48 @@ socker = SocketIO()
 from flask_heroku import Heroku
 
 #REALLY 
-from test_pong.pong_db import get_db, restart_db
+from test_pong.pong_db import get_db, restart_db, get_ball
+
+
+
+#
+# testing code for threading
+#
+def run_pong_inner():
+    ball = get_ball()
+    db = get_db()
+
+    ball['x'] += ball['x_s']
+    ball['y'] += ball['y_s']
+
+    #determine if ball hits walls of space
+    if ball['y'] > 400 or ball['y'] < 0:
+        ball['y_s'] *= - 1
+    elif ball['x'] > 400 or ball['x'] < 0:
+        ball = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6}
+
+    #determine if ball hits paddles
+    key_list = db.keys()
+
+    for key in key_list:
+        if key != 'count':
+            cur_paddle = db[key]
+            x = cur_paddle['x']
+            y = cur_paddle['y']
+            if ball['x'] > x && ball['x'] < x + 15:
+                if ball['y'] > y && ball['y'] < y + 50:
+                    ball['x_s'] *= -1;
+
+    @socker.emit('send_ball_loc', ball)
+
+def run_pong():
+    while True:
+        run_pong_inner()
+        eventlet.sleep(0.01)
+#
+# end threaded test
+#
+
 
 
 # Application factory "create_app" or "make_app"
@@ -145,6 +186,8 @@ def create_app(test_config=None):
             #all players connected
             print('SENDING ALL PLAYERS CONNECTED SIGNAL')
             socker.emit('all_players', data_base)
+
+            eventlet.spawn(run_pong)
 
     @socker.on('move_request')
     def handle_move_request(data):
