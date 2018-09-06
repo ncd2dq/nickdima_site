@@ -167,7 +167,7 @@ def create_app(test_config=None):
         while True:
             run_pong_inner()
             eventlet.sleep(1)
-    #UGLY THREADING CODE
+    #UGLY THREADING CODE#
 
 
     @socker.on('player_connect')
