@@ -166,7 +166,7 @@ def create_app(test_config=None):
     def run_pong():
         while True:
             run_pong_inner()
-            eventlet.sleep(1)
+            eventlet.sleep(0.02)
     #UGLY THREADING CODE#
 
 
