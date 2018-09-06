@@ -1,5 +1,5 @@
 let player_id = false;
-let your_sock = false;
+//let your_sock = false;
 let player_2_connected = false;
 
 let move_up = false;
