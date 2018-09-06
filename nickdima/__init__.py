@@ -157,7 +157,7 @@ def create_app(test_config=None):
     # END OF ALL SOCKET EVENTS FOR SOME REASON
     #
 
-    #new
+    #new c
     heroku = Heroku(app)
 
     return app
