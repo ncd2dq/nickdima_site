@@ -115,12 +115,13 @@ function draw(){
 			your_sock.emit('move_request', {'id': player_id, 'y': 5});
 		}
 
+		//the magic but currently a client is acting as the server
+		if(players[player_id]['num'] == 1){
+			move_ball(ball_location);
+		}
+
 	}
 
-	//the magic but currently a client is acting as the server
-	if(players[player_id]['num'] == 1){
-		move_ball(ball_location);
-	}
 
 }
 
