@@ -13,7 +13,10 @@ let your_sock = io.connect('http://' + document.domain + ':' + location.port + '
 
 your_sock.on('connect', function(){console.log('connection function');});
 
-your_sock.on('testing', function(data){console.log(data);});
+your_sock.on('testing', function(data){
+    console.log(data);
+    console.log('here');
+});
 
 /*your_sock.on('connect', function(){
 	your_sock.emit('player_connect', {'id': player_id});

@@ -22,10 +22,8 @@ def test_pong_game():
 @socker.on('connect')
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
-    try:
-        socker.emit('testing', {'hello': 'hi'})
-    except Exception as e:
-        print(e)
+    socker.emit('testing', {'hello': 'hi'})
+
 
 @socker.on('player_connect')
 def handle_player_connect(data):
