@@ -162,7 +162,7 @@ def create_app(test_config=None):
                         ball['x_s'] *= -1
                         
         print('ABOUT TO SEND BALL LOCATION')
-        socker.emit('send_ball_loc', ball)
+        socker.emit('recieve_ball_loc', ball)
 
     def run_pong():
         print('INSIDE PONG LOGIC LOOP')
