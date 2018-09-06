@@ -11,7 +11,7 @@ function setup(){
 	createCanvas(400, 400);
 
 	player_id = Math.round(Math.random() * 5000);
-	your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
+	let your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
 	your_sock.on('connect', function(){
 		your_sock.emit('player_connect', {'id': player_id});
 		console.log('I have connected with ID ' + player_id);

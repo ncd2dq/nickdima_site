@@ -6,12 +6,6 @@ from flask_socketio import send, emit
 #CAUSES PROBLEM
 from nickdima.__init__ import socker
 
-'''
-if __name__ == '__main__':
-    #fetch the environment variable so it works on heroku
-    socketio.run(app, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-
-'''
 
 bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='static', template_folder='template')
 

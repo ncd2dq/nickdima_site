@@ -39,8 +39,6 @@ def create_app(test_config=None):
     #nicholas.dima1@gmail.com
     #VyK^gPRirq*Q)&TV
 
-    #new
-    heroku = Heroku(app)
     # Use configuration from config.py unless a testing config is supplied
     if test_config is None:
         app.config.from_pyfile('config.py', silent=True)
@@ -110,8 +108,7 @@ def create_app(test_config=None):
     #CAUSES PROBLEM
     socker.init_app(app)
 
-    return app
+    #new
+    heroku = Heroku(app)
 
-if __name__ == '__main__':
-    app = create_app()
-    socker.run(app)
+    return app

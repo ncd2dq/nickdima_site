@@ -1,11 +1,15 @@
-#import sys
-#sys.path.insert(0, "/app/nickdima")
+import sys
+sys.path.insert(0, "/app/nickdima")
 
 
-#from __init__ import create_app, socker
+from __init__ import create_app, socker
 
-#app = create_app()
-#socker.run(app, host='0.0.0.0', port=5000, debug=True)
+app = create_app()
+
+
+
+'''
+JUST THIS SOMEHOW WORKS
 
 import sys
 sys.path.insert(0, "/app/nickdima")
@@ -22,7 +26,9 @@ socker = SocketIO()
 #New
 from flask_heroku import Heroku
 
-code =  '''<script>
+
+
+code =  <script>
     let your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');
     your_sock.on('connect', function(){
         console.log('I have connected with ID ' + '9');
@@ -31,7 +37,7 @@ code =  '''<script>
     your_sock.on('testing', function(data){
         console.log(data);
         console.log('here');
-    });</script>'''
+    });</script>
 
 def create_app():
     app = Flask(__name__)
@@ -55,3 +61,5 @@ def create_app():
     return app
 
 app = create_app()
+
+'''
