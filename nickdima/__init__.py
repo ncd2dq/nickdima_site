@@ -160,6 +160,11 @@ def create_app(test_config=None):
         #tell all clients to SCRAM!
         socker.emit('scram', {'get': 'the fuck out'})
 
+
+    @socker.on('send_chat')
+    def handle_chatting(data):
+        socker.emit('recv_chat', data)
+
     @socker.on('send_ball_loc')
     def handle_being_sent(ball_loc):
         socker.emit('recieve_ball_loc', ball_loc)
