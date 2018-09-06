@@ -42,7 +42,7 @@ def run_pong_inner():
             y = cur_paddle['y']
             if ball['x'] > x and ball['x'] < x + 15:
                 if ball['y'] > y and ball['y'] < y + 50:
-                    ball['x_s'] *= -1;
+                    ball['x_s'] *= -1
 
     @socker.emit('send_ball_loc', ball)
 
