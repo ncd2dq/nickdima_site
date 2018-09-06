@@ -32,10 +32,17 @@
 	</head>
 
 	<body>
+		<script>
+			function submit_chat(){
+				your_sock.emit('send_chat', {'chat': document.getElementById('chat').value});
+				document.getElementById('chat').value = '';
+			}
+
+		</script>
 		<div id="sketch-holder">
 		</div>
 		<div>
-			<button onclick="your_sock.emit('send_chat', {'chat': document.getElementById('chat').value});">Submit</button>
+			<button onclick="submit_chat();" id="chat_button">Submit</button>
 			<input type="text" id="chat" name="chat">
 			<p id='chatbox'></p>
 		</div>

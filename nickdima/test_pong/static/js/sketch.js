@@ -146,6 +146,8 @@ function keyPressed(){
         
     } else if (keyCode === UP_ARROW){
         move_up = true;
+    } else if (keyCode == 13){
+    	document.getElementById('chat_button').click();
     }
 }
 
