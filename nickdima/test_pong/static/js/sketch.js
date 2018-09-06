@@ -68,7 +68,6 @@ function setup(){
 
 	your_sock.on('all_info', function(data_base){
 		let keys_vals = Object.keys(data_base);
-		console.log(keys_vals);
 		for(let i = 0; i < keys_vals.length; i++){
 			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
@@ -171,8 +170,7 @@ function move_ball(ball_loc){
 		ball_loc = {'x': 200, 'y': 200, 'x_s': 2, 'y_s': 2};
 	}
 
-	let keys_vals = Object.keys(data_base);
-	console.log(keys_vals);
+	let keys_vals = Object.keys(players);
 	for(let i = 0; i < keys_vals.length; i++){
 		if(keys_vals[i] != 'count'){
 			let cur_player_id = keys_vals[i];
