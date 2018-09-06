@@ -23,6 +23,12 @@ function setup(){
 		console.log('here');
 	});
 
+	your_sock.on('scram', function(data){
+		console.log(data);
+		get_out();
+
+	})
+
 	your_sock.on('what_player', function(data){
 		console.log('recieved player number ' + data['player_number']);
 		if(data['id'] == player_id){
@@ -69,6 +75,8 @@ function setup(){
 			}
 		}
 	});
+
+	your_sock.on('disconnet')
 	
 }
 function draw(){

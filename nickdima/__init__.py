@@ -157,6 +157,9 @@ def create_app(test_config=None):
     def handle_disconnect():
         restart_db()
 
+        #tell all clients to SCRAM!
+        socker.emit('scram', {'get': 'the fuck out'})
+
     #
     # END OF ALL SOCKET EVENTS FOR SOME REASON
     #
