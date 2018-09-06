@@ -108,6 +108,13 @@ def create_app(test_config=None):
     #CAUSES PROBLEM
     socker.init_app(app)
 
+    @socker.on('connect')
+    def handle_con():
+        print('connected server')
+        socker.emit('testing', {'data': 'hi'})
+
+
+
     #new
     heroku = Heroku(app)
 
