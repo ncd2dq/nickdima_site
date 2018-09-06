@@ -12,7 +12,8 @@ let ball_location = {'x': 200, 'y': 200, 'x_s': 2, 'y_s': 2};
 
 
 function setup(){
-	createCanvas(400, 400);
+	let canvas = createCanvas(400, 400);
+	canvas.parent('sketch-holder');
 
 	player_id = Math.round(Math.random() * 5000);
 	your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
