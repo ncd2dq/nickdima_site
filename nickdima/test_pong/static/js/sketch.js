@@ -1,5 +1,5 @@
 let player_id = false;
-//let your_sock = false;
+let your_sock = false;
 let player_2_connected = false;
 
 let move_up = false;
@@ -12,7 +12,7 @@ function setup(){
 	createCanvas(400, 400);
 
 	player_id = Math.round(Math.random() * 5000);
-	let your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
+	your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
 	your_sock.on('connect', function(){
 		your_sock.emit('player_connect', {'id': player_id});
 		console.log('I have connected with ID ' + player_id);
