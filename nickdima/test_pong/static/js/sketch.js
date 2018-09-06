@@ -106,6 +106,9 @@ function draw(){
 			}
 		}
 
+		fill(255, 255, 255);
+		ellipse(ball['x'], ball['y'], 8, 8);
+
 		if(move_up){
 			your_sock.emit('move_request', {'id': player_id, 'y': -5});
 		} else if(move_down){
@@ -115,7 +118,9 @@ function draw(){
 	}
 
 	//the magic but currently a client is acting as the server
-	move_ball(ball_location);
+	if(players[player_id]['num'] == 1){
+		move_ball(ball_location);
+	}
 
 }
 
