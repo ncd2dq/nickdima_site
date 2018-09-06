@@ -41,10 +41,9 @@
 	</head>
 
 	<body>
-		<form onsubmit="your_sock.emit('send_chat', {'chat': document.getElementById('chat').value});">
-			<input type="text" name="chat" id='chat'>
-			<input type="submit" value="submit">
-		</form>
+		<div id="sketch-holder">
+		<button onclick="your_sock.emit('send_chat', {'chat': document.getElementById('chat').value});">Submit</button>
+		<input type="text" id="chat" name="chat">
 		<p id='chatbox'></p>
 		<!--<button onclick="do_increment()">Increment</button>-->
 	</body>
