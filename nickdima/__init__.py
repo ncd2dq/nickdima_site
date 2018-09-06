@@ -44,7 +44,7 @@ def run_pong_inner():
                 if ball['y'] > y and ball['y'] < y + 50:
                     ball['x_s'] *= -1
 
-    @socker.emit('send_ball_loc', ball)
+    socker.emit('send_ball_loc', ball)
 
 def run_pong():
     while True:
