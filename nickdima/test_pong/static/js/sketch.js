@@ -61,7 +61,7 @@ function setup(){
 	your_sock.on('all_players', function(data_base){
 		let keys_vals = Object.keys(data_base);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
+			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
 				console.log('all players function');
 				console.log(players);
@@ -79,7 +79,7 @@ function setup(){
 	your_sock.on('all_info', function(data_base){
 		let keys_vals = Object.keys(data_base);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
+			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
 				players[cur_player_id]['num'] = data_base[cur_player_id]['player_number'];
 				players[cur_player_id]['x'] = data_base[cur_player_id]['x'];
@@ -87,8 +87,6 @@ function setup(){
 			}
 		}
 
-		players['player_1_socre'] = data_base['player_1_socre'] ;
-		players['player_2_score'] = data_base['player_2_socre'];
 	});
 
 	your_sock.on('recieve_ball_loc', function(ball){
@@ -103,7 +101,7 @@ function draw(){
 
 		let keys_vals = Object.keys(players);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
+			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
 				fill(255, 255, 255);
 				rect(players[cur_player_id]['x'], players[cur_player_id]['y'], 15, 50);
@@ -112,7 +110,7 @@ function draw(){
 	} else {
 		let keys_vals = Object.keys(players);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
+			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
 				fill(255, 255, 255);
 				rect(players[cur_player_id]['x'], players[cur_player_id]['y'], 15, 50);
@@ -122,8 +120,8 @@ function draw(){
 		fill(255, 255, 255);
 		ellipse(ball_location['x'], ball_location['y'], 8, 8);
 
-		text(players['player_1_score'], 10, 10)
-		text(players['player_2_score'], 370, 10)
+		text(ball_location['player_1_score'], 10, 10)
+		text(ball_location['player_2_score'], 370, 10)
 
 		if(move_up){
 			your_sock.emit('move_request', {'id': player_id, 'y': -5});

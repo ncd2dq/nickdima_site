@@ -1,5 +1,5 @@
-db = {'count': 0, 'player_1_score': 0, 'player_2_score': 0}
-ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5}
+db = {'count': 0}
+ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5, 'player_1_socre': 0, 'player_2_score': 0}
 
 def get_db():
     global db
@@ -14,4 +14,4 @@ def get_ball():
 def restart_db():
     global db 
     
-    db = {'count': 0, 'player_1_score': 0, 'player_2_score': 0}
+    db = {'count': 0}

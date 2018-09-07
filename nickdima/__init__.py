@@ -146,12 +146,12 @@ def create_app(test_config=None):
         if ball['x'] > 400:
             ball['x'] = 200
             ball['y'] = 200
-            db['player_1_score'] += 1
+            ball['player_1_score'] += 1
 
         if ball['x'] < 0:
             ball['x'] = 200
             ball['y'] = 200
-            db['player_2_score'] += 1
+            ball['player_2_score'] += 1
             #ball['x_s'] *= -1
 
         #determine if ball hits paddles
