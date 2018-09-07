@@ -79,7 +79,7 @@ function setup(){
 	your_sock.on('all_info', function(data_base){
 		let keys_vals = Object.keys(data_base);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count'){
+			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
 				let cur_player_id = keys_vals[i];
 				players[cur_player_id]['num'] = data_base[cur_player_id]['player_number'];
 				players[cur_player_id]['x'] = data_base[cur_player_id]['x'];
