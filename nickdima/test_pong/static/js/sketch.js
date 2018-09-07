@@ -120,8 +120,13 @@ function draw(){
 		fill(255, 255, 255);
 		ellipse(ball_location['x'], ball_location['y'], 8, 8);
 
-		text(ball_location['player_1_score'], 10, 10);
-		text(ball_location['player_2_score'], 370, 10);
+		try{
+			text(ball_location['player_1_score'], 10, 10);
+			text(ball_location['player_2_score'], 370, 10);
+		}
+		catch(e){
+			console.log(e)
+		}
 
 		if(move_up){
 			your_sock.emit('move_request', {'id': player_id, 'y': -5});
