@@ -139,15 +139,14 @@ def create_app(test_config=None):
     def run_pong_inner():
         ball = get_ball()
         db = get_db()
-
         #determine if ball hits walls of space
         if ball['y'] > 400 or ball['y'] < 0:
             ball['y_s'] *= - 1
 
         if ball['x'] > 400 or ball['x'] < 0:
-            print('RESETTING BALL')
             ball = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6}
             #ball['x_s'] *= -1
+            print(ball)
 
         #determine if ball hits paddles
         key_list = db.keys()
