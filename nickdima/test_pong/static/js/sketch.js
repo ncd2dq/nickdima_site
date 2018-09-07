@@ -86,6 +86,9 @@ function setup(){
 				players[cur_player_id]['y'] = data_base[cur_player_id]['y'];
 			}
 		}
+
+		players['player_1_socre'] = data_base['player_1_socre'] ;
+		players['player_2_score'] = data_base['player_2_socre'];
 	});
 
 	your_sock.on('recieve_ball_loc', function(ball){
