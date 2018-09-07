@@ -8,7 +8,7 @@ let move_down = false;
 
 let players = {};
 
-let ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5};
+let ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5, 'player_1_score': 0, 'player_2_score': 0};
 
 
 function setup(){
