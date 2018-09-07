@@ -144,9 +144,9 @@ def create_app(test_config=None):
             ball['y_s'] *= - 1
 
         if ball['x'] > 400 or ball['x'] < 0:
+            print(ball)
             ball = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6}
             #ball['x_s'] *= -1
-            print(ball)
 
         #determine if ball hits paddles
         key_list = db.keys()
