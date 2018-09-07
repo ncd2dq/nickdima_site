@@ -199,7 +199,7 @@ def create_app(test_config=None):
             print('SENDING ALL PLAYERS CONNECTED SIGNAL')
             socker.emit('all_players', data_base)
 
-            eventlet.spawn(run_pong)
+            eventlet.spawn(run_pong) #how to end?
 
     @socker.on('move_request')
     def handle_move_request(data):
