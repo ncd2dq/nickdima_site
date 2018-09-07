@@ -143,16 +143,22 @@ def create_app(test_config=None):
         if ball['y'] > 400 or ball['y'] < 0:
             ball['y_s'] *= - 1
 
-        if ball['x'] > 400 or ball['x'] < 0:
+        if ball['x'] > 400:
             ball['x'] = 200
             ball['y'] = 200
+            db['player_1_score'] += 1
+
+        if ball['x'] < 0:
+            ball['x'] = 200
+            ball['y'] = 200
+            db['player_2_score'] += 1
             #ball['x_s'] *= -1
 
         #determine if ball hits paddles
         key_list = db.keys()
 
         for key in key_list:
-            if key != 'count':
+            if key != 'count' and key != 'player_1_score' and key != 'player_2_score':
                 cur_paddle = db[key]
                 x = cur_paddle['x']
                 y = cur_paddle['y']
