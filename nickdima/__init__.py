@@ -14,7 +14,7 @@ from flask_heroku import Heroku
 #REALLY 
 from test_pong.pong_db import get_db, restart_db, get_ball
 
-
+pong_thread = False
 
 #
 # testing code for threading
@@ -180,6 +180,8 @@ def create_app(test_config=None):
 
     @socker.on('player_connect')
     def handle_player_connect(data):
+        global pong_thread
+
         print('received player_connect event')
         data_base = get_db()
         if data_base['count'] == 0:
@@ -199,7 +201,7 @@ def create_app(test_config=None):
             print('SENDING ALL PLAYERS CONNECTED SIGNAL')
             socker.emit('all_players', data_base)
 
-            eventlet.spawn(run_pong) #how to end?
+            pong_thread = eventlet.spawn(run_pong) #how to end?
 
     @socker.on('move_request')
     def handle_move_request(data):
@@ -211,9 +213,11 @@ def create_app(test_config=None):
     @socker.on('disconnect')
     def handle_disconnect():
         restart_db()
-
+        global pong_thread
         #tell all clients to SCRAM!
         socker.emit('scram', {'get': 'the fuck out'})
+
+        pong_thread.kill()
 
 
     @socker.on('send_chat')
