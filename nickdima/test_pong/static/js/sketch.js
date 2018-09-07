@@ -61,7 +61,7 @@ function setup(){
 	your_sock.on('all_players', function(data_base){
 		let keys_vals = Object.keys(data_base);
 		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count'){
+			if(keys_vals[i] != 'count' && keys_vals[i] != 'player_1_score' && keys_vals[i] != 'player_2_score'){
 				let cur_player_id = keys_vals[i];
 				console.log('all players function');
 				console.log(players);
