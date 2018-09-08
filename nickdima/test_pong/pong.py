@@ -6,7 +6,7 @@ sys.path.insert(0, '..') #adds parent dirctory
 #CAUSES PROBLEM
 #from flask_socketio import send, emit
 #CAUSES PROBLEM
-from nickdima.____init____ import socker
+from .. import socker
 
 import eventlet
 eventlet.monkey_patch()
