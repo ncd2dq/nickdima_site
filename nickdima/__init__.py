@@ -117,7 +117,7 @@ def create_app(test_config=None):
     socker.init_app(app)
 
     import test_pong.pong 
-    app.register_blueprint(pong.bp)  #test_pong.pong.bp)
+    app.register_blueprint(test_pong.pong.bp)  #test_pong.pong.bp)
 
     #CAUSES PROBLEM
     #socker.init_app(app)
