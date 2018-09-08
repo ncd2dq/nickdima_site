@@ -13,16 +13,9 @@ from flask_heroku import Heroku
 
 #REALLY 
 from test_pong.pong_db import get_db, restart_db, get_ball
+import test_pong.pong #socketio events
 
-pong_thread = False
-
-#
-# testing code for threading
-#
-
-#
-# end threaded test
-#
+#pong_thread = False
 
 
 
@@ -122,6 +115,8 @@ def create_app(test_config=None):
     #CAUSES PROBLEM
     socker.init_app(app)
 
+
+    '''
     #@socker.on('connect')
     #def handle_con():
     #    print('connected server')
@@ -231,6 +226,7 @@ def create_app(test_config=None):
     #
     # END OF ALL SOCKET EVENTS FOR SOME REASON
     #
+    '''
 
     #new c
     heroku = Heroku(app)
