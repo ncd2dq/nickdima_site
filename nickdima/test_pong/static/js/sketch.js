@@ -163,19 +163,16 @@ function keyPressed(){
 
 function mousePressed(){
 	if(mouseY < 200){
-		move_up = false;
+		move_up = true;
 	} else if (mouseY > 200){
-		move_down = false;
+		move_down = true;
 	}
 
 }
 
 function mouseReleased(){
-	if(mouseY < 200){
-		move_up = true;
-	} else if (mouseY > 200){
-		move_down = true;
-	}
+	move_up = false;
+	move_down = false;
 
 }
 
