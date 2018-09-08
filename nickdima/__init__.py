@@ -25,7 +25,6 @@ socker = SocketIO()
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
     #socker = SocketIO()
-    from test_pong import pong
     '''
     Create your application
     Load configuration files
@@ -116,7 +115,7 @@ def create_app(test_config=None):
 
     socker.init_app(app)
 
-    #import test_pong.pong 
+    import test_pong.pong 
     app.register_blueprint(pong.bp)  #test_pong.pong.bp)
 
     #CAUSES PROBLEM
