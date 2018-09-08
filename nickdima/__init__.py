@@ -17,6 +17,7 @@ import test_pong.pong #socketio events
 socker = SocketIO()
 
 def getSocker():
+    global socker
     return socker 
 #from test_pong import pong
 #pong_thread = False
