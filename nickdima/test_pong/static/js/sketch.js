@@ -161,6 +161,24 @@ function keyPressed(){
     }
 }
 
+function mousePressed(){
+	if(mouseY < 200){
+		move_up = false;
+	} else if (mouseY > 200){
+		move_down = false;
+	}
+
+}
+
+function mouseReleased(){
+	if(mouseY < 200){
+		move_up = true;
+	} else if (mouseY > 200){
+		move_down = true;
+	}
+
+}
+
 function keyReleased(){
     if (keyCode === LEFT_ARROW){
 
