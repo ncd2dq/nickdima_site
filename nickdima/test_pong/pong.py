@@ -1,10 +1,11 @@
 from flask import Blueprint, render_template
 from test_pong.pong_db import get_db, restart_db, get_ball
 import sys
-
 from nickdima.socker import socker
 import eventlet
 eventlet.monkey_patch()
+
+
 
 bp = Blueprint('test_pong', __name__, url_prefix='/test_pong', static_folder='static', template_folder='template')
 
@@ -18,7 +19,9 @@ def test_pong_game():
     return render_template('indexpong.html')
 
 
-
+#
+# EVENT HANDLERS
+#
 
 @socker.on('connect')
 def handle_connect():
@@ -65,7 +68,7 @@ def run_pong():
     while True:
         run_pong_inner()
         eventlet.sleep(0.04)
-#UGLY THREADING CODE#
+#UGLY THREADING CODE
 
 
 @socker.on('player_connect')

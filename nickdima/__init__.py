@@ -1,12 +1,11 @@
 import os
 from flask import Flask, redirect, url_for
+from flask_heroku import Heroku
+from test_pong.pong_db import get_db, restart_db, get_ball
+from nickdima.socker import socker
 import eventlet
 eventlet.monkey_patch()
-from flask_heroku import Heroku
 
-from test_pong.pong_db import get_db, restart_db, get_ball
-
-from nickdima.socker import socker
 
 
 # Application factory "create_app" or "make_app"
@@ -88,8 +87,9 @@ def create_app(test_config=None):
     import lunchbreak.lunchbreak
     app.register_blueprint(lunchbreak.lunchbreak.bp)
 
+    #
     #import thai restauraunt stuff
-
+    #
     import silk_thai.checkout
     app.register_blueprint(silk_thai.checkout.bp)
     
@@ -98,6 +98,9 @@ def create_app(test_config=None):
 
     import silk_thai.menu
     app.register_blueprint(silk_thai.menu.bp)
+    #
+    #End thai restaurunt stuff
+    #
 
     socker.init_app(app)
 
