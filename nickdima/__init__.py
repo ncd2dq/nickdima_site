@@ -17,7 +17,7 @@ from test_pong.pong_db import get_db, restart_db, get_ball
 socker = SocketIO()
 
 
-from test_pong import pong
+#from test_pong import pong
 #pong_thread = False
 
 
@@ -25,6 +25,7 @@ from test_pong import pong
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
     #socker = SocketIO()
+    from test_pong import pong
     '''
     Create your application
     Load configuration files
