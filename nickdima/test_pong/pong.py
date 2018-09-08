@@ -23,7 +23,7 @@ def test_pong_game():
     return render_template('indexpong.html')
 
 
-from __main__ import socker
+#from __main__ import socker
 
 @socker.on('connect')
 def handle_connect():
