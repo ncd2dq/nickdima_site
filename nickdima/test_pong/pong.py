@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
-from test_pong.pong_db import get_db, get_ball
+#REALLY 
+from test_pong.pong_db import get_db, restart_db, get_ball
 import sys
 #sys.path.insert(0, '..') #adds parent dirctory
 
