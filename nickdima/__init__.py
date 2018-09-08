@@ -6,7 +6,7 @@ eventlet.monkey_patch()
 from flask_socketio import SocketIO
 
 #CAUSES PROBLEM
-socker = SocketIO()
+#socker = SocketIO()
 
 #New
 from flask_heroku import Heroku
@@ -21,7 +21,7 @@ from test_pong.pong_db import get_db, restart_db, get_ball
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
-    global socker
+    socker = SocketIO()
     '''
     Create your application
     Load configuration files
