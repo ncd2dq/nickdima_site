@@ -23,9 +23,9 @@ def test_pong_game():
     return render_template('indexpong.html')
 
 
-import __main__
+import nickdima.__init__ as app_file
 
-socker = __main__.getSocker()
+socker = app_file.getSocker()
 
 @socker.on('connect')
 def handle_connect():
