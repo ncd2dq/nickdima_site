@@ -10,13 +10,14 @@ from flask_heroku import Heroku
 
 #REALLY 
 from test_pong.pong_db import get_db, restart_db, get_ball
-#import test_pong.pong #socketio events
+import test_pong.pong #socketio events
 
 
 #CAUSES PROBLEM
 socker = SocketIO()
 
-
+def getSocker():
+    return self.socker 
 #from test_pong import pong
 #pong_thread = False
 

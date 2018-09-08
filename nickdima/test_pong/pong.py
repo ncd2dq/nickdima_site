@@ -23,7 +23,9 @@ def test_pong_game():
     return render_template('indexpong.html')
 
 
-#from __main__ import socker
+import __main__
+
+socker = __main__.getSocker()
 
 @socker.on('connect')
 def handle_connect():
