@@ -4,7 +4,8 @@ import eventlet
 eventlet.monkey_patch()
 #CAUSES PROBLEM
 from flask_socketio import SocketIO
-
+import sys
+sys.path.append('./test_pong')
 #New
 from flask_heroku import Heroku
 
