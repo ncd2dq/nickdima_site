@@ -109,11 +109,13 @@ def create_app(test_config=None):
     import silk_thai.menu
     app.register_blueprint(silk_thai.menu.bp)
 
+    socker.init_app(app)
+
     import test_pong.pong 
     app.register_blueprint(test_pong.pong.bp)
 
     #CAUSES PROBLEM
-    socker.init_app(app)
+    #socker.init_app(app)
 
 
     '''
