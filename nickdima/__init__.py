@@ -21,6 +21,7 @@ from test_pong.pong_db import get_db, restart_db, get_ball
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
+    global socker
     '''
     Create your application
     Load configuration files
