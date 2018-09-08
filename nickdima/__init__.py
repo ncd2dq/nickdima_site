@@ -5,9 +5,6 @@ eventlet.monkey_patch()
 #CAUSES PROBLEM
 from flask_socketio import SocketIO
 
-#CAUSES PROBLEM
-#socker = SocketIO()
-
 #New
 from flask_heroku import Heroku
 
@@ -15,13 +12,19 @@ from flask_heroku import Heroku
 from test_pong.pong_db import get_db, restart_db, get_ball
 #import test_pong.pong #socketio events
 
+
+#CAUSES PROBLEM
+socker = SocketIO()
+
+
+from .test_pong import pong
 #pong_thread = False
 
 
 
 # Application factory "create_app" or "make_app"
 def create_app(test_config=None):
-    socker = SocketIO()
+    #socker = SocketIO()
     '''
     Create your application
     Load configuration files
@@ -112,8 +115,8 @@ def create_app(test_config=None):
 
     socker.init_app(app)
 
-    import test_pong.pong 
-    app.register_blueprint(test_pong.pong.bp)
+    #import test_pong.pong 
+    app.register_blueprint(pong.bp)  #test_pong.pong.bp)
 
     #CAUSES PROBLEM
     #socker.init_app(app)
