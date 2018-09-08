@@ -7,7 +7,7 @@ import sys
 #from flask_socketio import send, emit
 #CAUSES PROBLEM
 #from __main__ import socker
-
+from nickdima.socker import socker
 import eventlet
 eventlet.monkey_patch()
 
@@ -23,9 +23,7 @@ def test_pong_game():
     return render_template('indexpong.html')
 
 
-import nickdima.__init__ as app_file
 
-socker = app_file.getSocker()
 
 @socker.on('connect')
 def handle_connect():
