@@ -23,6 +23,9 @@ def test_pong_game():
 # EVENT HANDLERS
 #
 
+#reset server comment
+
+
 @socker.on('connect')
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
