@@ -1,13 +1,7 @@
 from flask import Blueprint, render_template
-#REALLY 
 from test_pong.pong_db import get_db, restart_db, get_ball
 import sys
-#sys.path.insert(0, '..') #adds parent dirctory
 
-#CAUSES PROBLEM
-#from flask_socketio import send, emit
-#CAUSES PROBLEM
-#from __main__ import socker
 from nickdima.socker import socker
 import eventlet
 eventlet.monkey_patch()
