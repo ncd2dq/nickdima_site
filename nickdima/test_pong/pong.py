@@ -56,7 +56,7 @@ def run_pong_inner():
         reset_rally_count()
 
     #make ball speed faster if rally has been continuing
-    if rally['count'] % 100 == 0:
+    if rally['count'] % 100 == 0 and rally['count'] != 0:
         ball['x_s'] *= 1.1
         ball['y_s'] *= 1.1
         socker.emit('testing', {'data': 'ball faster'})
