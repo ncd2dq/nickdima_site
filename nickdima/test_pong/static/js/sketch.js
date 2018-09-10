@@ -6,90 +6,11 @@ let move_down = false;
 function setup(){
 	let canvas = createCanvas(400, 400);
 	canvas.parent('sketch-holder');
-
-	/*
-	player_id = Math.round(Math.random() * 5000);
-	your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
-	your_sock.on('connect', function(){
-		your_sock.emit('player_connect', {'id': player_id});
-		console.log('I have connected with ID ' + player_id);
-	});
-
-	your_sock.on('testing', function(data){
-		console.log(data);
-		console.log('here');
-	});
-
-	your_sock.on('scram', function(data){
-		console.log(data);
-		get_out();
-
-	});
-
-	function add_chat(mes){
-		let elm = document.getElementById('chatbox');
-		elm.innerHTML = mes['chat'] + '<br>' + elm.innerHTML;
-	}
-
-	your_sock.on('recv_chat', function(data){
-		add_chat(data);
-	});
-
-	your_sock.on('what_player', function(data){
-		console.log('recieved player number ' + data['player_number']);
-		if(data['id'] == player_id){
-			players[player_id] = {};
-			if(data['player_number'] == 1){
-				players[player_id]['num'] = data['player_number'];
-				players[player_id]['x'] = 10;
-				players[player_id]['y'] = 50;
-			} else {
-				players[player_id]['num'] = data['player_number'];
-				players[player_id]['x'] = 375;
-				players[player_id]['y'] = 50;
-			}
-		}
-	});
-
-	your_sock.on('all_players', function(data_base){
-		let keys_vals = Object.keys(data_base);
-		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count'){
-				let cur_player_id = keys_vals[i];
-				console.log('all players function');
-				console.log(players);
-				console.log(cur_player_id);
-				players[cur_player_id] = {};
-				players[cur_player_id]['num'] = data_base[cur_player_id]['player_number'];
-				players[cur_player_id]['x'] = data_base[cur_player_id]['x'];
-				players[cur_player_id]['y'] = data_base[cur_player_id]['y'];
-			}
-		}
-		player_2_connected = true;
-	});
-
-
-	your_sock.on('all_info', function(data_base){
-		let keys_vals = Object.keys(data_base);
-		for(let i = 0; i < keys_vals.length; i++){
-			if(keys_vals[i] != 'count'){
-				let cur_player_id = keys_vals[i];
-				players[cur_player_id]['num'] = data_base[cur_player_id]['player_number'];
-				players[cur_player_id]['x'] = data_base[cur_player_id]['x'];
-				players[cur_player_id]['y'] = data_base[cur_player_id]['y'];
-			}
-		}
-
-	});
-
-	your_sock.on('recieve_ball_loc', function(ball){
-		ball_location = ball;
-	});
-	*/
-	
 }
+
 function draw(){
 	background(0, 0, 0);
+	//If no player 2, just draw the first paddle
 	if(!player_2_connected){
 
 		let keys_vals = Object.keys(players);
@@ -101,6 +22,8 @@ function draw(){
 			}
 		}
 	} else {
+
+		//Draw paddles
 		let keys_vals = Object.keys(players);
 		for(let i = 0; i < keys_vals.length; i++){
 			if(keys_vals[i] != 'count'){
@@ -110,9 +33,11 @@ function draw(){
 			}
 		}
 
+		//Draw ball
 		fill(255, 255, 255);
 		ellipse(ball_location['x'], ball_location['y'], 8, 8);
 
+		//Display score
 		try{
 			text(ball_location['player_1_score'], 10, 10);
 			text(ball_location['player_2_score'], 370, 10);
@@ -121,6 +46,7 @@ function draw(){
 			console.log(e)
 		}
 
+		//Request paddle movements
 		if(move_up){
 			your_sock.emit('move_request', {'id': player_id, 'y': -5});
 		} else if(move_down){

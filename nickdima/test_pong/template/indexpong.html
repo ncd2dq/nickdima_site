@@ -6,7 +6,7 @@
 		
 		<script type="text/javascript" charset="utf-8">
 		    function get_out(){
-		    	location.href=" {{url_for('lunchbreak.home')}} "
+		    	location.href="{{url_for('lunchbreak.home')}}"
 		    }
 		</script>
 		<script src="{{url_for('test_pong.static', filename='libraries/p5.min.js')}}"></script>
@@ -14,8 +14,6 @@
 		<script src="{{url_for('test_pong.static', filename='js/ball.js')}}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/event_library.js') }}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/sketch.js')}}"></script>
-
-
 	</head>
 
 	<body>
@@ -35,6 +33,5 @@
 			<input type="text" id="chat" name="chat">
 			<p id='chatbox'></p>
 		</div>
-		<!--<button onclick="do_increment()">Increment</button>-->
 	</body>
 </html>
