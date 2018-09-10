@@ -8,7 +8,7 @@ def get_rally_count():
     return rally
 
 def reset_rally_count():
-    rally = get_rally_count()
+    global rally
 
     rally['count'] = 0
 
