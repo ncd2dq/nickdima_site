@@ -47,13 +47,13 @@ def run_pong_inner():
         ball['x'] = 200
         ball['y'] = 200
         ball['player_1_score'] += 1
-        reset_rally_count()
+        rally['count'] = 0 
 
     if ball['x'] < 0:
         ball['x'] = 200
         ball['y'] = 200
         ball['player_2_score'] += 1
-        reset_rally_count()
+        rally['count'] = 0
 
     #make ball speed faster if rally has been continuing
     if rally['count'] % 100 == 0 and rally['count'] != 0:
