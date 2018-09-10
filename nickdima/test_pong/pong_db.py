@@ -8,9 +8,9 @@ def get_rally_count():
     return rally
 
 def reset_rally_count():
-    global rally
+    rally = get_rally_count()
 
-    rally = {'count': 0}
+    rally['count'] = 0
 
 def get_db():
     global db
