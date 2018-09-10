@@ -5,20 +5,6 @@
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 		
 		<script type="text/javascript" charset="utf-8">
-
-			//Change from the below to io.connect('') for system to work on Heroku with https and http
-		    //var socket = io.connect('http://' + document.domain + ':' + location.port);
-		    //var socket = io.connect('');
-
-		    //socket.on('connect', function() {
-		    //    socket.emit('my event', {data: 'I\'m connected!'});
-		    //});
-
-
-		    //this function is run when button is pressed
-		    //function do_increment(){
-		    //	socket.emit('increment', {'value': 5})
-		    //}
 		    function get_out(){
 		    	location.href=" {{url_for('lunchbreak.home')}} "
 		    }
@@ -26,6 +12,7 @@
 		<script src="{{url_for('test_pong.static', filename='libraries/p5.min.js')}}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/paddle.js')}}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/ball.js')}}"></script>
+		<script src="{{url_for('test_pong.static', filename='js/event_library.js') }}"></script>
 		<script src="{{url_for('test_pong.static', filename='js/sketch.js')}}"></script>
 
 

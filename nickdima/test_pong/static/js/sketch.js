@@ -1,20 +1,13 @@
-let player_id = false;
-let your_sock = false;
-let player_2_connected = false;
-
 
 let move_up = false;
 let move_down = false;
-
-let players = {};
-
-let ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5, 'player_1_score': 0, 'player_2_score': 0};
 
 
 function setup(){
 	let canvas = createCanvas(400, 400);
 	canvas.parent('sketch-holder');
 
+	/*
 	player_id = Math.round(Math.random() * 5000);
 	your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');  //io.connect('');  //io.connect('http://' + document.domain + ':' + location.port);
 	your_sock.on('connect', function(){
@@ -92,7 +85,7 @@ function setup(){
 	your_sock.on('recieve_ball_loc', function(ball){
 		ball_location = ball;
 	});
-
+	*/
 	
 }
 function draw(){
@@ -133,12 +126,6 @@ function draw(){
 		} else if(move_down){
 			your_sock.emit('move_request', {'id': player_id, 'y': 5});
 		}
-
-		//the magic but currently a client is acting as the server
-		//if(players[player_id]['num'] == 1){
-		//	move_ball(ball_location);
-		//}
-
 	}
 
 
@@ -190,41 +177,3 @@ function keyReleased(){
         move_up = false;
     }
 }
-
-
-/*
-function move_ball(ball_loc){
-
-	ball_loc['x'] += ball_loc['x_s'];
-	ball_loc['y'] += ball_loc['y_s'];
-
-	//paddle is 15 long 50 tall
-
-	if(ball_loc['y'] > 400){
-		ball_loc['y_s'] *= -1;
-	} else if (ball_loc['y'] < 0){
-		ball_loc['y_s'] *= -1;
-	} else if (ball_loc['x'] > 400 || ball_loc['x'] < 0){
-		ball_loc = {'x': 200, 'y': 200, 'x_s': 6, 'y_s': 6};
-	}
-
-	let keys_vals = Object.keys(players);
-	for(let i = 0; i < keys_vals.length; i++){
-		if(keys_vals[i] != 'count'){
-			let cur_player_id = keys_vals[i];
-
-			let x = players[cur_player_id]['x'];
-			let y = players[cur_player_id]['y'];
-
-			if(ball_loc['x'] > players[cur_player_id]['x'] && ball_loc['x'] < players[cur_player_id]['x'] + 15){
-				if(ball_loc['y'] > players[cur_player_id]['y'] && ball_loc['y'] < players[cur_player_id]['y'] + 50){
-					ball_loc['x_s'] *= -1;
-				}
-			}
-		}
-	}
-
-	your_sock.emit('send_ball_loc', ball_loc);
-
-}
-*/
