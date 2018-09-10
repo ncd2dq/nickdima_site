@@ -59,7 +59,7 @@ def run_pong_inner():
     if rally['count'] % 100 == 0:
         ball['x_s'] *= 1.1
         ball['y_s'] *= 1.1
-        socket.emit('testing', {'data': 'ball faster'})
+        socker.emit('testing', {'data': 'ball faster'})
 
     #determine if ball hits paddles
     key_list = db.keys()
