@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from test_pong.pong_db import get_db, restart_db, get_ball
+from test_pong.pong_db import get_db, restart_db, get_ball, get_rally_count, reset_rally_count
 import sys
 from nickdima.socker import socker
 import eventlet
@@ -35,6 +35,10 @@ def handle_connect():
 def run_pong_inner():
     ball = get_ball()
     db = get_db()
+    rally = get_rally_count()
+
+    rally['count'] += 1
+
     #determine if ball hits walls of space
     if ball['y'] > 400 or ball['y'] < 0:
         ball['y_s'] *= - 1
@@ -43,12 +47,19 @@ def run_pong_inner():
         ball['x'] = 200
         ball['y'] = 200
         ball['player_1_score'] += 1
+        reset_rally_count()
 
     if ball['x'] < 0:
         ball['x'] = 200
         ball['y'] = 200
         ball['player_2_score'] += 1
-        #ball['x_s'] *= -1
+        reset_rally_count()
+
+    #make ball speed faster if rally has been continuing
+    if rally['count'] % 100 == 0:
+        ball['x_s'] *= 1.1
+        ball['y_s'] *= 1.1
+        socket.emit('testing', {'data': 'ball faster'})
 
     #determine if ball hits paddles
     key_list = db.keys()
