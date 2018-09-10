@@ -60,6 +60,9 @@ def run_pong_inner():
         ball['x_s'] *= 1.1
         ball['y_s'] *= 1.1
         socker.emit('testing', {'data': 'ball faster'})
+    else if rally['count'] == 0:
+        ball['x_s'] = 5
+        ball['y_s'] = 5
 
     #determine if ball hits paddles
     key_list = db.keys()
