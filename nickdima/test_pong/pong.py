@@ -65,7 +65,7 @@ def run_pong_inner():
         ball['player_1_score'] += 1
         rally['count'] = 0 
         increment_rally(paddle_stats, 'p1')
-        paddle_stats['p2'] = paddle_stats['defaults']
+        paddle_stats['p2'] = paddle_stats['defaults'].copy()
         socker.emit('recv_paddle_stats', paddle_stats)
 
     if ball['x'] < 0:
@@ -74,7 +74,7 @@ def run_pong_inner():
         ball['player_2_score'] += 1
         rally['count'] = 0
         increment_rally(paddle_stats, 'p2')
-        paddle_stats['p1'] = paddle_stats['defaults']
+        paddle_stats['p1'] = paddle_stats['defaults'].copy()
         socker.emit('recv_paddle_stats', paddle_stats)
 
     #make ball speed faster if rally has been continuing
@@ -92,11 +92,17 @@ def run_pong_inner():
     for key in key_list:
         if key != 'count' and key != 'player_1_score' and key != 'player_2_score':
             cur_paddle = db[key]
+            player_num = db[key]['player_number']
             x = cur_paddle['x']
             y = cur_paddle['y']
             if ball['x'] > x and ball['x'] < x + 15:
-                if ball['y'] > y and ball['y'] < y + 50:
-                    ball['x_s'] *= -1
+
+                if player_num == 1:
+                    if ball['y'] > y and ball['y'] < y + paddle_stats['p1']['ysize']:
+                        ball['x_s'] *= -1
+                else:
+                    if ball['y'] > y and ball['y'] < y + paddle_stats['p2']['ysize']:
+                        ball['x_s'] *= -1
 
     ball['x'] += ball['x_s']
     ball['y'] += ball['y_s']
