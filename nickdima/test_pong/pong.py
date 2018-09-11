@@ -32,20 +32,19 @@ def handle_connect():
     socker.emit('testing', {'hello': 'hi'})
 
 #UGLY THREADING CODE
-def check_paddles(paddle_stats):
-    if paddle_stats['p1']['rally_wins'] == 0:
-        paddle_stats['p1'] = paddle_stats['defaults']
-        socker.emit('recv_paddle_stats', paddle_stats)
-    elif paddle_stats['p2']['rally_wins'] == 0:
-        paddle_stats['p2'] = paddle_stats['defaults']
-        socker.emit('recv_paddle_stats', paddle_stats)
 
 def increment_rally(paddle_stats, player):
     paddle_stats[player]['rally_wins'] += 1
 
+    '''
     if paddle_stats[player]['xsize'] < paddle_stats['maximum']['xsize']:
-        paddle_stats[player]['xsize'] += 5
-    elif paddle_stats[player]['ysize'] <  paddle_stats['maximum']['ysize']:
+        if player == 'p1':
+            paddle_stats[player]['xsize'] += 5
+        else:
+            paddle_stats[player]['xsize'] += 5
+    '''
+
+    if paddle_stats[player]['ysize'] <  paddle_stats['maximum']['ysize']:
         paddle_stats[player]['ysize'] += 15
 
 def run_pong_inner():
@@ -53,8 +52,6 @@ def run_pong_inner():
     db = get_db()
     rally = get_rally_count()
     paddle_stats = get_paddle_stats()
-
-    check_paddles(paddle_stats)
     #add logic that changes the paddle sizes with upgrades
     rally['count'] += 1
 
