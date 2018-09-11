@@ -23,6 +23,13 @@
 				document.getElementById('chat').value = '';
 			}
 
+			window.addEventListener('keydown', function(e){
+
+				if([37, 39, 38, 40].indexOf(e.keyCode) > -1){
+					e.preventDefault(); //stops arrow keys from scrolling
+				}
+			}, false);
+
 		</script>
 	    <form action="http://www.nickdima.com/lunchbreak">
 	        <input type="submit" value="Homepage">
