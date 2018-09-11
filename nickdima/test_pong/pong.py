@@ -65,7 +65,7 @@ def run_pong_inner():
         ball['player_1_score'] += 1
         rally['count'] = 0 
         increment_rally(paddle_stats, 'p1')
-        paddle_stats['p2']['rally_wins'] = 0
+        paddle_stats['p2'] = paddle_stats['defaults']
         socker.emit('recv_paddle_stats', paddle_stats)
 
     if ball['x'] < 0:
@@ -74,7 +74,7 @@ def run_pong_inner():
         ball['player_2_score'] += 1
         rally['count'] = 0
         increment_rally(paddle_stats, 'p2')
-        paddle_stats['p1']['rally_wins'] = 0
+        paddle_stats['p1'] = paddle_stats['defaults']
         socker.emit('recv_paddle_stats', paddle_stats)
 
     #make ball speed faster if rally has been continuing
