@@ -35,8 +35,10 @@ def handle_connect():
 def check_paddles(paddle_stats):
     if paddle_stats['p1']['rally_wins'] == 0:
         paddle_stats['p1'] = paddle_stats['defaults']
+        socker.emit('recv_paddle_stats', paddle_stats)
     elif paddle_stats['p2']['rally_wins'] == 0:
         paddle_stats['p2'] = paddle_stats['defaults']
+        socker.emit('recv_paddle_stats', paddle_stats)
 
 def increment_rally(paddle_stats, player):
     paddle_stats[player]['rally_wins'] += 1
@@ -67,6 +69,7 @@ def run_pong_inner():
         rally['count'] = 0 
         increment_rally(paddle_stats, 'p1')
         paddle_stats['p2']['rally_wins'] = 0
+        socker.emit('recv_paddle_stats', paddle_stats)
 
     if ball['x'] < 0:
         ball['x'] = 200
@@ -75,6 +78,7 @@ def run_pong_inner():
         rally['count'] = 0
         increment_rally(paddle_stats, 'p2')
         paddle_stats['p1']['rally_wins'] = 0
+        socker.emit('recv_paddle_stats', paddle_stats)
 
     #make ball speed faster if rally has been continuing
     if rally['count'] % 100 == 0 and rally['count'] != 0:
