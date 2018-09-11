@@ -3,6 +3,7 @@ let your_sock = false;
 let player_2_connected = false;
 let players = {};
 let ball_location = {'x': 200, 'y': 200, 'x_s': 5, 'y_s': 5, 'player_1_score': 0, 'player_2_score': 0};
+let paddle_stats = false;
 
 //Assign a the player a random playerID from 1 - 5000
 player_id = Math.round(Math.random() * 5000);
@@ -50,7 +51,16 @@ your_sock.on('all_players', function(data_base){
 			players[cur_player_id]['y'] = data_base[cur_player_id]['y'];
 		}
 	}
-	player_2_connected = true;
+});
+
+//recieve paddle information from server
+your_sock.on('recv_paddle_stats', function(data){
+	if(paddle_stats != false){
+		paddle_stats = data;
+	} else {
+		paddle_stats = data;
+		player_2_connected = true;
+	}
 });
 
 

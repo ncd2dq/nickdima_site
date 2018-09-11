@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from test_pong.pong_db import get_db, restart_db, get_ball, get_rally_count, reset_rally_count
+from test_pong.pong_db import get_db, restart_db, get_ball, get_rally_count, get_paddle_stats
 import sys
 from nickdima.socker import socker
 import eventlet
@@ -32,11 +32,28 @@ def handle_connect():
     socker.emit('testing', {'hello': 'hi'})
 
 #UGLY THREADING CODE
+def check_paddles(paddle_stats):
+    if paddle_stats['p1']['rally_wins'] == 0:
+        paddle_stats['p1'] = paddle_stats['defaults']
+    elif paddle_stats['p2']['rally_wins'] == 0:
+        paddle_stats['p2'] = paddle_stats['defaults']
+
+def increment_rally(paddle_stats, player):
+    paddle_stats[player]['rally_wins'] += 1
+
+    if paddle_stats[player]['xsize'] < paddle_stats['maximum']['xsize']:
+        paddle_stats[player]['xsize'] += 5
+    elif paddle_stats[player]['ysize'] <  paddle_stats['maximum']['ysize']:
+        paddle_stats[player]['ysize'] += 15
+
 def run_pong_inner():
     ball = get_ball()
     db = get_db()
     rally = get_rally_count()
+    paddle_stats = get_paddle_stats()
 
+    check_paddles(paddle_stats)
+    #add logic that changes the paddle sizes with upgrades
     rally['count'] += 1
 
     #determine if ball hits walls of space
@@ -48,12 +65,16 @@ def run_pong_inner():
         ball['y'] = 200
         ball['player_1_score'] += 1
         rally['count'] = 0 
+        increment_rally(paddle_stats, 'p1')
+        paddle_stats['p2']['rally_wins'] = 0
 
     if ball['x'] < 0:
         ball['x'] = 200
         ball['y'] = 200
         ball['player_2_score'] += 1
         rally['count'] = 0
+        increment_rally(paddle_stats, 'p2')
+        paddle_stats['p1']['rally_wins'] = 0
 
     #make ball speed faster if rally has been continuing
     if rally['count'] % 100 == 0 and rally['count'] != 0:
@@ -94,6 +115,7 @@ def handle_player_connect(data):
 
     print('received player_connect event')
     data_base = get_db()
+    paddle_stats = get_paddle_stats()
     if data_base['count'] == 0:
         data_base[data['id']] = {'player_number': 1}
         data_base[data['id']]['x'] = 10
@@ -110,6 +132,7 @@ def handle_player_connect(data):
         #all players connected
         print('SENDING ALL PLAYERS CONNECTED SIGNAL')
         socker.emit('all_players', data_base)
+        socker.emit('recv_paddle_stats', paddle_stats)
 
         pong_thread = eventlet.spawn(run_pong) #how to end?
 

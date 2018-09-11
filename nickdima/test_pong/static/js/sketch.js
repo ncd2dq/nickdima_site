@@ -1,7 +1,5 @@
-
 let move_up = false;
 let move_down = false;
-
 
 function setup(){
 	let canvas = createCanvas(400, 400);
@@ -22,14 +20,18 @@ function draw(){
 			}
 		}
 	} else {
-
 		//Draw paddles
 		let keys_vals = Object.keys(players);
 		for(let i = 0; i < keys_vals.length; i++){
 			if(keys_vals[i] != 'count'){
 				let cur_player_id = keys_vals[i];
+				let cur_player_num = players[cur_player_id]['num'];
 				fill(255, 255, 255);
-				rect(players[cur_player_id]['x'], players[cur_player_id]['y'], 15, 50);
+				if(cur_player_num == 1){
+					rect(players[cur_player_id]['x'], players[cur_player_id]['y'], paddle_stats['p1']['xsize'], paddle_stats['p1']['ysize']);
+				} else {
+					rect(players[cur_player_id]['x'], players[cur_player_id]['y'], paddle_stats['p2']['xsize'], paddle_stats['p2']['ysize']);
+				}
 			}
 		}
 
