@@ -26,10 +26,12 @@ def test_pong_game():
 #reset server comment
 
 
-@socker.on('connect', namespace='/pong')
+@socker.on('connect')
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
     socker.emit('testing', {'hello': 'hi'})
+    print('Connected to stay_alive')
+    socker.emit('con_test', {'stay alive': 'complete'})
 
 #UGLY THREADING CODE
 
