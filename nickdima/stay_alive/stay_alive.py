@@ -7,4 +7,4 @@ bp = Blueprint('Stay_alive', __name__, url_prefix='/stay_alive', static_folder='
 def stay_alive_index():
 
 
-    return render_template('index.html')
+    return render_template(url_for('Stay_alive.templates.index.html'))
