@@ -30,6 +30,7 @@ def test_pong_game():
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
     socker.emit('testing', {'hello': 'hi'})
+
     print('Connected to stay_alive')
     socker.emit('con_test', {'stay alive': 'from pong'})
 
@@ -152,7 +153,7 @@ def handle_move_request(data):
 
     socker.emit('all_info', data_base)
 
-@socker.on('disconnect', namespace='/pong')
+@socker.on('disconnect')
 def handle_disconnect():
     restart_db()
     global pong_thread
