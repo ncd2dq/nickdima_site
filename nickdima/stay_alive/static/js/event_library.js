@@ -5,8 +5,5 @@ let your_sock = false;
 your_sock = io.connect('http://' + document.domain + ':' + location.port + '/stay_alive');
 your_sock.on('connect', function(){
 	console.log('Connection event run');
-});
-
-your_sock.on('con_test', function(data){
-	console.log(data);
+	your_sock.emit('test_con', {'hello':'hi'})
 });
