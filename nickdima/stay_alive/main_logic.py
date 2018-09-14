@@ -1,5 +1,5 @@
-from heros import Hero
-from stay_alive_db import get_db
+from stay_alive.heros import Hero
+from stay_alive.stay_alive_db import get_db
 import eventlet
 eventlet.monkey_patch()
 '''
