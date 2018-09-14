@@ -11,7 +11,7 @@
 
 '''
 import random
-from stay_alive_db import get_db
+import copy
 
 class Hero(object):
     def __init__(self, id, map):
@@ -40,11 +40,9 @@ class Hero(object):
 
     def _detect_all_collisions(self, dir, coll_type, get_structs):
         '''
-        Check structures: doors/walls
-        Only need to check relevant faces: 
-        -top of one and bottom of other
-        -Left of one and right of other
-        -etc.
+        Params:
+        get_structs should be a function that can return a nested dictionary
+        coll_type is the column within that nested dictionary that returns a list of objects with locations/hitboxes
 
         #TO DO:
         could improve this by first determining which objects are near before edge checking
@@ -161,6 +159,9 @@ class Hero(object):
                         return False
                 else:
                     return False
+                    
+        # No collisions detected
+        return False
 
 
     def move(self, dir, get_structs, coll_type='structures'):
@@ -181,9 +182,18 @@ class Hero(object):
                 self.location[0] += self.move_speed
 
 
-    def export(self):
+    def export(self, data='all'):
         '''Turn all your attributes into a dictionary to be sent to the client'''
         export_dict = {}
+
+        if data == 'all':
+            export_dict['id'] = self.id
+            export_dict['inventory'] = copy.deepcopy(self.inventory)
+            export_dict['state'] = self.state
+            export_dict['location'] = copy.deepcopy(self.location)
+            export_dict['equpied'] = copy.deepcopy(self.equipped)
+            export_dict['building'] = copy.deepcopy(self.building)
+            export_dict['hitbox'] = copy.deepcopy(self.hitbox)
 
         return export_dict
 
@@ -204,3 +214,5 @@ if __name__ == '__main__':
     print(h1.location)
     h1.move('up', get_test_db)
     print(h1.location)
+
+    print(h1.export())
