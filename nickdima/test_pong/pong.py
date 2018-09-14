@@ -26,13 +26,13 @@ def test_pong_game():
 #reset server comment
 
 
-@socker.on('connect')
+@socker.on('connect', namespace='/pong')
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
-    socker.emit('testing', {'hello': 'hi'})
+    socker.emit('testing', {'hello': 'hi'}, namespace='/pong')
 
     print('Connected to stay_alive')
-    socker.emit('con_test', {'stay alive': 'from pong'})
+    socker.emit('con_test', {'stay alive': 'from pong'}, namespace='/pong')
 
 #UGLY THREADING CODE
 
@@ -69,7 +69,7 @@ def run_pong_inner():
         rally['count'] = 0 
         increment_rally(paddle_stats, 'p1')
         paddle_stats['p2'] = paddle_stats['defaults'].copy()
-        socker.emit('recv_paddle_stats', paddle_stats)
+        socker.emit('recv_paddle_stats', paddle_stats, namespace='/pong')
 
     if ball['x'] < 0:
         ball['x'] = 200
@@ -78,13 +78,13 @@ def run_pong_inner():
         rally['count'] = 0
         increment_rally(paddle_stats, 'p2')
         paddle_stats['p1'] = paddle_stats['defaults'].copy()
-        socker.emit('recv_paddle_stats', paddle_stats)
+        socker.emit('recv_paddle_stats', paddle_stats, namespace='/pong')
 
     #make ball speed faster if rally has been continuing
     if rally['count'] % 100 == 0 and rally['count'] != 0:
         ball['x_s'] *= 1.1
         ball['y_s'] *= 1.1
-        socker.emit('testing', {'data': 'ball faster'})
+        socker.emit('testing', {'data': 'ball faster'}, namespace='/pong')
     elif rally['count'] == 0:
         ball['x_s'] = 5
         ball['y_s'] = 5
@@ -110,7 +110,7 @@ def run_pong_inner():
     ball['x'] += ball['x_s']
     ball['y'] += ball['y_s']
 
-    socker.emit('recieve_ball_loc', ball)
+    socker.emit('recieve_ball_loc', ball, namespace='/pong')
 
 def run_pong():
     while True:
@@ -119,7 +119,7 @@ def run_pong():
 #UGLY THREADING CODE
 
 
-@socker.on('player_connect')
+@socker.on('player_connect', namespace='/pong')
 def handle_player_connect(data):
     global pong_thread
 
@@ -131,42 +131,42 @@ def handle_player_connect(data):
         data_base[data['id']]['x'] = 10
         data_base[data['id']]['y'] = 50
         data_base['count'] += 1
-        socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']})
+        socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']}, namespace='/pong')
     elif data_base['count'] == 1:
         data_base[data['id']] = {'player_number': 2}
         data_base[data['id']]['x'] = 375
         data_base[data['id']]['y'] = 50
         data_base['count'] += 1
-        socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']})
+        socker.emit('what_player', {'id': data['id'], 'player_number': data_base['count']}, namespace='/pong')
 
         #all players connected
         print('SENDING ALL PLAYERS CONNECTED SIGNAL')
-        socker.emit('all_players', data_base)
-        socker.emit('recv_paddle_stats', paddle_stats)
+        socker.emit('all_players', data_base, namespace='/pong')
+        socker.emit('recv_paddle_stats', paddle_stats, namespace='/pong')
 
         pong_thread = eventlet.spawn(run_pong) #how to end?
 
-@socker.on('move_request')
+@socker.on('move_request', namespace='/pong')
 def handle_move_request(data):
     data_base = get_db()
     data_base[data['id']]['y'] += data['y']
 
-    socker.emit('all_info', data_base)
+    socker.emit('all_info', data_base, namespace='/pong')
 
-@socker.on('disconnect')
+@socker.on('disconnect', namespace='/pong')
 def handle_disconnect():
     restart_db()
     global pong_thread
     #tell all clients to SCRAM!
-    socker.emit('scram', {'get': 'the fuck out'})
+    socker.emit('scram', {'get': 'the fuck out'}, namespace='/pong')
 
     pong_thread.kill()
 
 
-@socker.on('send_chat')
+@socker.on('send_chat', namespace='/pong')
 def handle_chatting(data):
-    socker.emit('recv_chat', data)
+    socker.emit('recv_chat', data, namespace='/pong')
 
-@socker.on('send_ball_loc')
+@socker.on('send_ball_loc', namespace='/pong')
 def handle_being_sent(ball_loc):
-    socker.emit('recieve_ball_loc', ball_loc)
+    socker.emit('recieve_ball_loc', ball_loc, namespace='/pong')

@@ -10,7 +10,7 @@ player_id = Math.round(Math.random() * 5000);
 
 
 //On connect give the server your player_id that will be used to keep track of paddle location
-your_sock = io.connect('http://' + document.domain + ':' + location.port + '/');
+your_sock = io.connect('http://' + document.domain + ':' + location.port + '/pong');
 your_sock.on('connect', function(){
 	your_sock.emit('player_connect', {'id': player_id});
 	console.log('I have connected with ID ' + player_id);
