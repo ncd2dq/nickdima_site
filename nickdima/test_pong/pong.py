@@ -26,7 +26,7 @@ def test_pong_game():
 #reset server comment
 
 
-@socker.on('connect')
+@socker.on('connect', namespace='/pong')
 def handle_connect():
     print('THE HANDLE CONNECT FUNCTION WAS WRITTEN')
     socker.emit('testing', {'hello': 'hi'})
@@ -150,7 +150,7 @@ def handle_move_request(data):
 
     socker.emit('all_info', data_base)
 
-@socker.on('disconnect')
+@socker.on('disconnect', namespace='/pong')
 def handle_disconnect():
     restart_db()
     global pong_thread
