@@ -1,5 +1,5 @@
 from nickdima.socker import socker
-from stay_alive import run_survivor
+from main_logic import run_survivor
 
 
 @socker.on('connect')
