@@ -108,6 +108,7 @@ def create_app(test_config=None):
     app.register_blueprint(test_pong.pong.bp)  #test_pong.pong.bp)
 
     import stay_alive.stay_alive
+    import stay_alive.s_events
     app.register_blueprint(stay_alive.stay_alive.bp)
 
     heroku = Heroku(app)
