@@ -7,14 +7,14 @@ from flask import (
 
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from dbmysq import get_db
+#from dbmysq import get_db
 
 bp = Blueprint('home', __name__, url_prefix='/home', static_folder='static', template_folder='template')
 
 @bp.route('/')
 def home_index():
-    if g.user is not None:
-        username = g.user['username']
+    #if g.user is not None:
+    #    username = g.user['username']
 
     return render_template('home2.html')
 
