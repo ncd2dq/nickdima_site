@@ -62,6 +62,9 @@ def create_app(test_config=None):
     def upset():
         return "Ligma"
 
+
+    '''
+    THE BELOW IS DEPRECIATED FOR THE TIME BEING
     # Register Database for teardown context / CLI command
     # Local import (checks within package first to avoid using wrong lib)
     #import dbmysq
@@ -76,6 +79,8 @@ def create_app(test_config=None):
 
     import posts
     app.register_blueprint(posts.bp)
+    '''
+
 
     import home.home
     app.register_blueprint(home.home.bp)
