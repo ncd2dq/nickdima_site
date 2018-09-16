@@ -46,7 +46,7 @@ def handle_mov_req(data):
 
     # Retrieve the hero that made the request
     for hero in db['heros']:
-        if hero['id'] == data['id']:
+        if hero.id == data['id']:
             cur_hero = hero
             break
 
