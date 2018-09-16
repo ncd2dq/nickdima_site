@@ -13,5 +13,5 @@ your_sock.on('con_test', function(data){
 });
 
 your_sock.on('hero_data', function(data){
-	hero_data = data;
+	hero_data = data['hero_data'];
 });
