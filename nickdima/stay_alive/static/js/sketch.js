@@ -13,3 +13,38 @@ function draw(){
 		}
 	}
 }
+
+
+
+function keyPressed(){
+    if (keyCode === LEFT_ARROW){
+        
+    } else if (keyCode === RIGHT_ARROW){
+
+        
+    } else if (keyCode === DOWN_ARROW){
+        move_down = true;
+        
+    } else if (keyCode === UP_ARROW){
+        move_up = true;
+    } else if (keyCode == 13){
+
+    }
+}
+
+
+
+function keyReleased(){
+    if (keyCode === LEFT_ARROW){
+
+        
+    } else if (keyCode === RIGHT_ARROW){
+
+        
+    } else if (keyCode === DOWN_ARROW){
+        move_down = false;
+        
+    } else if (keyCode === UP_ARROW){
+        move_up = false;
+    }
+}
