@@ -10,3 +10,8 @@ your_sock.on('connect', function(){
 your_sock.on('con_test', function(data){
 	console.log(data);
 });
+
+
+your_sock.on('testing_main_logic', function(data){
+	console.log(data);
+});

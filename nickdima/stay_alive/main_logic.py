@@ -1,5 +1,6 @@
 from stay_alive.heros import Hero
 from stay_alive.stay_alive_db import get_db
+from nickdima.socker import socker
 import eventlet
 eventlet.monkey_patch()
 '''
@@ -57,9 +58,22 @@ def game_loop():
 
     db = get_db()
 
+    # Client input layer
+
+
+
+    # Extraction Layer
+    # Get all data that needs to be sent to clients
     heros_data = []
     for hero in db['heros']:
         heros_data.append(hero.export())
+
+
+
+    # Replication layer
+    # Send all data to clients
+    socker.emit('testing_main_logic', {'test':'test'})
+
 
 
 def run_survivor():
