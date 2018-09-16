@@ -35,7 +35,6 @@ def handle_connect():
     new_hero = Hero(attempt_id, db['map'])
     db['heros'].append(new_hero)
 
-    print('GIVEN HERO ID {}'.format(attempt_id))
     socker.emit('your_hero_id', {'your_hero_id':attempt_id}, namespace='/stay_alive')
     db['total_players'] += 1
 
