@@ -72,7 +72,7 @@ def game_loop():
 
     # Replication layer
     # Send all data to clients
-    socker.emit('testing_main_logic', {'test':'test'}, namespace='/stay_alive')
+    socker.emit('hero_data', {'test': heros_data}, namespace='/stay_alive')
 
 
 

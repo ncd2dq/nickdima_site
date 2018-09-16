@@ -1,4 +1,5 @@
 from nickdima.socker import socker
+from stay_alive.stay_alive_db import get_db
 from stay_alive.main_logic import run_survivor
 import eventlet
 eventlet.monkey_patch()
