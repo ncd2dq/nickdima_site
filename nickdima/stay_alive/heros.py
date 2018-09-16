@@ -208,7 +208,7 @@ if __name__ == '__main__':
 
     def get_test_db():
         return test_db
-
+    print(h1.location)
     h1.location[0] = 0
     h1.location[1] = 15
     print(h1.location)

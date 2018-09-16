@@ -47,7 +47,7 @@ eventlet.monkey_patch()
 def setup():
     db = get_db()
 
-    map = {'max_x' : 500, 'max_y' : 600}
+    map = {'max_x' : 400, 'max_y' : 400}
     db['map'] = map
 
     h1 = Hero(1, db['map'])
