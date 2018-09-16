@@ -1,4 +1,3 @@
-from stay_alive.heros import Hero
 from stay_alive.stay_alive_db import get_db
 from nickdima.socker import socker
 import eventlet
