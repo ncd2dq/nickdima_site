@@ -21,7 +21,7 @@ class Hero(object):
         self.location = self._create_location(map)
         self.equipped = None
         self.building = None
-        self.hitbox = {'x_len' : 2, 'y_len' : 2}
+        self.hitbox = {'x_len' : 10, 'y_len' : 10}
 
         self.map = map
 
