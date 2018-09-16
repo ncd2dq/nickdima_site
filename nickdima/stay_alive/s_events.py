@@ -21,7 +21,7 @@ def get_hero_ids():
 def handle_connect():
     db = get_db()
     # Start the game thread only when the first player joins
-    if len(db['total_players'] == 0):
+    if db['total_players'] == 0:
         survivor_thread = eventlet.spawn(run_survivor)
 
     # Each connected player gets a new hero
