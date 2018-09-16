@@ -56,6 +56,7 @@ def handle_mov_req(data):
 def handle_disconnect():
     global survivor_thread
     db = get_db()
+    print('PLAYER DISCONNECT {}'.format(db['total_players']))
     if db['total_players'] == 1:
         survivor_thread.kill()
         reset_db()
