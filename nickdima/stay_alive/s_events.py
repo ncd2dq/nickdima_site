@@ -41,6 +41,6 @@ def handle_connect():
 
 @socker.on('disconnect', namespace='/stay_alive')
 def handle_disconnect():
-
+    global survivor_thread
     survivor_thread.kill()
     reset_db()
