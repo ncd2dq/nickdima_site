@@ -1,5 +1,5 @@
 from nickdima.socker import socker
-from stay_alive.stay_alive_db import get_db
+from stay_alive.stay_alive_db import get_db, reset_db
 from stay_alive.main_logic import run_survivor
 from stay_alive.heros import Hero
 import eventlet
@@ -43,3 +43,4 @@ def handle_connect():
 def handle_disconnect():
 
     survivor_thread.kill()
+    reset_db()
