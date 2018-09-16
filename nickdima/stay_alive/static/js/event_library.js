@@ -20,8 +20,10 @@ your_sock.on('hero_data', function(data){
 
 //Server sends us a unique id so we know which hero we can change
 your_sock.on('your_hero_id', function(data){
-	my_hero_id = data['you_hero_id']
-})
+	my_hero_id = data['you_hero_id'];
+	console.log(data);
+	console.log('above is from hero id');
+});
 
 function move(type, dir){
 	let packet = {'id': my_hero_id, 'dir': false};

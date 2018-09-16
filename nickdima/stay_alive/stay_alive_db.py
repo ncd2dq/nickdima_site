@@ -1,6 +1,8 @@
 '''
 #
-#Below is a reference of the master game database
+#Below is a reference of the master game database in how it should be sent over sockets
+#Each dictionary below will actually be a CLASS in the python dictionary, but the export method of each should
+#produce the dictionary shown below
 #
 
 'projectiles' : 
