@@ -22,7 +22,7 @@
 'location' : (x, y), 
 'equiped' : {'class' : gun/tool, 'type': 'steal'},
 'building' : {'class' : 'wall/gun/tool', 'type': steal}},
-'dir' : ['up/down/left/right', True/False]], # THIS IS NOT EXPORTED
+'dir' : ['up/down': True/False, 'left/right': True/False] # THIS IS NOT EXPORTED
 
 'structures' : 
 [{'type' : 'wall/door/turret', 'location' : (x, y), 'hp' : 50, 'state' : 'open/closed'}],

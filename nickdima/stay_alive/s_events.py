@@ -49,7 +49,11 @@ def handle_mov_req(data):
             cur_hero = hero
             break
 
-    cur_hero.dir = [data['dir'], data['type']]
+    if data['dir'] == 'up' or data['dir'] == 'down':
+        cur_hero.dir[0], cur_hero.dir[1] = data['dir'], data['type']
+    elif data['dir'] == 'right' or data['dir'] == 'left':
+        cur_hero.dir[2], cur_hero.dir[3] = data['dir'], data['type']
+
 
 
 @socker.on('disconnect', namespace='/stay_alive')

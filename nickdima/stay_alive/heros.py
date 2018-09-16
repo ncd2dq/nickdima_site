@@ -8,7 +8,7 @@
 'location' : (x, y), 
 'equiped' : {'class' : gun/tool, 'type': 'steal'},
 'building' : {'class' : 'wall/gun/tool', 'type': steal}} ]
-'dir' : ['up/down/left/right', True/False] # THIS IS NOT EXPORTED
+'dir' : ['up/down': True/False, 'left/right': True/False] # THIS IS NOT EXPORTED
 '''
 import random
 import copy
@@ -23,7 +23,7 @@ class Hero(object):
         self.equipped = None
         self.building = None
         self.hitbox = {'x_len' : 10, 'y_len' : 10}
-        self.dir = ['up', False] # direction and if they are actively moving that way
+        self.dir = ['up', False, 'right', False] # direction and if they are actively moving that way
 
         self.map = map
 
@@ -186,6 +186,8 @@ class Hero(object):
     def update(self):
         if self.dir[1] == True:
             self.move(self.dir[0], get_db)
+        if self.dir[3] == True:
+            self.move(self.dir[2], get_db)
 
     def export(self, data='all'):
         '''Turn all your attributes into a dictionary to be sent to the client'''
