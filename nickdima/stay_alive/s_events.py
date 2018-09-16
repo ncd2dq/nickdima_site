@@ -21,6 +21,7 @@ def get_hero_ids():
 
 @socker.on('connect', namespace='/stay_alive')
 def handle_connect():
+    global survivor_thread
     db = get_db()
     # Start the game thread only when the first player joins
     if db['total_players'] == 0:
