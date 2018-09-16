@@ -8,10 +8,11 @@
 'location' : (x, y), 
 'equiped' : {'class' : gun/tool, 'type': 'steal'},
 'building' : {'class' : 'wall/gun/tool', 'type': steal}} ]
-
+'dir' : ['up/down/left/right', True/False] # THIS IS NOT EXPORTED
 '''
 import random
 import copy
+from stay_alive.stay_alive_db import get_db
 
 class Hero(object):
     def __init__(self, id, map):
@@ -22,6 +23,7 @@ class Hero(object):
         self.equipped = None
         self.building = None
         self.hitbox = {'x_len' : 10, 'y_len' : 10}
+        self.dir = ['up', False] # direction and if they are actively moving that way
 
         self.map = map
 
@@ -181,6 +183,9 @@ class Hero(object):
             if not self._detect_all_collisions(dir, coll_type, get_structs):
                 self.location[0] += self.move_speed
 
+    def update(self):
+        if self.dir[1] == True:
+            self.move(self.dir[0], get_db)
 
     def export(self, data='all'):
         '''Turn all your attributes into a dictionary to be sent to the client'''

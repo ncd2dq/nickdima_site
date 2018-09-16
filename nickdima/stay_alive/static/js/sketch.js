@@ -18,15 +18,15 @@ function draw(){
 
 function keyPressed(){
     if (keyCode === LEFT_ARROW){
-        
+        move('pressed', 'left');
     } else if (keyCode === RIGHT_ARROW){
-
+        move('pressed', 'right');
         
     } else if (keyCode === DOWN_ARROW){
-        move_down = true;
+        move('pressed', 'down');
         
     } else if (keyCode === UP_ARROW){
-        move_up = true;
+        move('pressed', 'up');
     } else if (keyCode == 13){
 
     }
@@ -36,15 +36,15 @@ function keyPressed(){
 
 function keyReleased(){
     if (keyCode === LEFT_ARROW){
-
+        move('released', 'left');
         
     } else if (keyCode === RIGHT_ARROW){
-
+        move('released', 'right');
         
     } else if (keyCode === DOWN_ARROW){
-        move_down = false;
+        move('released', 'down');
         
     } else if (keyCode === UP_ARROW){
-        move_up = false;
+        move('released', 'up');
     }
 }

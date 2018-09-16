@@ -50,6 +50,12 @@ def game_loop():
     # Client input layer
 
 
+    # Process if inputs are valid
+
+    # Do game logic
+    for hero in db['heros']:
+        hero.update()
+
 
     # Extraction Layer
     # Get all data that needs to be sent to clients

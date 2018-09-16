@@ -22,3 +22,32 @@ your_sock.on('hero_data', function(data){
 your_sock.on('your_hero_id', function(data){
 	my_hero_id = data['you_hero_id']
 })
+
+function move(type, dir){
+	let packet = {'id': my_hero_id, 'dir': false};
+	if(type == 'pressed'){
+		if(dir == 'up'){
+			packet['dir'] = 'up';
+		} else if(dir == 'down'){
+			packet['dir'] = 'down';
+		} else if(dir == 'right'){
+			packet['dir'] = 'right';
+		} else if(dir == 'left'){
+			packet['dir'] = 'left';
+		}
+		packet['type'] = true;
+		your_sock.emit('move_req', packet)
+	} else if(type == 'released'){
+		if(dir == 'up'){
+			packet['dir'] = 'up';
+		} else if(dir == 'down'){
+			packet['dir'] = 'down';
+		} else if(dir == 'right'){
+			packet['dir'] = 'right';
+		} else if(dir == 'left'){
+			packet['dir'] = 'left';
+		}
+		packet['type'] = false;
+		your_sock.emit('move_req', packet)
+	}
+}
