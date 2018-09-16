@@ -50,9 +50,7 @@ def setup():
     map = {'max_x' : 400, 'max_y' : 400}
     db['map'] = map
 
-    h1 = Hero(1, db['map'])
-
-    db['heros'] = [h1]
+    db['heros'] = []
 
 def game_loop():
 
