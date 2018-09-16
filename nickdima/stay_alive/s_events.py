@@ -13,7 +13,8 @@ def get_hero_ids():
     hero_ids = []
 
     for hero in db['heros']:
-        hero_ids.append(hero['id'])
+        hero_export = hero.export()
+        hero_ids.append(hero_export['id'])
 
     return hero_ids
 
