@@ -39,7 +39,7 @@
 
 '''
 
-db = {'total_players' : 0}
+db = {'total_players' : 0, 'map': {'max_x' : 400, 'max_y' : 400}, 'heros': []}
 
 def get_db():
     global db
@@ -47,4 +47,4 @@ def get_db():
 
 def reset_db():
     global db
-    db = {'total_players' : 0}
+    db = {'total_players' : 0, 'map': {'max_x' : 400, 'max_y' : 400}, 'heros': []}

@@ -44,14 +44,6 @@ eventlet.monkey_patch()
 
 '''
 
-def setup():
-    db = get_db()
-
-    map = {'max_x' : 400, 'max_y' : 400}
-    db['map'] = map
-
-    db['heros'] = []
-
 def game_loop():
 
     db = get_db()
@@ -75,7 +67,6 @@ def game_loop():
 
 
 def run_survivor():
-    setup()
     while True:
         game_loop()
         eventlet.sleep(0.04)
