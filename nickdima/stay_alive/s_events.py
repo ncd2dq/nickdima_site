@@ -19,6 +19,10 @@ def get_hero_ids():
 
 @socker.on('connect', namespace='/stay_alive')
 def handle_connect():
+    db = get_db()
+    # Start the game thread only when the first player joins
+    if len(db['total_players'] == 0):
+        survivor_thread = eventlet.spawn(run_survivor)
 
     # Each connected player gets a new hero
     existing_ids = get_hero_ids()
@@ -29,11 +33,8 @@ def handle_connect():
     db['heros'].append(new_hero)
 
 
-    # Start the game thread only when the first player joins
-    if len(existing_ids == 1):
-        survivor_thread = eventlet.spawn(run_survivor)
-
     socker.emit('your_hero_id', {'your_hero_id':attempt_id}, namespace='/stay_alive')
+    db['total_players'] += 1
 
 
 @socker.on('disconnect', namespace='/stay_alive')

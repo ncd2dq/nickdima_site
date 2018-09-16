@@ -39,7 +39,7 @@
 
 '''
 
-db = {}
+db = {'total_players' : 0}
 
 def get_db():
     global db
@@ -47,4 +47,4 @@ def get_db():
 
 def reset_db():
     global db
-    db = {}
+    db = {'total_players' : 0}
