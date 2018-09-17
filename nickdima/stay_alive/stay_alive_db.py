@@ -1,7 +1,7 @@
 '''
 #
 #Below is a reference of the master game database in how it should be sent over sockets
-#Each dictionary below will actually be a CLASS in the python dictionary, but the export method of each should
+#Each dictionary below will actually be a CLASS in the python-server-held dictionary, but the export method of each should
 #produce the dictionary shown below
 #
 
@@ -42,7 +42,7 @@
 
 '''
 
-db = {'total_players' : 0, 'map': {'max_x' : 400, 'max_y' : 400}, 'heros': [], 'structures': []}
+db = {'total_players' : 0, 'map': {'max_x' : 800, 'max_y' : 800}, 'heros': [], 'structures': []}
 
 def get_db():
     global db
@@ -50,4 +50,4 @@ def get_db():
 
 def reset_db():
     global db
-    db = {'total_players' : 0, 'map': {'max_x' : 400, 'max_y' : 400}, 'heros': [], 'structures': []}
+    db = {'total_players' : 0, 'map': {'max_x' : 800, 'max_y' : 800}, 'heros': [], 'structures': []}

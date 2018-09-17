@@ -22,7 +22,7 @@ function draw(){
 				player_actual_y = hero_data[i]['location'][1];
 				rect(player_pos_x, player_pos_y, hero_data[i]['hitbox']['x_len'], hero_data[i]['hitbox']['y_len']);
 			} else {
-				//Determine the relative distance between your hero's actual and the other hero
+				//Determine the relative distance between your hero's actual and the other heros
 				let rel_x = player_actual_x - hero_data[i]['location'][0];
 				let rel_y = player_actual_y - hero_data[i]['location'][1];
 

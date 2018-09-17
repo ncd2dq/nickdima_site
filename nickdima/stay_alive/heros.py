@@ -19,7 +19,7 @@ class Hero(object):
         self.id = id
         self.inventory = self._create_inventory()
         self.state = 'outside'
-        self.location = self._create_location(map)
+        self.location = self._create_location(map) #[X, Y]
         self.equipped = None
         self.building = None
         self.hitbox = {'x_len' : 10, 'y_len' : 10}
@@ -39,6 +39,34 @@ class Hero(object):
         initial_location = [random.random() * (map['max_x'] / 2) + (map['max_x'] / 3), 
                             random.random() * (map['max_y'] / 2) + (map['max_y'] / 3)]
         return initial_location
+
+    def _detect_map_edge_collide(self, dir):
+        '''
+        This method is made to run with the move method to check if a 
+        character is walking off the map
+        '''
+
+        # Check Top Left Point
+        if dir == 'up':
+            if self.location[1] - self.move_speed < 0:
+                return True
+
+        # Check Bottom Left Point
+        elif dir == 'down':
+            if self.location[1] + self.hitbox['y_len'] + self.move_speed > self.map['max_y']:
+                return True
+
+        # Check Top Right Point
+        elif dir == 'right':
+            if self.location[0] + self.hitbox['x_len'] + self.move_speed > self.map['max_x']:
+                return True
+
+        # Check Bottom Left Point
+        elif dir == 'left':
+            if self.location[0] - self.move_speed < 0:
+                return True
+
+        return False
 
     def _detect_all_collisions(self, dir, coll_type, get_structs):
         '''
@@ -168,19 +196,19 @@ class Hero(object):
 
     def move(self, dir, get_structs, coll_type='structures'):
         if dir == 'up':
-            if not self._detect_all_collisions(dir, coll_type, get_structs):
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
                 self.location[1] -= self.move_speed
 
         elif dir == 'down':
-            if not self._detect_all_collisions(dir, coll_type, get_structs):
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
                 self.location[1] += self.move_speed
 
         elif dir == 'left':
-            if not self._detect_all_collisions(dir, coll_type, get_structs):
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
                 self.location[0] -= self.move_speed
 
         elif dir == 'right':
-            if not self._detect_all_collisions(dir, coll_type, get_structs):
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
                 self.location[0] += self.move_speed
 
     def update(self):

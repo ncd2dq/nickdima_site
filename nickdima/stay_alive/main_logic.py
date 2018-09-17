@@ -67,6 +67,7 @@ def game_loop():
 
     # Replication layer
     # Send all data to clients
+    # TO DO only send data to players if that object is within 400 distance units from them
     socker.emit('hero_data', {'hero_data': heros_data}, namespace='/stay_alive')
 
 
