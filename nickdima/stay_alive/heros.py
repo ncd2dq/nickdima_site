@@ -196,19 +196,19 @@ class Hero(object):
 
     def move(self, dir, get_structs, coll_type='structures'):
         if dir == 'up':
-            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide(dir):
                 self.location[1] -= self.move_speed
 
         elif dir == 'down':
-            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide(dir):
                 self.location[1] += self.move_speed
 
         elif dir == 'left':
-            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide(dir):
                 self.location[0] -= self.move_speed
 
         elif dir == 'right':
-            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide():
+            if not self._detect_all_collisions(dir, coll_type, get_structs) and not self._detect_map_edge_collide(dir):
                 self.location[0] += self.move_speed
 
     def update(self):
