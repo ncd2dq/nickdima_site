@@ -30,12 +30,22 @@ function draw(){
 	}
 
 	//Move the area of the background image we are drawing
-	//image(background_img, subx, suby, subwidth, subheight, canvasx, canvasy, canvaswidthsize, canvasheightsize)
+	//image(background_img, 
+	//subx, suby,  --The position of the subset image
+	//subwidth, subheight,  --The dimensions of the subset image
+	//canvasx, canvasy,    --Where on the canvas to draw your image
+	//canvaswidthsize, canvasheightsize --How large to draw it on the canvas
+
 	if(hero_data){
+		//image(background_img, 
+		//player_actual_x - player_pos_x, player_actual_y - player_pos_y, 
+		//vision_x_max, vision_y_max, 
+		//0, 0, 
+		//vision_x_max, vision_y_max);
 		image(background_img, 
-		player_actual_x - player_pos_x, player_actual_y - player_pos_y, 
-		vision_x_max, vision_y_max, 
 		0, 0, 
+		vision_x_max, vision_y_max, 
+		player_actual_x - player_pos_x, player_actual_y - player_pos_y, 
 		vision_x_max, vision_y_max);
 	}
 
