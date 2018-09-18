@@ -26,6 +26,8 @@ function draw(){
 				player_actual_y = hero_data[i]['location'][1];
 				break;
 			}
+		}
+	}
 
 	//Move the area of the background image we are drawing
 	//image(background_img, subx, suby, subwidth, subheight, canvasx, canvasy, canvaswidthsize, canvasheightsize)
