@@ -5,6 +5,12 @@ let player_pos_y = 200;
 let player_actual_x;
 let player_actual_y;
 
+let background_img;
+
+function preload(){
+	background_img = loadImage("http://www.nickdima.com/stay_alive/static/assets/background.png");
+}
+
 function setup(){
 	let canvas = createCanvas(vision_x_max, vision_y_max);
 	canvas.parent('sketch-holder');
@@ -12,14 +18,31 @@ function setup(){
 
 function draw(){
 	background(0, 0, 0);
+	// Determine players actual position
+	if(hero_data){
+		for(let i = 0; i < hero_data.length; i++){
+			if(hero_data[i]['id'] == my_hero_id){
+				player_actual_x = hero_data[i]['location'][0];
+				player_actual_y = hero_data[i]['location'][1];
+				break;
+			}
+
+	//Move the area of the background image we are drawing
+	//image(background_img, subx, suby, subwidth, subheight, canvasx, canvasy, canvaswidthsize, canvasheightsize)
+	if(hero_data){
+		image(background_img, 
+		player_actual_x - player_pos_x, player_actual_y - player_pos_y, 
+		vision_x_max, vision_y_max, 
+		0, 0, 
+		vision_x_max, vision_y_max);
+	}
+
 
 	//Draw your hero in the center and other heros as relative to you
 	fill(255, 255, 255);
 	if(hero_data){
 		for(let i = 0; i < hero_data.length; i++){
 			if(hero_data[i]['id'] == my_hero_id){
-				player_actual_x = hero_data[i]['location'][0];
-				player_actual_y = hero_data[i]['location'][1];
 				rect(player_pos_x, player_pos_y, hero_data[i]['hitbox']['x_len'], hero_data[i]['hitbox']['y_len']);
 			} else {
 				//Determine the relative distance between your hero's actual and the other heros

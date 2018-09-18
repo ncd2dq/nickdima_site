@@ -1,5 +1,4 @@
 '''
-
 'heros' : 
 [ {'id' : 1, 
 'inventory' : {'water' : 10, 'wood' : 5, 'brick': 5, 'steal' : 5, 'tool' : 'wood', 'gun' : 'steal', 
@@ -16,14 +15,14 @@ from stay_alive.stay_alive_db import get_db
 
 class Hero(object):
     def __init__(self, id, map):
-        self.id = id
+        self.id = id # Unique player id
         self.inventory = self._create_inventory()
-        self.state = 'outside'
+        self.state = 'outside' #Inside/Outside
         self.location = self._create_location(map) #[X, Y]
         self.equipped = None
         self.building = None
         self.hitbox = {'x_len' : 10, 'y_len' : 10}
-        self.dir = ['up', False, 'right', False] # direction and if they are actively moving that way
+        self.dir = ['up', False, 'right', False] # Up/Down, Right/Left and if actively moving
 
         self.map = map
 
