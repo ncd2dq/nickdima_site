@@ -30,6 +30,7 @@
 'daylight' :
 {'current' : 10, 'max' : 2800, 'water_cost' : 5, 'ticks' : 7},
 
+#Max_x/Max_y should be pixel dimensions of background image
 'map' :
 {'max_x' : 800, 'max_y' : 800, 
 'events' :

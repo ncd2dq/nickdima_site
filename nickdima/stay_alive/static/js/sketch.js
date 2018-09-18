@@ -35,13 +35,11 @@ function draw(){
 	//subwidth, subheight,  --The dimensions of the subset image
 	//canvasx, canvasy,    --The position of the subset image within the parent image
 	//canvaswidthsize, canvasheightsize --How large to draw it on the canvas
-
+	// Always draw the subset image start at 0,0 of the canvas
+	// The subset image will always have max_x / max_y the length of our canvas (this is all the player can see)
+	// The subset image is a fixed square (400x400) around the actual position of the hero
+	// Draw the image exactly the same size on the screen
 	if(hero_data){
-		//image(background_img, 
-		//player_actual_x - player_pos_x, player_actual_y - player_pos_y, 
-		//vision_x_max, vision_y_max, 
-		//0, 0, 
-		//vision_x_max, vision_y_max);
 		image(background_img, 
 		0, 0, 
 		vision_x_max, vision_y_max, 
