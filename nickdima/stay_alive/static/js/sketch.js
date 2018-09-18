@@ -31,9 +31,9 @@ function draw(){
 
 	//Move the area of the background image we are drawing
 	//image(background_img, 
-	//subx, suby,  --The position of the subset image
+	//subx, suby,  --The position of the subset image ON THE CANVAS
 	//subwidth, subheight,  --The dimensions of the subset image
-	//canvasx, canvasy,    --Where on the canvas to draw your image
+	//canvasx, canvasy,    --The position of the subset image within the parent image
 	//canvaswidthsize, canvasheightsize --How large to draw it on the canvas
 
 	if(hero_data){
