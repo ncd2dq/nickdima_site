@@ -45,3 +45,5 @@ class DayLight(object):
         export_dict['maxi'] = self.maxi
         export_dict['water_cost'] = self.water_cost
         export_dict['ticks'] = self.ticks
+
+        return export_dict
