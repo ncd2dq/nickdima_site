@@ -70,6 +70,11 @@ function draw(){
 		rect(10, 10, vision_x_max - 20, 10);
 		fill(0, 0, 0);
 		rect(10, 10, daylight_data['current'] / daylight_data['maxi'] * (vision_x_max - 20) , 10);
+
+		if(daylight_data['current'] > (daylight_data['maxi'] / 2)){
+			//nighttime darkening
+			background(0, 0, 0, 175);
+		}
 	}
 }
 
