@@ -1,7 +1,7 @@
 from stay_alive.stay_alive_db import get_db
 from nickdima.socker import socker
 
-from daylight import DayLight
+from stay_alive.daylight import DayLight
 import eventlet
 eventlet.monkey_patch()
 '''
