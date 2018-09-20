@@ -17,7 +17,7 @@ function setup(){
 }
 
 function draw(){
-	//background(0, 0, 0);
+	background(0, 0, 0); //This refreshes the sketch
 	// Determine players actual position
 	if(hero_data){
 		for(let i = 0; i < hero_data.length; i++){
@@ -67,8 +67,8 @@ function draw(){
 
 	if(hero_data){
 		fill(0, 0, 0);
-		rect(10, 10, daylight_data['current'], 10);
-		rect(10, 30, daylight_data['maxi'], 10);
+		rect(10, 10, daylight_data['current'] / daylight_data['maxi'] * vision_x_max, 10);
+		rect(10, 30, vision_x_max, 10);
 	}
 }
 
