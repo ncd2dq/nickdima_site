@@ -67,9 +67,9 @@ function draw(){
 
 	if(hero_data){
 		fill(255, 255, 255);
-		rect(10, 10, vision_x_max - 10, 10);
+		rect(10, 10, vision_x_max - 20, 10);
 		fill(0, 0, 0);
-		rect(10, 10, daylight_data['current'] / daylight_data['maxi'] * (vision_x_max - 10) , 10);
+		rect(10, 10, daylight_data['current'] / daylight_data['maxi'] * (vision_x_max - 20) , 10);
 	}
 }
 
