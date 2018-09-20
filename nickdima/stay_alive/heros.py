@@ -4,6 +4,7 @@
 'inventory' : {'water' : 10, 'wood' : 5, 'brick': 5, 'steal' : 5, 'tool' : 'wood', 'gun' : 'steal', 
                 'ammo' : 10},
 'state' : 'inside', 
+'alive' : True/False,
 'location' : (x, y), 
 'equiped' : {'class' : gun/tool, 'type': 'steal'},
 'building' : {'class' : 'wall/gun/tool', 'type': steal}} ]
@@ -25,6 +26,8 @@ class Hero(object):
         self.dir = ['up', False, 'right', False] # Up/Down, Right/Left and if actively moving
 
         self.map = map
+
+        self.alive = True
 
         self.move_speed = 5
 
@@ -228,6 +231,7 @@ class Hero(object):
             export_dict['equpied'] = copy.deepcopy(self.equipped)
             export_dict['building'] = copy.deepcopy(self.building)
             export_dict['hitbox'] = copy.deepcopy(self.hitbox)
+            export_dict['alive'] = self.alive
 
         return export_dict
 

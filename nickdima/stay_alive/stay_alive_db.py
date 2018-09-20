@@ -19,6 +19,7 @@
 'inventory' : {'water' : 10, 'wood' : 5, 'brick': 5, 'steal' : 5, 'tool' : 'wood', 'gun' : 'steal', 
                 'ammo' : 10},
 'state' : 'inside', 
+'alive' : True/False,
 'location' : (x, y), 
 'equiped' : {'class' : gun/tool, 'type': 'steal'},
 'building' : {'class' : 'wall/gun/tool', 'type': steal}},
@@ -28,7 +29,7 @@
 [{'type' : 'wall/door/turret', 'location' : (x, y), 'hp' : 50, 'state' : 'open/closed'}],
 
 'daylight' :
-{'current' : 10, 'max' : 2800, 'water_cost' : 5, 'ticks' : 7},
+{'current' : 10, 'maxi' : 2800, 'water_cost' : 5, 'ticks' : 7},
 
 #Max_x/Max_y should be pixel dimensions of background image
 'map' :
@@ -43,7 +44,8 @@
 
 '''
 
-db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': []}
+db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': [],
+        'daylight':{'current':0, 'maxi': 2800, 'water_cost': 5, 'ticks': 7}}
 
 def get_db():
     global db
@@ -51,4 +53,5 @@ def get_db():
 
 def reset_db():
     global db
-    db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': []}
+    db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': [],
+        'daylight':{'current':0, 'max': 2800, 'water_cost': 5, 'ticks': 7}}

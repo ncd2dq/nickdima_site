@@ -17,7 +17,7 @@ function setup(){
 }
 
 function draw(){
-	background(0, 0, 0);
+	//background(0, 0, 0);
 	// Determine players actual position
 	if(hero_data){
 		for(let i = 0; i < hero_data.length; i++){
@@ -63,6 +63,12 @@ function draw(){
 				rect(player_pos_x - rel_x, player_pos_y - rel_y, hero_data[i]['hitbox']['x_len'], hero_data[i]['hitbox']['y_len']);
 			} 
 		}
+	}
+
+	if(hero_data){
+		fill(0, 0, 0);
+		rect(10, 10, daylight_data['current'], 10);
+		rect(10, 30, daylight_data['maxi'], 10);
 	}
 }
 

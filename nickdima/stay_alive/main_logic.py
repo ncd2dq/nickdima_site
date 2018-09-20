@@ -1,5 +1,7 @@
 from stay_alive.stay_alive_db import get_db
 from nickdima.socker import socker
+
+from daylight import DayLight
 import eventlet
 eventlet.monkey_patch()
 '''
@@ -43,25 +45,38 @@ eventlet.monkey_patch()
 
 '''
 
-def game_loop():
+def game_loop(daylight):
 
     db = get_db()
 
+    #
     # Client input layer
+    #
 
 
+    #
     # Process if inputs are valid
+    #
 
+
+    #
     # Do game logic
+    #
     for hero in db['heros']:
         hero.update()
 
+    db['daylight'].progress()
 
+
+    #
     # Extraction Layer
+    #
     # Get all data that needs to be sent to clients
     heros_data = []
     for hero in db['heros']:
         heros_data.append(hero.export())
+
+    daylight_data = db['daylight'].export()
 
 
 
@@ -69,10 +84,13 @@ def game_loop():
     # Send all data to clients
     # TO DO only send data to players if that object is within 400 distance units from them
     socker.emit('hero_data', {'hero_data': heros_data}, namespace='/stay_alive')
-
+    socker.emit('daylight_data', {'daylight_data': daylight_data}, namespace='/stay_alive')
 
 
 def run_survivor():
+    db = get_db()
+    db['daylight'] = DayLight(2800, 5, 7, get_db)
+
     while True:
-        game_loop()
+        game_loop(day)
         eventlet.sleep(0.04)
