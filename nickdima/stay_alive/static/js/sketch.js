@@ -72,12 +72,12 @@ function draw(){
 		rect(10, 10, daylight_data['current'] / daylight_data['maxi'] * (vision_x_max - 20) , 10);
 
 		//Night time cycle
-		if(daylight_data['current'] > (daylight_data['maxi'] / 4)){
-			background(0, 0, 0, 50);
+		if(daylight_data['current'] > (daylight_data['maxi'] * 3 / 4)){
+			background(0, 0, 0, 175);
 		} else if(daylight_data['current'] > (daylight_data['maxi'] / 2)){
 			background(0, 0, 0, 100);
-		} else if(daylight_data['current'] * 3 > (daylight_data['maxi'] / 4)){
-			background(0, 0, 0, 175);
+		} else if(daylight_data['current'] > (daylight_data['maxi'] / 4)){
+			background(0, 0, 0, 50);
 		}
 	}
 }
