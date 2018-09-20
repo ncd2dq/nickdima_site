@@ -45,7 +45,7 @@ eventlet.monkey_patch()
 
 '''
 
-def game_loop(daylight):
+def game_loop():
 
     db = get_db()
 
@@ -92,5 +92,5 @@ def run_survivor():
     db['daylight'] = DayLight(2800, 5, 7, get_db)
 
     while True:
-        game_loop(day)
+        game_loop()
         eventlet.sleep(0.04)
