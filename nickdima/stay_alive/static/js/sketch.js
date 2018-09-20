@@ -1,7 +1,7 @@
-let vision_x_max = 400;
-let vision_y_max = 400;
-let player_pos_x = 200;
-let player_pos_y = 200;
+let vision_x_max = 800;
+let vision_y_max = 800;
+let player_pos_x = 400;
+let player_pos_y = 400;
 let player_actual_x;
 let player_actual_y;
 
