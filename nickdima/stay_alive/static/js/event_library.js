@@ -20,7 +20,7 @@ your_sock.on('hero_data', function(data){
 });
 
 your_sock.on('daylight_data', function(data){
-	daylight_data = data;
+	daylight_data = data['daylight_data'];
 });
 
 //Server sends us a unique id so we know which hero we can change
