@@ -5,6 +5,14 @@
 		<script src="{{url_for('Stay_alive.static', filename='libraries/p5.min.js')}}"></script>
 		<script src="{{url_for('Stay_alive.static', filename='js/event_library.js') }}"></script>
 		<script src="{{url_for('Stay_alive.static', filename='js/sketch.js')}}"></script>
+		<script>
+			window.addEventListener('keydown', function(e){
+
+				if([37, 39, 38, 40].indexOf(e.keyCode) > -1){
+					e.preventDefault(); //stops arrow keys from scrolling
+				}
+			}, false);
+		</script>
 	</head>
 
 	<body>
