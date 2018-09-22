@@ -29,7 +29,7 @@ class Hero(object):
 
         self.alive = True
 
-        self.move_speed = 5
+        self.move_speed = 8
 
     def _create_inventory(self):
         '''Water is your main survival resource'''
