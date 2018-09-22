@@ -35,9 +35,39 @@
 			<div id="sketch-holder">
 			</div>
 			<div class="game-HUD">
-				<p> teseting that this worked</p>
-				<button>button maybe?</button>
-				<p> another test p</p>
+				<p id="status">Status: Outside</p>
+				<br>
+				<p>Resources</p>
+				<p id="water">Water: 0</p>
+				<p id="wood">Wood: 0</p>
+				<p id="brick">Bricks: 0</p>
+				<p id="iron">Iron: 0</p>
+				<br>
+				<p>Inventory</p>
+				<p id="ammo">Ammo: 0</p>
+				<p id="gun">Gun: None,</p>
+				<p id="tool">Tool: Hands,</p>
+				<br>
+				<p>Building</p>
+				<div>
+					<select id="build_menu" onchange="console.log('changed');">
+					  <option value="Wall - Wood">Wall - Wood</option>
+					  <option value="Wall - Brick">Wall - Brick</option>
+					  <option value="Wall - Iron">Wall - Iron</option>
+					  <option value="Door - Wood">Door - Wood</option>
+					  <option value="Turret">Turret</option>
+					  <option value="Tool - Wood">Tool - Wood</option>
+					  <option value="Tool - Iron">Tool - Iron</option>
+					  <option value="Ammo - Iron">Ammo - Iron</option>
+					  <option value="Gun - Iron">Gun - Iron</option>
+					</select>
+				<div>
+				<br>
+				<p>Current Selection</p>
+				<p id="selection">Gun</p>
+				<br>
+				<p>Equipped</p>
+				<p id="equipped">Hands</p>
 			</div>
 		</div>
 
