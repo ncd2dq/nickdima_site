@@ -30,8 +30,8 @@ class ResourceNode(object):
         if self.cool_down == 0:
             self.amount -= 1
             self.cool_down = self.max_cooldown
-            self.hitbox['x_len'] -= 2
-            self.hitbox['y_len'] -= 2   
+            self.hitbox['x_len'] -= 4
+            self.hitbox['y_len'] -= 4   
                
             return True
 
