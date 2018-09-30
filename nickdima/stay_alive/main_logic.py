@@ -72,8 +72,10 @@ def game_loop():
 
     # Remove depleated resources
     for resource_node in db['resource_nodes']:
+        resource_node.update()
         if resource_node.amount == 0:
             db['resource_nodes'].remove(resource_node)
+
     # 10% chance of a new resource node as long as there are less than 15 on the map
     if random.random() < 0.05 and len(db['resource_nodes']) < 10:
         db['resource_nodes'].append(
