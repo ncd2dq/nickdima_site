@@ -234,8 +234,9 @@ class Hero(object):
         # collect a resource by having your center be close enough to the center of the circular resource node
         for resource in db['resource_nodes']:
             resc_center = [resource.location[0] + resource.hitbox['x_len'] / 2, resource.location[0] + resource.hitbox['y_len'] / 2]
-            if self._distance_from(resc_center, hero_center) <= resource.hitbox['x_len'] and resource.be_consumed():
-                self.inventory[resource.type] += 1
+            if self._distance_from(resc_center, hero_center) <= resource.hitbox['x_len']:
+                if resource.be_consumed():
+                    self.inventory[resource.type] += 1
 
 
 
