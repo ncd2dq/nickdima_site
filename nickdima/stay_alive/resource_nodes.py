@@ -11,7 +11,7 @@ class ResourceNode(object):
         self.type = type
         self.amount = 10
         self.hitbox = {'x_len' : 50, 'y_len' : 50}
-        self.location = _create_location(map)
+        self.location = self._create_location(map)
         self.color = ResourceNode.color_dict[self.type]
 
         self.max_cooldown = 100 
