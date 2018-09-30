@@ -89,11 +89,11 @@ function draw(){
 			if(resource_nodes_data[i]['type'] == 'water'){
 				fill(0, 0, 255);
 			} else if (resource_nodes_data[i]['type'] == 'wood'){
-				fill(165, 42, 42);
+				fill(130, 82, 1);
 			} else if (resource_nodes_data[i]['type'] == 'brick'){
-				fill(255, 0, 0);
+				fill(165, 42, 42);
 			} else if (resource_nodes_data[i]['type'] == 'steal'){
-				fill(20, 20,20);
+				fill(70, 70, 70);
 			}
 
 			let rel_x = player_actual_x - resource_nodes_data[i]['location'][0];
