@@ -10,7 +10,7 @@ class ResourceNode(object):
 
     def __init__(self, type, map):
         self.type = type
-        self.amount = 10
+        self.amount = 5
         self.hitbox = {'x_len' : 50, 'y_len' : 50}
         self.location = self._create_location(map)
         self.color = ResourceNode.color_dict[self.type]
@@ -30,8 +30,8 @@ class ResourceNode(object):
         if self.cool_down == 0:
             self.amount -= 1
             self.cool_down = self.max_cooldown
-            self.hitbox['x_len'] -= 4
-            self.hitbox['y_len'] -= 4   
+            self.hitbox['x_len'] -= 7
+            self.hitbox['y_len'] -= 7   
                
             return True
 

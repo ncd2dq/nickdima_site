@@ -102,6 +102,37 @@ function draw(){
 				resource_nodes_data[i]['hitbox']['x_len'], resource_nodes_data[i]['hitbox']['y_len']);
 		}
 	}
+
+	if(hero_data){
+		update_inventory();
+	}
+}
+
+function update_inventory(){
+	let cur_hero = false;
+	for(let i = 0; i < hero_data.length; i++){
+		if(hero_data[i]['id'] == my_hero_id){
+			cur_hero = hero_data[i];
+		}
+	}
+
+	let water_elm = document.getElementById('water');
+	water_elm.innerHTML = 'Water: ' + cur_hero['water'];
+	let wood_elm = document.getElementById('wood');
+	water_elm.innerHTML = 'Wood: ' + cur_hero['wood'];
+	let brick_elm = document.getElementById('brick');
+	brick_elm.innerHTML = 'Brick: ' + cur_hero['brick'];
+	let iron_elm = document.getElementById('iron');
+	iron_elm.innerHTML = 'Iron: ' + cur_hero['iron'];
+
+	/*
+	let ammo_elm = document.getElementById('ammo');
+	ammo_elm.innerHTML = 'Ammo: ' + ;
+	let gun_elm = document.getElementById('gun');
+	gun_elm.innerHTML = 'Gun: ' + ;
+	let tool_elm = document.getElementById('tool');
+	tool_elm.innerHTML = 'Tool: ' + ;
+	*/
 }
 
 
