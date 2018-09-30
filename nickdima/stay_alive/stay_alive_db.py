@@ -45,7 +45,7 @@
 '''
 
 db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': [],
-        'daylight':{'current':0, 'maxi': 2800, 'water_cost': 5, 'ticks': 7}}
+        'daylight':{'current':0, 'maxi': 2800, 'water_cost': 5, 'ticks': 7}, 'resource_nodes': []}
 
 def get_db():
     global db
@@ -54,4 +54,4 @@ def get_db():
 def reset_db():
     global db
     db = {'total_players' : 0, 'map': {'max_x' : 1955, 'max_y' : 1955}, 'heros': [], 'structures': [],
-        'daylight':{'current':0, 'max': 2800, 'water_cost': 5, 'ticks': 7}}
+        'daylight':{'current':0, 'maxi': 2800, 'water_cost': 5, 'ticks': 7}, 'resource_nodes': []}

@@ -80,6 +80,14 @@ function draw(){
 			background(0, 0, 0, 50);
 		}
 	}
+
+	if(hero_data){
+		fill(255, 255, 255);
+		for(let i = 0; i < resource_nodes_data.length; i++){
+			ellipse(resource_nodes_data[i]['location'][0], resource_nodes_data[i]['location'][1],
+				resource_nodes_data[i]['hitbox']['x_len'], resource_nodes_data[i]['hitbox']['y_len'])
+		}
+	}
 }
 
 

@@ -2,6 +2,7 @@ let your_sock = false;
 let hero_data = false;
 let my_hero_id = false;
 let daylight_data = false;
+let resource_nodes_data = false;
 
 //On connect give the server your player_id that will be used to keep track of paddle location
 
@@ -21,6 +22,10 @@ your_sock.on('hero_data', function(data){
 
 your_sock.on('daylight_data', function(data){
 	daylight_data = data['daylight_data'];
+});
+
+your_sock.on('resource_nodes_data', function(data){
+	resource_nodes_data = data['resource_nodes_data'];
 });
 
 //Server sends us a unique id so we know which hero we can change

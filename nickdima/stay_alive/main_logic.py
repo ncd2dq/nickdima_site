@@ -1,8 +1,10 @@
 from stay_alive.stay_alive_db import get_db
 from nickdima.socker import socker
 
+from stay_alive.resource_nodes import ResourceNode
 from stay_alive.daylight import DayLight
 import eventlet
+import random
 eventlet.monkey_patch()
 '''
 #
@@ -50,17 +52,17 @@ def game_loop():
     db = get_db()
 
     #
-    # Client input layer
+    # Client input layer ---------------------------------------
     #
 
 
     #
-    # Process if inputs are valid
+    # Process if inputs are valid ------------------------------
     #
 
 
     #
-    # Do game logic
+    # Do game logic --------------------------------------------
     #
     for hero in db['heros']:
         hero.update()
@@ -68,8 +70,19 @@ def game_loop():
     db['daylight'].progress()
 
 
+    # Remove depleated resources
+    for resource_node in db['resource_nodes']:
+        if resource_node.amount == 0
+        db['resource_nodes'].remove(resource_node)
+    # 10% chance of a new resource node as long as there are less than 15 on the map
+    if random.random() < 0.1 and len(db['resource_nodes']) < 15:
+        db['resource_nodes'].append(
+            ResourceNode(ResourceNode.color_dict[random.choice(ResourceNode.color_dict.keys())], db['map'])
+            )
+
+
     #
-    # Extraction Layer
+    # Extraction Layer ----------------------------------------
     #
     # Get all data that needs to be sent to clients
     heros_data = []
@@ -78,13 +91,18 @@ def game_loop():
 
     daylight_data = db['daylight'].export()
 
+    resource_nodes_data = []
+    for resource_node in db['resource_nodes']:
+        resource_nodes_data.append(resource_node.export())
 
-
-    # Replication layer
+    #
+    # Replication layer ---------------------------------------
+    #
     # Send all data to clients
     # TO DO only send data to players if that object is within 400 distance units from them
     socker.emit('hero_data', {'hero_data': heros_data}, namespace='/stay_alive')
     socker.emit('daylight_data', {'daylight_data': daylight_data}, namespace='/stay_alive')
+    socker.emit('resource_nodes_data', {'resource_nodes_data': resource_nodes_data}, namespace='/stay_alive')
 
 
 def run_survivor():
