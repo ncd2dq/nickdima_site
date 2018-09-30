@@ -50,7 +50,7 @@
 				<br>
 				<p>Building ----------------</p>
 				<div>
-					<select id="build_menu" onchange="console.log('changed');">
+					<select id="build_menu" onchange="console.log('changed building');">
 					  <option value="Wall - Wood">Wall - Wood</option>
 					  <option value="Wall - Brick">Wall - Brick</option>
 					  <option value="Wall - Iron">Wall - Iron</option>
@@ -61,13 +61,13 @@
 					  <option value="Ammo - Iron">Ammo - Iron</option>
 					  <option value="Gun - Iron">Gun - Iron</option>
 					</select>
+				</div>
+				<br>
 				<div>
-				<br>
-				<p>Current Selection -----</p>
-				<p id="selection">Gun</p>
-				<br>
-				<p>Equipped -----------------</p>
-				<p id="equipped">Hands</p>
+					<select id="equipped_menu" onchange="console.log('changed equipped');">
+					  <option value="Hands">Hands</option>
+					</select>
+				</div>
 			</div>
 		</div>
 
