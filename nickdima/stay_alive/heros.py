@@ -12,6 +12,7 @@
 '''
 import random
 import copy
+import math
 from stay_alive.stay_alive_db import get_db
 
 class Hero(object):
@@ -221,7 +222,7 @@ class Hero(object):
 
     def _distance_from(self, center1, center2):
 
-        dist = ((center2[0] - center1[0]) ** 2 + (center2[1] - center1[1]) ** 2) ** (0.5)
+        dist = math.sqrt( ( ((center2[0] - center1[0]) ** 2) + ((center2[1] - center1[1]) ** 2) ) )
 
         return dist
 
@@ -229,11 +230,11 @@ class Hero(object):
         # First up, attempt to collect resources
         db = get_db()
 
-        hero_center = [self.location[0] + self.hitbox['x_len'] / 2, self.location[0] + self.hitbox['y_len'] / 2]
+        hero_center = [self.location[0] + (self.hitbox['x_len'] / 2), self.location[1] + (self.hitbox['y_len'] / 2)]
 
         # collect a resource by having your center be close enough to the center of the circular resource node
         for resource in db['resource_nodes']:
-            resc_center = [resource.location[0] + resource.hitbox['x_len'] / 2, resource.location[0] + resource.hitbox['y_len'] / 2]
+            resc_center = [resource.location[0] + (resource.hitbox['x_len'] / 2), resource.location[1] + (resource.hitbox['y_len'] / 2)]
             if self._distance_from(resc_center, hero_center) <= resource.hitbox['x_len']:
                 if resource.be_consumed():
                     self.inventory[resource.type] += 1
@@ -276,3 +277,5 @@ if __name__ == '__main__':
     print(h1.location)
 
     print(h1.export())
+
+    print(h1._distance_from([1, 0], [1, 1]))
