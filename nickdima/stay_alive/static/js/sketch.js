@@ -84,9 +84,9 @@ function draw(){
 	if(hero_data){
 		fill(255, 255, 255);
 		for(let i = 0; i < resource_nodes_data.length; i++){
-			
-			let rel_x = player_actual_x - resource_nodes_data[i]['location']['location'][0];
-			let rel_y = player_actual_y - resource_nodes_data[i]['location']['location'][1];
+
+			let rel_x = player_actual_x - resource_nodes_data[i]['location'][0];
+			let rel_y = player_actual_y - resource_nodes_data[i]['location'][1];
 
 			ellipse(layer_pos_x - rel_x, player_pos_y - rel_y,
 				resource_nodes_data[i]['hitbox']['x_len'], resource_nodes_data[i]['hitbox']['y_len'])
