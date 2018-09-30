@@ -2,6 +2,7 @@
 'resource_nodes' : 
 [ {'type': 'wood', 'amount': 5, 'location': (x, y), ''}]
 '''
+import random
 
 class ResourceNode(object):
 
