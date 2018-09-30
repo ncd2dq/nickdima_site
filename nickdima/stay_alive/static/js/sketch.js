@@ -117,13 +117,13 @@ function update_inventory(){
 	}
 
 	let water_elm = document.getElementById('water');
-	water_elm.innerHTML = 'Water: ' + cur_hero['water'];
+	water_elm.innerHTML = 'Water: ' + cur_hero['inventory']['water'];
 	let wood_elm = document.getElementById('wood');
-	water_elm.innerHTML = 'Wood: ' + cur_hero['wood'];
+	wood_elm.innerHTML = 'Wood: ' + cur_hero['inventory']['wood'];
 	let brick_elm = document.getElementById('brick');
-	brick_elm.innerHTML = 'Brick: ' + cur_hero['brick'];
+	brick_elm.innerHTML = 'Brick: ' + cur_hero['inventory']['brick'];
 	let iron_elm = document.getElementById('iron');
-	iron_elm.innerHTML = 'Iron: ' + cur_hero['iron'];
+	iron_elm.innerHTML = 'Iron: ' + cur_hero['inventory']['iron'];
 
 	/*
 	let ammo_elm = document.getElementById('ammo');
