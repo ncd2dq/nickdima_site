@@ -31,9 +31,6 @@ class Hero(object):
 
         self.move_speed = 8
 
-'inventory' : {'water' : 10, 'wood' : 5, 'brick': 5, 'steal' : 5, 'tool' : 'wood', 'gun' : 'steal', 
-                'ammo' : 10},
-
     def _create_inventory(self):
         '''Water is your main survival resource'''
         initial_inventory = {'water' : 25, 'wood' : 0, 'brick' : 0, 'steal' : 0, 'tool': None, 'gun' : None, 'ammo' : None}
