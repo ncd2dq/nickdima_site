@@ -82,8 +82,19 @@ function draw(){
 	}
 
 	if(hero_data){
-		fill(255, 255, 255);
+		
 		for(let i = 0; i < resource_nodes_data.length; i++){
+
+    color_dict = {'water' : 'blue', 'wood' : 'brown', 'brick': 'red', 'steal' : 'grey'}
+			if(resource_nodes_data[i]['type'] == 'water'){
+				fill(0, 0, 255);
+			} else if (resource_nodes_data[i]['type'] == 'wood'){
+				fill(165, 42, 42);
+			} else if (resource_nodes_data[i]['type'] == 'brick'){
+				fill(255, 0, 0);
+			} else if (resource_nodes_data[i]['type'] == 'steal'){
+				fill(20, 20,20);
+			}
 
 			let rel_x = player_actual_x - resource_nodes_data[i]['location'][0];
 			let rel_y = player_actual_y - resource_nodes_data[i]['location'][1];
