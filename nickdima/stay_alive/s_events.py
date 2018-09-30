@@ -38,6 +38,21 @@ def handle_connect():
     socker.emit('your_hero_id', {'your_hero_id':attempt_id}, namespace='/stay_alive')
     db['total_players'] += 1
 
+@socker.on('action_req', namespace='/stay_alive')
+def handle_action_req(data):
+    '''Handles the action key request from a hero'''
+    db = get_db()
+    cur_hero = None
+
+    # Retrieve the hero that made the request
+    for hero in db['heros']:
+        if hero.id == data['id']:
+            cur_hero = hero
+            break
+
+    cur_hero.action_key()
+
+
 @socker.on('move_req', namespace='/stay_alive')
 def handle_mov_req(data):
     db = get_db()

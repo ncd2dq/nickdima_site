@@ -39,6 +39,11 @@ your_sock.on('your_hero_id', function(data){
 	}
 });
 
+function action_key(){
+	let packet = {'id': my_hero_id};
+	your_sock.emit('action_req', packet);
+}
+
 function move(type, dir){
 	let packet = {'id': my_hero_id, 'dir': false};
 	if(type == 'pressed'){

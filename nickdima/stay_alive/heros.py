@@ -31,9 +31,12 @@ class Hero(object):
 
         self.move_speed = 8
 
+'inventory' : {'water' : 10, 'wood' : 5, 'brick': 5, 'steal' : 5, 'tool' : 'wood', 'gun' : 'steal', 
+                'ammo' : 10},
+
     def _create_inventory(self):
         '''Water is your main survival resource'''
-        initial_inventory = {'water' : 25}
+        initial_inventory = {'water' : 25, 'wood' : 0, 'brick' : 0, 'steal' : 0, 'tool': None, 'gun' : None, 'ammo' : None}
         return initial_inventory
 
     def _create_location(self, map):
@@ -218,6 +221,27 @@ class Hero(object):
             self.move(self.dir[0], get_db)
         if self.dir[3] == True:
             self.move(self.dir[2], get_db)
+
+    def _distance_from(self, center1, center2):
+
+        dist = ((center2[0] - center1[0]) ** 2 + (center2[1] - center1[1]) ** 2) ** (0.5)
+
+        return dist
+
+    def action_key(self):
+        # First up, attempt to collect resources
+        db = get_db()
+
+        hero_center = [self.location[0] + self.hitbox['x_len'] / 2, self.location[0] + self.hitbox['y_len'] / 2]
+
+        # collect a resource by having your center be close enough to the center of the circular resource node
+        for resource in db['resource_nodes']:
+            resc_center = [resource.location[0] + resource.hitbox['x_len'] / 2, resource.location[0] + resource.hitbox['y_len'] / 2]
+            if self._distance_from(resc_center, hero_center) <= resource.hitbox['x_len'] and resource.be_consumed():
+                self.inventory[resource.type] += 1
+
+
+
 
     def export(self, data='all'):
         '''Turn all your attributes into a dictionary to be sent to the client'''

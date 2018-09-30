@@ -85,7 +85,6 @@ function draw(){
 		
 		for(let i = 0; i < resource_nodes_data.length; i++){
 
-    color_dict = {'water' : 'blue', 'wood' : 'brown', 'brick': 'red', 'steal' : 'grey'}
 			if(resource_nodes_data[i]['type'] == 'water'){
 				fill(0, 0, 255);
 			} else if (resource_nodes_data[i]['type'] == 'wood'){
@@ -100,7 +99,7 @@ function draw(){
 			let rel_y = player_actual_y - resource_nodes_data[i]['location'][1];
 
 			ellipse(player_pos_x - rel_x, player_pos_y - rel_y,
-				resource_nodes_data[i]['hitbox']['x_len'], resource_nodes_data[i]['hitbox']['y_len'])
+				resource_nodes_data[i]['hitbox']['x_len'], resource_nodes_data[i]['hitbox']['y_len']);
 		}
 	}
 }
@@ -120,6 +119,9 @@ function keyPressed(){
         move('pressed', 'up');
     } else if (keyCode == 13){
 
+    } else if (keyCode == 82){
+    	//R key "action key"
+    	action_key();
     }
 }
 
