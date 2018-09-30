@@ -77,7 +77,7 @@ def game_loop():
     # 10% chance of a new resource node as long as there are less than 15 on the map
     if random.random() < 0.1 and len(db['resource_nodes']) < 15:
         db['resource_nodes'].append(
-            ResourceNode(ResourceNode.color_dict[random.choice(ResourceNode.color_dict.keys())], db['map'])
+            ResourceNode(ResourceNode.color_dict[ random.choice(list(ResourceNode.color_dict.keys())) ], db['map'])
             )
 
 
