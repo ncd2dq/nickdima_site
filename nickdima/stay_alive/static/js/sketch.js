@@ -122,8 +122,8 @@ function update_inventory(){
 	wood_elm.innerHTML = 'Wood: ' + cur_hero['inventory']['wood'];
 	let brick_elm = document.getElementById('brick');
 	brick_elm.innerHTML = 'Brick: ' + cur_hero['inventory']['brick'];
-	let iron_elm = document.getElementById('iron');
-	iron_elm.innerHTML = 'Iron: ' + cur_hero['inventory']['iron'];
+	let iron_elm = document.getElementById('steal');
+	iron_elm.innerHTML = 'Steal: ' + cur_hero['inventory']['steal'];
 
 	/*
 	let ammo_elm = document.getElementById('ammo');
