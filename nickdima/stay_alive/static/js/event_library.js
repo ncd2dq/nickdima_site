@@ -3,7 +3,7 @@ let hero_data = false;
 let my_hero_id = false;
 let daylight_data = false;
 let resource_nodes_data = false;
-
+let structure_data = false;
 //On connect give the server your player_id that will be used to keep track of paddle location
 
 your_sock = io.connect('http://' + document.domain + ':' + location.port + '/stay_alive');
@@ -28,6 +28,10 @@ your_sock.on('resource_nodes_data', function(data){
 	resource_nodes_data = data['resource_nodes_data'];
 });
 
+your_sock.on('structure_data', function(data){
+	structure_data = data['structure_data'];
+});
+
 //Server sends us a unique id so we know which hero we can change
 your_sock.on('your_hero_id', function(data){
 	if(my_hero_id == false){
@@ -38,6 +42,9 @@ your_sock.on('your_hero_id', function(data){
 		console.log('new player joined');
 	}
 });
+
+//TODO: ADD A FUNCTION THAT CAN HANDLE BUILDING A WALL
+//remove required resources (if you have them) and tell the database to call the heros build wall function
 
 function action_key(){
 	let packet = {'id': my_hero_id};

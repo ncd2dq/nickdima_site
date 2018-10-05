@@ -26,7 +26,7 @@
 'dir' : ['up/down': True/False, 'left/right': True/False] # THIS IS NOT EXPORTED
 
 'structures' : 
-[{'type' : 'wall/door/turret', 'location' : (x, y), 'hp' : 50, 'state' : 'open/closed'}],
+[{'type' : 'wall/door/turret', 'location' : (x, y), 'hp' : 50, 'state' : 'open/closed', 'rotation' : '0/90'}],
 
 'daylight' :
 {'current' : 10, 'maxi' : 2800, 'water_cost' : 5, 'ticks' : 7},

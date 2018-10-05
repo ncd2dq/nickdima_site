@@ -14,6 +14,7 @@ import random
 import copy
 import math
 from stay_alive.stay_alive_db import get_db
+from stay_alive.structures import Wall
 
 class Hero(object):
     def __init__(self, id, map):
@@ -196,6 +197,17 @@ class Hero(object):
         # No collisions detected
         return False
 
+    def create_wall(self, rotation, offset=2):
+        '''Method used to create one wall 5 pixels to the right or 5 pixels below'''
+        db = get_db()
+        if rotation == 0:
+            new_wall = Wall([self.location[0], self.location[1] + self.hitbox['y_len'] + offset], rotation)
+            db['structures'].append(new_wall)
+            # Position the wall below the hero
+        elif rotation == 90:
+            # Position the wall to the right of hero
+            new_wall = Wall([self.location[0] + self.hitbox['x_len'] + offset, self.location[1]], rotation)
+            db['structures'].append(new_wall)
 
     def move(self, dir, get_structs, coll_type='structures'):
         if dir == 'up':

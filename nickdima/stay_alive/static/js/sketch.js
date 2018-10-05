@@ -103,6 +103,8 @@ function draw(){
 		}
 	}
 
+	//TODO: DRAW WALLS LOOP
+
 	if(hero_data){
 		update_inventory();
 	}
@@ -153,6 +155,8 @@ function keyPressed(){
     } else if (keyCode == 82){
     	//R key "action key"
     	action_key();
+    	//TODO: IF YOU PRESS R WHILE A TOOL IS EQUIPPED, THEN CALL THE BUILD FUNCTION FOR 
+    	//WHATEVER IS CURRENTLY BEING BUILT
     }
 }
 

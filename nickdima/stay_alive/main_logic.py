@@ -97,6 +97,10 @@ def game_loop():
     for resource_node in db['resource_nodes']:
         resource_nodes_data.append(resource_node.export())
 
+    structures_data = []
+    for structure in db['structures']:
+        structures_data.append(structure.export())
+
     #
     # Replication layer ---------------------------------------
     #
@@ -105,7 +109,7 @@ def game_loop():
     socker.emit('hero_data', {'hero_data': heros_data}, namespace='/stay_alive')
     socker.emit('daylight_data', {'daylight_data': daylight_data}, namespace='/stay_alive')
     socker.emit('resource_nodes_data', {'resource_nodes_data': resource_nodes_data}, namespace='/stay_alive')
-
+    socker.emit('structure_data', {'structure_data': structures_data}, namespace='/stay_alive')
 
 def run_survivor():
     db = get_db()
