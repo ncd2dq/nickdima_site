@@ -237,7 +237,7 @@ class Hero(object):
             resc_center = [resource.location[0] + (resource.hitbox['x_len'] / 2), resource.location[1] + (resource.hitbox['y_len'] / 2)]
             if self._distance_from(resc_center, hero_center) <= resource.hitbox['x_len']:
                 if resource.be_consumed():
-                    self.inventory[resource.type] += 1
+                    self.inventory[resource.type] += 3
 
 
 
