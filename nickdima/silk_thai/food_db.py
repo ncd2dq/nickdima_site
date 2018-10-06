@@ -47,7 +47,7 @@ db = {
         'Base' : 'Green Curry',
         'Base Price' : 12.95,
         'Description' : 'A creamy, green curry',
-        'Img_URL' : '',
+        'Img_URL' : 'assets/images/drunken-noodle-510x383.jpg',
         'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
         'Category' : 'Curries',
         'Comes_With' : [],
