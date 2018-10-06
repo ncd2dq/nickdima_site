@@ -139,16 +139,13 @@
                           <p>Description: {{ selected_item['Description'] }}</p>
                       </div>
                       <div class="item-role px-2">
-                          <p class="mbr-fonts-style display-5">
+                          <p class="mbr-text mbr-fonts-style display-7">
                           {% for ingredient in selected_item['Ingredients'] %}
                             {{ ingredient }}
-                            {% if not loop.last %}, {% endif %}
+                            {% if not loop.last %},{% endif %}
                           {% endfor %}
                           </p>
                       </div>
-                        <p class="mbr-text mbr-fonts-style display-7">
-                            LONG ASS DESCRIPTION TO SEE WHAT WOUL DHAPPEN IF TLASD;JLA A;LKKJA;L AASLK;J DAJ , D, D,D D,,D,D, D, D, D, D, THIS IS THE LONG WORD, D
-                        </p>
                     </div>
                     <div class="mbr-section-btn text-center">
                         <a href="/test_pong/test_pong_game" class="btn btn-primary display-4">
