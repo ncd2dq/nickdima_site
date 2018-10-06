@@ -10,8 +10,9 @@ Attributes:
 'Ingredients' : [Every, Single, Ingredient, To, Be, Used, For, Allergies, And, Exclude, Feature]
 'Category' : Curry/Main Dish/Rice-Noodle
 'Comes_With' : [Rice, Peanut Sauce]
-'Toppings' : []
-'Can_Remove' : []
+'Toppings' : [],
+'Change_Spice' : True if you can change it
+'Lunch_Version' : True if can be ordered for lunch
 '''
 
 '''
@@ -25,8 +26,8 @@ Copy Paste Template ---
     'Category' : '',
     'Comes_With' : [],
     'Toppings' : [],
-    'Can_Remove' : []
-},
+    'Change_Spice' : True,
+    'Lunch_Version' : True
 '''
 
 
@@ -40,19 +41,21 @@ db = {
         'Category' : 'Rice and Noodles',
         'Comes_With' : [],
         'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Can_Remove' : ['Tomatoes', 'Onion']
+        'Change_Spice' : True,
+        'Lunch_Version' : True
     },
 
     'Green_Curry': {
         'Base' : 'Green Curry',
         'Base Price' : 12.95,
         'Description' : 'A creamy, green curry',
-        'Img_URL' : '',
+        'Img_URL' : 'assets/images/yellow-curry2-680x965.jpg',
         'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
         'Category' : 'Curries',
         'Comes_With' : [],
         'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Can_Remove' : ['Red Bell Pepper', 'Green Bell Pepper']
+        'Change_Spice' : False,
+        'Lunch_Version' : False
     },
 }
 
