@@ -144,7 +144,37 @@
                 </div>
             </div>
         </div>
+      </div>
+    </div>
 
+<div class="container-fluid">
+    <div class="media-container-row">
+        <!--NEED ONE OF THESE FOR EVERY GAME-->
+        <div class="card p-3 col-12 col-md-6 col-lg-2">
+            <div class="card-wrapper">
+                <div class="card-img">
+                    <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="">
+                </div>
+                <div class="item-name px-2">
+                    <p class="mbr-fonts-style display-5">
+                       {{selected_item['Base']}}
+                   </p>
+                </div>
+                <div class="card-box">
+                    <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                        <a href="/lunchbreak/snake">This is the title</a>
+                    </h4>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        This is the description
+                    </p>
+                    <p class="mbr-text mbr-fonts-style display-7">
+                        Onions, Noodles, Spice, Pepper, Flask, Hit, Box, Weights, Long, List, What Happens, Hi, Hello
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
 
 </section>
 <!--END GRAY SECTION-->
