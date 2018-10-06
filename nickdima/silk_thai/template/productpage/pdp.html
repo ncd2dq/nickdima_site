@@ -76,8 +76,8 @@
     transition: transform 0.25s ease;
   }
   img:hover{
-    -webkit-transform:scale(2);
-    transform:scale(2);
+    -webkit-transform:scale(1.5);
+    transform:scale(1.5);
   }
   </style>
 
@@ -101,22 +101,22 @@
                         </div>
                         <div class="card-box">
                           <div class="item-name px-2">
-                              <p class="mbr-fonts-style display-3">
+                              <p class="mbr-fonts-style display-5">
                                  {{selected_item['Base']}}
                              </p>
                           </div>
                           <div class="item-role px-2">
-                              <p class="mbr-fonts-style display-5">Description: {{ selected_item['Description'] }}</p>
+                              <p class="mbr-fonts-style display-6">Description: {{ selected_item['Description'] }}</p>
                           </div>
                           <div class="item-role px-2">
-                              <p class="mbr-text mbr-fonts-style display-5">
+                              <p class="mbr-text mbr-fonts-style display-6">
                               {% for ingredient in selected_item['Ingredients'] %}
                                 {{ingredient}}{% if not loop.last %},{% endif %}
                               {% endfor %}
                               </p>
                           </div>
                           <div class="item-role px-2">
-                              <p class="mbr-fonts-style display-5">Price: {{ selected_item['Base Price'] }}</p>
+                              <p class="mbr-fonts-style display-6">Price: {{ selected_item['Base Price'] }}</p>
                           </div>
                         </div>
                         <div class="mbr-section-btn text-center">
