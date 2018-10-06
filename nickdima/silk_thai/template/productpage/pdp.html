@@ -70,8 +70,8 @@
 
 
 <!--GRAY SECTION ON TOP OF PAGE-->
-
-<style>
+<section class="features16 cid-r0R1Wm1xUa" id="features16-i">
+  <style>
   img {
     transition: transform 0.25s ease;
   }
@@ -79,47 +79,63 @@
     -webkit-transform:scale(2);
     transform:scale(2);
   }
-</style>
+  </style>
 
-<div class="container align-center">
-        <div class="media-container-row">
-            <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME pong-->
-            <div class="card p-3 col-12 col-md-6">
-                <div class="card-wrapper">
-                    <div class="card-img">
-                        <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
-                    </div>
-                    <div class="card-box">
-                      <div class="item-name px-2">
-                          <p class="mbr-fonts-style display-5">
-                             {{selected_item['Base']}}
-                         </p>
-                      </div>
-                      <div class="item-role px-2">
-                          <p>Description: {{ selected_item['Description'] }}</p>
-                      </div>
-                      <div class="item-role px-2">
-                          <p class="mbr-text mbr-fonts-style display-7">
-                          {% for ingredient in selected_item['Ingredients'] %}
-                            {{ingredient}}{% if not loop.last %},{% endif %}
-                          {% endfor %}
-                          </p>
-                      </div>
-                      <div class="item-role px-2">
-                          <p>Price: {{ selected_item['Base Price'] }}</p>
-                      </div>
-                    </div>
-                    <div class="mbr-section-btn text-center">
-                        <a href="/test_pong/test_pong_game" class="btn btn-primary display-4">
-                            Play
-                        </a>
+    <div class="container align-center">
+        <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+            Customization Page
+        </h2>
+        <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
+        	Edit your selection below!
+        </h3>
+
+        <div class="row media-row">
+          
+              <div class="container align-center">
+            <div class="media-container-row">
+                <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME pong-->
+                <div class="card p-3 col-12 col-md-6">
+                    <div class="card-wrapper">
+                        <div class="card-img">
+                            <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
+                        </div>
+                        <div class="card-box">
+                          <div class="item-name px-2">
+                              <p class="mbr-fonts-style display-5">
+                                 {{selected_item['Base']}}
+                             </p>
+                          </div>
+                          <div class="item-role px-2">
+                              <p>Description: {{ selected_item['Description'] }}</p>
+                          </div>
+                          <div class="item-role px-2">
+                              <p class="mbr-text mbr-fonts-style display-7">
+                              {% for ingredient in selected_item['Ingredients'] %}
+                                {{ingredient}}{% if not loop.last %},{% endif %}
+                              {% endfor %}
+                              </p>
+                          </div>
+                          <div class="item-role px-2">
+                              <p>Price: {{ selected_item['Base Price'] }}</p>
+                          </div>
+                        </div>
+                        <div class="mbr-section-btn text-center">
+                            <a href="/test_pong/test_pong_game" class="btn btn-primary display-4">
+                                Play
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+    </div>
+
+
+    	</div>
 </div>
-</section>
+
+
+
 
 <!--END GRAY SECTION-->
 
