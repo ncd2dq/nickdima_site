@@ -83,15 +83,15 @@
         <div class="row media-row">
           <div class="team-item col-lg-3 col-md-6">
                   <div class="item-image">
-                  	<script>
-                  		if (screen.width >= 850){
-                  			console.log('correct');
-                  			let styleNode = document.createElement('style');
-                  			styleNode.type = 'text/css';
-
-                  			styleNode.styleSheet.cssText = 'img{transition: transform 0.25s ease;} img:hover{-webkit-transform:scale(1.5); transform:scale(1.5);}';
+                  	<style>
+                  		img {
+                  			transition: transform 0.25s ease;
                   		}
-                  	</script>
+                  		img:hover{
+						    -webkit-transform:scale(2);
+						    transform:scale(2);
+                  		}
+                  </style>
                       <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="" title="">
                   </div>
 
