@@ -85,10 +85,11 @@
                   <div class="item-image">
                   	<script>
                   		if (screen.width >= 850){
+                  			console.log('correct');
                   			let styleNode = document.createElement('style');
-                  			styleNode.type = 'text/css'
+                  			styleNode.type = 'text/css';
 
-                  			styleNode.styleSheet.cssText = 'img{transition: transform 0.25s ease;} img:hover{-webkit-transform:scale(1.5); transform:scale(1.5);}'
+                  			styleNode.styleSheet.cssText = 'img{transition: transform 0.25s ease;} img:hover{-webkit-transform:scale(1.5); transform:scale(1.5);}';
                   		}
                   	</script>
                       <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="" title="">
