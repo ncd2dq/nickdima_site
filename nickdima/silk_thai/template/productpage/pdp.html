@@ -84,9 +84,12 @@
           <div class="team-item col-lg-3 col-md-6">
                   <div class="item-image">
                   	<style>
+                  		img {
+                  			transition: transform 0.25s ease;
+                  		}
                   		img:hover{
-                  			width: 800px;
-                  			height: 800px;
+						    -webkit-transform:scale(1.5);
+						    transform:scale(1.5);
                   		}
                   </style>
                       <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="" title="">
