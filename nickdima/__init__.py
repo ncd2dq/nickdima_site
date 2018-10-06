@@ -103,6 +103,9 @@ def create_app(test_config=None):
 
     import silk_thai.menu
     app.register_blueprint(silk_thai.menu.bp)
+
+    import silk_thai.pdp
+    app.register_blueprint(silk_thai.pdp.bp)
     #
     #End thai restaurunt stuff
     #

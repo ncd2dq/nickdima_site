@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.1, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="{{ url_for('menu.static', filename='assets/images/logo2.png') }}" type="image/x-icon">
+  <meta name="description" content="A menu of the food at Thai Charlottesville">
+  <title>Menu</title>
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/web/assets/mobirise-icons/mobirise-icons.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/tether/tether.min.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/bootstrap/css/bootstrap.min.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/bootstrap/css/bootstrap-grid.min.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/bootstrap/css/bootstrap-reboot.min.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/dropdown/css/style.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/theme/css/style.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/gallery/style.css' ) }}">
+  <link rel="stylesheet" href="{{ url_for('menu.static', filename='assets/mobirise/css/mbr-additional.css' ) }}" type="text/css">
+
+
+
+</head>
+
+<body>
+	<!--NAVIGATION BAR-->
+  <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-a">
+
+
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="{{ url_for('homepage.home') }}">
+                         <img src="{{ url_for('menu.static', filename='assets/images/logo2.png') }}" alt="Mobirise" style="height: 3.8rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="{{ url_for('homepage.home') }}">Thai Charlottesville</a></span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true"><li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{{ url_for('menu.menu') }}">
+                        <span class="mbri-home mbr-iconfont mbr-iconfont-btn">&nbsp;Menu</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{{ url_for('homepage.about') }}">
+                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
+                        About Us
+                    </a>
+                </li></ul>
+            <div class="navbar-buttons mbr-section-btn"><a class="btn btn-sm btn-primary display-4" href="{{ url_for('checkout.summary') }}"><span class="mbri-cart-full mbr-iconfont mbr-iconfont-btn"></span>&nbsp;Order</a></div>
+        </div>
+    </nav>
+</section>
+<!--END NAVIGATION BAR-->
+
+<!--Variable on this page is a dictionary "selected_item"-->
+
+<!--GRAY SECTION ON TOP OF PAGE-->
+<section class="engine"><a href="https://mobiri.se/o">portfolio web templates</a></section><section class="features16 cid-r0R1Wm1xUa" id="features16-i">
+
+
+
+    <div class="container align-center">
+        <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+            {{selected_item['base']}}
+        </h2>
+        <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
+        	Edit your selection below!
+        </h3>
+
+        <div class="row media-row">
+          <div class="team-item col-lg-3 col-md-6">
+                  <div class="item-image">
+                      <img src="{{ url_for('food.static', filename=selected_item['base']) }}" alt="" title="">
+                  </div>
+
+                  <div class="item-caption py-3">
+                      <div class="item-name px-2">
+                          <p class="mbr-fonts-style display-5">
+                             STAND IN VALUE</p>
+                      </div>
+                      <div class="item-role px-2">
+                          <p>Price: {{ selected_item['Base Price'] }}</p>
+                      </div>
+
+                  </div>
+          </div>
+    	</div>
+</div>
+</section>
+<!--END GRAY SECTION-->
+
+
+<!--White section on bottom of page with buttons-->
+<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
+
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                    Order Details</h2>
+                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                    Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
+            </div>
+        </div>
+
+        <div class="row py-2 justify-content-center">
+            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
+                <div data-form-alert="" hidden="">the order page was submitted</div>
+                <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
+                    <div class="mbr-subscribe input-group">
+                        <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
+                        <input type="hidden" name="item1" value="thai currey">
+                        <input type="hidden" name="item2" value="thai tea">
+                        <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Submit Order</button></span>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End button section on the bottom-->
+
+
+  <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+  <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+
+
+</body>
+
+</html>
