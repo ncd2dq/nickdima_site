@@ -93,7 +93,7 @@
             <div class="carousel-item active"><img src="{{ url_for('menu.static', filename='assets/images/pad-see-ew-610x458.jpg') }}" alt="" title=""></div>
 
             <!--test clicking image in carousel-->
-            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title=""></div>
+            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Drunken_Noodle') }}")'></div>
           </div>
 
 
