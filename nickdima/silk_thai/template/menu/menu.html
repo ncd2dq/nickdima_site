@@ -71,6 +71,11 @@
                   </ol>
 
           <!--This is the enlarged image that appears-->
+          <script>
+            function goToFoodUrl(item_name){
+              window.location.href = "{{ url_for('food.food_pdp', item='"+ item_name + "') }}">
+            }
+          </script>
           <div class="carousel-inner">
 
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title=""></div>
@@ -80,7 +85,7 @@
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483.jpg') }}" alt="" title=""></div>
 
             <!--Greeen Curry test clicking-->
-            <div class="carousel-item"><a href=" {{ url_for('food.food_pdp', item='Green_Curry') }}"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title=""></a></div>
+            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title="" onclick="goToFoodUrl('Green_Curry')"></div>
             
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai2-2000x2000.jpg') }}" alt="" title=""></div>
             
@@ -89,7 +94,7 @@
             <div class="carousel-item active"><img src="{{ url_for('menu.static', filename='assets/images/pad-see-ew-610x458.jpg') }}" alt="" title=""></div>
 
             <!--test clicking image in carousel-->
-            <div class="carousel-item"><a href=" {{ url_for('food.food_pdp', item='Drunken_Noodles') }}"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title=""></a></div>
+            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title=""></div>
           </div>
 
 
