@@ -4,9 +4,14 @@ bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='st
 
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
-    items = session['cart']
     if request.method == 'POST':
         return redirect(url_for('checkout.confirmation'))
+
+    try:
+        items = session['cart']
+    except KeyError:
+        items = ['In Cart', 'No Items']
+        return render_template('checkout/order_summary.html', items=items)
 
     return render_template('checkout/order_summary.html', items=items)
 
