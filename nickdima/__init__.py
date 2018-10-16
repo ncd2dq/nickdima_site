@@ -85,7 +85,7 @@ def create_app(test_config=None):
     import home.home
     app.register_blueprint(home.home.bp)
 
-    @app.route('/')
+    #@app.route('/')
     def home():
         return redirect(url_for('home.home_index'))
 
