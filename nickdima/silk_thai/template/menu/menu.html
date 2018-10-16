@@ -54,10 +54,11 @@
 
             <div class="clearfix"></div></div></div>
 
-            <!-- Lightbox (Image enlargement) -->
+            <!-- Lightbox (Image enlargement, left/right/x/little circles modal) -->
             <div data-app-prevent-settings="" class="mbr-slider modal fade carousel slide" tabindex="-1" data-keyboard="true" data-interval="false" id="lb-gallery2-d">
               <div class="modal-dialog">
                 <div class="modal-content"><div class="modal-body">
+                  <!--These are the little dots at the bottom of the large box-->
                   <ol class="carousel-indicators">
                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="0"></li>
                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="1"></li>
@@ -66,10 +67,10 @@
                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="4"></li>
                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="5"></li>
                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" class=" active" data-slide-to="6"></li>
-                    <!--test, last one is drunken noodle-->
-                    <a href=" {{ url_for('food.food_pdp', item='Drunken_Noodles') }}"><li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="7"></li></a>
+                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="7"></li>
                   </ol>
 
+          <!--This is the enlarged image that appears-->
           <div class="carousel-inner">
 
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title=""></div>
@@ -86,7 +87,8 @@
             
             <div class="carousel-item active"><img src="{{ url_for('menu.static', filename='assets/images/pad-see-ew-610x458.jpg') }}" alt="" title=""></div>
 
-            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title=""></div>
+            <!--test clicking image in carousel-->
+            <a href=" {{ url_for('food.food_pdp', item='Drunken_Noodles') }}"><div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title=""></div></a>
           </div>
 
 
