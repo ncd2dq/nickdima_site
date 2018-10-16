@@ -32,7 +32,7 @@ Copy Paste Template ---
 
 
 db = {
-    'Drunken_Noodles': {
+    'Drunken_noodles': {
         'Base' : 'Drunken Noodles',
         'Base Price' : 10.95,
         'Description' : 'Thick Noodle Goodness',
@@ -45,13 +45,91 @@ db = {
         'Lunch_Version' : True
     },
 
-    'Green_Curry': {
+    'Green_curry': {
         'Base' : 'Green Curry',
         'Base Price' : 12.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/yellow-curry2-680x965.jpg',
         'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
         'Category' : 'Curries',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Pad_thai_1': {
+        'Base' : 'Pad Thai 1',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/pad-thai1-940x528-800x449.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Noodles',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Pad_thai_2': {
+        'Base' : 'Pad Thai 2',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/pad-thai2-2000x2000-800x800.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Noodles',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Calamari': {
+        'Base' : 'Calamari',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari2-896x504-800x450.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Silk_calamari': {
+        'Base' : 'Silk Calamari',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Yellow_curry': {
+        'Base' : 'Yellow Curry',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'yellow-curry1-725x483-725x483.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Curries',
+        'Comes_With' : [],
+        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Change_Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Pad_se_ew': {
+        'Base' : 'Pad Se Ew',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Category' : 'Noodles',
         'Comes_With' : [],
         'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
         'Change_Spice' : False,
