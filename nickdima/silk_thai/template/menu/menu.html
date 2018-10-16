@@ -84,7 +84,7 @@
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483.jpg') }}" alt="" title=""></div>
 
             <!--Greeen Curry test clicking-->
-            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title="" onclick="goToFoodUrl({{ url_for('food.food_pdp', item='Green_Curry') }})"></div>
+            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title="" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Green_Curry') }}")'></div>
             
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai2-2000x2000.jpg') }}" alt="" title=""></div>
             
