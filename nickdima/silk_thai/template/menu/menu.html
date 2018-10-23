@@ -89,11 +89,12 @@
             }
           </script>
           <div class="carousel-inner">
+            <!--Item=() is the vairable in the url-->
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_thai_1') }}")'></div>
 
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Calamari') }}")'></div>
 
-            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Yellow_curry') }}")'></div>
+            <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Chicken_yellow_curry') }}")'></div>
 
             <!--Greeen Curry test clicking-->
             <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Green_curry') }}")'></div>

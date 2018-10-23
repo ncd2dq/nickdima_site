@@ -1,7 +1,7 @@
 '''
 DB Entry:
 { 'base_food_name_found_in_urls' : {'ATTRIBUTES'} }
-
+#THE BASE URL MUST MATCH THE "ITEM=" in the URL_FOR on the menu page
 Attributes: 
 'Base' : Drunken Noodles
 'Base Price' : 10.95
@@ -10,9 +10,10 @@ Attributes:
 'Ingredients' : [Every, Single, Ingredient, To, Be, Used, For, Allergies, And, Exclude, Feature]
 'Category' : Curry/Main Dish/Rice-Noodle
 'Comes_With' : [Rice, Peanut Sauce]
-'Toppings' : [],
-'Change_Spice' : True if you can change it
-'Lunch_Version' : True if can be ordered for lunch
+'Toppings' : TUPLE OF TOPPING IN INDEX 0 AND ADDED PRICE IN INDEX 1,
+'Change_Spice' : RANGE IF POSSIBLE TO CHANGE SPACE, FALSE IF NOT
+'Lunch_Version' : {'Base Price' : ,
+                    'Toppings' : } or false if no lunch
 '''
 
 '''
@@ -30,6 +31,10 @@ Copy Paste Template ---
     'Lunch_Version' : True
 '''
 
+FULL_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2), ('Seafood', 3), ('Crispy Duck', 3)]
+CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
+FULL_LUNCH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2)]
+SPICE_RANGE = ['No Spice', 1, 2, 3, 4, 5]
 
 db = {
     'Drunken_noodles': {
@@ -37,105 +42,111 @@ db = {
         'Base Price' : 10.95,
         'Description' : 'Thick Noodle Goodness',
         'Img_URL' : 'assets/images/pad-thai2-2000x2000.jpg',
-        'Ingredients' : ['Thick Noodles', 'Tomatoes', 'Onion'],
-        'Category' : 'Rice and Noodles',
-        'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Change_Spice' : True,
-        'Lunch_Version' : True
+        'Ingredients' : ['Fresh cut wide rice noodles', 'chili', 'onions', 'tomatoes', 'basil'],
+        'Category' : 'Noodles & Fried Rice',
+        'Comes_With' : ['Rice'],
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 
     'Green_curry': {
         'Base' : 'Green Curry',
-        'Base Price' : 12.95,
+        'Base Price' : 11.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/yellow-curry2-680x965.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
         'Category' : 'Curries',
-        'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Change_Spice' : False,
-        'Lunch_Version' : False
+        'Comes_With' : ['Rice'],
+        'Toppings' : CURRY_DINNER_TOPPINGS,
+        'Change_Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 
     'Pad_thai_1': {
         'Base' : 'Pad Thai 1',
-        'Base Price' : 12.95,
+        'Base Price' : 10.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/pad-thai1-940x528-800x449.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
-        'Category' : 'Noodles',
+        'Ingredients' : ['Rice noodles', 'bean sprouts', 'scallions', 'egg', 'roasted peanuts'],
+        'Category' : 'Noodles & Fried Rice',
         'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Change_Spice' : False,
-        'Lunch_Version' : False
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Change_Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 
     'Pad_thai_2': {
         'Base' : 'Pad Thai 2',
-        'Base Price' : 12.95,
+        'Base Price' : 10.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/pad-thai2-2000x2000-800x800.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
-        'Category' : 'Noodles',
+        'Ingredients' : ['Rice noodles', 'bean sprouts', 'scallions', 'egg', 'roasted peanuts'],
+        'Category' : 'Noodles & Fried Rice',
         'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Change_Spice' : False,
-        'Lunch_Version' : False
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Change_Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 
     'Calamari': {
         'Base' : 'Calamari',
-        'Base Price' : 12.95,
+        'Base Price' : 6.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/calamari2-896x504-800x450.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Ingredients' : ['Sweet & sour', 'spicy mayo duo'],
         'Category' : 'Appetizer',
         'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Toppings' : False,
         'Change_Spice' : False,
         'Lunch_Version' : False
     },
 
     'Silk_calamari': {
         'Base' : 'Silk Calamari',
-        'Base Price' : 12.95,
+        'Base Price' : 7.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Ingredients' : ['Lightly breaded calamari', 'onions', 'scallions', 'chili', 'sweet & sour dip'],
         'Category' : 'Appetizer',
         'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Toppings' : False,
         'Change_Spice' : False,
         'Lunch_Version' : False
     },
 
-    'Yellow_curry': {
-        'Base' : 'Yellow Curry',
+    'Chicken_yellow_curry': {
+        'Base' : 'Chicken Yellow Curry',
         'Base Price' : 12.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/yellow-curry1-725x483-725x483.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
+        'Ingredients' : ['Chicken', 'potatoes', 'carrots', 'creamy coconut milk'],
         'Category' : 'Curries',
-        'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
+        'Comes_With' : ['Rice'],
+        'Toppings' : False,
         'Change_Spice' : False,
         'Lunch_Version' : False
     },
 
     'Pad_se_ew': {
-        'Base' : 'Pad Se Ew',
-        'Base Price' : 12.95,
-        'Description' : 'A creamy, green curry',
+        'Base' : 'Pad See Ew',
+        'Base Price' : 10.95,
+        'Description' : 'Thick Noodle Goodness',
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
-        'Ingredients' : ['Red Bell Pepper', 'Green Bell Pepper'],
-        'Category' : 'Noodles',
-        'Comes_With' : [],
-        'Toppings' : ['Pork', 'Beef', 'Shrimp', 'Crispy Duck'],
-        'Change_Spice' : False,
-        'Lunch_Version' : False
+        'Ingredients' : ['Fresh cut wide rice noodles', 'egg', 'dark soy', 'broccoli'],
+        'Category' : 'Noodles & Fried Rice',
+        'Comes_With' : False,
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 }
+
 
 def get_db():
     global db
