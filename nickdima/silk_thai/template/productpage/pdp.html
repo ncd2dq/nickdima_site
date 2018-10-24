@@ -86,12 +86,22 @@
                                 <br><br>
                                 {% endif %}
 
+                                {% if selected_item['Toppings'] != False %}
+                                <!--Itemname, Extra Price-->
+                                <!-- Display "Chicken +$2" if extra price"-->
                                 With <select name="topping" id="topping">
+                                  {% for topping in selected_item['Toppings'] %}
+                                  <option value="{{ topping[0] }}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %} </option>
+
+                                  {% endfor %}
+
+
                                   <option value='Chicken'>Chicken</option>
                                   <option value="Beef">Beef</option>
                                 </select>
-
                                 <br><br>
+                                {% endif %}
+
                                 Extra <select name="topping" id="topping">
                                   <option value='Chicken'>Chicken</option>
                                   <option value="Beef">Beef</option>
