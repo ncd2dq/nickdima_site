@@ -15,6 +15,8 @@ def food_pdp(item):
         extra_rice = request.form.get('extra_rice')
         notes = request.form.get('custom_modify')
 
+        print(spice, base, topping, extra, extra_rice, notes)
+
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
         if 'cart' not in session:
             session['cart'] = []
