@@ -87,13 +87,13 @@
                               let base_price = {{ selected_item['Base Price'] }};
                               let topping = parseExtraPrice(document.getElementById('topping').value);
                               let extra = parseExtraPrice(document.getElementById('extra').value);
-                              let extra_rice = parseExtraPrice(document.getElementById('extra_rice').value);
+                              let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
 
                               let cur_price = document.getElementById('the_price');
 
                               let additional = topping + extra + (extra_rice * 2);
                               console.log('add' + additional);
-                              cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional);
+                              cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.slice(2,4);
                             }
                           </script>
                           <!--End price updater-->
