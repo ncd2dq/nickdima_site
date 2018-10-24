@@ -105,7 +105,7 @@
                           <!--customization starts here-->
                           <div class="item-role px-2">
                               <form action="" method="POST" class="mbr-fonts-style display-6">
-
+                                <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
                                 {% if selected_item['Spice'] != False %}
                                 <!--Spice option-->
@@ -154,6 +154,8 @@
                                 {% endif %}
 
                                 <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
+
+                                <input type="submit" class="mbr-section-btn text-center" value="Add to cart">
                               </form>
                           </div>
 
