@@ -80,12 +80,12 @@
                                 Spice Level <select name="spice" id="spice">
 
                                   {% for spice_level in selected_item['Spice'] %}
-                                  <option value="{{ spice_level }}">{{ spice_level }}></option>
+                                  <option value="{{ spice_level }}">{{ spice_level }}</option>
                                   {% endfor %}
                                 </select>
+                                <br><br>
                                 {% endif %}
 
-                                <br><br>
                                 With <select name="topping" id="topping">
                                   <option value='Chicken'>Chicken</option>
                                   <option value="Beef">Beef</option>
