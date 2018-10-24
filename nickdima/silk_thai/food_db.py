@@ -11,6 +11,7 @@ Attributes:
 'Category' : Curry/Main Dish/Rice-Noodle
 'Comes_With' : [Rice, Peanut Sauce]
 'Toppings' : TUPLE OF TOPPING IN INDEX 0 AND ADDED PRICE IN INDEX 1,
+'Extra' : What you are allowed to add on to the dish
 'Spice' : RANGE IF POSSIBLE TO CHANGE SPACE, FALSE IF NOT
 'Lunch_Version' : {'Base Price' : ,
                     'Toppings' : } or false if no lunch
@@ -27,11 +28,13 @@ Copy Paste Template ---
     'Category' : '',
     'Comes_With' : [],
     'Toppings' : [],
+    'Extra' : [],
     'Spice' : True,
     'Lunch_Version' : True
 '''
 
 FULL_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2), ('Seafood', 3), ('Crispy Duck', 3)]
+EXTRA_DINNER_TOPPINGS = [('Chicken', 3), ('Pork', 3), ('Beef', 3), ('Veggie', 3), ('Rice', 2), ('Shrimp', 5), ('Seafood', 5), ('Crispy Duck', 4)]
 CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
 FULL_LUNCH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2)]
 SPICE_RANGE = ['Default', 0, 1, 2, 3, 4, 5] 
@@ -46,6 +49,7 @@ db = {
         'Category' : 'Noodles & Fried Rice',
         'Comes_With' : ['Rice'],
         'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
@@ -60,6 +64,7 @@ db = {
         'Category' : 'Curries',
         'Comes_With' : ['Rice'],
         'Toppings' : CURRY_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
@@ -74,6 +79,7 @@ db = {
         'Category' : 'Noodles & Fried Rice',
         'Comes_With' : [],
         'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
@@ -88,6 +94,7 @@ db = {
         'Category' : 'Noodles & Fried Rice',
         'Comes_With' : [],
         'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
@@ -102,6 +109,7 @@ db = {
         'Category' : 'Appetizer',
         'Comes_With' : [],
         'Toppings' : False,
+        'Extra' : False,
         'Spice' : False,
         'Lunch_Version' : False
     },
@@ -115,6 +123,7 @@ db = {
         'Category' : 'Appetizer',
         'Comes_With' : [],
         'Toppings' : False,
+        'Extra' : False,
         'Spice' : False,
         'Lunch_Version' : False
     },
@@ -128,6 +137,7 @@ db = {
         'Category' : 'Curries',
         'Comes_With' : ['Rice'],
         'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : False,
         'Lunch_Version' : False
     },
@@ -141,6 +151,7 @@ db = {
         'Category' : 'Noodles & Fried Rice',
         'Comes_With' : False,
         'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}

@@ -76,7 +76,9 @@
                           <div class="item-role px-2">
                               <form action="" method="POST" class="mbr-fonts-style display-6">
 
+
                                 {% if selected_item['Spice'] != False %}
+                                <!--Spice option-->
                                 Spice Level <select name="spice" id="spice">
 
                                   {% for spice_level in selected_item['Spice'] %}
@@ -87,27 +89,30 @@
                                 {% endif %}
 
                                 {% if selected_item['Toppings'] != False %}
+                                <!--Topping option-->
                                 <!--Itemname, Extra Price-->
                                 <!-- Display "Chicken +$2" if extra price"-->
                                 With <select name="topping" id="topping">
                                   {% for topping in selected_item['Toppings'] %}
-                                  <option value="{{ topping[0] }}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %} </option>
-
+                                  <option value="{{ topping[0] }}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
                                   {% endfor %}
-
-
-                                  <option value='Chicken'>Chicken</option>
-                                  <option value="Beef">Beef</option>
                                 </select>
                                 <br><br>
                                 {% endif %}
 
-                                Extra <select name="topping" id="topping">
-                                  <option value='Chicken'>Chicken</option>
-                                  <option value="Beef">Beef</option>
-                                </select>
 
+                                {% if selected_item['Extra'] != False %}
+                                <!--Topping option-->
+                                <!--Itemname, Extra Price-->
+                                <!-- Display "Chicken +$2" if extra price"-->
+                                Extra <select name="extra" id="extra">
+                                  {% for extra in selected_item['Extra'] %}
+                                  <option value="{{ extra[0] }}">{{ extra[0] }}{% if extra[1] != 0 %} +${{ extra[1] }}{% endif %}</option>
+                                  {% endfor %}
+                                </select>
                                 <br><br>
+                                {% endif %}
+                                
                                 <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
                               </form>
                           </div>
