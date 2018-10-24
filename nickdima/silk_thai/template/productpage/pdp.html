@@ -104,7 +104,7 @@
 
                           <!--customization starts here-->
                           <div class="item-role px-2">
-                              <form action="" method="POST" class="mbr-fonts-style display-6">
+                              <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
                                 <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
                                 {% if selected_item['Spice'] != False %}
@@ -154,16 +154,17 @@
                                 {% endif %}
 
                                 <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
-
-                                <input type="submit" class="mbr-section-btn text-center" value="Add to cart">
                               </form>
                           </div>
 
                         </div>
+                        <script>
+                          document.getElementById('food_entry').submit();
+                        </script>
                         <div class="mbr-section-btn text-center">
-                            <a href="/test_pong/test_pong_game" class="btn btn-primary display-4">
+                            <button class="btn btn-primary display-4" onclick="submit_food();">
                                 Add to cart
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
