@@ -90,7 +90,6 @@
                               //Parse the values for just the numeric value extra price
                               let topping = parseExtraPrice(document.getElementById('topping').value);
                               let extra = parseExtraPrice(document.getElementById('extra').value);
-                              //Since rice is an input type="number", it's value has no $, so manually add it here
                               let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
 
                               let cur_price = document.getElementById('the_price');
@@ -143,7 +142,14 @@
                                 </select>
                                 <br><br>
 
-                                And <input type="number" id="extra_rice" name="extra_rice" min="0" max="5" step="1" value="0" onchange="changePrice();"> Extra Rice ($2 each)
+                                And <select id="extra_rice" name="extra_rice" onchange="changePrice();">
+                                  <option value=0>0</option>
+                                  <option value=1>1</option>
+                                  <option value=2>2</option>
+                                  <option value=3>3</option>
+                                  <option value=4>4</option>
+                                  <option value=5>5</option>
+                                </select> Extra Rice ($2 each)
                                 <br><br>
                                 {% endif %}
 
