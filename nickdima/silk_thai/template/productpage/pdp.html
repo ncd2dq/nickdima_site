@@ -75,15 +75,15 @@
                           <!--customization starts here-->
                           <div class="item-role px-2">
                               <form action="" method="POST" class="mbr-fonts-style display-6">
+
+                                {% if selected_item['Spice'] != False %}
                                 Spice Level <select name="spice" id="spice">
-                                  <option value='Default'>Default</option>
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
+
+                                  {% for spice_level in selected_item['Spice'] %}
+                                  <option value="{{ spice_level }}">{{ spice_level }}></option>
+                                  {% endfor %}
                                 </select>
+                                {% endif %}
 
                                 <br><br>
                                 With <select name="topping" id="topping">
@@ -141,7 +141,7 @@
             <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
                 <div data-form-alert="" hidden="">the order page was submitted</div>
                 <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
-                    <!--<div class="mbr-subscribe input-group">-->
+                    <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
                         <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
                         <input type="hidden" name="item1" value="thai currey">
                         <input type="hidden" name="item2" value="thai tea">
