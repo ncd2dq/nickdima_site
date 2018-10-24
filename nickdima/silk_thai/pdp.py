@@ -3,7 +3,7 @@ from silk_thai.food_db import get_db
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
-@bp.route('/<string:item>', method=['GET', 'POST'])
+@bp.route('/<string:item>', methods=['GET', 'POST'])
 def food_pdp(item):
     db = get_db()
 
