@@ -3,7 +3,7 @@ from silk_thai.food_db import get_db
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
-@bp.route('/<string:item>')
+@bp.route('/<string:item>', method=['GET', 'POST'])
 def food_pdp(item):
     db = get_db()
 
@@ -21,6 +21,7 @@ def food_pdp(item):
             session['cart'].append(new_item)
         else:
             session['cart'].append(new_item)
+        return redirect(url_for('checkout.summary'))
 
     # Determine if the food item exists
     if db[item]:
@@ -30,19 +31,6 @@ def food_pdp(item):
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
     return render_template('productpage/pdp.html', selected_item=selected_item)
-
-
-    if request.method == 'POST':
-        items = []
-        keys = request.form.keys()
-
-        for key in keys:
-            if request.form[key] != '0':
-                items.append((key, request.form[key]))
-
-        session['cart'] = items
-
-        return redirect(url_for('checkout.summary'))
 
 #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
 
