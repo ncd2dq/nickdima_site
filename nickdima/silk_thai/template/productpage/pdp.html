@@ -75,6 +75,7 @@
                           <!--Price Updater Script-->
                           <script>
                             function parseExtraPrice(val){
+                              //Parse the value by first looking for the $
                               if(val.indexOf('$') != -1){
                                 let price = val.slice(val.indexOf('$') + 1, val.length);
                                 return parseInt(price, 10);
@@ -85,14 +86,18 @@
                             function changePrice(){
                               //Check IDs 'topping' 'extra' 'extra_rice'
                               let base_price = {{ selected_item['Base Price'] }};
+
+                              //Parse the values for just the numeric value extra price
                               let topping = parseExtraPrice(document.getElementById('topping').value);
                               let extra = parseExtraPrice(document.getElementById('extra').value);
+                              //Since rice is an input type="number", it's value has no $, so manually add it here
                               let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
 
                               let cur_price = document.getElementById('the_price');
 
                               let additional = topping + extra + (extra_rice * 2);
-                              console.log('add' + additional);
+
+                              //The cur_price updates to the new value, because the base_price is a float, we need to convert first
                               cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(2,base_price.toString().length);
                             }
                           </script>
