@@ -27,7 +27,8 @@ def food_pdp(item):
         topping = removePricing(topping)
         extra = removePricing(extra)
 
-        #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
+        # Final value should be:
+        # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
         
         #
@@ -70,6 +71,9 @@ def food_pdp(item):
         print(new_item)
         print(session['cart'])
         print('TEST DATA')
+
+        session['cart'] = [val for val in range(5000)]
+        print(session['cart'])
 
         return redirect(url_for('checkout.summary'))
 
