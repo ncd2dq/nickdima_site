@@ -6,6 +6,7 @@ bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static'
 @bp.route('/<string:item>', methods=['GET', 'POST'])
 def food_pdp(item):
     db = get_db()
+    print('right when page loads', len(session['cart']))
 
     if request.method == 'POST':
         spice = request.form.get('spice')
@@ -81,6 +82,7 @@ def food_pdp(item):
         #session['cart'] = [val for val in range(1350)]
         #print(session['cart'])
 
+        print('right before render template', len(session['cart']))
         return render_template('productpage/pdp.html', selected_item=db['Pad_thai_1'])
         #return redirect(url_for('checkout.summary'))
 
