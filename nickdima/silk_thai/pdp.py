@@ -70,10 +70,11 @@ def food_pdp(item):
         print('TEST DATA')
         print(new_item)
         print(session['cart'])
+        print("END OF REQUEST SESSION SIZE: ", len(session['cart']))
         print('TEST DATA')
 
-        session['cart'] = [val for val in range(1350)]
-        print(session['cart'])
+        #session['cart'] = [val for val in range(1350)]
+        #print(session['cart'])
 
         return redirect(url_for('checkout.summary'))
 

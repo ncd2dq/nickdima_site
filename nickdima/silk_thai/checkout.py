@@ -9,6 +9,7 @@ def summary():
 
     try:
         items = session['cart']
+        print('THE CURRENT CART SIZE IS ON SUMMARY PAGE: ', len(session['cart']))
     except KeyError:
         items = [('In Cart', 'No Item'), ('In Cart', 'No Item')]
         return render_template('checkout/order_summary.html', items=items)
