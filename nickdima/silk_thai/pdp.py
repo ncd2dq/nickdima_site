@@ -14,10 +14,10 @@ def food_pdp(item):
         notes = request.form.get('custom_modify')
 
         # These 2 can contain " +$3" in it, and that needs to be removed
-        print(topping)
-        print(extra)
         topping = request.form.get('topping')
         extra = request.form.get('extra')
+        print(topping)
+        print(extra)
         topping = removePricing(topping)
         extra = removePricing(extra)
         print(topping)
