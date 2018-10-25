@@ -73,7 +73,7 @@ def food_pdp(item):
         print("END OF REQUEST SESSION SIZE: ", len(session['cart']))
         print('TEST DATA')
         import sys
-        print('BYTE SIZE: ',sys.getsizeof(session['cart']))
+        print('BYTE SIZE ON PDP: ',sys.getsizeof(session['cart']))
 
         #session['cart'] = [val for val in range(1350)]
         #print(session['cart'])
