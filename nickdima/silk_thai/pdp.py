@@ -50,6 +50,8 @@ def food_pdp(item):
         else:
             session['cart'].append(new_item)
 
+        print(topping)
+        print(extra)
         print('TEST DATA')
         print(new_item)
         print(session['cart'])
