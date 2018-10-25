@@ -79,7 +79,8 @@ def food_pdp(item):
         #session['cart'] = [val for val in range(1350)]
         #print(session['cart'])
 
-        return redirect(url_for('checkout.summary'))
+        return render_template('productpage/pdp.html', selected_item=db['Pad_thai_1'])
+        #return redirect(url_for('checkout.summary'))
 
     # Determine if the food item exists
     if db[item]:
