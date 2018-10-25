@@ -42,3 +42,11 @@ EXTRA_DINNER_TOPPINGS = [('None', 0), ('Chicken', 3), ('Pork', 3), ('Beef', 3), 
 CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
 FULL_LUNCH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2)]
 SPICE_RANGE = ['Normal', 0, 1, 2, 3, 4, 5] 
+
+def parseItems(item, rice=False):
+    '''
+    #Take the form submissions that contain the name and price and return a tuple:
+    ('Item name FROM FOOD_DB', Price)
+    #If it's for extra rice, return
+    ('rice', riceQuantity)
+    '''
