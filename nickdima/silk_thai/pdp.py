@@ -66,7 +66,9 @@ def food_pdp(item):
             session['cart'] = []
             session['cart'].append(new_item)
         else:
+            print('len pre', len(session['cart']))
             session['cart'].append(new_item)
+            print('len post', len(session['cart']))
 
         print('TEST DATA')
         print(new_item)
