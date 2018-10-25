@@ -33,7 +33,7 @@ def food_pdp(item):
                 new_item['Topping'] = (topping, price)
 
         # Find the correct extra tuple
-        for name, price in db[new_item['Base'][0]['Extra']:
+        for name, price in db[new_item['Base'][0]]['Extra']:
             if extra == name:
                 new_item['Extra'] = (extra, price)
 
