@@ -75,11 +75,8 @@ def food_pdp(item):
 
 def removePricing(form_val):
     '''Remove the " +$2" part of string from form values'''
-    # Remove the +$2
-    new_str = form_val.split('+')[0]
-
-    # Remove the trailing space
-    new_str = new_str[:-1]
-
-    return new_str
-
+    if '+$' in form_val:
+        # Remove the +$2
+        new_str = form_val.split('+')[0]
+        return new_str
+    return form_val
