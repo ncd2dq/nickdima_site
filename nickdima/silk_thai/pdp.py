@@ -10,10 +10,12 @@ def food_pdp(item):
     if request.method == 'POST':
         spice = request.form.get('spice')
         base = request.form.get('base')
-        topping = request.form.get('topping')
-        extra = request.form.get('extra')
         extra_rice = request.form.get('extra_rice')
         notes = request.form.get('custom_modify')
+
+        # These 2 can contain " +$3" in it, and that needs to be removed
+        topping = removePricing(request.form.get('topping'))
+        extra = removePricing(request.form.get('extra'))
 
         #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
@@ -63,3 +65,14 @@ def food_pdp(item):
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
     return render_template('productpage/pdp.html', selected_item=selected_item)
+
+
+def removePricing(form_val):
+    '''Remove the " +$2" part of string from form values'''
+    # Remove the +$2
+    new_str = form_val.split('+')[0]
+
+    # Remove the trailing space
+    new_str = new_str[:-1]
+
+    return new_str
