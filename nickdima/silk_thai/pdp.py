@@ -72,7 +72,7 @@ def food_pdp(item):
         print(session['cart'])
         print('TEST DATA')
 
-        session['cart'] = [val for val in range(5000)]
+        session['cart'] = [val for val in range(1350)]
         print(session['cart'])
 
         return redirect(url_for('checkout.summary'))
