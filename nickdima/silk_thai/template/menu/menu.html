@@ -123,58 +123,6 @@
 </section>
 
 
-
-<!--Below here handles the drop down menu and entering item quantity-->
-<!--
-<script>
- function add_item(){
-  let item_name = document.getElementById('select_menu').value;
-
-  let elm = document.getElementById('cart_quantity');
-  if (!elm.innerHTML.includes(item_name)){
-    elm.innerHTML = "<br>" +item_name + ": <input class='item_inp' type='number' name='" + item_name + "' min='0' max='10' step='1' value='0'> <br>" + elm.innerHTML;
-
-    window.scrollTo(0,document.body.scrollHeight);
-  }
- }
-</script>
-
-<style>
-.center-div
-{
-  margin: 0 auto;
-  width: 500px;
-  border-radius: 3px;
-}
-.item_inp
-{
-  width: 50px;
-}
-</style>
-
-<div class="center-div">
-<div>
-<select id="select_menu" onchange="add_item();">
-  <option value="Pad Thai - Chicken">Pad Thai - Chicken</option>
-  <option value="Pad Thai - Beef">Pad Thai - Beef</option>
-  <option value="Calamari">Calamari</option>
-  <option value="Yellow Curry - Chicken">Yellow Curry - Chicken</option>
-  <option value="Yellow Curry - Beef">Yellow Curry - Beef</option>
-  <option value="Silk Calamari">Silk Calamari</option>
-  <option value="Pad See Ew">Pad See Ew</option>
-  <option value="Drunken Noodle">Drunken Noodle</option>
-</select>
-
-<div>
-  <form action="{{ url_for('menu.menu') }}" method="post" id="cart_quantity">
-    <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Update Cart</button></span>
-  </form>
-
-</div>
-</div>
-</div>
--->
-
 {% include 'universal-bottom.html' %}
 
 
