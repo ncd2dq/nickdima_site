@@ -12,10 +12,18 @@ def food_pdp(item):
         base = request.form.get('base')
         extra_rice = request.form.get('extra_rice')
         notes = request.form.get('custom_modify')
-
-        # These 2 can contain "+$3" in it, and that needs to be removed
         topping = request.form.get('topping')
         extra = request.form.get('extra')
+
+        # Ensure all form values exist
+        spice = ensureExists(spice)
+        base = ensureExists(base)
+        extra_rice = ensureExists(extra_rice)
+        notes = ensureExists(notes)
+        topping = ensureExists(topping)
+        extra = ensureExists(extra)
+
+        # These 2 can contain "+$3" in it, and that needs to be removed
         topping = removePricing(topping)
         extra = removePricing(extra)
 
@@ -32,18 +40,24 @@ def food_pdp(item):
                 new_item['Base'] = (key, db[key]['Base Price'])
 
         # Find the correct topping tuple [0] because the new_item['Base'] is a tuple
-        for name, price in db[new_item['Base'][0]]['Toppings']:
-            if topping == name:
-                new_item['Topping'] = (topping, price)
+        if topping is not False:
+            for name, price in db[new_item['Base'][0]]['Toppings']:
+                if topping == name:
+                    new_item['Topping'] = (topping, price)
 
         # Find the correct extra tuple
-        for name, price in db[new_item['Base'][0]]['Extra']:
-            if extra == name:
-                new_item['Extra'] = (extra, price)
+        if extra is not False:
+            for name, price in db[new_item['Base'][0]]['Extra']:
+                if extra == name:
+                    new_item['Extra'] = (extra, price)
 
-        new_item['Spice'] = spice 
-        new_item['Extra_Rice'] = extra_rice
-        new_item['Notes'] = notes
+
+        if spice is not False:
+            new_item['Spice'] = spice 
+        if extra_rice is not False:
+            new_item['Extra_Rice'] = extra_rice
+        if notes is not False:
+            new_item['Notes'] = notes
 
 
         if 'cart' not in session:
@@ -68,6 +82,11 @@ def food_pdp(item):
 
     return render_template('productpage/pdp.html', selected_item=selected_item)
 
+def ensureExists(form_val):
+    '''Make sure that a form value exists'''
+    if form_val is None:
+        return False
+    return form_val
 
 def removePricing(form_val):
     '''Remove the "+$2" part of string from form values'''
