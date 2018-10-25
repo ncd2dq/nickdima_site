@@ -86,6 +86,8 @@ def ensureExists(form_val):
     '''Make sure that a form value exists'''
     if form_val is None:
         return False
+    if form_val == '':
+        return False
     return form_val
 
 def removePricing(form_val):
