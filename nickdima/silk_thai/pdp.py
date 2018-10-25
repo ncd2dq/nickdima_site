@@ -62,6 +62,7 @@ def food_pdp(item):
 
 
         if 'cart' not in session:
+            print('RESETING THIS BITCH-------------------')
             session['cart'] = []
             session['cart'].append(new_item)
         else:
