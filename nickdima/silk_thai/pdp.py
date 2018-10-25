@@ -13,15 +13,11 @@ def food_pdp(item):
         extra_rice = request.form.get('extra_rice')
         notes = request.form.get('custom_modify')
 
-        # These 2 can contain " +$3" in it, and that needs to be removed
+        # These 2 can contain "+$3" in it, and that needs to be removed
         topping = request.form.get('topping')
         extra = request.form.get('extra')
-        print(topping)
-        print(extra)
         topping = removePricing(topping)
         extra = removePricing(extra)
-        print(topping)
-        print(extra)
 
         #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
@@ -74,7 +70,7 @@ def food_pdp(item):
 
 
 def removePricing(form_val):
-    '''Remove the " +$2" part of string from form values'''
+    '''Remove the "+$2" part of string from form values'''
     if '+$' in form_val:
         # Remove the +$2
         new_str = form_val.split('+')[0]
