@@ -14,8 +14,14 @@ def food_pdp(item):
         notes = request.form.get('custom_modify')
 
         # These 2 can contain " +$3" in it, and that needs to be removed
-        topping = removePricing(request.form.get('topping'))
-        extra = removePricing(request.form.get('extra'))
+        print(topping)
+        print(extra)
+        topping = request.form.get('topping')
+        extra = request.form.get('extra')
+        topping = removePricing(topping)
+        extra = removePricing(extra)
+        print(topping)
+        print(extra)
 
         #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
@@ -50,8 +56,6 @@ def food_pdp(item):
         else:
             session['cart'].append(new_item)
 
-        print(topping)
-        print(extra)
         print('TEST DATA')
         print(new_item)
         print(session['cart'])
@@ -78,3 +82,4 @@ def removePricing(form_val):
     new_str = new_str[:-1]
 
     return new_str
+
