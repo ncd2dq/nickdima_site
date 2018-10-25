@@ -10,5 +10,7 @@ def menu():
         print('TEST DATA')
         import sys
         print('BYTE SIZE ON MENU PAGE: ',sys.getsizeof(session['cart']))
+    except Exception as e:
+        print(e)
 
     return render_template('menu/menu.html')
