@@ -15,14 +15,44 @@ def food_pdp(item):
         extra_rice = request.form.get('extra_rice')
         notes = request.form.get('custom_modify')
 
-        print(spice, base, topping, extra, extra_rice, notes)
-
+        #Item name, spice level, topping + price, extra + price, amount of rice, extra notes
         new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False}
+        
+        #
+        # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
+        #
+
+        # Find the correct dictionary key
+        for key in db.keys():
+            if db[key]['Base'] == base:
+                new_item['Base'] = (key, db[key]['Base Price'])
+
+        # Find the correct topping tuple
+        for name, price in db[new_item['Base']]['Toppings']:
+            if topping == name:
+                new_item['Topping'] = (topping, price)
+
+        # Find the correct extra tuple
+        for name, price in db[new_item['Base']]['Extra']:
+            if extra == name:
+                new_item['Extra'] = (extra, price)
+
+        new_item['spice'] = spice 
+        new_item['Extra_Rice'] = extra_rice
+        new_item['Notes'] = notes
+
+
         if 'cart' not in session:
             session['cart'] = []
             session['cart'].append(new_item)
         else:
             session['cart'].append(new_item)
+
+        print('TEST DATA')
+        print(new_item)
+        print(session['cart'])
+        print('TEST DATA')
+
         return redirect(url_for('checkout.summary'))
 
     # Determine if the food item exists
@@ -33,20 +63,3 @@ def food_pdp(item):
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
     return render_template('productpage/pdp.html', selected_item=selected_item)
-
-#Item name, spice level, topping + price, extra + price, amount of rice, extra notes
-
-
-FULL_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2), ('Seafood', 3), ('Crispy Duck', 3)]
-EXTRA_DINNER_TOPPINGS = [('None', 0), ('Chicken', 3), ('Pork', 3), ('Beef', 3), ('Veggie', 3), ('Shrimp', 5), ('Seafood', 5), ('Crispy Duck', 4)]
-CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
-FULL_LUNCH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2)]
-SPICE_RANGE = ['Normal', 0, 1, 2, 3, 4, 5] 
-
-def parseItems(item, rice=False):
-    '''
-    #Take the form submissions that contain the name and price and return a tuple:
-    ('Item name FROM FOOD_DB', Price)
-    #If it's for extra rice, return
-    ('rice', riceQuantity)
-    '''

@@ -105,14 +105,14 @@
                           <!--customization starts here-->
                           <div class="item-role px-2">
                               <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
-                                <input name="base" type="hidden" value="|{{selected_item['Base']}}">
+                                <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
                                 {% if selected_item['Spice'] != False %}
                                 <!--Spice option-->
                                 Spice Level <select name="spice" id="spice">
 
                                   {% for spice_level in selected_item['Spice'] %}
-                                  <option value="|{{ spice_level }}">{{ spice_level }}</option>
+                                  <option value="{{ spice_level }}">{{ spice_level }}</option>
                                   {% endfor %}
                                 </select>
                                 <br><br>
@@ -124,7 +124,7 @@
                                 <!-- Display "Chicken +$2" if extra price"-->
                                 With <select name="topping" id="topping" onchange="changePrice();">
                                   {% for topping in selected_item['Toppings'] %}
-                                  <option value="|{{ topping[0] }}{% if topping[1] != 0 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
+                                  <option value="{{ topping[0] }}{% if topping[1] != 0 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
                                   {% endfor %}
                                 </select>
                                 <br><br>
@@ -137,18 +137,18 @@
                                 <!-- Display "Chicken +$2" if extra price"-->
                                 Extra <select name="extra" id="extra" onchange="changePrice();">
                                   {% for extra in selected_item['Extra'] %}
-                                  <option value="|{{ extra[0] }}{% if extra[1] != 0 %}+${{ extra[1] }}{% endif %}">{{ extra[0] }}{% if extra[1] != 0 %} +${{ extra[1] }}{% endif %}</option>
+                                  <option value="{{ extra[0] }}{% if extra[1] != 0 %}+${{ extra[1] }}{% endif %}">{{ extra[0] }}{% if extra[1] != 0 %} +${{ extra[1] }}{% endif %}</option>
                                   {% endfor %}
                                 </select>
                                 <br><br>
 
                                 And <select id="extra_rice" name="extra_rice" onchange="changePrice();">
-                                  <option value=|0>0</option>
-                                  <option value=|1>1</option>
-                                  <option value=|2>2</option>
-                                  <option value=|3>3</option>
-                                  <option value=|4>4</option>
-                                  <option value=|5>5</option>
+                                  <option value=0>0</option>
+                                  <option value=1>1</option>
+                                  <option value=2>2</option>
+                                  <option value=3>3</option>
+                                  <option value=4>4</option>
+                                  <option value=5>5</option>
                                 </select> Extra Rice ($2 each)
                                 <br><br>
                                 {% endif %}

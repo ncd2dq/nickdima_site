@@ -142,7 +142,7 @@ db = {
         'Lunch_Version' : False
     },
 
-    'Pad_se_ew': {
+    'Pad_see_ew': {
         'Base' : 'Pad See Ew',
         'Base Price' : 10.95,
         'Description' : 'Thick Noodle Goodness',
