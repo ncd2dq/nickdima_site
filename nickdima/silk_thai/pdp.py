@@ -90,6 +90,8 @@ def ensureExists(form_val):
 
 def removePricing(form_val):
     '''Remove the "+$2" part of string from form values'''
+    if form_val is False:
+        return False
     if '+$' in form_val:
         # Remove the +$2
         new_str = form_val.split('+')[0]
