@@ -37,7 +37,7 @@ def food_pdp(item):
             if extra == name:
                 new_item['Extra'] = (extra, price)
 
-        new_item['spice'] = spice 
+        new_item['Spice'] = spice 
         new_item['Extra_Rice'] = extra_rice
         new_item['Notes'] = notes
 
