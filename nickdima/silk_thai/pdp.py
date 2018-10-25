@@ -6,7 +6,10 @@ bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static'
 @bp.route('/<string:item>', methods=['GET', 'POST'])
 def food_pdp(item):
     db = get_db()
-    print('right when page loads', len(session['cart']))
+    try:
+        print('right when page loads', len(session['cart']))
+    except Exception as e:
+        pass
 
     if request.method == 'POST':
         spice = request.form.get('spice')
