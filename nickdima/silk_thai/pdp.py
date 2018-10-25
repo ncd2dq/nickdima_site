@@ -6,10 +6,6 @@ bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static'
 @bp.route('/<string:item>', methods=['GET', 'POST'])
 def food_pdp(item):
     db = get_db()
-    try:
-        print('right when page loads', len(session['cart']))
-    except Exception as e:
-        pass
 
     if request.method == 'POST':
         spice = request.form.get('spice')
@@ -66,30 +62,17 @@ def food_pdp(item):
 
 
         if 'cart' not in session:
-            print('RESETING THIS BITCH-------------------')
-            session['cart'] = []
-            session['cart'].append(new_item)
+            session['cart'] = [new_item]
         else:
-            print('len pre', len(session['cart']))
+            #For some reason session['cart'].append(new_item) does not work across requests,
+            #need to alter the list, then reasign to the session
+            #otherwise some data drops
             cur_cart = session['cart']
             cur_cart.append(new_item)
             session['cart'] = cur_cart
-            print('len post', len(session['cart']))
 
-        print('TEST DATA')
-        print(new_item)
-        print(session['cart'])
-        print("END OF REQUEST SESSION SIZE: ", len(session['cart']))
-        print('TEST DATA')
-        import sys
-        print('BYTE SIZE ON PDP: ',sys.getsizeof(session['cart']))
 
-        #session['cart'] = [val for val in range(1350)]
-        #print(session['cart'])
-
-        print('right before render template', len(session['cart']))
-        return render_template('productpage/pdp.html', selected_item=db['Pad_thai_1'])
-        #return redirect(url_for('checkout.summary'))
+        return redirect(url_for('checkout.summary'))
 
     # Determine if the food item exists
     if db[item]:
