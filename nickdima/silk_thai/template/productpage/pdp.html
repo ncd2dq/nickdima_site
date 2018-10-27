@@ -26,17 +26,11 @@
 
     <div class="container align-center">
         <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
-            Customization Page
+            {{selected_item['Base']}}
         </h2>
         <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
         	Edit your food below!
         </h3>
-
-        <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-          <a href="#next">
-            <i class="mbri-down mbr-iconfont"></i>
-          </a>
-        </div>
 
         <div class="row media-row">
 
@@ -45,12 +39,6 @@
                 <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME pong-->
                 <div class="card p-3 col-12 col-md-6">
                     <div class="card-wrapper">
-
-                          <div class="item-name px-2 align-center">
-                              <p class="mbr-fonts-style display-3">
-                                 {{selected_item['Base']}}
-                             </p>
-                          </div>
 
                         <div class="card-img">
                             <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
