@@ -41,7 +41,7 @@
                     <div class="card-wrapper">
 
                           <div class="item-name px-2 align-center">
-                              <p class="mbr-fonts-style display-5">
+                              <p class="mbr-fonts-style display-3">
                                  {{selected_item['Base']}}
                              </p>
                           </div>
@@ -50,11 +50,6 @@
                             <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
                         </div>
                         <div class="card-box"> <!--food box entity-->
-                          <div class="item-name px-2">
-                              <p class="mbr-fonts-style display-5">
-                                 {{selected_item['Base']}}
-                             </p>
-                          </div>
                           <div class="item-role px-2">
                               <p class="mbr-fonts-style display-5">Description: {{ selected_item['Description'] }}</p>
                           </div>
