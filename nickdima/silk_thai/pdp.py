@@ -29,7 +29,7 @@ def food_pdp(item):
 
         # Final value should be:
         # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
-        new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False, 'Img_url':False}
+        new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False, 'Img_url':False, 'Total':False}
         
         #
         # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
@@ -60,6 +60,14 @@ def food_pdp(item):
             new_item['Extra_Rice'] = extra_rice
         if notes is not False:
             new_item['Notes'] = notes
+
+        # Get the total
+        total_price = 0
+        for key in new_item.keys():
+            if new_item[key] is not False:
+                if type(new_item[key]) == int or type(new_item[key]) == float:
+                    total_price += new_item[key]
+        new_item['Total'] = total_price
 
 
         if 'cart' not in session:

@@ -30,16 +30,24 @@
                   <div class="item-caption py-3">
                       <div class="item-name px-2">
                           <p class="mbr-fonts-style display-5">
-                             {{item[1]}} - {{item[0]}}</p>
+                             {{item['Base']}} - {{item['Topping']}}</p>
+                          <p class="mbr-fonts-style display-6">
+                             Spice: {{item['Spice']}}</p>
+                          <p class="mbr-fonts-style display-6">
+                             Extra: {{item['Extra']}}</p>
+                          <p class="mbr-fonts-style display-6">
+                             Extra Rice: {{item['Extra_Rice']}}</p>
+                          <p class="mbr-fonts-style display-6">
+                             Notes: {{item['Notes']}}</p>
                       </div>
                       <div class="item-role px-2">
-                          <p>Price: &lt;&gt;</p>
+                          <p>Price: ${{ item['Total'] }}</p>
                       </div>
 
                   </div>
               </div>
           {% endfor %}
-          
+
           <!--NEED ONE OF THESE FOR ALL IMAGES BEING DISPLAYED
         <div class="team-item col-lg-3 col-md-6">
                 <div class="item-image">
