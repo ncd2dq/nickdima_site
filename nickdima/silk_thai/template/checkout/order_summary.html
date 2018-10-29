@@ -31,8 +31,10 @@
                       <div class="item-name px-2">
                           <p class="mbr-fonts-style display-5">
                              {{item['Title']}} with {{item['Topping'][0]}}</p>
+                          {% if item['Spice'] != false %}
                           <p class="mbr-fonts-style display-6">
                              Spice: {{item['Spice']}}</p>
+                          {% endif %}
                           {% if item['Extra'][0] != 'None' %}
                           <p class="mbr-fonts-style display-6">
                              Extra: {{item['Extra'][0]}}</p>
