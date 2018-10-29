@@ -65,8 +65,8 @@ def food_pdp(item):
         total_price = 0
         for key in new_item.keys():
             if new_item[key] is not False:
-                if type(new_item[key]) == int or type(new_item[key]) == float:
-                    total_price += new_item[key]
+                if type(new_item[key]) == tuple:
+                    total_price += new_item[key][1]
         new_item['Total'] = total_price
 
 
