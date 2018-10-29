@@ -29,7 +29,7 @@ def food_pdp(item):
 
         # Final value should be:
         # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
-        new_item = {'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False, 'Img_url':False, 'Total':False}
+        new_item = {'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Notes':False, 'Img_url':False, 'Total':False}
         
         #
         # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
@@ -38,6 +38,7 @@ def food_pdp(item):
         # Find the correct dictionary key
         for key in db.keys():
             if db[key]['Base'] == base:
+                new_item['Tite'] = db[key]['Base']
                 new_item['Base'] = (key, db[key]['Base Price'])
                 new_item['Img_url'] = db[key]['Img_URL']
 
@@ -67,6 +68,8 @@ def food_pdp(item):
             if new_item[key] is not False:
                 if type(new_item[key]) == tuple:
                     total_price += new_item[key][1]
+                if key == 'Extra_Rice':
+                    total_price += 2 * new_item[key]
         new_item['Total'] = total_price
 
 
