@@ -33,7 +33,7 @@
                              {{item['Title']}} with {{item['Topping'][0]}}</p>
                           <p class="mbr-fonts-style display-6">
                              Spice: {{item['Spice']}}</p>
-                          {% if item['Extra'] is not False %}
+                          {% if item['Extra'] != false %}
                           <p class="mbr-fonts-style display-6">
                              Extra: {{item['Extra'][0]}}</p>
                           {% endif %}
@@ -41,7 +41,7 @@
                           <p class="mbr-fonts-style display-6">
                              Extra Rice: {{item['Extra_Rice']}}</p>
                           {% endif %}
-                          {% if item['Notes'] is not False %}
+                          {% if item['Notes'] != false %}
                           <p class="mbr-fonts-style display-6">
                              Notes: {{item['Notes']}}</p>
                           {% endif %}
