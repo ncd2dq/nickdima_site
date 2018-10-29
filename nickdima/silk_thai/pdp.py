@@ -38,7 +38,7 @@ def food_pdp(item):
         # Find the correct dictionary key
         for key in db.keys():
             if db[key]['Base'] == base:
-                new_item['Tite'] = db[key]['Base']
+                new_item['Title'] = db[key]['Base']
                 new_item['Base'] = (key, db[key]['Base Price'])
                 new_item['Img_url'] = db[key]['Img_URL']
 
