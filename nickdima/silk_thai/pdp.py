@@ -69,7 +69,7 @@ def food_pdp(item):
                 if type(new_item[key]) == tuple:
                     total_price += new_item[key][1]
                 if key == 'Extra_Rice':
-                    total_price += 2 * new_item[key]
+                    total_price += 2 * int(new_item[key])
         new_item['Total'] = total_price
 
 
