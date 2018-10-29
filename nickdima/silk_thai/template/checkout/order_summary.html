@@ -35,11 +35,11 @@
                           <p class="mbr-fonts-style display-6">
                              Spice: {{item['Spice']}}</p>
                           {% endif %}
-                          {% if item['Extra'][0] != 'None' %}
+                          {% if item['Extra'][0] != 'None' and item['Extra'][0] != false %}
                           <p class="mbr-fonts-style display-6">
                              Extra: {{item['Extra'][0]}}</p>
                           {% endif %}
-                          {% if item['Extra_Rice'] != '0' %}
+                          {% if item['Extra_Rice'] != '0' and item['Extra_Rice'] != false %}
                           <p class="mbr-fonts-style display-6">
                              Extra Rice: {{item['Extra_Rice']}}</p>
                           {% endif %}
