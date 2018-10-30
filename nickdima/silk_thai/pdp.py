@@ -84,6 +84,7 @@ def food_pdp(item):
             total = session['total']
             total[0] = float(total[0])
             total[0] += total_price
+            total[0] = round(total[0], 2)
             total[0] = str(total[0])
             if total[0][-2] == '.':
                 total[0] += '0'
