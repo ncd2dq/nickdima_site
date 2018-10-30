@@ -76,16 +76,21 @@ def food_pdp(item):
         if 'cart' not in session:
             session['cart'] = [new_item]
 
-            session['total'] = [total_price, 1]
+            session['total'] = [total_price, '1']
         else:
             #For some reason session['cart'].append(new_item) does not work across requests,
             #need to alter the list, then reasign to the session
             #otherwise some data drops
             total = session['total']
+            total[0] = float(total[0])
             total[0] += total_price
+            total[0] = str(total[0])
+            if total[-2] == '.':
+                total[0] += '0'
+
             total[1] += 1
             session['total'] = total
-            
+
             cur_cart = session['cart']
             cur_cart.append(new_item)
             session['cart'] = cur_cart
