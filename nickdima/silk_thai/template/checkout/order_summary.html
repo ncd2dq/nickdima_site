@@ -128,6 +128,7 @@
                     Items: {% if session['total'] is defined %}{{session['total'][1]}}{% else %}0{% endif %}
                     <br>Total Price: {% if session['total'] is defined %}${{session['total'][0]}}{% else %}Free{% endif %}
                 </h3>
+                <br>
             </div>
         </div>
 
@@ -137,9 +138,13 @@
                 <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
                     <div class="mbr-subscribe input-group">
                         <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
-                        <input type="hidden" name="item1" value="thai currey">
-                        <input type="hidden" name="item2" value="thai tea">
-                        <span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Submit Order</button></span>
+                        <p class="mbr-fonts-style display-6">Select Order Type</p>
+                        <input type="radio" id="delivery" name="delivery" value="Delivery" checked>
+                        <input type="radio" id="takeout" name="takeout" value="takeout">
+                        
+                        <span class="input-group-btn">
+                          <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
+                        </span>
 
                     </div>
                 </form>
