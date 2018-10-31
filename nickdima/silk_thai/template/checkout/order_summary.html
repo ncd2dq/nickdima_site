@@ -135,19 +135,16 @@
         <div class="row py-2 justify-content-center">
             <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
                 <div data-form-alert="" hidden="">the order page was submitted</div>
-                <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
-                    <p class="mbr-fonts-style display-6">Select Order Type</p>
-                    <input type="radio" id="delivery" name="order_type" value="Delivery" checked>
-                    <br>
-                    <input type="radio" id="takeout" name="order_type" value="takeout">
-                    <br>
-                    <div class="mbr-subscribe input-group">
-                        <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
-                        <span class="input-group-btn">
-                          <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
-                        </span>
+                <form action="{{ url_for('checkout.summary') }}" method="post">
 
-                    </div>
+                    <p class="mbr-fonts-style display-5">Select Order Type<br>
+                      <input type="radio" id="delivery" name="order_type" value="Delivery" checked>Delivery
+                      <br>
+                      <input type="radio" id="takeout" name="order_type" value="takeout">Takeout
+                      <br>
+                    </p>
+                        <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
+
                 </form>
             </div>
         </div>
