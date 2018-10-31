@@ -10,8 +10,7 @@ def summary():
     try:
         items = session['cart']
     except KeyError:
-        items = [('In Cart', 'No Item'), ('In Cart', 'No Item')]
-        return render_template('checkout/order_summary.html', items=items)
+        return render_template('checkout/order_summary.html', empty_cart='No items in cart!')
 
     return render_template('checkout/order_summary.html', items=items)
 

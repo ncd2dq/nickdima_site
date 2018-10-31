@@ -22,6 +22,11 @@
         <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">Make Any Edits Here To Quantity Before Checkout</h3>
         <div class="row media-row">
 
+          {% if empty_cart is defined %}
+          <div class="team-item col-lg-3 col-md-6">
+            <p class="mbr-fonts-style display-5">{{empty_cart}}</p>
+          </div>
+          {% else %}
           {% for item in items %}
           <div class="team-item col-lg-3 col-md-6">
                   <div class="item-image">
@@ -56,6 +61,7 @@
                   </div>
               </div>
           {% endfor %}
+          {% endif %}
 
           <!--NEED ONE OF THESE FOR ALL IMAGES BEING DISPLAYED
         <div class="team-item col-lg-3 col-md-6">
