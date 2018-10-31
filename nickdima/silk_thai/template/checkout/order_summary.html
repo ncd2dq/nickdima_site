@@ -133,23 +133,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                <form action="{{ url_for('checkout.summary') }}" method="post">
-
-                    <p class="mbr-fonts-style display-5">Select Order Type<br>
-                      <input type="radio" id="delivery" name="order_type" value="Delivery" checked> Delivery
-                      <br>
-                      <input type="radio" id="takeout" name="order_type" value="takeout"> Takeout
-                      <br>
-                    </p>
-                        <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
-
-                </form>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
+            <div class="col-12 col-lg-6  col-md-8">
                 <form action="{{ url_for('checkout.summary') }}" method="post">
 
                     <p class="mbr-fonts-style display-5">Select Order Type<br>
