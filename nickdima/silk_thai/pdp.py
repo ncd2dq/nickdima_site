@@ -96,9 +96,6 @@ def food_pdp(item):
             cur_cart.append(new_item)
             session['cart'] = cur_cart
 
-
-        #return redirect(url_for('checkout.summary'))
-
     # Determine if the food item exists
     if db[item]:
         selected_item = db[item]
