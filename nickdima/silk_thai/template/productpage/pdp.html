@@ -88,7 +88,7 @@
 
                           <!--customization starts here-->
                           <div class="item-role px-2">
-                              <form action="" method="POST" id="food_entry" onsubmit="return false;">
+                              <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
                                 <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
                                 {% if selected_item['Spice'] != False %}
@@ -143,8 +143,8 @@
 
                         </div>
 
-                        <div class="text-center">
-                            <button class="display-4" id="cart_button">
+                        <div class="mbr-section-btn text-center">
+                            <button class="btn btn-primary display-4" id="cart_button">
                                 Add to cart
                             </button>
                         </div>
@@ -265,8 +265,6 @@
 
   function submit_food(){
     document.getElementById('food_entry').submit();
-
-    modal.style.display = 'block'
   }
 
   btn.onclick = submit_food;
@@ -277,6 +275,9 @@
           modal.style.display = "none";
       }
   }
+
+
+  modal.style.display = "{{modal_display}}"
 </script>
 
     	</div>
@@ -336,7 +337,6 @@
   <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
   <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
   <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
-
 
 </body>
 
