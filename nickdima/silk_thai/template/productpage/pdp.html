@@ -155,6 +155,66 @@
     </div>
 
 
+    	</div>
+</div>
+<!--END GRAY SECTION-->
+
+
+<!--White section on bottom of page with buttons-->
+<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
+
+
+
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                    Order Details</h2>
+                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                    Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
+                <div data-form-alert="" hidden="">the order page was submitted</div>
+                <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
+                    <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
+                        <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
+                        <input type="hidden" name="item1" value="thai currey">
+                        <input type="hidden" name="item2" value="thai tea">
+                        <div class="mbr-section-btn text-center">
+                            <button href="" class="btn btn-primary display-4">
+                                Checkout
+                            </button>
+                        </div>
+                        <!--<span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Checkout</button></span>-->
+
+                    <!--</div>-->
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End button section on the bottom-->
+
+
+{% include 'universal-bottom.html' %}
+
+  <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+  <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+  <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+
+
+
 <!-- Modal Style -->
 <style>
 /* The Modal (background) */
@@ -279,64 +339,6 @@
   window.onload = function () { modal.style.display = "{{modal_display}}"; alert('hi')};
 
 </script>
-
-    	</div>
-</div>
-<!--END GRAY SECTION-->
-
-
-<!--White section on bottom of page with buttons-->
-<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
-
-
-
-
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="align-center pb-2 mbr-fonts-style display-2">
-                    Order Details</h2>
-                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                    Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                <div data-form-alert="" hidden="">the order page was submitted</div>
-                <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
-                    <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
-                        <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
-                        <input type="hidden" name="item1" value="thai currey">
-                        <input type="hidden" name="item2" value="thai tea">
-                        <div class="mbr-section-btn text-center">
-                            <button href="" class="btn btn-primary display-4">
-                                Checkout
-                            </button>
-                        </div>
-                        <!--<span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Checkout</button></span>-->
-
-                    <!--</div>-->
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<!--End button section on the bottom-->
-
-
-{% include 'universal-bottom.html' %}
-
-  <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-  <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
 
 </body>
 
