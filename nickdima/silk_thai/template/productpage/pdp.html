@@ -360,10 +360,10 @@ function change_cart_before_post(){
   let final_price = document.getElementById('the_price').innerText;
   final_price = '$' + final_price.slice(7, final_price.length);
 
-  if(cart_text == ' Cart'){
+  if(cart_text.slice(1,6) == 'Cart'){
     cart_span.innerHTML = '&nbsp;Cart 1, ' + final_price;
   } else {
-    let cur_item_count = cart_text.slice(5, cart_text.indexOf(','));
+    let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
     cur_item_count = parseInt(cur_item_count, 10);
     cur_item_count++;
     cart_span.innerHTML = '&nbsp;Cart ' + cur_item_count + ', ' + final_price; 
