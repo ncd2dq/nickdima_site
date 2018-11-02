@@ -278,7 +278,7 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #333333;
     color: white;
 }
 
@@ -353,6 +353,8 @@
   }
 
 function change_cart_before_post(){
+  //Automatically changes cart price to give user sensation that page auto added to cart
+  //since keeping modal showing while post request refreshes page is hard
   //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
   let cart_span = document.getElementById('cart_nav');
   let cart_text = cart_span.innerText;
