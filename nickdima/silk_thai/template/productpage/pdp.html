@@ -367,6 +367,10 @@ function change_cart_before_post(){
     let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
     total_price = parseFloat(total_price)
     total_price += final_price
+    total_price = total_price.toString();
+    if(total_price[total_price.length - 1] == '.'){
+      total_price += '0';
+    }
 
     //Update item count
     let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
