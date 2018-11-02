@@ -99,6 +99,7 @@ def food_pdp(item):
             if request.form.get('modal-dest') == 'to_cart':
                 return redirect(url_for('checkout.summary'))
             elif request.form.get('modal-dest') == 'to_menu':
+                print("TRIED TO GO TO MENU")
                 return redirect(url_for('menu.menu'))
 
     # Determine if the food item exists
