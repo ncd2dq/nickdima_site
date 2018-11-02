@@ -97,6 +97,7 @@ def food_pdp(item):
             session['cart'] = cur_cart
 
             if request.form.get('modal-dest') == 'to_cart':
+                print("TRIED TO GO TO CART")
                 return redirect(url_for('checkout.summary'))
             elif request.form.get('modal-dest') == 'to_menu':
                 print("TRIED TO GO TO MENU")
