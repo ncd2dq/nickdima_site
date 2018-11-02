@@ -106,7 +106,7 @@ def food_pdp(item):
         # Or flash the error
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
-    return render_template('productpage/pdp.html', selected_item=selected_item, modal_display='none')
+    return render_template('productpage/pdp.html', selected_item=selected_item)
 
 def ensureExists(form_val):
     '''Make sure that a form value exists'''
