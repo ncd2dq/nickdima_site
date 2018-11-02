@@ -96,12 +96,13 @@ def food_pdp(item):
             cur_cart.append(new_item)
             session['cart'] = cur_cart
 
-            if request.form.get('modal-dest') == 'to_cart':
-                print("TRIED TO GO TO CART")
-                return redirect(url_for('checkout.summary'))
-            elif request.form.get('modal-dest') == 'to_menu':
-                print("TRIED TO GO TO MENU")
-                return redirect(url_for('menu.menu'))
+        # This was indented too much so it didn't work before the cart had an item in it
+        if request.form.get('modal-dest') == 'to_cart':
+            print("TRIED TO GO TO CART")
+            return redirect(url_for('checkout.summary'))
+        elif request.form.get('modal-dest') == 'to_menu':
+            print("TRIED TO GO TO MENU")
+            return redirect(url_for('menu.menu'))
 
     # Determine if the food item exists
     if db[item]:
