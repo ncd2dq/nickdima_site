@@ -368,7 +368,7 @@ function change_cart_before_post(){
     total_price = parseFloat(total_price)
     total_price += final_price
     total_price = total_price.toString();
-    if(total_price[total_price.length - 1] == '.'){
+    if(total_price[total_price.length - 2] == '.'){
       total_price += '0';
     }
 
