@@ -31,7 +31,7 @@
 
             <div class="navbar-buttons mbr-section-btn">
                 <a class="btn btn-sm btn-primary display-4" href="{{ url_for('checkout.summary') }}">
-                    <span class="mbri-cart-full mbr-iconfont mbr-iconfont-btn"></span>&nbsp;Cart
+                    <span class="mbri-cart-full mbr-iconfont mbr-iconfont-btn" id="cart_nav"></span>&nbsp;Cart
                     {% if session['total'] is defined %} {{session['total'][1]}}, ${{session['total'][0]}}{% endif %}
                 </a>
             </div>
