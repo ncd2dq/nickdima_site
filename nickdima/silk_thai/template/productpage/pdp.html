@@ -296,6 +296,7 @@
   <div class="modal-content">
     <div class="modal-header">
       <span class="close">&times;</span>
+      <br>
       <h2>Modal Header</h2>
     </div>
     <div class="modal-body">
@@ -323,12 +324,12 @@
   span.onclick = function() {
       modal.style.display = "none";
   }
-  function submit_food(){
+  function show_modal(){
     //document.getElementById('food_entry').submit();
     modal.style.display = "block";
     return false;
   }
-  btn.onclick = submit_food;
+  btn.onclick = show_modal;
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
