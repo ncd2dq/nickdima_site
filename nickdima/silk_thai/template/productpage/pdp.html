@@ -138,6 +138,8 @@
                                 {% endif %}
 
                                 <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
+
+                                <input type="hidden" id="modal-dest" name="modal-dest" value="to_cart">
                               </form>
                           </div>
 
@@ -298,11 +300,11 @@
       <div class="mbr-section-btn text-center">
           <p class="mbr-text mbr-fonts-style display-5">Great Choice!</p>
           <br>
-          <button href="" class="btn btn-primary display-4" id="to-cart">
-              Proceed To Checkout
-          </button>
           <button href="" class="btn btn-primary display-4" id="to-menu">
               Back To Menu
+          </button>
+          <button href="" class="btn btn-primary display-4" id="to-cart">
+              Proceed To Checkout
           </button>
       </div>
     </div>
@@ -316,11 +318,12 @@
   let to_menu = document.getElementById('to-menu');
 
   to_cart.onclick = function(){
+    document.getElementById("modal-dest").value = "to_cart"
     document.getElementById('food_entry').submit();
-    window.location.href = "{{url_for('checkout.summary')}}";
   }
 
   to_menu.onclick = function(){
+    document.getElementById("modal-dest").value = "to_menu"
     document.getElementById('food_entry').submit();
     window.location.href = "{{url_for('menu.menu')}}";
   }

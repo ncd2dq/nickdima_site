@@ -96,8 +96,10 @@ def food_pdp(item):
             cur_cart.append(new_item)
             session['cart'] = cur_cart
 
-
-            #return render_template('productpage/pdp.html', selected_item=selected_item, modal_display='block')
+            if request.form.get('modal-dest') == 'to_cart':
+                return redirect(url_for('checkout.summary'))
+            elif request.form.get('modal-dest') == 'to_menu':
+                return redirect(url_for('menu.menu'))
 
     # Determine if the food item exists
     if db[item]:
