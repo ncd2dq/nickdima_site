@@ -342,12 +342,6 @@
       document.getElementById("modal-dest").value = "stay";
       document.getElementById('food_entry').submit();
   }
-  function show_modal(){
-    //document.getElementById('food_entry').submit();
-    modal.style.display = "block";
-    return false;
-  }
-  btn.onclick = show_modal;
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
@@ -375,6 +369,15 @@ function change_cart_before_post(){
     cart_span.innerText = 'Cart ' + cur_item_count + ',' + final_price; 
   }
 }
+
+  function show_modal(){
+    //document.getElementById('food_entry').submit();
+    modal.style.display = "block";
+    change_cart_before_post();
+    return false;
+  }
+
+  btn.onclick = show_modal;
 
 </script>
 
