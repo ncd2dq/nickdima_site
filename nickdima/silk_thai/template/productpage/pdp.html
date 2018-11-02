@@ -241,6 +241,7 @@
     border: 1px solid #888;
     width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -323,7 +324,7 @@
       modal.style.display = "none";
   }
   function submit_food(){
-    document.getElementById('food_entry').submit();
+    //document.getElementById('food_entry').submit();
     return false;
   }
   btn.onclick = submit_food;
@@ -335,7 +336,7 @@
       }
   }
 
-  window.onload = function () { modal.style.display = "{{modal_display}}"; alert('hi')};
+  modal.style.display = "{{modal_display}}";
 
 </script>
 

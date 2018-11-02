@@ -96,14 +96,8 @@ def food_pdp(item):
             cur_cart.append(new_item)
             session['cart'] = cur_cart
 
-            # Determine if the food item exists
-            if db[item]:
-                selected_item = db[item]
-            else:
-                # Or flash the error
-                return "<h1>Our Apologies, that food item does not exist</h1>"
 
-            return render_template('productpage/pdp.html', selected_item=selected_item, modal_display='block')
+            #return render_template('productpage/pdp.html', selected_item=selected_item, modal_display='block')
 
     # Determine if the food item exists
     if db[item]:
