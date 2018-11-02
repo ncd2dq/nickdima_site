@@ -322,11 +322,10 @@
   span.onclick = function() {
       modal.style.display = "none";
   }
-
   function submit_food(){
     document.getElementById('food_entry').submit();
+    return false;
   }
-
   btn.onclick = submit_food;
 
   // When the user clicks anywhere outside of the modal, close it
@@ -339,6 +338,8 @@
   window.onload = function () { modal.style.display = "{{modal_display}}"; alert('hi')};
 
 </script>
+
+
 
 </body>
 
