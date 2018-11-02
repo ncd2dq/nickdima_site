@@ -355,18 +355,18 @@
 function change_cart_before_post(){
   //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
   let cart_span = document.getElementById('cart_nav');
-  let cart_text = cart_span.innerText;
+  let cart_text = cart_span.innerHTML;
 
-  let final_price = document.getElementById('the_price').innerText;
+  let final_price = document.getElementById('the_price').innerHTML;
   final_price = '$' + final_price.slice(7, final_price.length);
 
   if(cart_text == 'cart'){
-    cart_span.innerText = 'Cart 1, ' + final_price;
+    cart_span.innerHTML = 'Cart 1, ' + final_price;
   } else {
     let cur_item_count = cart_text.slice(5, cart_text.indexOf(','));
     cur_item_count = parseInt(cur_item_count, 10);
     cur_item_count++;
-    cart_span.innerText = 'Cart ' + cur_item_count + ',' + final_price; 
+    cart_span.innerHTML = 'Cart ' + cur_item_count + ',' + final_price; 
   }
 }
 
