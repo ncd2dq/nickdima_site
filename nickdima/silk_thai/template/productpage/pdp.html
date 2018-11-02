@@ -355,7 +355,7 @@
 function change_cart_before_post(){
   //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
   let cart_span = document.getElementById('cart_nav');
-  let cart_text = cart_space.innerText;
+  let cart_text = cart_span.innerText;
 
   let final_price = document.getElementById('the_price').innerText;
   final_price = '$' + final_price.slice(7, final_price.length);
