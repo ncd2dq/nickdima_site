@@ -1,401 +1,424 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
-  {% include 'universal.html' %}
-  <meta name="description" content="A menu of the food at Thai Charlottesville">
-  <title>Menu</title>
+    <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
+    {% include 'universal.html' %}
+    <meta name="description" content="A menu of the food at Thai Charlottesville">
+    <title>Menu</title>
 
-  {% include 'universal-css-links.html' %}
-
-
-
+    {% include 'universal-css-links.html' %}
 </head>
 
 <body>
-<!--Navigation bar-->
-{% include 'nav.html' %}
-<!--End navigation bar-->
+    <!--Navigation bar-->
+    {% include 'nav.html' %}
+    <!--End navigation bar-->
 
-<!--Variable on this page is a dictionary "selected_item"-->
+    <!--GRAY SECTION ON TOP OF PAGE-->
+    <section class="features16 cid-r0R1Wm1xUa" id="features16-i">
 
+        <div class="container align-center">
+            <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+                {{selected_item['Base']}}
+            </h2>
+            <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
+                Edit your food below!
+            </h3>
+            <div class="row media-row">
+                <div class="container align-center">
+                    <div class="media-container-row">
+                        <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME pong-->
+                        <div class="card p-3 col-12 col-md-6">
+                            <div class="card-wrapper">
 
+                                <div class="card-img">
+                                    <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
+                                </div>
+                                <div class="card-box">
+                                    <!--food box entity-->
+                                    <div class="item-role px-2">
+                                        <p class="mbr-fonts-style display-5">Description: {{ selected_item['Description'] }}</p>
+                                    </div>
+                                    <div class="item-role px-2">
+                                        <p class="mbr-text mbr-fonts-style display-5">
+                                            {% for ingredient in selected_item['Ingredients'] %}
+                                            {{ingredient}}{% if not loop.last %},{% endif %}
+                                            {% endfor %}
+                                        </p>
+                                    </div>
+                                    <div class="item-role px-2">
+                                        <p class="mbr-fonts-style display-5" id="the_price">Price: {{ selected_item['Base Price'] }}</p>
+                                    </div>
 
-<!--GRAY SECTION ON TOP OF PAGE-->
-<section class="features16 cid-r0R1Wm1xUa" id="features16-i">
+                                    <!--Price Updater Script-->
+                                    <script>
+                                      function parseExtraPrice(val) {
+                                          //Parse the value by first looking for the $
+                                          if (val.indexOf('$') != -1) {
+                                              let price = val.slice(val.indexOf('$') + 1, val.length);
+                                              return parseInt(price, 10);
+                                          }
+                                          return 0;
+                                      }
 
-    <div class="container align-center">
-        <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
-            {{selected_item['Base']}}
-        </h2>
-        <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
-        	Edit your food below!
-        </h3>
-        <div class="row media-row">
-              <div class="container align-center">
-            <div class="media-container-row">
-                <!--NEED ONE OF THESE FOR EVERY IN DEVELOPMENT GAME pong-->
-                <div class="card p-3 col-12 col-md-6">
-                    <div class="card-wrapper">
+                                      function changePrice() {
+                                          //Check IDs 'topping' 'extra' 'extra_rice'
+                                          let base_price = {
+                                              {
+                                                  selected_item['Base Price']
+                                              }
+                                          };
 
-                        <div class="card-img">
-                            <img src="{{ url_for('food.static', filename=selected_item['Img_URL']) }}" alt="pong">
-                        </div>
-                        <div class="card-box"> <!--food box entity-->
-                          <div class="item-role px-2">
-                              <p class="mbr-fonts-style display-5">Description: {{ selected_item['Description'] }}</p>
-                          </div>
-                          <div class="item-role px-2">
-                              <p class="mbr-text mbr-fonts-style display-5">
-                              {% for ingredient in selected_item['Ingredients'] %}
-                                {{ingredient}}{% if not loop.last %},{% endif %}
-                              {% endfor %}
-                              </p>
-                          </div>
-                          <div class="item-role px-2">
-                              <p class="mbr-fonts-style display-5" id="the_price">Price: {{ selected_item['Base Price'] }}</p>
-                          </div>
+                                          //Parse the values for just the numeric value extra price
+                                          let topping = parseExtraPrice(document.getElementById('topping').value);
+                                          let extra = parseExtraPrice(document.getElementById('extra').value);
+                                          let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
 
-                          <!--Price Updater Script-->
-                          <script>
-                            function parseExtraPrice(val){
-                              //Parse the value by first looking for the $
-                              if(val.indexOf('$') != -1){
-                                let price = val.slice(val.indexOf('$') + 1, val.length);
-                                return parseInt(price, 10);
-                              }
-                              return 0;
-                            }
+                                          let cur_price = document.getElementById('the_price');
 
-                            function changePrice(){
-                              //Check IDs 'topping' 'extra' 'extra_rice'
-                              let base_price = {{ selected_item['Base Price'] }};
+                                          let additional = topping + extra + (extra_rice * 2);
 
-                              //Parse the values for just the numeric value extra price
-                              let topping = parseExtraPrice(document.getElementById('topping').value);
-                              let extra = parseExtraPrice(document.getElementById('extra').value);
-                              let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
-
-                              let cur_price = document.getElementById('the_price');
-
-                              let additional = topping + extra + (extra_rice * 2);
-
-                              //The cur_price updates to the new value, because the base_price is a float, we need to convert first
-                              cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(2,base_price.toString().length);
-                            }
+                                          //The cur_price updates to the new value, because the base_price is a float, we need to convert first
+                                          cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(2, base_price.toString().length);
+                                      }
                           </script>
-                          <!--End price updater-->
+                                    <!--End price updater-->
 
-                          <!--customization starts here-->
-                          <div class="item-role px-2">
-                              <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
-                                <input name="base" type="hidden" value="{{selected_item['Base']}}">
+                                    <!--customization starts here-->
+                                    <div class="item-role px-2">
+                                        <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
+                                            <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
-                                {% if selected_item['Spice'] != False %}
-                                <!--Spice option-->
-                                Spice Level <select name="spice" id="spice">
+                                            {% if selected_item['Spice'] != False %}
+                                            <!--Spice option-->
+                                            Spice Level <select name="spice" id="spice">
 
-                                  {% for spice_level in selected_item['Spice'] %}
-                                  <option value="{{ spice_level }}">{{ spice_level }}</option>
-                                  {% endfor %}
-                                </select>
-                                <br><br>
-                                {% endif %}
+                                                {% for spice_level in selected_item['Spice'] %}
+                                                <option value="{{ spice_level }}">{{ spice_level }}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <br><br>
+                                            {% endif %}
 
-                                {% if selected_item['Toppings'] != False %}
-                                <!--Topping option-->
-                                <!--Itemname, Extra Price-->
-                                <!-- Display "Chicken +$2" if extra price"-->
-                                With <select name="topping" id="topping" onchange="changePrice();">
-                                  {% for topping in selected_item['Toppings'] %}
-                                  <option value="{{ topping[0] }}{% if topping[1] != 0 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
-                                  {% endfor %}
-                                </select>
-                                <br><br>
-                                {% endif %}
+                                            {% if selected_item['Toppings'] != False %}
+                                            <!--Topping option-->
+                                            <!--Itemname, Extra Price-->
+                                            <!-- Display "Chicken +$2" if extra price"-->
+                                            With <select name="topping" id="topping" onchange="changePrice();">
+                                                {% for topping in selected_item['Toppings'] %}
+                                                <option value="{{ topping[0] }}{% if topping[1] != 0 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <br><br>
+                                            {% endif %}
 
 
-                                {% if selected_item['Extra'] != False %}
-                                <!--Topping option-->
-                                <!--Itemname, Extra Price-->
-                                <!-- Display "Chicken +$2" if extra price"-->
-                                Extra <select name="extra" id="extra" onchange="changePrice();">
-                                  {% for extra in selected_item['Extra'] %}
-                                  <option value="{{ extra[0] }}{% if extra[1] != 0 %}+${{ extra[1] }}{% endif %}">{{ extra[0] }}{% if extra[1] != 0 %} +${{ extra[1] }}{% endif %}</option>
-                                  {% endfor %}
-                                </select>
-                                <br><br>
+                                            {% if selected_item['Extra'] != False %}
+                                            <!--Topping option-->
+                                            <!--Itemname, Extra Price-->
+                                            <!-- Display "Chicken +$2" if extra price"-->
+                                            Extra <select name="extra" id="extra" onchange="changePrice();">
+                                                {% for extra in selected_item['Extra'] %}
+                                                <option value="{{ extra[0] }}{% if extra[1] != 0 %}+${{ extra[1] }}{% endif %}">{{ extra[0] }}{% if extra[1] != 0 %} +${{ extra[1] }}{% endif %}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <br><br>
 
-                                And <select id="extra_rice" name="extra_rice" onchange="changePrice();">
-                                  <option value=0>0</option>
-                                  <option value=1>1</option>
-                                  <option value=2>2</option>
-                                  <option value=3>3</option>
-                                  <option value=4>4</option>
-                                  <option value=5>5</option>
-                                </select> Extra Side(s) of Rice ($2 each)
-                                <br><br>
-                                {% endif %}
+                                            And <select id="extra_rice" name="extra_rice" onchange="changePrice();">
+                                                <option value=0>0</option>
+                                                <option value=1>1</option>
+                                                <option value=2>2</option>
+                                                <option value=3>3</option>
+                                                <option value=4>4</option>
+                                                <option value=5>5</option>
+                                            </select> Extra Side(s) of Rice ($2 each)
+                                            <br><br>
+                                            {% endif %}
 
-                                <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
+                                            <textarea name="custom_modify" rows="5" cols="20" placeholder="Exclusions, notes, etc."></textarea>
 
-                                <input type="hidden" id="modal-dest" name="modal-dest" value="to_cart">
-                              </form>
-                          </div>
+                                            <input type="hidden" id="modal-dest" name="modal-dest" value="to_cart">
+                                        </form>
+                                    </div>
 
+                                </div>
+
+                                <div class="mbr-section-btn text-center">
+                                    <button class="btn btn-primary display-4" id="cart_button">
+                                        Add to cart
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+                    </div>
 
-                        <div class="mbr-section-btn text-center">
-                            <button class="btn btn-primary display-4" id="cart_button">
-                                Add to cart
-                            </button>
-                        </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--END GRAY SECTION-->
+
+
+        <!--White section on bottom of page with buttons-->
+        <section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="title col-12 col-lg-8">
+                        <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                            Order Details</h2>
+                        <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                            Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
+                        <div data-form-alert="" hidden="">the order page was submitted</div>
+                        <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form">
+                            <!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
+                            <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
+                            <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
+                            <input type="hidden" name="item1" value="thai currey">
+                            <input type="hidden" name="item2" value="thai tea">
+                            <div class="mbr-section-btn text-center">
+                                <button href="" class="btn btn-primary display-4">
+                                    Checkout
+                                </button>
+                            </div>
+                            <!--<span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Checkout</button></span>-->
+
+                            <!--</div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End button section on the bottom-->
+
+
+        {% include 'universal-bottom.html' %}
+
+        <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+        <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+        <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+
+
+
+        <!-- Modal Style -->
+        <style>
+            /* The Modal (background) */
+            .modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                z-index: 1;
+                /* Sit on top */
+                padding-top: 100px;
+                /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4);
+                /* Black w/ opacity */
+            }
+
+            /* Modal Content */
+            .modal-content {
+                position: relative;
+                background-color: #fefefe;
+                margin: auto;
+                padding: 0;
+                border: 1px solid #888;
+                width: 80%;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+                -webkit-animation-name: animatetop;
+                -webkit-animation-duration: 0.4s;
+                animation-name: animatetop;
+                animation-duration: 0.4s
+            }
+
+            /* Add Animation */
+            @-webkit-keyframes animatetop {
+                from {
+                    top: -300px;
+                    opacity: 0
+                }
+
+                to {
+                    top: 0;
+                    opacity: 1
+                }
+            }
+
+            @keyframes animatetop {
+                from {
+                    top: -300px;
+                    opacity: 0
+                }
+
+                to {
+                    top: 0;
+                    opacity: 1
+                }
+            }
+
+            /* The Close Button */
+            .close {
+                color: white;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            .modal-header {
+                padding: 2px 16px;
+                background-color: #333333;
+                color: white;
+            }
+
+            .modal-body {
+                padding: 2px 16px;
+            }
+
+            #to-menu {
+                word-break: normal;
+            }
+
+            #to-cart {
+                word-break: normal;
+            }
+        </style>
+
+        <!-- The Modal -->
+        <div id="submit_modal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mbr-section-btn text-center">
+                        <p class="mbr-text mbr-fonts-style display-5">Great Choice!</p>
+                        <br>
+                        <button href="" class="btn btn-primary display-4" id="to-menu">
+                            Back To Menu
+                        </button>
+                        <button href="" class="btn btn-primary display-4" id="to-cart">
+                            Proceed To Checkout
+                        </button>
                     </div>
                 </div>
             </div>
 
-    </div>
-
-
-    	</div>
-</div>
-<!--END GRAY SECTION-->
-
-
-<!--White section on bottom of page with buttons-->
-<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
-
-
-
-
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="align-center pb-2 mbr-fonts-style display-2">
-                    Order Details</h2>
-                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                    Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
-            </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                <div data-form-alert="" hidden="">the order page was submitted</div>
-                <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form"><!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
-                    <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
-                        <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
-                        <input type="hidden" name="item1" value="thai currey">
-                        <input type="hidden" name="item2" value="thai tea">
-                        <div class="mbr-section-btn text-center">
-                            <button href="" class="btn btn-primary display-4">
-                                Checkout
-                            </button>
-                        </div>
-                        <!--<span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Checkout</button></span>-->
 
-                    <!--</div>-->
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<!--End button section on the bottom-->
+        <script>
+          let to_cart = document.getElementById('to-cart');
+          let to_menu = document.getElementById('to-menu');
+
+          to_cart.onclick = function() {
+              document.getElementById("modal-dest").value = "to_cart";
+              document.getElementById('food_entry').submit();
+          }
+
+          to_menu.onclick = function() {
+              document.getElementById("modal-dest").value = "to_menu";
+              document.getElementById('food_entry').submit();
+          }
 
 
-{% include 'universal-bottom.html' %}
+          // Get the modal
+          let modal = document.getElementById('submit_modal');
 
-  <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-  <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+          let btn = document.getElementById('cart_button');
 
+          // Get the <span> element that closes the modal
+          let span = document.getElementsByClassName("close")[0];
 
+          // When the user clicks on <span> (x), close the modal
+          span.onclick = function() {
+              modal.style.display = "none";
+              document.getElementById("modal-dest").value = "stay";
+              document.getElementById('food_entry').submit();
+          }
 
-<!-- Modal Style -->
-<style>
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+                  document.getElementById("modal-dest").value = "stay";
+                  document.getElementById('food_entry').submit();
+              }
+          }
 
-/* Modal Content */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+          function change_cart_before_post() {
+              //Automatically changes cart price to give user sensation that page auto added to cart
+              //since keeping modal showing while post request refreshes page is hard
+              //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
+              let cart_span = document.getElementById('cart_nav');
+              let cart_text = cart_span.innerText;
 
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
+              let final_price = document.getElementById('the_price').innerText;
+              final_price = parseFloat(final_price.slice(7, final_price.length));
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-}
+              if (cart_text.slice(1, 6) == 'Cart') {
+                  cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
+              } else {
+                  //Update total price count
+                  let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
+                  total_price = parseFloat(total_price)
+                  total_price += final_price
+                  total_price = Number((total_price).toFixed(2));
+                  total_price = total_price.toString();
+                  if (total_price[total_price.length - 2] == '.') {
+                      total_price += '0';
+                  }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
+                  //Update item count
+                  let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
+                  cur_item_count = parseInt(cur_item_count, 10);
+                  cur_item_count++;
+                  cart_span.innerHTML = '&nbsp;Cart ' + cur_item_count + ', $' + total_price;
+              }
+          }
 
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+          function show_modal() {
+              //document.getElementById('food_entry').submit();
+              modal.style.display = "block";
+              change_cart_before_post();
+              return false;
+          }
 
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-header {
-    padding: 2px 16px;
-    background-color: #333333;
-    color: white;
-}
-
-.modal-body {padding: 2px 16px;}
-
-#to-menu {word-break: normal;}
-#to-cart {word-break: normal;}
-
-</style>
-
-<!-- The Modal -->
-<div id="submit_modal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-
-    <div class="modal-header">
-      <span class="close">&times;</span>
-    </div>
-
-    <div class="modal-body">
-      <div class="mbr-section-btn text-center">
-          <p class="mbr-text mbr-fonts-style display-5">Great Choice!</p>
-          <br>
-          <button href="" class="btn btn-primary display-4" id="to-menu">
-              Back To Menu
-          </button>
-          <button href="" class="btn btn-primary display-4" id="to-cart">
-              Proceed To Checkout
-          </button>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-
-<script>
-  let to_cart = document.getElementById('to-cart');
-  let to_menu = document.getElementById('to-menu');
-
-  to_cart.onclick = function(){
-    document.getElementById("modal-dest").value = "to_cart";
-    document.getElementById('food_entry').submit();
-  }
-
-  to_menu.onclick = function(){
-    document.getElementById("modal-dest").value = "to_menu";
-    document.getElementById('food_entry').submit();
-  }
-
-
-  // Get the modal
-  let modal = document.getElementById('submit_modal');
-
-  let btn = document.getElementById('cart_button');
-
-  // Get the <span> element that closes the modal
-  let span = document.getElementsByClassName("close")[0];
-
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-      modal.style.display = "none";
-      document.getElementById("modal-dest").value = "stay";
-      document.getElementById('food_entry').submit();
-  }
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-          document.getElementById("modal-dest").value = "stay";
-          document.getElementById('food_entry').submit();
-      }
-  }
-
-function change_cart_before_post(){
-  //Automatically changes cart price to give user sensation that page auto added to cart
-  //since keeping modal showing while post request refreshes page is hard
-  //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
-  let cart_span = document.getElementById('cart_nav');
-  let cart_text = cart_span.innerText;
-
-  let final_price = document.getElementById('the_price').innerText;
-  final_price = parseFloat(final_price.slice(7, final_price.length));
-
-  if(cart_text.slice(1,6) == 'Cart'){
-    cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
-  } else {
-    //Update total price count
-    let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
-    total_price = parseFloat(total_price)
-    total_price += final_price
-    total_price = Number((total_price).toFixed(2));
-    total_price = total_price.toString();
-    if(total_price[total_price.length - 2] == '.'){
-      total_price += '0';
-    }
-
-    //Update item count
-    let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
-    cur_item_count = parseInt(cur_item_count, 10);
-    cur_item_count++;
-    cart_span.innerHTML = '&nbsp;Cart ' + cur_item_count + ', $' + total_price; 
-  }
-}
-
-  function show_modal(){
-    //document.getElementById('food_entry').submit();
-    modal.style.display = "block";
-    change_cart_before_post();
-    return false;
-  }
-
-  btn.onclick = show_modal;
-
-</script>
+          btn.onclick = show_modal;
+        </script>
 
 
 

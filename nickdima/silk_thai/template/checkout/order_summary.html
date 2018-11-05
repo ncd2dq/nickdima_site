@@ -1,69 +1,72 @@
 <!DOCTYPE html>
-<html >
+<html>
+
 <head>
-  <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
-  {% include 'universal.html' %}
-  <meta name="description" content="Site Creator Description">
-  <title>Checkout Page</title>
-  {% include 'universal-css-links.html' %}
+    <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
+    {% include 'universal.html' %}
+    <meta name="description" content="Site Creator Description">
+    <title>Checkout Page</title>
+    {% include 'universal-css-links.html' %}
 </head>
+
 <body>
- <!--Navigation bar-->
-{% include 'nav.html' %}
-<!--End navigation bar-->
+    <!--Navigation bar-->
+    {% include 'nav.html' %}
+    <!--End navigation bar-->
 
-<section class="engine"><a href="https://mobiri.se/o">portfolio web templates</a></section><section class="features16 cid-r0R1Wm1xUa" id="features16-i">
+    <section class="engine"><a href="https://mobiri.se/o">portfolio web templates</a></section>
+    <section class="features16 cid-r0R1Wm1xUa" id="features16-i">
 
 
 
-    <div class="container align-center">
-        <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
-            Your Order</h2>
-        <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">Make Any Edits Here To Quantity Before Checkout</h3>
-        <div class="row media-row">
+        <div class="container align-center">
+            <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+                Your Order</h2>
+            <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">Make Any Edits Here To Quantity Before Checkout</h3>
+            <div class="row media-row">
 
-          {% if empty_cart is defined %}
-          <div class="team-item col-lg-3 col-md-6">
-            <p class="mbr-fonts-style display-5">{{empty_cart}}</p>
-          </div>
-          {% else %}
-          {% for item in items %}
-          <div class="team-item col-lg-3 col-md-6">
-                  <div class="item-image">
-                      <img src="{{ url_for('food.static', filename=item['Img_url']) }}" alt="" title="">
-                  </div>
-                  <div class="item-caption py-3">
-                      <div class="item-name px-2">
-                          <p class="mbr-fonts-style display-5">
-                             {{item['Title']}} 
-                           {% if item['Topping'] != false %}with {{item['Topping'][0]}}{% endif %}</p>
-                          {% if item['Spice'] != false %}
-                          <p class="mbr-fonts-style display-6">
-                             Spice: {{item['Spice']}}</p>
-                          {% endif %}
-                          {% if item['Extra'][0] != 'None' and item['Extra'] != false %}
-                          <p class="mbr-fonts-style display-6">
-                             Extra: {{item['Extra'][0]}}</p>
-                          {% endif %}
-                          {% if item['Extra_Rice'] != '0' and item['Extra_Rice'] != false %}
-                          <p class="mbr-fonts-style display-6">
-                             Extra Rice: {{item['Extra_Rice']}}</p>
-                          {% endif %}
-                          {% if item['Notes'] != false %}
-                          <p class="mbr-fonts-style display-6">
-                             Notes: {{item['Notes']}}</p>
-                          {% endif %}
-                      </div>
-                      <div class="item-role px-2">
-                          <p>Price: ${{ item['Total'] }}</p>
-                      </div>
+                {% if empty_cart is defined %}
+                <div class="team-item col-lg-3 col-md-6">
+                    <p class="mbr-fonts-style display-5">{{empty_cart}}</p>
+                </div>
+                {% else %}
+                {% for item in items %}
+                <div class="team-item col-lg-3 col-md-6">
+                    <div class="item-image">
+                        <img src="{{ url_for('food.static', filename=item['Img_url']) }}" alt="" title="">
+                    </div>
+                    <div class="item-caption py-3">
+                        <div class="item-name px-2">
+                            <p class="mbr-fonts-style display-5">
+                                {{item['Title']}}
+                                {% if item['Topping'] != false %}with {{item['Topping'][0]}}{% endif %}</p>
+                            {% if item['Spice'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Spice: {{item['Spice']}}</p>
+                            {% endif %}
+                            {% if item['Extra'][0] != 'None' and item['Extra'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Extra: {{item['Extra'][0]}}</p>
+                            {% endif %}
+                            {% if item['Extra_Rice'] != '0' and item['Extra_Rice'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Extra Rice: {{item['Extra_Rice']}}</p>
+                            {% endif %}
+                            {% if item['Notes'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Notes: {{item['Notes']}}</p>
+                            {% endif %}
+                        </div>
+                        <div class="item-role px-2">
+                            <p>Price: ${{ item['Total'] }}</p>
+                        </div>
 
-                  </div>
-              </div>
-          {% endfor %}
-          {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
 
-          <!--NEED ONE OF THESE FOR ALL IMAGES BEING DISPLAYED
+                <!--NEED ONE OF THESE FOR ALL IMAGES BEING DISPLAYED
         <div class="team-item col-lg-3 col-md-6">
                 <div class="item-image">
                     <img src="assets/images/drunken-noodle-510x383.jpg" alt="" title="">
@@ -112,59 +115,60 @@
             
             -->
 
-    </div>
-</section>
+            </div>
+    </section>
 
-<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
+    <section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
 
 
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="title col-12 col-lg-8">
-                <h2 class="align-center pb-2 mbr-fonts-style display-2">
-                    Order Details</h2>
-                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                    Items: {% if session['total'] is defined %}{{session['total'][1]}}{% else %}0{% endif %}
-                    <br>Total Price: {% if session['total'] is defined %}${{session['total'][0]}}{% else %}Free{% endif %}
-                </h3>
-                <br>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="title col-12 col-lg-8">
+                    <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                        Order Details</h2>
+                    <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                        Items: {% if session['total'] is defined %}{{session['total'][1]}}{% else %}0{% endif %}
+                        <br>Total Price: {% if session['total'] is defined %}${{session['total'][0]}}{% else %}Free{% endif %}
+                    </h3>
+                    <br>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="container align-center">
+                    <form action="{{ url_for('checkout.summary') }}" method="post">
+
+                        <p class="mbr-fonts-style display-5">Select Order Type<br>
+                            <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-6">Minimum $20 Delivery</h3>
+                            <br>
+                            <input type="radio" id="delivery" name="order_type" value="Delivery" checked> Delivery
+                            <br>
+                            <input type="radio" id="takeout" name="order_type" value="takeout"> Takeout
+                            <br>
+                        </p>
+
+                        <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-        <div class="row justify-content-center">
-            <div class="container align-center">
-                <form action="{{ url_for('checkout.summary') }}" method="post">
-
-                    <p class="mbr-fonts-style display-5">Select Order Type<br>
-                      <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-6">Minimum $20 Delivery</h3>
-                      <br>
-                      <input type="radio" id="delivery" name="order_type" value="Delivery" checked> Delivery
-                      <br>
-                      <input type="radio" id="takeout" name="order_type" value="takeout"> Takeout
-                      <br>
-                    </p>
-
-                    <button href="" type="submit" class="btn btn-primary display-4">Submit Order</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
 
-{% include 'universal-bottom.html' %}
+    {% include 'universal-bottom.html' %}
 
-  <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-  <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-  <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+    <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+    <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
 
 
 </body>
+
 </html>
