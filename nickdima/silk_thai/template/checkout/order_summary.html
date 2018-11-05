@@ -62,6 +62,7 @@
                             {% endif %}
                             <form name='remove_id' method='POST' action='{{ url_for("checkout.cart_remover") }}'>
                                 <input type='hidden' value='{{ item["Id"] }}'>
+                                <input type='submit' value='Remove'>
                             </form>
                         </div>
                         <div class="item-role px-2">
