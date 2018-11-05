@@ -51,7 +51,7 @@ def is_open(view):
                 if day_minute >= 30:
                     return redirect(url_for('menu.menu'))
 
-        view(*args, **kwargs)
+        return view(*args, **kwargs)
 
     return wrapped
 
@@ -61,11 +61,13 @@ def referred_by_summary_page(view):
     '''
     @wraps(view)
     def wrapped(*args, **kwargs):
+        #request.referrer is the full url 'http://www.nickdima.com/thai/order/summary'
+        #url_for is just the end 'thai/order/summary'
         if url_for('checkout.summary') not in request.referrer:
             return redirect(url_for('menu.menu'))
         else:
             print('REFERRED BY TRIED TO RUN ACTUAL VIEW')
-            view(*args, **kwargs)
+            return view(*args, **kwargs)
 
     return wrapped
 
