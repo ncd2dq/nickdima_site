@@ -151,7 +151,7 @@
                             <br>
                             <input type="radio" id="takeout" name="order_type" value="takeout" checked> Takeout
                             <br>
-                            {% if delivery_minimum is true %}
+                            {% if delivery_minimum == true %}
                             <input type="radio" id="delivery" name="order_type" value="Delivery"> 
                             {% else %}
                             Must meet $20 minimum for delivery
