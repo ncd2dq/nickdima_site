@@ -19,12 +19,6 @@ def summary():
     return render_template('checkout/order_summary.html', items=items)
 
 
-@is_open
-@bp.route('/confirmation', methods=['GET'])
-def confirmation():
-
-    return render_template('checkout/order_confirmation.html')
-#change where the form sends people in the static>assets>formoid>formoid.min.js
 
 
 def is_open(outer_func):
@@ -60,4 +54,14 @@ def is_open(outer_func):
         outer_func(*args, **kwargs)
 
     return wrapped
+
+
+
+@is_open
+@bp.route('/confirmation', methods=['GET'])
+def confirmation():
+
+    return render_template('checkout/order_confirmation.html')
+#change where the form sends people in the static>assets>formoid>formoid.min.js
+
 
