@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from silk_thai.food_db import get_db
+from datetime import datetime
+from pytz import timezone
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
@@ -126,6 +128,20 @@ def food_pdp(item, portion):
 
     # Do not allow users to go to lunch page for item if lunch version doesn't exist
     lunch_time = True
+    tz = timezone('EST')
+    # Monday = 0, Sunday = 6
+    # Hour in range(24)
+    week_day, day_hour = datetime.now(tz).weekday(), datetime.now(tz).time().hour
+
+    # Check if accepting orders
+    # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
+
+    # Check if lunchtime
+    if week_day >= 5:
+        lunch_time = False
+    elif day_hour <= 10 or day_hour >= 2:
+        lunch_time = False
+
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
     # TODO: replace with lunchtime calculation
