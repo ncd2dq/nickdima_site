@@ -15,7 +15,7 @@ def food_pdp(item, portion):
         notes = request.form.get('custom_modify')
         topping = request.form.get('topping')
         extra = request.form.get('extra')
-        portion = request.form.get('portion_type')
+        portion_type = request.form.get('portion_type')
 
         # Ensure all form values exist
         spice = ensureExists(spice)
@@ -24,7 +24,7 @@ def food_pdp(item, portion):
         notes = ensureExists(notes)
         topping = ensureExists(topping)
         extra = ensureExists(extra)
-        portion = ensureExists(portion)
+        portion_type = ensureExists(portion_type)
 
         # These 2 can contain "+$3" in it, and that needs to be removed
         topping = removePricing(topping)
@@ -32,7 +32,7 @@ def food_pdp(item, portion):
 
         # Final value should be:
         # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
-        new_item = {'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion':False, 'Notes':False, 'Img_url':False, 'Total':False}
+        new_item = {'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
         
         #
         # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
@@ -70,8 +70,8 @@ def food_pdp(item, portion):
             new_item['Spice'] = spice 
         if extra_rice is not False:
             new_item['Extra_Rice'] = extra_rice
-        if portion is not False:
-            new_item['Portion'] = portion
+        if portion_type is not False:
+            new_item['Portion_Type'] = portion_type
         if notes is not False:
             new_item['Notes'] = notes
 
