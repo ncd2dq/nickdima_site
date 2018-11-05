@@ -63,12 +63,14 @@ def referred_by_summary_page(view):
     def wrapped(*args, **kwargs):
         #request.referrer is the full url 'http://www.nickdima.com/thai/order/summary'
         #url_for is just the end 'thai/order/summary'
-        if url_for('checkout.summary') not in request.referrer:
-            print('TIRED TO REDIRECT YO ASS TO THE MAIN MENU,, FUAHHH')
-            return redirect(url_for('menu.menu'))
-        else:
-            print('REFERRED BY TRIED TO RUN ACTUAL VIEW')
-            return view(*args, **kwargs)
+        try:
+            if url_for('checkout.summary') in request.referrer:
+                print('SUCCESSFULLY REFERRED TO SUMMARY PAGE')
+                return view(*args, **kwargs)
+            else:
+                return redirect(url_for('menu.menu'))
+        except Exception as e:
+            return redirect(url_for('menu.menu')) 
 
     return wrapped
 
