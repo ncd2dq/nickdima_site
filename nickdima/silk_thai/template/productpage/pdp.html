@@ -65,17 +65,17 @@
                                       function changePrice() {
                                           //Check IDs 'topping' 'extra' 'extra_rice'
                                           {% if portion == 'dinner' %}
-                                          let base_price = {
+                                          let base_price = 
                                               {
                                                   selected_item['Base Price']
-                                              }
-                                          };
+                                              };
+
                                           {% else %}
-                                          let base_price = {
+                                          let base_price =
                                               {
                                                   selected_item['Lunch_Version']['Base Price']
-                                              }
-                                          };
+                                              };
+
 
                                           {% endif %}
 
