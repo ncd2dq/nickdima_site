@@ -122,6 +122,8 @@ def food_pdp(item, portion):
 
     # Do not allow users to go to lunch page for item if lunch version doesn't exist
     lunch_time = True
+    if selected_item['Lunch_Version'] == False:
+        lunch_time = False
     # TODO: replace with lunchtime calculation
     if portion == 'lunch' and selected_item['Lunch_Version'] == False or not lunch_time:
         return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
