@@ -52,7 +52,14 @@ def summary():
     except KeyError:
         return render_template('checkout/order_summary.html', empty_cart='No items in cart!')
 
-    return render_template('checkout/order_summary.html', items=items)
+    # Determine if delivery minimum met
+    # [total, quantity]
+    delivery_minimum = False
+    cur_total = session['total']
+    if cur_total[0] >= 20:
+        delivery_minimum = True
+
+    return render_template('checkout/order_summary.html', items=items, delivery_minimum=delivery_minimum)
 
 
 def is_open(view):
