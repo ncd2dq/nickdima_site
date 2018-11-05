@@ -60,13 +60,15 @@ def referred_by_summary_page(view):
     Ensures that users can only get to the 
     '''
     @wraps(view)
-    def wrapped_view(*args, **kwargs):
+    def wrapped(*args, **kwargs):
         if request.referrer != url_for('checkout.summary'):
+            print('REFFERED BY TRIED TO REDIRECT')
             return redirect(url_for('menu.menu'))
         else:
+            print('REFERRED BY TRIED TO RUN ACTUAL VIEW')
             view(*args, **kwargs)
 
-    return wrapped_view
+    return wrapped
 
 # The route decorator must come first as it is what registers the function
 # if it isn't first you'll register the unwrapped view
