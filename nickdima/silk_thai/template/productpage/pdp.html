@@ -53,7 +53,7 @@
 
                                     <!--Price Updater Script-->
                                     <script>
-                                      function parseExtraPrice(val) {
+                                        function parseExtraPrice(val) {
                                           //Parse the value by first looking for the $
                                           if (val.indexOf('$') != -1) {
                                               let price = val.slice(val.indexOf('$') + 1, val.length);
@@ -158,269 +158,231 @@
 
             </div>
         </div>
-        <!--END GRAY SECTION-->
+    </section>
+    <!--END GRAY SECTION-->
 
 
-        <!--White section on bottom of page with buttons-->
-        <section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="title col-12 col-lg-8">
-                        <h2 class="align-center pb-2 mbr-fonts-style display-2">
-                            Order Details</h2>
-                        <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
-                            Items: &lt;&gt;<br>Total Price: &lt;&gt;</h3>
-                    </div>
-                </div>
+    {% include 'universal-bottom.html' %}
 
-                <div class="row justify-content-center">
-                    <div class="col-12 col-lg-6  col-md-8 " data-form-type="formoid">
-                        <div data-form-alert="" hidden="">the order page was submitted</div>
-                        <form class="mbr-form" action="{{ url_for('checkout.summary') }}" method="post" data-form-title="Mobirise Form">
-                            <!--<input type="hidden" name="email" data-form-email="true" value="705DbCTbf81Lwv4tQcqg+WZp2p4fzU7WHcXa1wmByg5evmxi+pH7k7f2OsFKHR79s/ck1GlFHoIouzX+ahXvnMeeXLzNJgAdQjdBTY0quIlRUSsDHuX5jAYZ7l3UDPOu" data-form-field="Email">-->
-                            <!--<div class="mbr-subscribe input-group"> HAVING THIS MADE THE BUTTON NOT CENTER-->
-                            <!--<input class="form-control" type="email" name="email" placeholder="Name" data-form-field="Email" required="" id="email-form3-j">-->
-                            <input type="hidden" name="item1" value="thai currey">
-                            <input type="hidden" name="item2" value="thai tea">
-                            <div class="mbr-section-btn text-center">
-                                <button href="" class="btn btn-primary display-4">
-                                    Checkout
-                                </button>
-                            </div>
-                            <!--<span class="input-group-btn"><button href="" type="submit" class="btn btn-primary display-4">Checkout</button></span>-->
-
-                            <!--</div>-->
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--End button section on the bottom-->
-
-
-        {% include 'universal-bottom.html' %}
-
-        <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
-        <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-        <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
+    <script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+    <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+    <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
 
 
 
-        <!-- Modal Style -->
-        <style>
-            /* The Modal (background) */
-            .modal {
-                display: none;
-                /* Hidden by default */
-                position: fixed;
-                /* Stay in place */
-                z-index: 1;
-                /* Sit on top */
-                padding-top: 100px;
-                /* Location of the box */
-                left: 0;
+    <!-- Modal Style -->
+    <style>
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 80%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
+            }
+
+            to {
                 top: 0;
-                width: 100%;
-                /* Full width */
-                height: 100%;
-                /* Full height */
-                overflow: auto;
-                /* Enable scroll if needed */
-                background-color: rgb(0, 0, 0);
-                /* Fallback color */
-                background-color: rgba(0, 0, 0, 0.4);
-                /* Black w/ opacity */
+                opacity: 1
+            }
+        }
+
+        @keyframes animatetop {
+            from {
+                top: -300px;
+                opacity: 0
             }
 
-            /* Modal Content */
-            .modal-content {
-                position: relative;
-                background-color: #fefefe;
-                margin: auto;
-                padding: 0;
-                border: 1px solid #888;
-                width: 80%;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-                -webkit-animation-name: animatetop;
-                -webkit-animation-duration: 0.4s;
-                animation-name: animatetop;
-                animation-duration: 0.4s
+            to {
+                top: 0;
+                opacity: 1
             }
+        }
 
-            /* Add Animation */
-            @-webkit-keyframes animatetop {
-                from {
-                    top: -300px;
-                    opacity: 0
-                }
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
-                to {
-                    top: 0;
-                    opacity: 1
-                }
-            }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-            @keyframes animatetop {
-                from {
-                    top: -300px;
-                    opacity: 0
-                }
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #333333;
+            color: white;
+        }
 
-                to {
-                    top: 0;
-                    opacity: 1
-                }
-            }
+        .modal-body {
+            padding: 2px 16px;
+        }
 
-            /* The Close Button */
-            .close {
-                color: white;
-                float: right;
-                font-size: 28px;
-                font-weight: bold;
-            }
+        #to-menu {
+            word-break: normal;
+        }
 
-            .close:hover,
-            .close:focus {
-                color: #000;
-                text-decoration: none;
-                cursor: pointer;
-            }
+        #to-cart {
+            word-break: normal;
+        }
+    </style>
 
-            .modal-header {
-                padding: 2px 16px;
-                background-color: #333333;
-                color: white;
-            }
+    <!-- The Modal -->
+    <div id="submit_modal" class="modal">
 
-            .modal-body {
-                padding: 2px 16px;
-            }
+        <!-- Modal content -->
+        <div class="modal-content">
 
-            #to-menu {
-                word-break: normal;
-            }
-
-            #to-cart {
-                word-break: normal;
-            }
-        </style>
-
-        <!-- The Modal -->
-        <div id="submit_modal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <span class="close">&times;</span>
-                </div>
-
-                <div class="modal-body">
-                    <div class="mbr-section-btn text-center">
-                        <p class="mbr-text mbr-fonts-style display-5">Great Choice!</p>
-                        <br>
-                        <button href="" class="btn btn-primary display-4" id="to-menu">
-                            Back To Menu
-                        </button>
-                        <button href="" class="btn btn-primary display-4" id="to-cart">
-                            Proceed To Checkout
-                        </button>
-                    </div>
-                </div>
+            <div class="modal-header">
+                <span class="close">&times;</span>
             </div>
 
+            <div class="modal-body">
+                <div class="mbr-section-btn text-center">
+                    <p class="mbr-text mbr-fonts-style display-5">Great Choice!</p>
+                    <br>
+                    <button href="" class="btn btn-primary display-4" id="to-menu">
+                        Back To Menu
+                    </button>
+                    <button href="" class="btn btn-primary display-4" id="to-cart">
+                        Proceed To Checkout
+                    </button>
+                </div>
+            </div>
         </div>
 
-
-        <script>
-          let to_cart = document.getElementById('to-cart');
-          let to_menu = document.getElementById('to-menu');
-
-          to_cart.onclick = function() {
-              document.getElementById("modal-dest").value = "to_cart";
-              document.getElementById('food_entry').submit();
-          }
-
-          to_menu.onclick = function() {
-              document.getElementById("modal-dest").value = "to_menu";
-              document.getElementById('food_entry').submit();
-          }
+    </div>
 
 
-          // Get the modal
-          let modal = document.getElementById('submit_modal');
+    <script>
+        let to_cart = document.getElementById('to-cart');
+        let to_menu = document.getElementById('to-menu');
 
-          let btn = document.getElementById('cart_button');
+        to_cart.onclick = function() {
+            document.getElementById("modal-dest").value = "to_cart";
+            document.getElementById('food_entry').submit();
+        }
 
-          // Get the <span> element that closes the modal
-          let span = document.getElementsByClassName("close")[0];
-
-          // When the user clicks on <span> (x), close the modal
-          span.onclick = function() {
-              modal.style.display = "none";
-              document.getElementById("modal-dest").value = "stay";
-              document.getElementById('food_entry').submit();
-          }
-
-          // When the user clicks anywhere outside of the modal, close it
-          window.onclick = function(event) {
-              if (event.target == modal) {
-                  modal.style.display = "none";
-                  document.getElementById("modal-dest").value = "stay";
-                  document.getElementById('food_entry').submit();
-              }
-          }
-
-          function change_cart_before_post() {
-              //Automatically changes cart price to give user sensation that page auto added to cart
-              //since keeping modal showing while post request refreshes page is hard
-              //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
-              let cart_span = document.getElementById('cart_nav');
-              let cart_text = cart_span.innerText;
-
-              let final_price = document.getElementById('the_price').innerText;
-              final_price = parseFloat(final_price.slice(7, final_price.length));
-
-              if (cart_text.slice(1, 6) == 'Cart') {
-                  cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
-              } else {
-                  //Update total price count
-                  let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
-                  total_price = parseFloat(total_price)
-                  total_price += final_price
-                  total_price = Number((total_price).toFixed(2));
-                  total_price = total_price.toString();
-                  if (total_price[total_price.length - 2] == '.') {
-                      total_price += '0';
-                  }
-
-                  //Update item count
-                  let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
-                  cur_item_count = parseInt(cur_item_count, 10);
-                  cur_item_count++;
-                  cart_span.innerHTML = '&nbsp;Cart ' + cur_item_count + ', $' + total_price;
-              }
-          }
-
-          function show_modal() {
-              //document.getElementById('food_entry').submit();
-              modal.style.display = "block";
-              change_cart_before_post();
-              return false;
-          }
-
-          btn.onclick = show_modal;
-        </script>
+        to_menu.onclick = function() {
+            document.getElementById("modal-dest").value = "to_menu";
+            document.getElementById('food_entry').submit();
+        }
 
 
+        // Get the modal
+        let modal = document.getElementById('submit_modal');
+
+        let btn = document.getElementById('cart_button');
+
+        // Get the <span> element that closes the modal
+        let span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+            document.getElementById("modal-dest").value = "stay";
+            document.getElementById('food_entry').submit();
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                document.getElementById("modal-dest").value = "stay";
+                document.getElementById('food_entry').submit();
+            }
+        }
+
+        function change_cart_before_post() {
+            //Automatically changes cart price to give user sensation that page auto added to cart
+            //since keeping modal showing while post request refreshes page is hard
+            //IF THE WORDING OF THE CART ICON CHANGES, CHANGE THIS
+            let cart_span = document.getElementById('cart_nav');
+            let cart_text = cart_span.innerText;
+
+            let final_price = document.getElementById('the_price').innerText;
+            final_price = parseFloat(final_price.slice(7, final_price.length));
+
+            if (cart_text.slice(1, 6) == 'Cart') {
+                cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
+            } else {
+                //Update total price count
+                let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
+                total_price = parseFloat(total_price)
+                total_price += final_price
+                total_price = Number((total_price).toFixed(2));
+                total_price = total_price.toString();
+                if (total_price[total_price.length - 2] == '.') {
+                    total_price += '0';
+                }
+
+                //Update item count
+                let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
+                cur_item_count = parseInt(cur_item_count, 10);
+                cur_item_count++;
+                cart_span.innerHTML = '&nbsp;Cart ' + cur_item_count + ', $' + total_price;
+            }
+        }
+
+        function show_modal() {
+            //document.getElementById('food_entry').submit();
+            modal.style.display = "block";
+            change_cart_before_post();
+            return false;
+        }
+
+        btn.onclick = show_modal;
+    </script>
 
 </body>
 
