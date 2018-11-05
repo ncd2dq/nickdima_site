@@ -21,14 +21,8 @@ def cart_remover():
             return redirect(url_for('checkout.summary'))
 
         for item in cur_cart:
-            print(item['Id'])
-            print(remove_id)
-            print(item['Id'] == remove_id)
-            print(type(item['Id']), type(remove_id))
-            if item['Id'] == remove_id:
-                print('LOCATED THE ITEM')
-                print(item['Id'], remove_id)
 
+            if item['Id'] == int(remove_id):
                 cur_total[0] = float(cur_total[0])
                 cur_total[0] -= item['Total']
                 cur_total[0] = round(cur_total[0], 2)
