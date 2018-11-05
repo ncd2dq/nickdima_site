@@ -34,7 +34,7 @@ def is_open(view):
 
         # Sunday - Thursday
         if week_day >= 0 and week_day <= 3 or week_day == 6:
-            if day_hour <= 10:
+            if day_hour <= 10 or day_hour == 13:
                 return redirect(url_for('menu.menu'))
             if day_hour >= 22:
                 return redirect(url_for('menu.menu'))
