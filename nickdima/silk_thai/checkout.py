@@ -34,7 +34,7 @@ def is_open(view):
 
         # Sunday - Thursday
         if week_day >= 0 and week_day <= 3 or week_day == 6:
-            if day_hour <= 10 or day_hour == 13:
+            if day_hour <= 10:
                 return redirect(url_for('menu.menu'))
             if day_hour >= 22:
                 return redirect(url_for('menu.menu'))
@@ -64,6 +64,7 @@ def referred_by_summary_page(view):
         #request.referrer is the full url 'http://www.nickdima.com/thai/order/summary'
         #url_for is just the end 'thai/order/summary'
         if url_for('checkout.summary') not in request.referrer:
+            print('TIRED TO REDIRECT YO ASS TO THE MAIN MENU,, FUAHHH')
             return redirect(url_for('menu.menu'))
         else:
             print('REFERRED BY TRIED TO RUN ACTUAL VIEW')
