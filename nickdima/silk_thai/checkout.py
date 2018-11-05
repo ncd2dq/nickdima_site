@@ -56,7 +56,7 @@ def summary():
     # [total, quantity]
     delivery_minimum = False
     cur_total = session['total']
-    if cur_total[0] >= 20:
+    if float(cur_total[0]) >= 20:
         delivery_minimum = True
 
     return render_template('checkout/order_summary.html', items=items, delivery_minimum=delivery_minimum)
