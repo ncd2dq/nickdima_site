@@ -132,7 +132,6 @@ def food_pdp(item, portion):
     # Monday = 0, Sunday = 6
     # Hour in range(24)
     week_day, day_hour = datetime.now(tz).weekday(), datetime.now(tz).time().hour
-
     # Check if accepting orders
     # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
 
