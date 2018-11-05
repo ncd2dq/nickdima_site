@@ -21,6 +21,8 @@ def cart_remover():
             return redirect(url_for('checkout.summary'))
 
         for item in cur_cart:
+            print(item['Id'])
+            print(remove_id)
             if item['Id'] == remove_id:
                 print('LOCATED THE ITEM')
                 print(item['Id'], remove_id)
