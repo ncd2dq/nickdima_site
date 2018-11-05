@@ -23,6 +23,8 @@ def cart_remover():
         for item in cur_cart:
             print(item['Id'])
             print(remove_id)
+            print(item['Id'] == remove_id)
+            print(type(item['Id']), type(remove_id))
             if item['Id'] == remove_id:
                 print('LOCATED THE ITEM')
                 print(item['Id'], remove_id)
