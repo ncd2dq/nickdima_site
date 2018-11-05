@@ -22,7 +22,7 @@ def summary():
 
 
 def is_open(outer_func):
-
+    print('IS OPEN DECORATOR RAN --------------------------')
     def wrapped(*args, **kwargs):
         # Monday = 0, Sunday = 6
         # Hour in 1 - 24
