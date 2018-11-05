@@ -60,14 +60,14 @@
                             <p class="mbr-fonts-style display-6">
                                 Notes: {{item['Notes']}}</p>
                             {% endif %}
-                            <form class="mbr-fonts-style display-6" method='POST' action='{{ url_for("checkout.cart_remover") }}'>
-                                <input type='hidden' name='remove_id' value='{{ item["Id"] }}'>
-                                <input type='submit' class="btn btn-primary display-6" value='Remove'>
-                            </form>
                         </div>
                         <div class="item-role px-2">
                             <p>Price: ${{ item['Total'] }}</p>
                         </div>
+                        <form class="mbr-fonts-style display-6" method='POST' action='{{ url_for("checkout.cart_remover") }}'>
+                            <input type='hidden' name='remove_id' value='{{ item["Id"] }}'>
+                            <input type='submit' class="btn btn-primary display-6" value='Remove'>
+                        </form>
 
                     </div>
                 </div>
