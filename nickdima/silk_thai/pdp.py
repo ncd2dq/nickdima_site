@@ -120,6 +120,10 @@ def food_pdp(item, portion):
         # Or flash the error
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
+    # Do not allow users to go to lunch page for item if lunch version doesn't exist
+    if portion == 'lunch' and selected_item['Lunch_Version'] == False:
+        return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
+        
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion)
 
 

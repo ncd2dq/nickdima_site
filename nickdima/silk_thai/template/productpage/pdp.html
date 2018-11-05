@@ -48,7 +48,7 @@
                                         </p>
                                     </div>
                                     <div class="item-role px-2">
-                                        <p class="mbr-fonts-style display-5" id="the_price">Price: {{ selected_item['Base Price'] }}</p>
+                                        <p class="mbr-fonts-style display-5" id="the_price">Price: {% if portion == 'dinner' %}{{ selected_item['Base Price'] }}{% else %}{{ selected_item['Lunch_Version']['Base Price'] }}{% endif %}</p>
                                     </div>
 
                                     <!--Price Updater Script-->
@@ -64,11 +64,19 @@
 
                                       function changePrice() {
                                           //Check IDs 'topping' 'extra' 'extra_rice'
+                                          {% if portion == 'dinner' %}
                                           let base_price = {
                                               {
                                                   selected_item['Base Price']
                                               }
                                           };
+                                          {% else %}
+                                          let base_price = {
+                                              {
+                                                  selected_item['Lunch_Version']['Base Price']
+                                              }
+                                          };
+                                          {% endif %}
 
                                           //Parse the values for just the numeric value extra price
                                           let topping = parseExtraPrice(document.getElementById('topping').value);
@@ -101,6 +109,8 @@
                                             <br><br>
                                             {% endif %}
 
+                                            {% if portion == 'dinner' %}
+
                                             {% if selected_item['Toppings'] != False %}
                                             <!--Topping option-->
                                             <!--Itemname, Extra Price-->
@@ -111,6 +121,22 @@
                                                 {% endfor %}
                                             </select>
                                             <br><br>
+                                            {% endif %}
+
+                                            {% else %}
+
+                                            {% if selected_item['Lunch_Version']['Toppings'] != False %}
+                                            <!--Topping option-->
+                                            <!--Itemname, Extra Price-->
+                                            <!-- Display "Chicken +$2" if extra price"-->
+                                            With <select name="topping" id="topping" onchange="changePrice();">
+                                                {% for topping in selected_item['Lunch_Version']['Toppings'] %}
+                                                <option value="{{ topping[0] }}{% if topping[1] != 0 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0 %} +${{ topping[1] }}{% endif %}</option>
+                                                {% endfor %}
+                                            </select>
+                                            <br><br>
+                                            {% endif %}
+
                                             {% endif %}
 
 
