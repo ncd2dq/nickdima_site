@@ -19,8 +19,6 @@ def summary():
     return render_template('checkout/order_summary.html', items=items)
 
 
-
-
 def is_open(outer_func):
     print('IS OPEN DECORATOR RAN --------------------------')
     def wrapped(*args, **kwargs):
@@ -57,9 +55,8 @@ def is_open(outer_func):
     return wrapped
 
 
-
-@is_open
 @bp.route('/confirmation', methods=['GET'])
+@is_open
 def confirmation():
 
     return render_template('checkout/order_confirmation.html')
