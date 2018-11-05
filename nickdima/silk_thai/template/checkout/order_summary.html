@@ -52,6 +52,10 @@
                             <p class="mbr-fonts-style display-6">
                                 Extra Rice: {{item['Extra_Rice']}}</p>
                             {% endif %}
+                            {% if item['Portion'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Portion: {{item['Portion']}}</p>
+                            {% endif %}
                             {% if item['Notes'] != false %}
                             <p class="mbr-fonts-style display-6">
                                 Notes: {{item['Notes']}}</p>
