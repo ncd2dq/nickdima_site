@@ -9,6 +9,7 @@ bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='st
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
     if request.method == 'POST':
+        session['from_summary'] = True
         return redirect(url_for('checkout.confirmation'))
 
     try:
@@ -64,7 +65,9 @@ def referred_by_summary_page(view):
         #request.referrer is the full url 'http://www.nickdima.com/thai/order/summary'
         #url_for is just the end 'thai/order/summary'
         try:
-            if url_for('checkout.summary') in request.referrer:
+            # If i just used referring urls then someone could spoof the checkout page
+            # TODO: refactor code so that the from_summary session is in a decorator
+            if url_for('checkout.summary') in request.referrer and session['from_summary'] == True:
                 print('SUCCESSFULLY REFERRED TO SUMMARY PAGE')
                 return view(*args, **kwargs)
             else:
@@ -80,7 +83,7 @@ def referred_by_summary_page(view):
 @is_open
 @referred_by_summary_page
 def confirmation():
-
+    session.clear()
     return render_template('checkout/order_confirmation.html')
 
 

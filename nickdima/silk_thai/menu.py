@@ -4,5 +4,5 @@ bp = Blueprint('menu', __name__, url_prefix='/thai/menu', static_folder='static'
 
 @bp.route('/', methods=['GET'])
 def menu():
-
+    session['from_summary'] = False
     return render_template('menu/menu.html')

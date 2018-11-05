@@ -4,15 +4,15 @@ bp = Blueprint('homepage', __name__, url_prefix='/thai/home', static_folder='sta
 
 @bp.route('/', methods=['GET'])
 def home():
-
+    session['from_summary'] = False
     return render_template('homepage/home.html')
 
 @bp.route('/about', methods=['GET'])
 def about():
-
+    session['from_summary'] = False
     return render_template('homepage/about.html')
 
 @bp.route('/contact', methods=['GET'])
 def contact():
-
+    session['from_summary'] = False
     return render_template('homepage/feedback_form.html')
