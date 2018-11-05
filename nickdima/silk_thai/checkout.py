@@ -28,7 +28,8 @@ def is_open(outer_func):
         # Hour in 1 - 24
         tz = timezone('EST')
         week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
-
+        print(week_day)
+        print('TESTING THE WEKDAY FUNCTIONALITY FOR THE DECOATOR ----------------------')
         if week_day == 0:
             return "BRO YOU FAILED THIS TEST"
 
