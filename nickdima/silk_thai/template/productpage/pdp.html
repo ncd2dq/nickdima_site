@@ -95,6 +95,30 @@
 
                                     <!--customization starts here-->
                                     <div class="item-role px-2">
+                                        <script>
+                                            //Send the user to the lunch or dinner page
+                                            let portion_page = document.getElementById('lunch_dinner');
+                                            let cur_page = window.location.href;
+                                            if(portion_page.value == 'Dinner'){
+                                                cur_page = cur_page.replace('/lunch', '/dinner')
+                                                window.location.replace(cur_page);
+                                            } else if(portion_page.value == 'Lunch'){
+                                                cur_page = cur_page.replace('/dinner', '/lunch')
+                                                window.location.replace(cur_page);
+                                            }
+                                        </script>
+                                        {% if lunch_time %}
+                                        <select name="lunch_dinner" id="lunch_dinner" onchange="changePortion();">
+                                            {% if portion == 'dinner' %}
+                                            <option value="Dinner">Dinner</option>
+                                            <option value="Lunch">Lunch</option>
+                                            {% else %}
+                                            <option value="Lunch">Lunch</option>
+                                            <option value="Dinner">Dinner</option>
+                                            {% endif %}
+                                        </select>
+                                        {% endif %}
+
                                         <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
                                             <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
