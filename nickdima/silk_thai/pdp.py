@@ -125,7 +125,7 @@ def food_pdp(item, portion):
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
     # TODO: replace with lunchtime calculation
-    if portion == 'lunch' and selected_item['Lunch_Version'] == False or not lunch_time:
+    if portion == 'lunch' and selected_item['Lunch_Version'] == False:
         return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
 
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
