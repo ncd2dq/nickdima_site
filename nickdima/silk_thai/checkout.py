@@ -6,7 +6,6 @@ from functools import wraps
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
 
-
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
     if request.method == 'POST':
@@ -21,17 +20,17 @@ def summary():
 
 
 def is_open(view):
-    print('IS OPEN DECORATOR RAN --------------------------')
+    '''
+    Ensures that users can only proceed to checkout from the summary page if the store is open
+    '''
+
+    # Must use wraps or Flask doesn't know the correct name of the wrapped view function
     @wraps(view)
     def wrapped(*args, **kwargs):
         # Monday = 0, Sunday = 6
         # Hour in 1 - 24
         tz = timezone('EST')
         week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
-        print(week_day)
-        print('TESTING THE WEKDAY FUNCTIONALITY FOR THE DECOATOR ----------------------')
-        if week_day == 0:
-            return "BRO YOU FAILED THIS TEST"
 
         # Sunday - Thursday
         if week_day >= 0 and week_day <= 3 or week_day == 6:
@@ -56,12 +55,26 @@ def is_open(view):
 
     return wrapped
 
+def referred_by_summary_page(view):
+    '''
+    Ensures that users can only get to the 
+    '''
+    @wraps(view)
+    def wrapped_view(*args, **kwargs):
+        if request.referrer != url_for('checkout.summary'):
+            return redirect(url_for('menu.menu'))
+        else:
+            view(*args, **kwargs)
 
+    return wrapped_view
+
+# The route decorator must come first as it is what registers the function
+# if it isn't first you'll register the unwrapped view
 @bp.route('/confirmation', methods=['GET'])
 @is_open
+@referred_by_summary_page
 def confirmation():
 
     return render_template('checkout/order_confirmation.html')
-#change where the form sends people in the static>assets>formoid>formoid.min.js
 
 
