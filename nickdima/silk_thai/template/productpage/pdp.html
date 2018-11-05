@@ -76,6 +76,7 @@
                                                   selected_item['Lunch_Version']['Base Price']
                                               }
                                           };
+
                                           {% endif %}
 
                                           //Parse the values for just the numeric value extra price
@@ -112,7 +113,7 @@
                                             }
                                         </script>
                                         {% if lunch_time %}
-                                        <select name="lunch_dinner" id="lunch_dinner" onchange="changePortion();">
+                                        Portion: <select name="lunch_dinner" id="lunch_dinner" onchange="changePortion();">
                                             {% if portion == 'dinner' %}
                                             <option value="Dinner">Dinner</option>
                                             <option value="Lunch">Lunch</option>
@@ -121,6 +122,7 @@
                                             <option value="Dinner">Dinner</option>
                                             {% endif %}
                                         </select>
+                                        <br><br>
                                         {% endif %}
 
                                         <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
