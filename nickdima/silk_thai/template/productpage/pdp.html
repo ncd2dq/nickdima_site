@@ -97,14 +97,18 @@
                                     <div class="item-role px-2">
                                         <script>
                                             //Send the user to the lunch or dinner page
-                                            let portion_page = document.getElementById('lunch_dinner');
-                                            let cur_page = window.location.href;
-                                            if(portion_page.value == 'Dinner'){
-                                                cur_page = cur_page.replace('/lunch', '/dinner')
-                                                window.location.replace(cur_page);
-                                            } else if(portion_page.value == 'Lunch'){
-                                                cur_page = cur_page.replace('/dinner', '/lunch')
-                                                window.location.replace(cur_page);
+                                            //TODO: make this more dynamic so that if I change url design away from
+                                            // /dinner and /lunch it will still work
+                                            function changePortion(){
+                                                let portion_page = document.getElementById('lunch_dinner');
+                                                let cur_page = window.location.href;
+                                                if(portion_page.value == 'Dinner'){
+                                                    cur_page = cur_page.replace('/lunch', '/dinner')
+                                                    window.location.replace(cur_page);
+                                                } else if(portion_page.value == 'Lunch'){
+                                                    cur_page = cur_page.replace('/dinner', '/lunch')
+                                                    window.location.replace(cur_page);
+                                                }
                                             }
                                         </script>
                                         {% if lunch_time %}
