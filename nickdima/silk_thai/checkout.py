@@ -61,10 +61,7 @@ def referred_by_summary_page(view):
     '''
     @wraps(view)
     def wrapped(*args, **kwargs):
-        if request.referrer != url_for('checkout.summary'):
-            print('REFFERED BY TRIED TO REDIRECT')
-            print(request.referrer)
-            print(url_for('checkout.summary'))
+        if url_for('checkout.summary') not in request.referrer:
             return redirect(url_for('menu.menu'))
         else:
             print('REFERRED BY TRIED TO RUN ACTUAL VIEW')
