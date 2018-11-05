@@ -100,34 +100,6 @@ db = {
                             'Toppings' : FULL_LUNCH_TOPPINGS}
     },
 
-    'Calamari': {
-        'Base' : 'Calamari',
-        'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
-        'Img_URL' : 'assets/images/calamari2-896x504-800x450.jpg',
-        'Ingredients' : ['Sweet & sour', 'spicy mayo duo'],
-        'Category' : 'Appetizer',
-        'Comes_With' : [],
-        'Toppings' : False,
-        'Extra' : False,
-        'Spice' : False,
-        'Lunch_Version' : False
-    },
-
-    'Silk_calamari': {
-        'Base' : 'Silk Calamari',
-        'Base Price' : 7.95,
-        'Description' : 'A creamy, green curry',
-        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
-        'Ingredients' : ['Lightly breaded calamari', 'onions', 'scallions', 'chili', 'sweet & sour dip'],
-        'Category' : 'Appetizer',
-        'Comes_With' : [],
-        'Toppings' : False,
-        'Extra' : False,
-        'Spice' : False,
-        'Lunch_Version' : False
-    },
-
     'Chicken_yellow_curry': {
         'Base' : 'Chicken Yellow Curry',
         'Base Price' : 12.95,
@@ -156,6 +128,190 @@ db = {
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
     },
+
+    # APPETIZERS 
+    'Calamari': {
+        'Base' : 'Calamari',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari2-896x504-800x450.jpg',
+        'Ingredients' : ['Sweet & sour', 'spicy mayo duo'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Silk_calamari': {
+        'Base' : 'Silk Calamari',
+        'Base Price' : 7.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Lightly breaded calamari', 'onions', 'scallions', 'chili', 'sweet & sour dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Basil_wings': {
+        'Base' : 'Basil Wings',
+        'Base Price' : 7.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chili basil glaze'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Chicken_wings': {
+        'Base' : 'Chicken Wings',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Thai herbs', 'sriracha'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Edamame': {
+        'Base' : 'Edamame',
+        'Base Price' : 4.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Steamed', 'sea salt'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Tempura': {
+        'Base' : 'Edamame',
+        'Base Price' : 7.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Sweet n sour dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : [('Veggie', 0), ('Shrimp', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Duck_roll': {
+        'Base' : 'Duck Roll',
+        'Base Price' : 7.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Sliced simmered duck', 'kirby cucumber', 'scallion', 'roti'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Shrimp_rolls': {
+        'Base' : 'Shrimp Rolls',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Crispy shrimp rolls', 'sweet n sour dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Summer_rolls': {
+        'Base' : 'Summer Rolls',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Shrimp', 'cucumber', 'carrots', 'lettuce', 'vermicelli noodles', 'peanut sauce'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Crispy_fried_bean_curd': {
+        'Base' : 'Crispy Fried Bean Curd',
+        'Base Price' : 5.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Firm tofu', 'roasted peanut', 'sweet n sour dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Vegetable_spring_roll': {
+        'Base' : 'Vegetable Spring Roll',
+        'Base Price' : 4.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Mushrooms', 'bean thread', 'carrots', 'cabbage', 'sweet n sour dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Chicken_satay': {
+        'Base' : 'Chicken Satay',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Grilled coconut milk-turmeric chicken on skewers', 'peanut sauce'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Kanom_jeeb': {
+        'Base' : 'Kanom Jeeb',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Crabmeat', 'pork', 'ginger soy dip'],
+        'Category' : 'Appetizer',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
 }
 
 
