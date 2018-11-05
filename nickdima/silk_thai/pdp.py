@@ -71,7 +71,7 @@ def food_pdp(item, portion):
         if extra_rice is not False:
             new_item['Extra_Rice'] = extra_rice
         if portion_type is not False:
-            new_item['Portion_Type'] = portion_type
+            new_item['Portion_Type'] = portion_type.capitalize()
         if notes is not False:
             new_item['Notes'] = notes
 
