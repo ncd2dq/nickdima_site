@@ -5,7 +5,7 @@ from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
-@bp.route('/cart_remover', methods=['POST']):
+@bp.route('/cart_remover', methods=['POST'])
 def cart_remover():
     remove_id = request.form.get('remove_id')
 
