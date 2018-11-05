@@ -40,14 +40,22 @@ def food_pdp(item, portion):
         for key in db.keys():
             if db[key]['Base'] == base:
                 new_item['Title'] = db[key]['Base']
-                new_item['Base'] = (key, db[key]['Base Price'])
+                if portion == 'dinner':
+                    new_item['Base'] = (key, db[key]['Base Price'])
+                elif portion == 'lunch':
+                    new_item['Base'] = (key, db[key]['Lunch_Version']['Base Price'])
                 new_item['Img_url'] = db[key]['Img_URL']
 
         # Find the correct topping tuple [0] because the new_item['Base'] is a tuple
         if topping is not False:
-            for name, price in db[new_item['Base'][0]]['Toppings']:
-                if topping == name:
-                    new_item['Topping'] = (topping, price)
+            if portion == 'dinner':
+                for name, price in db[new_item['Base'][0]]['Toppings']:
+                    if topping == name:
+                        new_item['Topping'] = (topping, price)
+            elif portion == 'lunch':
+                for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
+                    if topping == name:
+                        new_item['Topping'] = (topping, price)
 
         # Find the correct extra tuple
         if extra is not False:
@@ -112,7 +120,8 @@ def food_pdp(item, portion):
         # Or flash the error
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
-    return render_template('productpage/pdp.html', selected_item=selected_item)
+    return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion)
+
 
 def ensureExists(form_val):
     '''Make sure that a form value exists'''
