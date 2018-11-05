@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 from datetime import datetime
 from pytz import timezone
+from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
@@ -19,8 +20,9 @@ def summary():
     return render_template('checkout/order_summary.html', items=items)
 
 
-def is_open(outer_func):
+def is_open(view):
     print('IS OPEN DECORATOR RAN --------------------------')
+    @wraps(view)
     def wrapped(*args, **kwargs):
         # Monday = 0, Sunday = 6
         # Hour in 1 - 24
@@ -50,7 +52,7 @@ def is_open(outer_func):
                 if day_minute >= 30:
                     return redirect(url_for('menu.menu'))
 
-        outer_func(*args, **kwargs)
+        view(*args, **kwargs)
 
     return wrapped
 
