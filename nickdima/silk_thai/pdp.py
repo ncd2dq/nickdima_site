@@ -35,11 +35,12 @@ def food_pdp(item, portion):
 
         # Final value should be:
         # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
-        new_item = {'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
+        new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
         
         #
         # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
         #
+
 
         # Find the correct dictionary key
         for key in db.keys():
@@ -90,6 +91,7 @@ def food_pdp(item, portion):
 
 
         if 'cart' not in session:
+            new_item['Id'] = 1
             session['cart'] = [new_item]
 
             session['total'] = [total_price, 1]
@@ -109,6 +111,13 @@ def food_pdp(item, portion):
             session['total'] = total
 
             cur_cart = session['cart']
+            
+            # Determine unique id for item
+            all_ids = []
+            for cur_item in cur_cart:
+                all_ids.append(cur_item['Id'])
+            new_item['Id'] = max(all_ids) + 1
+
             cur_cart.append(new_item)
             session['cart'] = cur_cart
 

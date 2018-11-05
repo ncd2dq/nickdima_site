@@ -5,6 +5,39 @@ from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
+@bp.route('/cart_remover', methods=['POST']):
+def cart_remover():
+    remove_id = request.form.get('remove_id')
+
+    if remove_id:
+        # [item, item, item]
+        cur_cart = session['cart']
+
+        # [total, quantity]
+        cur_total = session['total']
+
+        if cur_total[1] == 1:
+            session.clear()
+            return redirect(url_for('checkout.summary'))
+
+        for item in cur_cart:
+            if item['Id'] == remove_id:
+                total = session['total']
+                total[0] = float(total[0])
+                total[0] -= item['Total']
+                total[0] = round(total[0], 2)
+                total[0] = str(total[0])
+                if total[0][-2] == '.':
+                    total[0] += '0'
+
+                total[1] -= 1
+                session['total'] = total
+
+                # Remove item
+                cur_cart.remove(item)
+                session['cart'] = cur_cart
+
+    return redirect(url_for('checkout.summary'))
 
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
