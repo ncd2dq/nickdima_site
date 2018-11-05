@@ -62,6 +62,16 @@
                                     </div>
                                 </div>
 
+                                <!--test templating adding 
+                                -->
+                                {% for food_dict_item in all_items_dict %}
+                                    {% for key, value in food_dict_item %}
+                                        <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="{{value['Category']}}">
+                                            <div href="#lb-gallery2-d" data-slide-to="{% loop.index + 1 %}" data-toggle="modal"><img src="{{ value['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ value['Base'] }}</span></div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+
                                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Appetizer">
                                     <div href="#lb-gallery2-d" data-slide-to="1" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504-800x450.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Calamari</span></div>
                                 </div>
