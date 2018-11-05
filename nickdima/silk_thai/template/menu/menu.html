@@ -66,9 +66,9 @@
                                 -->
                                 {% for food_dict_item in all_items_dict %}
                                     {% for key, value in food_dict_item %}
-                                        <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="{{value['Category']}}">
-                                            <div href="#lb-gallery2-d" data-slide-to="{% loop.index + 1 %}" data-toggle="modal"><img src="{{ value['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ value['Base'] }}</span></div>
-                                        </div>
+                                    <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="{{value['Category']}}">
+                                        <div href="#lb-gallery2-d" data-slide-to="{{ loop.index + 1 }}" data-toggle="modal"><img src="{{ value['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ value['Base'] }}</span></div>
+                                    </div>
                                     {% endfor %}
                                 {% endfor %}
 
