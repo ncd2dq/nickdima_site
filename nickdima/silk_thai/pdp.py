@@ -137,10 +137,13 @@ def food_pdp(item, portion):
     # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
 
     # Check if lunchtime
+    
+    '''
     if week_day >= 5:
         lunch_time = False
     elif day_hour <= 10 or day_hour >= 2:
         lunch_time = False
+    '''
 
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
