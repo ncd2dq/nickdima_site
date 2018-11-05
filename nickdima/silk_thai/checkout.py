@@ -8,9 +8,8 @@ bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='st
 @bp.route('/cart_remover', methods=['POST'])
 def cart_remover():
     remove_id = request.form.get('remove_id')
-    print(remove_id, 'THIS IS THE ID I TRIED TO REMOVE')
+
     if remove_id:
-        print('I AM NOW GOINGTO REMOVE IT')
         # [item, item, item]
         cur_cart = session['cart']
 
@@ -23,19 +22,23 @@ def cart_remover():
 
         for item in cur_cart:
             if item['Id'] == remove_id:
-                total = session['total']
-                total[0] = float(total[0])
-                total[0] -= item['Total']
-                total[0] = round(total[0], 2)
-                total[0] = str(total[0])
-                if total[0][-2] == '.':
-                    total[0] += '0'
+                print('LOCATED THE ITEM')
+                print(item['Id'], remove_id)
 
-                total[1] -= 1
-                session['total'] = total
+                cur_total[0] = float(cur_total[0])
+                cur_total[0] -= item['Total']
+                cur_total[0] = round(cur_total[0], 2)
+                cur_total[0] = str(cur_total[0])
+                if cur_total[0][-2] == '.':
+                    cur_total[0] += '0'
 
+                cur_total[1] -= 1
+                session['total'] = cur_total
+
+                print(cur_cart)
                 # Remove item
                 cur_cart.remove(item)
+                print(cur_cart, 'AFTER REMOVAL')
                 session['cart'] = cur_cart
 
     return redirect(url_for('checkout.summary'))
