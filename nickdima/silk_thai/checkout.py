@@ -8,8 +8,9 @@ bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='st
 @bp.route('/cart_remover', methods=['POST'])
 def cart_remover():
     remove_id = request.form.get('remove_id')
-
+    print(remove_id, 'THIS IS THE ID I TRIED TO REMOVE')
     if remove_id:
+        print('I AM NOW GOINGTO REMOVE IT')
         # [item, item, item]
         cur_cart = session['cart']
 
