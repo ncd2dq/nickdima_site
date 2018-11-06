@@ -312,6 +312,36 @@ db = {
         'Lunch_Version' : False
     },
 
+
+    # SALAD
+    'House_green_salad': {
+        'Base' : 'House Green Salad',
+        'Base Price' : 5.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Peanut or Chili-cream dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : [('Peanut', 0), ('Chili-cream', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Larb_gai': {
+        'Base' : 'House Green Salad',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Ground chicken or tofu', 'onions', 'lettuce', 'cilantro', 'ground toasted rice', 'chili-lime dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : [('Chicken', 0), ('Tofu', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
 }
 
 
