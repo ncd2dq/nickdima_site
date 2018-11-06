@@ -99,9 +99,6 @@
                                             extra_rice_elm = '0';
                                         }
 
-                                        //debug
-                                        console.log(topping_elm, extra_elm, extra_rice_elm);
-
                                           let topping = parseExtraPrice(topping_elm);
                                           let extra = parseExtraPrice(extra_elm);
                                           let extra_rice = parseExtraPrice(extra_rice_elm);
@@ -109,10 +106,11 @@
                                           let cur_price = document.getElementById('the_price');
 
                                           //more debug
-                                          console.log(topping, extra, extra_rice, cur_price);
+                                          console.log(topping, extra, extra_rice);
 
                                           let additional = topping + extra + (extra_rice * 2);
-
+                                          console.log(additional);
+                                          console.log(base_price, 'base');
                                           //The cur_price updates to the new value, because the base_price is a float, we need to convert first
                                           cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(2, base_price.toString().length);
                                       }
