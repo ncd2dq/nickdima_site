@@ -151,6 +151,10 @@ def food_pdp(item, portion):
     elif day_hour <= 10 or day_hour >= 2:
         lunch_time = False
 
+    print(lunch_time)
+    print(week_day, day_hour)
+    print('THIS IS THE TIME WE FIGURED OUT')
+
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
     # TODO: replace with lunchtime calculation
