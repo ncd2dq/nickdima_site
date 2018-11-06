@@ -342,6 +342,90 @@ db = {
         'Lunch_Version' : False
     },
 
+    'Nam_tok_beef': {
+        'Base' : 'Nam Tok Beef',
+        'Base Price' : 6.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Isann style sliced grilled beef', 'onions', 'lettuce', 'chili-lime dressing', 'ground toasted rice', 'cilantro'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Yum_talay': {
+        'Base' : 'Yum Talay',
+        'Base Price' : 9.95,
+        'Description' : 'Seafood salad',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Shrimp', 'scallop', 'squid', 'onions', 'lettuce', 'chili-lime dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Squid_salad': {
+        'Base' : 'Squid Salad',
+        'Base Price' : 7.95,
+        'Description' : 'Seafood salad',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Tender squid', 'onions', 'lettuce', 'lemongrass', 'chili-lime dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Plah_goong': {
+        'Base' : 'Plah Goong',
+        'Base Price' : 8.95,
+        'Description' : 'Seafood salad',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Shrimp', 'onions', 'lettuce', 'fresh lemongrass', 'chili-lime dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Yum_woonsen': {
+        'Base' : 'Yum Woonsen',
+        'Base Price' : 7.95,
+        'Description' : 'Seafood salad',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Bean thread', 'mined chicken', 'shrimp', 'mushrooms', 'onions', 'lettuce', 'chili-lime dressing'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Som_tum': {
+        'Base' : 'Yum Woonsen',
+        'Base Price' : 7.95,
+        'Description' : 'Green Papaya Salad',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Spicy chili-lime-fish sauce dressing', 'green papaya', 'shrimp', 'green beans', 'tomatoes', 'roasted peanuts'],
+        'Category' : 'Salad',
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
 }
 
 
