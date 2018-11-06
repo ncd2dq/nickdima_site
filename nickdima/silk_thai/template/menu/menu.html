@@ -55,26 +55,11 @@
                     <div class="mbr-gallery-layout-default">
                         <div>
                             <div>
-
-                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Main Dish">
-                                    <!--Main Dish-->
-                                    <div href="#lb-gallery2-d" data-slide-to="0" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528-800x449.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Pad Thai</span>
-                                    </div>
-                                </div>
-
-                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Appetizer">
-                                    <div href="#lb-gallery2-d" data-slide-to="1" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504-800x450.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Calamari</span></div>
-                                </div>
-
-                                <!--Appetizer-->
-
-                                <!--
                                 {% for key, food_dict_item in all_items_dict.items() %}
                                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="{{food_dict_item['Category']}}">
                                     <div href="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}" data-toggle="modal"><img src="/thai/menu/static/{{ food_dict_item['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ food_dict_item['Base'] }}</span></div>
                                 </div>
                                 {% endfor %}
-                                -->
 
                                 <!--Hard coded
                                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Main Dish">
@@ -104,19 +89,13 @@
                             <div class="modal-body">
                                 <!--These are the little dots at the bottom of the large box-->
                                 <ol class="carousel-indicators">
-                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="0"></li>
-                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" class =" active" data-slide-to="1"></li>
-   
-                                    <!--
                                     {% for key, food_dict_item in all_items_dict.items() %}
                                     {% if loop.last %}
-                                    <li data-app-prevent-settings="" class=" active" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}"></li>
+                                    <li data-app-prevent-settings="" class="active" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}"></li>
                                     {% else %}
                                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1 }}"></li>
                                     {% endif %}
                                     {% endfor %}
-                                    -->
-
                                     <!--
                                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" class=" active" data-slide-to="6"></li>
                                     -->
@@ -130,17 +109,13 @@
                                 </script>
                                 <div class="carousel-inner">
                                     <!--Item=() is the vairable in the url-->
-                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_thai_1', portion='dinner') }}")'></div>
-
-                                    <div class="carousel-item active"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Calamari', portion='dinner') }}")'></div>
-
-
-                                    <!--Item=() is the vairable in the url-->
-                                    <!--
                                     {% for key, food_dict_item in all_items_dict.items() %}
+                                    {% if loop.last %}
+                                    <div class="carousel-item active"><img src="{{ url_for('menu.static', filename=food_dict_item['Img_URL']) }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item=key, portion='dinner') }}")'></div>
+                                    {% else %}
                                     <div class="carousel-item"><img src="{{ url_for('menu.static', filename=food_dict_item['Img_URL']) }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item=key, portion='dinner') }}")'></div>
+                                    {% endif %}
                                     {% endfor %}
-                                -->
 
                                 </div>
 
