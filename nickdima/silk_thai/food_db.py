@@ -329,7 +329,7 @@ db = {
     },
 
     'Larb_gai': {
-        'Base' : 'House Green Salad',
+        'Base' : 'Larb Gai',
         'Base Price' : 6.95,
         'Description' : 'A creamy, green curry',
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
