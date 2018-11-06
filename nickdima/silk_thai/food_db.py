@@ -827,7 +827,7 @@ db = {
         'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
         'Category' : CURRIES,
         'Comes_With' : [],
-        'Toppings' : False,
+        'Toppings' : CURRY_DINNER_TOPPINGS,
         'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
@@ -841,13 +841,292 @@ db = {
         'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
         'Category' : CURRIES,
         'Comes_With' : [],
+        'Toppings' : CURRY_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Panang_curry': {
+        'Base' : 'Panang Curry',
+        'Base Price' : 11.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Coconut milk', 'panang curry', 'peanut sauce', 'chili', 'kaffir lime leaves'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : CURRY_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Duck_red_curry': {
+        'Base' : 'Duck Red Curry',
+        'Base Price' : 14.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Boneless simmered duck', 'thai red curry', 'coconut milk', 'pineapple', 'tomatoes', 'chili', 'basil'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
         'Toppings' : False,
         'Extra' : EXTRA_DINNER_TOPPINGS,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
     },
 
+    'Shrimp_pineapple_curry': {
+        'Base' : 'Shrimp Pineapple Curry',
+        'Base Price' : 15.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Classic thai red curry', 'shrimp', 'pineapple', 'coconut milk'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
 
+    'Massaman_curry': {
+        'Base' : 'Massaman Curry',
+        'Base Price' : 12.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chicken', 'cubed potatoes', 'onions', 'roasted peanuts', 'rich-flavored massaman curry'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Chicken_yellow_curry': {
+        'Base' : 'Chicken Yellow Curry',
+        'Base Price' : 12.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chicken', 'potato', 'carrot', 'coconut milk'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    # NOODLES & FRIED RICE
+    'Pad_thai': {
+        'Base' : 'Pad Thai',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-thai2-2000x2000.jpg',
+        'Ingredients' : ['Rice noodles', 'bean sprouts', 'scallions', 'eggs', 'roasted peanuts'],
+        'Category' : NOODLES,
+        'Comes_With' : [],
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Drunken_noodles': {
+        'Base' : 'Drunken Noodles',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-thai2-2000x2000.jpg',
+        'Ingredients' : ['Fresh cut wide rice noodles', 'chili', 'onions', 'tomatoes', 'basil'],
+        'Category' : NOODLES,
+        'Comes_With' : ['Rice'],
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Pad_see_ew': {
+        'Base' : 'Pad See Ew',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Fresh cut wide rice noodles', 'egg', 'dark soy', 'broccoli'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Chefs_fried_rice': {
+        'Base' : 'Chef\'s Fried Rice',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Thai style fried rice', 'egg', 'scallions', 'tomatoes', 'light soy'],
+        'Category' : FRIED_RICE,
+        'Comes_With' : False,
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Guay_tiew_kau_gai': {
+        'Base' : 'Guay Tiew Kau Gai',
+        'Base Price' : 11.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Fresh wide rice noodles', 'chicken', 'egg', 'scallions'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Ka_prow_fried_rice': {
+        'Base' : 'Ka Prow Fried Rice',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Thai hot peppers', 'basil', 'jasmine rice'],
+        'Category' : FRIED_RICE,
+        'Comes_With' : False,
+        'Toppings' : FULL_DINNER_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Pineapple_fried_rice': {
+        'Base' : 'Pineapple Fried Rice',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Shrimp', 'chicken', 'raisins', 'cashew nuts', 'broccoli', 'a touch of curry powder', 'dried shredded pork'],
+        'Category' : FRIED_RICE,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Crab_fried_rice': {
+        'Base' : 'Crab Fried Rice',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Lump crabmeat', 'egg', 'scallions'],
+        'Category' : FRIED_RICE,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Lobster_fried_rice': {
+        'Base' : 'Lobster Fried Rice',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Lobster', 'egg', 'scallions'],
+        'Category' : FRIED_RICE,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Kao_soi_chicken': {
+        'Base' : 'Kao Soi Chicken',
+        'Base Price' : 12.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Northern-style chicken curry broth', 'egg noodle', 'red onions', 'pickled mustard greens', 'cilantro'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Red_curry_noodle_soup': {
+        'Base' : 'Red Curry Noodle Soup',
+        'Base Price' : 12.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Creamy red curry soup', 'big wonton noodles', 'curry fish balls'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : [('Veggie', 0), ('Chicken', 0)],
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Green_curry_noodle_soup': {
+        'Base' : 'Green Curry Noodle Soup',
+        'Base Price' : 12.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Creamy green curry soup', 'big wonton noodles', 'curry fish balls'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : [('Veggie', 0), ('Chicken', 0)],
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Tom_tum_noodle_soup': {
+        'Base' : 'Tom Tum Noodle Soup',
+        'Base Price' : 11.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Shrimp', 'ground chicken', 'rice noodles', 'bean sprouts', 'scallions', 'cilantro', 'roasted peanut', 'thai style hot & sour broth'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
+
+    'Crispy_duck_noodle_soup': {
+        'Base' : 'Crispy Duck Noodle Soup',
+        'Base Price' : 13.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : ['Boneless crispy duck', 'egg noodles'],
+        'Category' : NOODLES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : {'Base Price' : 8.95,
+                            'Toppings' : FULL_LUNCH_TOPPINGS}
+    },
 }
 
 
