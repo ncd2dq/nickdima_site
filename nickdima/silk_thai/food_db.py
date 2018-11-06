@@ -5,11 +5,11 @@ DB Entry:
 Attributes: 
 'Base' : Drunken Noodles
 'Base Price' : 10.95
-'Description' : Thick noodles topped with onions, tomates, etc...
+'Description' : Thick noodles topped with onions, tomates, etc...####Can be false####
 'Img_URL' : /path/to/img
 'Ingredients' : [Every, Single, Ingredient, To, Be, Used, For, Allergies, And, Exclude, Feature]
 'Category' : Curry/Main Dish/Rice-Noodle
-'Comes_With' : [Rice, Peanut Sauce]
+'Comes_With' : [Rice, Peanut Sauce] #############ARCHAIC PLEASE REMOVE###############
 'Toppings' : TUPLE OF TOPPING IN INDEX 0 AND ADDED PRICE IN INDEX 1,
 'Extra' : What you are allowed to add on to the dish
 'Spice' : RANGE IF POSSIBLE TO CHANGE SPACE, FALSE IF NOT
@@ -69,7 +69,7 @@ db = {
     'Green_curry': {
         'Base' : 'Green Curry',
         'Base Price' : 11.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/yellow-curry2-680x965.jpg',
         'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
         'Category' : CURRIES,
@@ -84,7 +84,7 @@ db = {
     'Pad_thai_1': {
         'Base' : 'Pad Thai 1',
         'Base Price' : 10.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/pad-thai1-940x528-800x449.jpg',
         'Ingredients' : ['Rice noodles', 'bean sprouts', 'scallions', 'egg', 'roasted peanuts'],
         'Category' : NOODLES,
@@ -99,7 +99,7 @@ db = {
     'Pad_thai_2': {
         'Base' : 'Pad Thai 2',
         'Base Price' : 10.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/pad-thai2-2000x2000-800x800.jpg',
         'Ingredients' : ['Rice noodles', 'bean sprouts', 'scallions', 'egg', 'roasted peanuts'],
         'Category' : NOODLES,
@@ -114,7 +114,7 @@ db = {
     'Chicken_yellow_curry': {
         'Base' : 'Chicken Yellow Curry',
         'Base Price' : 12.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/yellow-curry1-725x483-725x483.jpg',
         'Ingredients' : ['Chicken', 'potatoes', 'carrots', 'creamy coconut milk'],
         'Category' : CURRIES,
@@ -144,7 +144,7 @@ db = {
     'Calamari': {
         'Base' : 'Calamari',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari2-896x504-800x450.jpg',
         'Ingredients' : ['Sweet & sour', 'spicy mayo duo'],
         'Category' : APPETIZERS,
@@ -158,7 +158,7 @@ db = {
     'Silk_calamari': {
         'Base' : 'Silk Calamari',
         'Base Price' : 7.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Lightly breaded calamari', 'onions', 'scallions', 'chili', 'sweet & sour dip'],
         'Category' : APPETIZERS,
@@ -172,7 +172,7 @@ db = {
     'Basil_wings': {
         'Base' : 'Basil Wings',
         'Base Price' : 7.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Chili basil glaze'],
         'Category' : APPETIZERS,
@@ -186,7 +186,7 @@ db = {
     'Chicken_wings': {
         'Base' : 'Chicken Wings',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Thai herbs', 'sriracha'],
         'Category' : APPETIZERS,
@@ -200,7 +200,7 @@ db = {
     'Edamame': {
         'Base' : 'Edamame',
         'Base Price' : 4.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Steamed', 'sea salt'],
         'Category' : APPETIZERS,
@@ -214,7 +214,7 @@ db = {
     'Tempura': {
         'Base' : 'Edamame',
         'Base Price' : 7.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Sweet n sour dip'],
         'Category' : APPETIZERS,
@@ -228,7 +228,7 @@ db = {
     'Duck_roll': {
         'Base' : 'Duck Roll',
         'Base Price' : 7.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Sliced simmered duck', 'kirby cucumber', 'scallion', 'roti'],
         'Category' : APPETIZERS,
@@ -242,7 +242,7 @@ db = {
     'Shrimp_rolls': {
         'Base' : 'Shrimp Rolls',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Crispy shrimp rolls', 'sweet n sour dip'],
         'Category' : APPETIZERS,
@@ -256,7 +256,7 @@ db = {
     'Summer_rolls': {
         'Base' : 'Summer Rolls',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Shrimp', 'cucumber', 'carrots', 'lettuce', 'vermicelli noodles', 'peanut sauce'],
         'Category' : APPETIZERS,
@@ -270,7 +270,7 @@ db = {
     'Crispy_fried_bean_curd': {
         'Base' : 'Crispy Fried Bean Curd',
         'Base Price' : 5.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Firm tofu', 'roasted peanut', 'sweet n sour dip'],
         'Category' : APPETIZERS,
@@ -284,7 +284,7 @@ db = {
     'Vegetable_spring_roll': {
         'Base' : 'Vegetable Spring Roll',
         'Base Price' : 4.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Mushrooms', 'bean thread', 'carrots', 'cabbage', 'sweet n sour dip'],
         'Category' : APPETIZERS,
@@ -298,7 +298,7 @@ db = {
     'Chicken_satay': {
         'Base' : 'Chicken Satay',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Grilled coconut milk-turmeric chicken on skewers', 'peanut sauce'],
         'Category' : APPETIZERS,
@@ -312,7 +312,7 @@ db = {
     'Kanom_jeeb': {
         'Base' : 'Kanom Jeeb',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Crabmeat', 'pork', 'ginger soy dip'],
         'Category' : APPETIZERS,
@@ -327,7 +327,7 @@ db = {
     'House_green_salad': {
         'Base' : 'House Green Salad',
         'Base Price' : 5.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Peanut or Chili-cream dressing'],
         'Category' : SALADS,
@@ -341,7 +341,7 @@ db = {
     'Larb_gai': {
         'Base' : 'Larb Gai',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Ground chicken or tofu', 'onions', 'lettuce', 'cilantro', 'ground toasted rice', 'chili-lime dressing'],
         'Category' : SALADS,
@@ -355,7 +355,7 @@ db = {
     'Nam_tok_beef': {
         'Base' : 'Nam Tok Beef',
         'Base Price' : 6.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Isann style sliced grilled beef', 'onions', 'lettuce', 'chili-lime dressing', 'ground toasted rice', 'cilantro'],
         'Category' : SALADS,
@@ -440,7 +440,7 @@ db = {
     'Tom_yum_soup': {
         'Base' : 'Tom Yum Soup',
         'Base Price' : 3.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Mushrooms', 'lemongrass', 'a touch of Thai pepper'],
         'Category' : SOUPS,
@@ -454,7 +454,7 @@ db = {
     'Tom_kha_soup': {
         'Base' : 'Tom Kha Soup',
         'Base Price' : 3.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Creamy coconut milk', 'galanga', 'mushrooms', 'lemongrass', 'kaffir lime leaves'],
         'Category' : SOUPS,
@@ -468,7 +468,7 @@ db = {
     'Wonton_soup': {
         'Base' : 'Wonton Soup',
         'Base Price' : 4.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Green vegetable wontons', 'chicken broth'],
         'Category' : SOUPS,
@@ -482,7 +482,7 @@ db = {
     'Bean_curd_soup': {
         'Base' : 'Bean Curd Soup',
         'Base Price' : 4.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Bean curd', 'seaweed', 'light broth'],
         'Category' : SOUPS,
@@ -497,7 +497,7 @@ db = {
     'Pad_kra_prow': {
         'Base' : 'Pad Kra Prow',
         'Base Price' : 10.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Chili', 'basil', 'fresh green beans'],
         'Category' : MAIN_DISHES,
@@ -511,7 +511,7 @@ db = {
     'Pad_khing_ginger': {
         'Base' : 'Pad Khing Ginger',
         'Base Price' : 10.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Fresh ginger', 'yellow bean sauce', 'onions', 'scallions', 'bell peppers'],
         'Category' : MAIN_DISHES,
@@ -525,7 +525,7 @@ db = {
     'Chicken_cashew_nuts': {
         'Base' : 'Chicken Cashew Nuts',
         'Base Price' : 11.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Chicken', 'cashew nuts', 'carrots', 'onions', 'scallions'],
         'Category' : MAIN_DISHES,
@@ -539,7 +539,7 @@ db = {
     'Wild_pork': {
         'Base' : 'Wild Pork',
         'Base Price' : 11.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Sliced pork', 'baby corns', 'green peppercorns', 'green bean chili', 'sweet basil', 'touch of red curry'],
         'Category' : MAIN_DISHES,
@@ -553,7 +553,7 @@ db = {
     'Siam_beef': {
         'Base' : 'Siam Beef',
         'Base Price' : 12.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Marinated flank steak', 'fresh gingers', 'a dash of sesame oil'],
         'Category' : MAIN_DISHES,
@@ -567,7 +567,7 @@ db = {
     'Beef_with_oyster_sauce': {
         'Base' : 'Beef With Oyster Sauce',
         'Base Price' : 11.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Flank steak', 'oyster sauce', 'mushrooms', 'carrots', 'onions', 'green peppers'],
         'Category' : MAIN_DISHES,
@@ -581,7 +581,7 @@ db = {
     'Pad_prik_khing': {
         'Base' : 'Pad Prik Khing',
         'Base Price' : 10.95,
-        'Description' : 'A creamy, green curry',
+        'Description' : False,
         'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
         'Ingredients' : ['Chili ginger paste', 'chili', 'green beans'],
         'Category' : MAIN_DISHES,
@@ -591,6 +591,35 @@ db = {
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
     },
+
+    'Mixed_vegetables': {
+        'Base' : 'Mixed Vegetables',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Mixed vegetables', 'light soy'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Mixed_vegetables': {
+        'Base' : 'Beef With Oyster Sauce',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Mixed vegetables', 'light soy'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
 }
 
 

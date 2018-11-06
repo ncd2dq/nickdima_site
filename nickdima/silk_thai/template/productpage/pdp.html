@@ -37,9 +37,11 @@
                                 </div>
                                 <div class="card-box">
                                     <!--food box entity-->
+                                    {% if selected_item['Description'] != false %}
                                     <div class="item-role px-2">
                                         <p class="mbr-fonts-style display-5">Description: {{ selected_item['Description'] }}</p>
                                     </div>
+                                    {% endif %}
                                     <div class="item-role px-2">
                                         <p class="mbr-text mbr-fonts-style display-5">
                                             {% for ingredient in selected_item['Ingredients'] %}
