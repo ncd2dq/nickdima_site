@@ -445,8 +445,8 @@ db = {
         'Category' : SOUPS,
         'Comes_With' : [],
         'Toppings' : SOUP_DINNER_TOPPINS,
-        'Extra' : False,
-        'Spice' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
     },
 
@@ -459,8 +459,8 @@ db = {
         'Category' : SOUPS,
         'Comes_With' : [],
         'Toppings' : SOUP_DINNER_TOPPINS,
-        'Extra' : False,
-        'Spice' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
     },
 

@@ -74,9 +74,32 @@
                                           {% endif %}
 
                                           //Parse the values for just the numeric value extra price
-                                          let topping = parseExtraPrice(document.getElementById('topping').value);
-                                          let extra = parseExtraPrice(document.getElementById('extra').value);
-                                          let extra_rice = parseExtraPrice('$' + document.getElementById('extra_rice').value);
+                                          try{
+                                          let topping_elm = document.getElementById('topping').value;
+                                            }
+                                        catch(err){
+                                            console.log(err);
+                                            topping_elm = '0'
+                                        }
+
+                                          try{
+                                          let extra_elm = document.getElementById('extra').value;
+                                            }
+                                        catch(err){
+                                            console.log(err);
+                                            extra_elm = '0'
+                                        }
+                                          try{
+                                          let extra_rice_elm = '$' + document.getElementById('extra_rice').value;
+                                            }
+                                        catch(err){
+                                            console.log(err);
+                                            extra_rice_elm = '0'
+                                        }
+
+                                          let topping = parseExtraPrice(topping_elm);
+                                          let extra = parseExtraPrice(extra_elm);
+                                          let extra_rice = parseExtraPrice(extra_rice_elm);
 
                                           let cur_price = document.getElementById('the_price');
 
