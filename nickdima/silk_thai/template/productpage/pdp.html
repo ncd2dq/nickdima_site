@@ -79,7 +79,7 @@
                                             }
                                         catch(err){
                                             console.log(err);
-                                            topping_elm = '0'
+                                            let topping_elm = '0'
                                         }
 
                                           try{
@@ -87,14 +87,14 @@
                                             }
                                         catch(err){
                                             console.log(err);
-                                            extra_elm = '0'
+                                            let extra_elm = '0'
                                         }
                                           try{
                                           let extra_rice_elm = '$' + document.getElementById('extra_rice').value;
                                             }
                                         catch(err){
                                             console.log(err);
-                                            extra_rice_elm = '0'
+                                            let extra_rice_elm = '0'
                                         }
 
                                           let topping = parseExtraPrice(topping_elm);
