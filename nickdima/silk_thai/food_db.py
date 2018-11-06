@@ -620,6 +620,202 @@ db = {
         'Lunch_Version' : False
     },
 
+    'Garlic_sauce': {
+        'Base' : 'Garlic Sauce',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Fresh garlic & herb sauce', 'steamed broccoli aside'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : MAIN_DISH_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Siam_duck': {
+        'Base' : 'Siam Duck',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Boneless crispy duck', 'chef\'s spicy sauce', 'onion', 'carrots', 'scallions', 'cashew nuts'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Silk_crispy_duck': {
+        'Base' : 'Silk Crispy Duck',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Boneless duck', 'chili & basil'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Pineapple_duck': {
+        'Base' : 'Pineapple Duck',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Crispy boneless duck', 'pineapple', 'ginger', 'scallions', 'onions', 'wine sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Seafood_prik_pow': {
+        'Base' : 'Seafood Prik Pow',
+        'Base Price' : 17.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Shrimp', 'scallops', 'squid', 'vegetables','basil leaves', 'sweet spicy chili mixture'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Seafood_pad_cha': {
+        'Base' : 'Seafood Pad Cha',
+        'Base Price' : 17.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Shrimp', 'scallops', 'squid', 'mussel', 'mushrooms', 'green beans', 'spicy garlic sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Eggplant_basil_sauce': {
+        'Base' : 'Eggplant Basil Sauce',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Eggplant', 'thai spices', 'sweet basil'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Spicy_garden': {
+        'Base' : 'Spicy Garden',
+        'Base Price' : 10.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Mixed vegetables', 'fresh chili', 'yellow bean sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Flounder_fillet': {
+        'Base' : 'Flounder Fillet',
+        'Base Price' : 18.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Golden brown flounder fillet', 'sweet basil', 'spicy chili sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Tilapia_fillet': {
+        'Base' : 'Tilapia Fillet',
+        'Base Price' : 18.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Crispy tilapia fillet', 'creamy peanut curry', 'steamed broccoli'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Shrimp_chili_salt': {
+        'Base' : 'Flounder Fillet',
+        'Base Price' : 17.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Lightly battered shrimp', 'spicy garlic sauce', 'tempura green beans'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Crispy_whole_fish': {
+        'Base' : 'Crispy Whole Fish (Seasonal)',
+        'Base Price' : 18.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Choice of sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : [('Spicy Chili & Basil', 0), ('Ginger & Mushrooms', 0)],
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Bangkok_shrimp': {
+        'Base' : 'Bangkok Shrimp',
+        'Base Price' : 16.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Grilled shrimp', 'fried rice', 'salad with creamy dressing'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Bangkok_steak': {
+        'Base' : 'Bangkok Steak',
+        'Base Price' : 18.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['NY Steak', 'grilled vegetables', 'Isann style spicy sauce'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
 }
 
 
