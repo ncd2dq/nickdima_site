@@ -90,9 +90,10 @@
                                 <!--These are the little dots at the bottom of the large box-->
                                 <ol class="carousel-indicators">
                                     {% for key, food_dict_item in all_items_dict.items() %}
-                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1 }}"></li>
                                     {% if loop.last %}
                                     <li data-app-prevent-settings="" class=" active" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}"></li>
+                                    {% else %}
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1 }}"></li>
                                     {% endif %}
                                     {% endfor %}
                                     <!--
