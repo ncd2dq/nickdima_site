@@ -34,6 +34,7 @@ Copy Paste Template ---
 '''
 
 FULL_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2), ('Seafood', 3), ('Crispy Duck', 3)]
+MAIN_DISH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
 EXTRA_DINNER_TOPPINGS = [('None', 0), ('Chicken', 3), ('Pork', 3), ('Beef', 3), ('Veggie', 3), ('Shrimp', 5), ('Seafood', 5), ('Crispy Duck', 4)]
 CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
 SOUP_DINNER_TOPPINS = [('Veggie', 0), ('Chicken', 1), ('Shrimp', 5), ('Seafood', 5)]
@@ -492,7 +493,104 @@ db = {
         'Lunch_Version' : False
     },
 
+    # Main Dishes
+    'Pad_kra_prow': {
+        'Base' : 'Pad Kra Prow',
+        'Base Price' : 10.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chili', 'basil', 'fresh green beans'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : MAIN_DISH_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
 
+    'Pad_khing_ginger': {
+        'Base' : 'Pad Khing Ginger',
+        'Base Price' : 10.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Fresh ginger', 'yellow bean sauce', 'onions', 'scallions', 'bell peppers'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : MAIN_DISH_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Chicken_cashew_nuts': {
+        'Base' : 'Chicken Cashew Nuts',
+        'Base Price' : 11.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chicken', 'cashew nuts', 'carrots', 'onions', 'scallions'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Wild_pork': {
+        'Base' : 'Wild Pork',
+        'Base Price' : 11.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Sliced pork', 'baby corns', 'green peppercorns', 'green bean chili', 'sweet basil', 'touch of red curry'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Siam_beef': {
+        'Base' : 'Siam Beef',
+        'Base Price' : 12.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Marinated flank steak', 'fresh gingers', 'a dash of sesame oil'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Beef_with_oyster_sauce': {
+        'Base' : 'Beef With Oyster Sauce',
+        'Base Price' : 11.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Flank steak', 'oyster sauce', 'mushrooms', 'carrots', 'onions', 'green peppers'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Pad_prik_khing': {
+        'Base' : 'Pad Prik Khing',
+        'Base Price' : 10.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Chili ginger paste', 'chili', 'green beans'],
+        'Category' : MAIN_DISHES,
+        'Comes_With' : [],
+        'Toppings' : MAIN_DISH_TOPPINGS,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
 }
 
 

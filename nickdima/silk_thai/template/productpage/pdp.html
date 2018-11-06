@@ -425,10 +425,8 @@
             final_price = parseFloat(final_price.slice(7, final_price.length));
 
             if (cart_text.indexOf('$') == -1 ) {
-                console.log('single item');
                 cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
             } else {
-                console.log('already item in cart');
                 //Update total price count
                 let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
                 total_price = parseFloat(total_price)
