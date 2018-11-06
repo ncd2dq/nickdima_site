@@ -56,8 +56,39 @@
                         <div>
                             <div>
 
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Main Dish">
+                                    <!--Main Dish-->
+                                    <div href="#lb-gallery2-d" data-slide-to="0" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528-800x449.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Pad Thai</span>
+                                    </div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Appetizer">
+                                    <div href="#lb-gallery2-d" data-slide-to="1" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504-800x450.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Calamari</span></div>
+                                </div>
+                                <!--Appetizer-->
+
                                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Curries">
                                     <div href="#lb-gallery2-d" data-slide-to="2" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483-725x483.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Yellow Curry</span></div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Curries">
+                                    <div href="#lb-gallery2-d" data-slide-to="3" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965-680x965.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Yellow Curry</span></div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Main Dish">
+                                    <div href="#lb-gallery2-d" data-slide-to="4" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai2-2000x2000-800x800.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Pad Thai</span></div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Appetizer">
+                                    <div href="#lb-gallery2-d" data-slide-to="5" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/calamari1-960x640-800x533.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Silk Calamari</span></div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Noodles">
+                                    <div href="#lb-gallery2-d" data-slide-to="6" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/pad-see-ew-610x458-610x458.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Pad Se Ew</span></div>
+                                </div>
+
+                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Noodles">
+                                    <div href="#lb-gallery2-d" data-slide-to="7" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462-616x462.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Drunken Noodle</span></div>
                                 </div>
                                 <!--
                                 {% for key, food_dict_item in all_items_dict.items() %}
@@ -96,6 +127,13 @@
                                 <!--These are the little dots at the bottom of the large box-->
                                 <ol class="carousel-indicators">
                                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="0"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="1"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="2"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="3"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="4"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="5"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" class=" active" data-slide-to="6"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="7"></li>
                                     <!--
                                     {% for key, food_dict_item in all_items_dict.items() %}
                                     {% if loop.last %}
@@ -118,8 +156,24 @@
                                     }
                                 </script>
                                 <div class="carousel-inner">
+                                    <!--Item=() is the vairable in the url-->
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_thai_1', portion='dinner') }}")'></div>
 
-                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_thai_1', portion='dinner') }}")'></div>  
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/calamari2-896x504.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Calamari', portion='dinner') }}")'></div>
+
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry1-725x483.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Chicken_yellow_curry', portion='dinner') }}")'></div>
+
+                                    <!--Greeen Curry test clicking-->
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/yellow-curry2-680x965.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Green_curry', portion='dinner') }}")'></div>
+
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai2-2000x2000.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_thai_2', portion='dinner') }}")'></div>
+
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/calamari1-960x640.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Silk_calamari', portion='dinner') }}")'></div>
+
+                                    <div class="carousel-item active"><img src="{{ url_for('menu.static', filename='assets/images/pad-see-ew-610x458.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Pad_see_ew', portion='dinner') }}")'></div>
+
+                                    <!--test clicking image in carousel-->
+                                    <div class="carousel-item"><img src="{{ url_for('menu.static', filename='assets/images/drunken-noodle-616x462.jpg') }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item='Drunken_noodles', portion='dinner') }}")'></div>
 
 
                                     <!--Item=() is the vairable in the url-->
