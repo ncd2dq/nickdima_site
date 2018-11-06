@@ -107,6 +107,7 @@
 
                                           let additional = topping + extra + (extra_rice * 2);
                                           //The cur_price updates to the new value, because the base_price is a float, we need to convert first
+                                          console.log(cur_price, additional, topping, extra, extra_rice);
                                           cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
                                       }
                           </script>
