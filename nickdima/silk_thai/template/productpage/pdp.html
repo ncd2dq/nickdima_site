@@ -74,27 +74,29 @@
                                           {% endif %}
 
                                           //Parse the values for just the numeric value extra price
+                                          let topping_elm, extra_elm, extra_rice_elm;
+
                                           try{
-                                          let topping_elm = document.getElementById('topping').value;
+                                          topping_elm = document.getElementById('topping').value;
                                             }
                                         catch(err){
                                             console.log(err);
-                                            let topping_elm = '0'
+                                            topping_elm = '0';
                                         }
 
                                           try{
-                                          let extra_elm = document.getElementById('extra').value;
+                                          extra_elm = document.getElementById('extra').value;
                                             }
                                         catch(err){
                                             console.log(err);
-                                            let extra_elm = '0'
+                                            extra_elm = '0';
                                         }
                                           try{
-                                          let extra_rice_elm = '$' + document.getElementById('extra_rice').value;
+                                          extra_rice_elm = '$' + document.getElementById('extra_rice').value;
                                             }
                                         catch(err){
                                             console.log(err);
-                                            let extra_rice_elm = '0'
+                                            extra_rice_elm = '0';
                                         }
 
                                           let topping = parseExtraPrice(topping_elm);
