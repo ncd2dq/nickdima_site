@@ -322,7 +322,7 @@ db = {
         'Ingredients' : ['Peanut or Chili-cream dressing'],
         'Category' : 'Salad',
         'Comes_With' : [],
-        'Toppings' : [('Peanut', 0), ('Chili-cream', 0)],
+        'Toppings' : [('Peanut Dressing', 0), ('Chili Cream Dressing', 0)],
         'Extra' : False,
         'Spice' : False,
         'Lunch_Version' : False
