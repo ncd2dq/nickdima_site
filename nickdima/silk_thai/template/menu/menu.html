@@ -57,7 +57,7 @@
                             <div>
                                 {% for key, food_dict_item in all_items_dict.items() %}
                                 <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="{{food_dict_item['Category']}}">
-                                    <div href="#lb-gallery2-d" data-slide-to="{{ loop.index }}" data-toggle="modal"><img src="/thai/menu/static/{{ food_dict_item['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ food_dict_item['Base'] }}</span></div>
+                                    <div href="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}" data-toggle="modal"><img src="/thai/menu/static/{{ food_dict_item['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ food_dict_item['Base'] }}</span></div>
                                 </div>
                                 {% endfor %}
 
@@ -90,9 +90,9 @@
                                 <!--These are the little dots at the bottom of the large box-->
                                 <ol class="carousel-indicators">
                                     {% for key, food_dict_item in all_items_dict.items() %}
-                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index }}"></li>
+                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1 }}"></li>
                                     {% if loop.last %}
-                                    <li data-app-prevent-settings="" class=" active" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index }}"></li>
+                                    <li data-app-prevent-settings="" class=" active" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}"></li>
                                     {% endif %}
                                     {% endfor %}
                                     <!--
