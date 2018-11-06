@@ -51,6 +51,7 @@ FRIED_RICE = 'Fried Rice'
 BEVERAGES = 'Beverages'
 
 db = {
+    # TEST ITEMS START
     'Drunken_noodles': {
         'Base' : 'Drunken Noodles',
         'Base Price' : 10.95,
@@ -139,6 +140,7 @@ db = {
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
     },
+    # TEST ITEMS END
 
     # APPETIZERS 
     'Calamari': {
@@ -815,6 +817,36 @@ db = {
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : False
     },
+
+    # CURRIES
+    'Green_curry': {
+        'Base' : 'Green Curry',
+        'Base Price' : 11.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
+    'Red_curry': {
+        'Base' : 'Red Curry',
+        'Base Price' : 11.95,
+        'Description' : False,
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Creamy coconut milk curry', 'bamboo shoots', 'chili', 'basil'],
+        'Category' : CURRIES,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Spice' : SPICE_RANGE,
+        'Lunch_Version' : False
+    },
+
 
 }
 
