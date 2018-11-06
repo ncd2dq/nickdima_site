@@ -36,6 +36,7 @@ Copy Paste Template ---
 FULL_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2), ('Seafood', 3), ('Crispy Duck', 3)]
 EXTRA_DINNER_TOPPINGS = [('None', 0), ('Chicken', 3), ('Pork', 3), ('Beef', 3), ('Veggie', 3), ('Shrimp', 5), ('Seafood', 5), ('Crispy Duck', 4)]
 CURRY_DINNER_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 3), ('Seafood', 3)]
+SOUP_DINNER_TOPPINS = [('Veggie', 0), ('Chicken', 1), ('Shrimp', 5), ('Seafood', 5)]
 FULL_LUNCH_TOPPINGS = [('Chicken', 0), ('Pork', 0), ('Beef', 0), ('Veggie', 0), ('Shrimp', 2)]
 SPICE_RANGE = ['Normal', 0, 1, 2, 3, 4, 5] 
 
@@ -321,8 +322,7 @@ db = {
         'Lunch_Version' : False
     },
 
-
-    # SALAD
+    # SALADS
     'House_green_salad': {
         'Base' : 'House Green Salad',
         'Base Price' : 5.95,
@@ -434,6 +434,64 @@ db = {
         'Spice' : False,
         'Lunch_Version' : False
     },
+
+    # SOUPS
+    'Tom_yum_soup': {
+        'Base' : 'Tom Yum Soup',
+        'Base Price' : 3.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Mushrooms', 'lemongrass', 'a touch of Thai pepper'],
+        'Category' : SOUPS,
+        'Comes_With' : [],
+        'Toppings' : SOUP_DINNER_TOPPINS,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Tom_kha_soup': {
+        'Base' : 'Tom Kha Soup',
+        'Base Price' : 3.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Creamy coconut milk', 'galanga', 'mushrooms', 'lemongrass', 'kaffir lime leaves'],
+        'Category' : SOUPS,
+        'Comes_With' : [],
+        'Toppings' : SOUP_DINNER_TOPPINS,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Wonton_soup': {
+        'Base' : 'Wonton Soup',
+        'Base Price' : 4.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Green vegetable wontons', 'chicken broth'],
+        'Category' : SOUPS,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Bean_curd_soup': {
+        'Base' : 'Bean Curd Soup',
+        'Base Price' : 4.95,
+        'Description' : 'A creamy, green curry',
+        'Img_URL' : 'assets/images/calamari1-960x640-800x533.jpg',
+        'Ingredients' : ['Bean curd', 'seaweed', 'light broth'],
+        'Category' : SOUPS,
+        'Comes_With' : [],
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
 
 }
 
