@@ -112,7 +112,7 @@
                                           console.log(additional);
                                           console.log(base_price, 'base');
                                           //The cur_price updates to the new value, because the base_price is a float, we need to convert first
-                                          cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(2, base_price.toString().length);
+                                          cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
                                       }
                           </script>
                                     <!--End price updater-->
