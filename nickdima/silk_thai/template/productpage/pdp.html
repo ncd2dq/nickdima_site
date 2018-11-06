@@ -72,7 +72,6 @@
                                             let base_price = {{ selected_item['Lunch_Version']['Base Price']}};
 
                                             {% endif %}
-                                            console.log('HI CHANGE PRICE');
                                             //Parse the values for just the numeric value extra price
                                             let topping_elm, extra_elm, extra_rice_elm;
 
@@ -104,7 +103,6 @@
 
                                             let additional = topping + extra + (extra_rice * 2);
                                             //The cur_price updates to the new value, because the base_price is a float, we need to convert first
-                                            console.log(cur_price, additional, topping, extra, extra_rice);
                                             cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
                                         }
                                     </script>
@@ -427,8 +425,10 @@
             final_price = parseFloat(final_price.slice(7, final_price.length));
 
             if (cart_text.slice(1, 6) == 'Cart') {
+                console.log('single item');
                 cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
             } else {
+                console.log('already item in cart');
                 //Update total price count
                 let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
                 total_price = parseFloat(total_price)
