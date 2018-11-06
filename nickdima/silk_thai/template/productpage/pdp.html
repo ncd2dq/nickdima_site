@@ -424,7 +424,7 @@
             let final_price = document.getElementById('the_price').innerText;
             final_price = parseFloat(final_price.slice(7, final_price.length));
 
-            if (cart_text.slice(1, 6) == 'Cart') {
+            if (cart_text.indexOf('$') == -1 ) {
                 console.log('single item');
                 cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
             } else {
