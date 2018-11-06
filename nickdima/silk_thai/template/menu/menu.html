@@ -60,15 +60,6 @@
                                     <div href="#lb-gallery2-d" data-slide-to="{{ loop.index - 1}}" data-toggle="modal"><img src="/thai/menu/static/{{ food_dict_item['Img_URL'] }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">{{ food_dict_item['Base'] }}</span></div>
                                 </div>
                                 {% endfor %}
-
-                                <!--Hard coded
-                                <div class="mbr-gallery-item mbr-gallery-item--p2" data-video-url="false" data-tags="Main Dish">
-                                    <div href="#lb-gallery2-d" data-slide-to="0" data-toggle="modal"><img src="{{ url_for('menu.static', filename='assets/images/pad-thai1-940x528-800x449.jpg') }}" alt="" title=""><span class="icon-focus"></span><span class="mbr-gallery-title mbr-fonts-style display-7">Pad Thai</span>
-                                    </div>
-                                </div>
-                                -->
-
-
                             </div>
                         </div>
 
@@ -96,19 +87,18 @@
                                     <li data-app-prevent-settings="" data-target="#lb-gallery2-d" data-slide-to="{{ loop.index - 1 }}"></li>
                                     {% endif %}
                                     {% endfor %}
-                                    <!--
-                                    <li data-app-prevent-settings="" data-target="#lb-gallery2-d" class=" active" data-slide-to="6"></li>
-                                    -->
                                 </ol>
 
-                                <!--This is the enlarged image that appears-->
                                 <script>
                                     function goToFoodUrl(item_url) {
                                         window.location.href = item_url;
                                     }
                                 </script>
+                                <!--This is the enlarged image that appears "lightbox"-->
                                 <div class="carousel-inner">
+                                    <!--Need to have at least 1 be active from the start-->
                                     <!--Item=() is the vairable in the url-->
+                                    <!--This is the light box images-->
                                     {% for key, food_dict_item in all_items_dict.items() %}
                                     {% if loop.last %}
                                     <div class="carousel-item active"><img src="{{ url_for('menu.static', filename=food_dict_item['Img_URL']) }}" alt="" title="" style="cursor:pointer;" onclick='goToFoodUrl("{{ url_for('food.food_pdp', item=key, portion='dinner') }}")'></div>
