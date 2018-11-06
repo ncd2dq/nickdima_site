@@ -148,7 +148,7 @@ def food_pdp(item, portion):
     # Check if lunchtime
     if week_day >= 5:
         lunch_time = False
-    elif day_hour <= 10 or day_hour >= 2:
+    elif day_hour <= 10 or day_hour >= 14:
         lunch_time = False
 
     print(lunch_time)
