@@ -133,7 +133,7 @@
                                                 }
                                             }
                                         </script>
-                                        {% if lunch_time %}
+                                        {% if lunch_time and selected_item['Lunch_Only'] == false %}
                                         Portion: <select name="lunch_dinner" id="lunch_dinner" onchange="changePortion();">
                                             {% if portion == 'dinner' %}
                                             <option value="Dinner">Dinner</option>
