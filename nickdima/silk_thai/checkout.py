@@ -9,18 +9,17 @@ def cart_remover():
     remove_id = request.form.get('remove_id')
 
     if remove_id:
-        # [item, item, item]
-        cur_cart = session['cart']
+        # [item, item, item], [total, quantity]
+        cur_cart, cur_total = session['cart'], session['total']
 
-        # [total, quantity]
-        cur_total = session['total']
-
+        # If they are removing the last item in the cart, clear whole session
         if cur_total[1] == 1:
             session.clear()
             return redirect(url_for('checkout.summary'))
 
         for item in cur_cart:
 
+            # Find item within cart
             if item['Id'] == int(remove_id):
                 cur_total[0] = float(cur_total[0])
                 cur_total[0] -= item['Total']
@@ -43,9 +42,12 @@ def cart_remover():
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
     if request.method == 'POST':
+        # Securely store in session that user came from summary so a user must go from summary-->checkout
         session['from_summary'] = True
-        return redirect(url_for('checkout.confirmation'))
-
+        if 'total' in session:
+            return redirect(url_for('checkout.confirmation'))
+        else:
+            return redirect(url_for('checkout.summary'))
     try:
         items = session['cart']
     except KeyError:
