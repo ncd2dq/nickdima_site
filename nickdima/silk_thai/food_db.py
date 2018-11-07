@@ -1353,7 +1353,7 @@ db = {
         'Comes_With' : False, 
         'Lunch_Only' : True,
         'Toppings' : False,
-        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Extra' : False,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : False}
@@ -1369,7 +1369,7 @@ db = {
         'Comes_With' : False, 
         'Lunch_Only' : True,
         'Toppings' : False,
-        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Extra' : False,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : False}
@@ -1385,7 +1385,7 @@ db = {
         'Comes_With' : False, 
         'Lunch_Only' : True,
         'Toppings' : False,
-        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Extra' : False,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
@@ -1401,7 +1401,7 @@ db = {
         'Comes_With' : False, 
         'Lunch_Only' : True,
         'Toppings' : False,
-        'Extra' : EXTRA_DINNER_TOPPINGS,
+        'Extra' : False,
         'Spice' : SPICE_RANGE,
         'Lunch_Version' : {'Base Price' : 11.95,
                             'Toppings' : False}
