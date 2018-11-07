@@ -57,6 +57,7 @@
 
                                     <!--Price Updater Script-->
                                     <script>
+
                                         function parseExtraPrice(val) {
                                             //Parse the value by first looking for the $
                                             if (val.indexOf('$') != -1) {
@@ -68,6 +69,7 @@
 
                                         function ensure_2_decimals(price_string){
                                             console.log(price_string, typeof(price_string));
+                                            let price_string = price_string.toString();
 
                                             let dot_index = price_string.indexOf('.');
                                             if(price_string.slice(dot_index, price_string.length).length != 3){
@@ -90,6 +92,12 @@
 
                                             //Test if the base price doesn't have 2 decimal places
                                             base_price = ensure_2_decimals(base_price);
+                                            if(base_price.slice(base_price.length - 2, base_price.length) == '00'){
+                                                console.log(base_price);
+                                            } else {
+                                                //If it doesn't have a double 00, convert back to int
+                                                base_price = parseInt(base_price, 10);
+                                            }
 
                                             //Parse the values for just the numeric value extra price
                                             let topping_elm, extra_elm, extra_rice_elm;
@@ -124,6 +132,25 @@
                                             //The cur_price updates to the new value, because the base_price is a float, we need to convert first
                                             cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
                                         }
+
+                                        //Auto convert page price if missing decimals
+                                        {% if portion == 'dinner' %}
+                                        let page_price_int = {{ selected_item['Base Price'] }};
+
+                                        {% else %}
+
+                                        let page_price_int = {{ selected_item['Lunch_Version']['Base Price'] }};
+
+                                        {% endif %}
+                                        let page_price = document.getElementById('the_price');
+                                        page_price_int = ensure_2_decimals(page_price_int);
+                                        if(page_price_int.slice(page_price_int.length - 2, page_price_int.length) == '00'){
+                                            console.log(page_price_int);
+                                        } else {
+                                            //If it doesn't have a double 00, convert back to int
+                                            page_price_int = parseInt(page_price_int, 10);
+                                        }
+                                        page_price.innerText = 'Price: ' + page_price_int;
                                     </script>
                                     <!--End price updater-->
 
