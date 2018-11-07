@@ -137,6 +137,27 @@ def food_pdp(item, portion):
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
     # Do not allow users to go to lunch page for item if lunch version doesn't exist
+    lunch_time = is_lunch()
+
+    print(lunch_time)
+    print(week_day, day_hour)
+    print('THIS IS THE TIME WE FIGURED OUT')
+
+    if selected_item['Lunch_Version'] == False:
+        lunch_time = False
+    # TODO: replace with lunchtime calculation
+    if portion == 'lunch' and selected_item['Lunch_Version'] == False:
+        return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
+
+    if portion == 'dinner' and selected_item['Lunch_Only'] == True:
+        return redirect(url_for('food.food_pdp', item=item, portion='lunch'))
+
+    return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
+
+def is_lunch():
+    '''
+    Return a boolean - are we serving lunch?
+    '''
     lunch_time = True
     tz = timezone('EST')
     # Monday = 0, Sunday = 6
@@ -151,18 +172,7 @@ def food_pdp(item, portion):
     elif day_hour <= 10 or day_hour >= 14:
         lunch_time = False
 
-    print(lunch_time)
-    print(week_day, day_hour)
-    print('THIS IS THE TIME WE FIGURED OUT')
-
-    if selected_item['Lunch_Version'] == False:
-        lunch_time = False
-    # TODO: replace with lunchtime calculation
-    if portion == 'lunch' and selected_item['Lunch_Version'] == False:
-        return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
-
-    return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
-
+    return lunch_time
 
 def ensureExists(form_val):
     '''Make sure that a form value exists'''
