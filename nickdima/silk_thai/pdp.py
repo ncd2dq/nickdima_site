@@ -154,22 +154,24 @@ def is_lunch():
     '''
     from datetime import datetime
     from pytz import timezone
-    
+
     lunch_time = True
     tz = timezone('EST')
     # Monday = 0, Sunday = 6
     # Hour in range(24)
     week_day, day_hour = datetime.now(tz).weekday(), datetime.now(tz).time().hour
     # Check if accepting orders
-    # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
-    print(lunch_time)
-    print(week_day, day_hour)
-    print('THIS IS THE TIME WE FIGURED OUT')
+
     # Check if lunchtime
     if week_day >= 5:
         lunch_time = False
     elif day_hour <= 10 or day_hour >= 14:
         lunch_time = False
+
+    # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
+    print(lunch_time)
+    print(week_day, day_hour)
+    print('THIS IS THE TIME WE FIGURED OUT')
 
     return lunch_time
 
