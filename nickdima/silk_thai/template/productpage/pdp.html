@@ -149,7 +149,7 @@
                                             console.log(page_price_int);
                                         } else {
                                             //If it doesn't have a double 00, convert back to int
-                                            page_price_int = parseInt(page_price_int, 10);
+                                            page_price_int = parseFloat(page_price_int, 10);
                                         }
                                         page_price.innerText = 'Price: ' + page_price_int;
                                     </script>
