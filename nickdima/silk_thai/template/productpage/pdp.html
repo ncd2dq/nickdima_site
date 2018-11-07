@@ -67,6 +67,8 @@
                                         }
 
                                         function ensure_2_decimals(price_string){
+                                            console.log(price_string, typeof(price_string));
+
                                             let dot_index = price_string.indexOf('.');
                                             if(price_string.slice(dot_index, price_string.length).length != 3){
                                                 price_string += '0';
