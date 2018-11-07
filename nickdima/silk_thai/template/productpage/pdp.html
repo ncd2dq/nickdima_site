@@ -24,6 +24,10 @@
             </h2>
             <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
                 Edit your food below!
+                <br>
+                {% if lunchtime == true %}
+                Lunch portions are currently available
+                {% endif %}
             </h3>
             <div class="row media-row">
                 <div class="container align-center">
@@ -149,7 +153,7 @@
                                         <form action="" method="POST" class="mbr-fonts-style display-6" id="food_entry">
                                             <input name="base" type="hidden" value="{{selected_item['Base']}}">
 
-                                            {% if selected_item['Spice'] != False %}
+                                            {% if selected_item['Spice'] != false %}
                                             <!--Spice option-->
                                             Spice Level <select name="spice" id="spice">
 
@@ -162,7 +166,7 @@
 
                                             {% if portion == 'dinner' %}
 
-                                            {% if selected_item['Toppings'] != False %}
+                                            {% if selected_item['Toppings'] != false %}
                                             <!--Topping option-->
                                             <!--Itemname, Extra Price-->
                                             <!-- Display "Chicken +$2" if extra price"-->
@@ -176,7 +180,7 @@
 
                                             {% else %}
 
-                                            {% if selected_item['Lunch_Version']['Toppings'] != False %}
+                                            {% if selected_item['Lunch_Version']['Toppings'] != false %}
                                             <!--Topping option-->
                                             <!--Itemname, Extra Price-->
                                             <!-- Display "Chicken +$2" if extra price"-->
@@ -191,7 +195,7 @@
                                             {% endif %}
 
 
-                                            {% if selected_item['Extra'] != False %}
+                                            {% if selected_item['Extra'] != false %}
                                             <!--Topping option-->
                                             <!--Itemname, Extra Price-->
                                             <!-- Display "Chicken +$2" if extra price"-->

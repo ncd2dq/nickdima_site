@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from silk_thai.food_db import get_db
-from datetime import datetime
-from pytz import timezone
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
@@ -154,6 +152,9 @@ def is_lunch():
     '''
     Return a boolean - are we serving lunch?
     '''
+    from datetime import datetime
+    from pytz import timezone
+    
     lunch_time = True
     tz = timezone('EST')
     # Monday = 0, Sunday = 6
