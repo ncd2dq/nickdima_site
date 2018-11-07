@@ -2,6 +2,7 @@ from silk_thai.configuration import web_configuration
 from pytz import timezone
 from datetime import datetime
 from functools import wraps
+from flask import session
 
 def is_delivery_minimum_met(order_total):
     '''
