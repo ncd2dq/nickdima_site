@@ -1133,7 +1133,7 @@ db = {
     # TO-GO BEVERAGES
     'Thai_ice_tea': {
         'Base' : 'Thai Ice Tea',
-        'Base Price' : 3.00,
+        'Base Price' : 2.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1147,7 +1147,7 @@ db = {
 
     'Thai_ice_coffee': {
         'Base' : 'Thai Ice Coffee',
-        'Base Price' : 3.00,
+        'Base Price' : 2.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1161,7 +1161,7 @@ db = {
 
     'Vitamin_water': {
         'Base' : 'Vitamin Water',
-        'Base Price' : 3.00,
+        'Base Price' : 2.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1175,7 +1175,7 @@ db = {
 
     'Gold_peak_tea': {
         'Base' : 'Gold Peak Tea',
-        'Base Price' : 3.00,
+        'Base Price' : 2.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1189,7 +1189,7 @@ db = {
 
     'Minute_maid_juice': {
         'Base' : 'Minute Maid Juice',
-        'Base Price' : 3.00,
+        'Base Price' : 2.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1203,7 +1203,7 @@ db = {
 
     'Bottled_water': {
         'Base' : 'Bottled Water',
-        'Base Price' : 1.00,
+        'Base Price' : 0.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
@@ -1217,7 +1217,7 @@ db = {
 
     'Can_soda': {
         'Base' : 'Can Soda',
-        'Base Price' : 1.00,
+        'Base Price' : 0.99,
         'Description' : False,
         'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
         'Ingredients' : False,
