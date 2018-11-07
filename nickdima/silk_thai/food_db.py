@@ -48,7 +48,7 @@ MAIN_DISHES = 'Main Dishes'
 CURRIES = 'Curries'
 NOODLES = 'Noodles'
 FRIED_RICE = 'Fried Rice'
-BEVERAGES = 'Beverages'
+TOGO_BEVERAGES = 'To-Go Beverages'
 
 db = {
     # TEST ITEMS START
@@ -1127,6 +1127,106 @@ db = {
         'Lunch_Version' : {'Base Price' : 8.95,
                             'Toppings' : FULL_LUNCH_TOPPINGS}
     },
+
+    # TO-GO BEVERAGES
+    'Thai_ice_tea': {
+        'Base' : 'Thai Ice Tea',
+        'Base Price' : 3.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Thai_ice_coffee': {
+        'Base' : 'Thai Ice Coffee',
+        'Base Price' : 3.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Vitamin_water': {
+        'Base' : 'Vitamin Water',
+        'Base Price' : 3.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Gold_peak_tea': {
+        'Base' : 'Gold Peak Tea',
+        'Base Price' : 3.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : [('Green', 0), ('Unsweetened', 0), ('Sweet', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Minute_maid_juice': {
+        'Base' : 'Minute Maid Juice',
+        'Base Price' : 3.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : [('Lemonade', 0), ('Orange', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Bottled_water': {
+        'Base' : 'Bottled Water',
+        'Base Price' : 1.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : False,
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
+    'Can_soda': {
+        'Base' : 'Can Soda',
+        'Base Price' : 1.00,
+        'Description' : False,
+        'Img_URL' : 'assets/images/pad-see-ew-610x458-610x458.jpg',
+        'Ingredients' : False,
+        'Category' : TOGO_BEVERAGES,
+        'Comes_With' : False,
+        'Toppings' : [('Coke', 0), ('Diet Coke', 0), ('Sprite', 0), ('Ginger Ale', 0), ('Pibb Xtra', 0)],
+        'Extra' : False,
+        'Spice' : False,
+        'Lunch_Version' : False
+    },
+
 }
 
 
