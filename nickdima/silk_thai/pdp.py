@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from silk_thai.food_db import get_db
+from silk_thai.utilities import is_lunch
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
@@ -148,32 +149,6 @@ def food_pdp(item, portion):
 
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
 
-def is_lunch():
-    '''
-    Return a boolean - are we serving lunch?
-    '''
-    from datetime import datetime
-    from pytz import timezone
-
-    lunch_time = True
-    tz = timezone('EST')
-    # Monday = 0, Sunday = 6
-    # Hour in range(24)
-    week_day, day_hour = datetime.now(tz).weekday(), datetime.now(tz).time().hour
-    # Check if accepting orders
-
-    # Check if lunchtime
-    if week_day >= 5:
-        lunch_time = False
-    elif day_hour <= 10 or day_hour >= 14:
-        lunch_time = False
-
-    # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
-    print(lunch_time)
-    print(week_day, day_hour)
-    print('THIS IS THE TIME WE FIGURED OUT')
-
-    return lunch_time
 
 def ensureExists(form_val):
     '''Make sure that a form value exists'''

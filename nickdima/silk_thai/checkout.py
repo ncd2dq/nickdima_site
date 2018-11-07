@@ -1,6 +1,5 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
-from datetime import datetime
-from pytz import timezone
+from silk_thai.utilities import read_configuration_is_open
 from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
@@ -70,29 +69,9 @@ def is_open(view):
     # Must use wraps or Flask doesn't know the correct name of the wrapped view function
     @wraps(view)
     def wrapped(*args, **kwargs):
-        # Monday = 0, Sunday = 6
-        # Hour in 1 - 24
-        tz = timezone('EST')
-        week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
 
-        # Sunday - Thursday
-        if week_day >= 0 and week_day <= 3 or week_day == 6:
-            if day_hour <= 10:
-                return redirect(url_for('menu.menu'))
-            if day_hour >= 22:
-                return redirect(url_for('menu.menu'))
-            if day_hour == 21:
-                if day_minute >= 30:
-                    return redirect(url_for('menu.menu'))
-        # Friday - Saturday
-        elif week_day >= 4 and week_day <= 5:
-            if day_hour <= 10:
-                return redirect(url_for('menu.menu'))
-            if day_hour >= 23:
-                return redirect(url_for('menu.menu'))
-            if day_hour == 22:
-                if day_minute >= 30:
-                    return redirect(url_for('menu.menu'))
+        if not read_configuration_is_open():
+            return redirect(url_for('menu.menu'))
 
         return view(*args, **kwargs)
 

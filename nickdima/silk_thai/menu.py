@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 from silk_thai.food_db import get_db
-from silk_thai.pdp import is_lunch
+from silk_thai.utilities import is_lunch
 
 bp = Blueprint('menu', __name__, url_prefix='/thai/menu', static_folder='static', template_folder='template')
 
