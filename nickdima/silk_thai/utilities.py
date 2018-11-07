@@ -1,12 +1,19 @@
 from silk_thai.configuration import web_configuration
 from pytz import timezone
 from datetime import datetime
-from functools import wraps
+
+def delivery_minimum():
+    '''
+    Returns the delivery minimum
+    '''
+    return web_configuration['delivery_minimum_dollars']
 
 def get_day_hour_minute():
     '''
     Return the Day of Week, Hour of Day, Minute of Day
     '''
+    # Monday = 0, Sunday = 6
+    # Hour in range(1, 25)
     tz = timezone('EST')
     week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
     return week_day, day_hour, day_minute
@@ -40,17 +47,12 @@ def is_lunch():
     Return a boolean - are we serving lunch?
     '''
     lunch_time = True
-    # Monday = 0, Sunday = 6
-    # Hour in range(24)
     week_day, day_hour, day_minute = get_day_hour_minute()
     if web_configuration['lunch_hours'][week_day] is False:
         lunch_time = False
     elif day_hour < web_configuration['lunch_hours'][week_day][0] or day_hour > web_configuration['lunch_hours'][week_day][1]:
         lunch_time = False
 
-    # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
     print('Is it lunch time?', lunch_time)
-    print(week_day, day_hour)
-    print('THIS IS THE TIME WE FIGURED OUT')
 
     return lunch_time

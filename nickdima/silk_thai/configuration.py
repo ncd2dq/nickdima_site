@@ -4,6 +4,7 @@
 web_configuration = {
     'delivery_time_minutes' : 60,
     'takeout_time_minutes' : 15,
+    'delivery_minimum_dollars' : 20,
     'hours_of_operation' : {
                                 0: (11, 21, 30), 
                                 1: (11, 21, 30), 
