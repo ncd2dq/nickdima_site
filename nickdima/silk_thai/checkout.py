@@ -1,10 +1,11 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
-from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met
+from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page
 from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
 
 @bp.route('/cart_remover', methods=['POST'])
+@is_not_summary_page
 def cart_remover():
     remove_id = request.form.get('remove_id')
 
@@ -42,7 +43,7 @@ def cart_remover():
 @bp.route('/summary', methods=['GET', 'POST'])
 def summary():
     if request.method == 'POST':
-        # Securely store in session that user came from summary so a user must go from summary-->checkout
+        # Securely store in session that user came from summary so a user cannot skip summary page
         session['from_summary'] = True
         if 'total' in session:
             return redirect(url_for('checkout.confirmation'))

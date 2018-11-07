@@ -1,6 +1,7 @@
 from silk_thai.configuration import web_configuration
 from pytz import timezone
 from datetime import datetime
+from functools import wraps
 
 def is_delivery_minimum_met(order_total):
     '''
@@ -59,3 +60,17 @@ def is_lunch():
     print('Is it lunch time?', lunch_time)
 
     return lunch_time
+
+
+def is_not_summary_page(view):
+    '''
+    Ensures users cannot skip summary page
+    '''
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+
+        session['from_summary'] = False
+
+        return view(*args, **kwargs)
+
+    return wrapped
