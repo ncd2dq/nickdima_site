@@ -1,5 +1,6 @@
 from silk_thai.configuration import web_configuration
 from pytz import timezone
+from datetime import datetime
 from functools import wraps
 
 def get_day_hour_minute():
