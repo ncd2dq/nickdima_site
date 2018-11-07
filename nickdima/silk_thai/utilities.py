@@ -24,6 +24,7 @@ def read_configuration_is_open():
         is_currently_open = False
     elif day_hour < web_configuration['hours_of_operation'][week_day][0]:
         print('closed reason 1')
+        print(day_hour, web_configuration['hours_of_operation'][week_day][0])
         is_currently_open = False
     elif day_hour == web_configuration['hours_of_operation'][week_day][1] and day_minute >= web_configuration['hours_of_operation'][week_day][2]:
         print('closed reason 1')
