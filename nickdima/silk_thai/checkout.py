@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
-from silk_thai.utilities import read_configuration_is_open, delivery_minimum
+from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met
 from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
@@ -52,11 +52,9 @@ def summary():
         return render_template('checkout/order_summary.html', empty_cart='No items in cart!')
 
     # Determine if delivery minimum met
-    # [total, quantity]
-    delivery_minimum_met = False
+    # session['tota'] -> [total, quantity]
     cur_total = session['total']
-    if float(cur_total[0]) >= delivery_minimum():
-        delivery_minimum_met = True
+    delivery_minimum_met = is_delivery_minimum_met(float(cur_total[0]))
 
     return render_template('checkout/order_summary.html', items=items, delivery_minimum_met=delivery_minimum_met)
 

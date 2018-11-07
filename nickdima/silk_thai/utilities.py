@@ -2,11 +2,14 @@ from silk_thai.configuration import web_configuration
 from pytz import timezone
 from datetime import datetime
 
-def delivery_minimum():
+def is_delivery_minimum_met(order_total):
     '''
-    Returns the delivery minimum
+    Returns if the delivery minimum criterion is met
     '''
-    return web_configuration['delivery_minimum_dollars']
+    delivery_minimum_met = False
+    if order_total >= web_configuration['delivery_minimum_dollars']:
+        delivery_minimum_met = True
+    return delivery_minimum_met
 
 def get_day_hour_minute():
     '''
