@@ -139,10 +139,6 @@ def food_pdp(item, portion):
     # Do not allow users to go to lunch page for item if lunch version doesn't exist
     lunch_time = is_lunch()
 
-    print(lunch_time)
-    print(week_day, day_hour)
-    print('THIS IS THE TIME WE FIGURED OUT')
-
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
     # TODO: replace with lunchtime calculation
@@ -165,7 +161,9 @@ def is_lunch():
     week_day, day_hour = datetime.now(tz).weekday(), datetime.now(tz).time().hour
     # Check if accepting orders
     # TODO: MAKE SOMETHING HAPPEN IF THE STORE IS CLOSED
-
+    print(lunch_time)
+    print(week_day, day_hour)
+    print('THIS IS THE TIME WE FIGURED OUT')
     # Check if lunchtime
     if week_day >= 5:
         lunch_time = False
