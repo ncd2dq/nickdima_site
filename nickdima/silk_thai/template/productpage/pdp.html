@@ -74,6 +74,7 @@
                                             let dot_index = price_string.indexOf('.');
                                             if(price_string.slice(dot_index, price_string.length).length != 3){
                                                 price_string += '0';
+                                                console.log('made change', price_string);
                                             }
 
                                             return price_string;
