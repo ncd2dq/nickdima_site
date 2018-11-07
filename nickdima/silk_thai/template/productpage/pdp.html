@@ -66,16 +66,29 @@
                                             return 0;
                                         }
 
+                                        function ensure_2_decimals(price_string){
+                                            let dot_index = price_string.indexOf('.');
+                                            if(price_string.slice(dot_index, price_string.length).length != 3){
+                                                price_string += '0';
+                                            }
+
+                                            return price_string;
+                                        }
+
                                         function changePrice() {
                                             //Check IDs 'topping' 'extra' 'extra_rice'
                                             {% if portion == 'dinner' %}
-                                            let base_price = {{selected_item['Base Price']}};
+                                            let base_price = {{ selected_item['Base Price'] }};
 
                                             {% else %}
 
-                                            let base_price = {{ selected_item['Lunch_Version']['Base Price']}};
+                                            let base_price = {{ selected_item['Lunch_Version']['Base Price'] }};
 
                                             {% endif %}
+
+                                            //Test if the base price doesn't have 2 decimal places
+                                            base_price = ensure_2_decimals(base_price);
+
                                             //Parse the values for just the numeric value extra price
                                             let topping_elm, extra_elm, extra_rice_elm;
 
