@@ -106,6 +106,7 @@ class CustomCurrency(object):
         string_form = '239023.23432' 'LEFT_SIDE.RIGHT_SIDE'
         '''
         left_right = string_form.split('.')
+        print('HERE IS TESTING', string_form, left_right)
         left_side = int(left_right[0]) * 100
         if len(left_right[1]) == 1:
             right_side = int(left_right[1]) * 10
