@@ -82,6 +82,7 @@ class CustomCurrency(object):
     -Export as a string dollar/cents form
     '''
     def __init__(self, int_or_string):
+        print('Instantiate', int_or_string)
         if type(int_or_string) == int:
             self.int_cents_form = int_or_string
         elif type(int_or_string) == str:

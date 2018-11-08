@@ -33,6 +33,8 @@ def food_pdp(item, portion):
         topping = removePricing(topping)
         extra = removePricing(extra)
 
+        print(spice, base, extra_rice, notes, topping, extra)
+
         # Final externally facing values should be:
         # {'Base': ('Pad_see_ew', '10.95'), 'Spice': 'Normal', 'Topping': ('Shrimp', '2.00'), 'Extra': ('Pork', '3.00'), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
         new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
@@ -86,7 +88,8 @@ def food_pdp(item, portion):
                 if type(new_item[key]) == tuple:
                     # ['name', str('3.00')]
                     print('OH WOULD YOU LOOK HERE')
-                    print(total_price, new_item[key][1])
+                    print(total_price)
+                    print(new_item[key][1])
                     total_price += CustomCurrency(new_item[key][1])
                 if key == 'Extra_Rice':
                     total_price += CustomCurrency(2 * int(new_item[key]))
