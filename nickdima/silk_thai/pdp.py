@@ -85,6 +85,8 @@ def food_pdp(item, portion):
             if new_item[key] is not False:
                 if type(new_item[key]) == tuple:
                     # ['name', str('3.00')]
+                    print('OH WOULD YOU LOOK HERE')
+                    print(total_price, new_item[key][1])
                     total_price += CustomCurrency(new_item[key][1])
                 if key == 'Extra_Rice':
                     total_price += CustomCurrency(2 * int(new_item[key]))
