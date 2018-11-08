@@ -1,8 +1,37 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
-from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page
+from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page, CustomCurrency
 from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
+
+def remove_item_from_session(remove_id):
+    '''
+    Remove an item from the cart by matching the remove_id to an item ID in cart
+    '''
+    
+    # [item, item, item], [total-string, quantity-int]
+    cur_cart, cur_total = session['cart'], session['total']
+
+    # If they are removing the last item in the cart, clear whole session
+    if cur_total[1] == 1:
+        session.clear()
+        return redirect(url_for('checkout.summary'))
+
+    # Match the remove_id to an id from the cart
+    for item in cur_cart:
+        if item['Id'] == int(remove_id):
+            # Subtract item price from order total
+            cur_total[0] = CustomCurrency(cur_total[0])
+            cur_total[0] -= CustomCurrency(item['Total'])
+            cur_total[0] = cur_total[0].export_string()
+
+            cur_total[1] -= 1
+            session['total'] = cur_total
+
+            # Remove item from cart
+            cur_cart.remove(item)
+            session['cart'] = cur_cart
+
 
 @bp.route('/cart_remover', methods=['POST'])
 @is_not_summary_page
@@ -10,33 +39,7 @@ def cart_remover():
     remove_id = request.form.get('remove_id')
 
     if remove_id:
-        # [item, item, item], [total, quantity]
-        cur_cart, cur_total = session['cart'], session['total']
-
-        # If they are removing the last item in the cart, clear whole session
-        if cur_total[1] == 1:
-            session.clear()
-            return redirect(url_for('checkout.summary'))
-
-        for item in cur_cart:
-
-            # Find item within cart
-            if item['Id'] == int(remove_id):
-                cur_total[0] = float(cur_total[0])
-                cur_total[0] -= item['Total']
-                cur_total[0] = round(cur_total[0], 2)
-                cur_total[0] = str(cur_total[0])
-                if cur_total[0][-2] == '.':
-                    cur_total[0] += '0'
-
-                cur_total[1] -= 1
-                session['total'] = cur_total
-
-                print(cur_cart)
-                # Remove item
-                cur_cart.remove(item)
-                print(cur_cart, 'AFTER REMOVAL')
-                session['cart'] = cur_cart
+        remove_item_from_session(remove_id)
 
     return redirect(url_for('checkout.summary'))
 
@@ -48,6 +51,7 @@ def summary():
         if 'total' in session:
             return redirect(url_for('checkout.confirmation'))
         else:
+            # Cannot checkout with no items in cart
             return redirect(url_for('checkout.summary'))
     try:
         items = session['cart']
@@ -57,7 +61,7 @@ def summary():
     # Determine if delivery minimum met
     # session['tota'] -> [total, quantity]
     cur_total = session['total']
-    delivery_minimum_met = is_delivery_minimum_met(float(cur_total[0]))
+    delivery_minimum_met = is_delivery_minimum_met(CustomCurrency(cur_total[0]))
 
     return render_template('checkout/order_summary.html', items=items, delivery_minimum_met=delivery_minimum_met)
 

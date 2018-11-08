@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from silk_thai.food_db import get_db
-from silk_thai.utilities import is_lunch, is_not_summary_page
+from silk_thai.utilities import is_lunch, is_not_summary_page, CustomCurrency
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
@@ -33,8 +33,8 @@ def food_pdp(item, portion):
         topping = removePricing(topping)
         extra = removePricing(extra)
 
-        # Final value should be:
-        # {'Base': ('Pad_see_ew', 10.95), 'Spice': 'Normal', 'Topping': ('Shrimp', 2), 'Extra': ('Pork', 3), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
+        # Final externally facing values should be:
+        # {'Base': ('Pad_see_ew', '10.95'), 'Spice': 'Normal', 'Topping': ('Shrimp', '2.00'), 'Extra': ('Pork', '3.00'), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
         new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
         
         #
@@ -47,9 +47,9 @@ def food_pdp(item, portion):
             if db[key]['Base'] == base:
                 new_item['Title'] = db[key]['Base']
                 if portion == 'dinner':
-                    new_item['Base'] = (key, db[key]['Base Price'])
+                    new_item['Base'] = (key, CustomCurrency(db[key]['Base Price']).export_string())
                 elif portion == 'lunch':
-                    new_item['Base'] = (key, db[key]['Lunch_Version']['Base Price'])
+                    new_item['Base'] = (key, CustomCurrency(db[key]['Lunch_Version']['Base Price']).export_string())
                 new_item['Img_url'] = db[key]['Img_URL']
 
         # Find the correct topping tuple [0] because the new_item['Base'] is a tuple
@@ -57,17 +57,17 @@ def food_pdp(item, portion):
             if portion == 'dinner':
                 for name, price in db[new_item['Base'][0]]['Toppings']:
                     if topping == name:
-                        new_item['Topping'] = (topping, price)
+                        new_item['Topping'] = (topping, CustomCurrency(price).export_string())
             elif portion == 'lunch':
                 for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
                     if topping == name:
-                        new_item['Topping'] = (topping, price)
+                        new_item['Topping'] = (topping, CustomCurrency(price).export_string())
 
         # Find the correct extra tuple
         if extra is not False:
             for name, price in db[new_item['Base'][0]]['Extra']:
                 if extra == name:
-                    new_item['Extra'] = (extra, price)
+                    new_item['Extra'] = (extra, CustomCurrency(price).export_string())
 
 
         if spice is not False:
@@ -80,14 +80,15 @@ def food_pdp(item, portion):
             new_item['Notes'] = notes
 
         # Get the total
-        total_price = 0
+        total_price = CustomCurrency(0)
         for key in new_item.keys():
             if new_item[key] is not False:
                 if type(new_item[key]) == tuple:
-                    total_price += new_item[key][1]
+                    # ['name', str('3.00')]
+                    total_price += CustomCurrency(new_item[key][1])
                 if key == 'Extra_Rice':
-                    total_price += 2 * int(new_item[key])
-        new_item['Total'] = total_price
+                    total_price += CustomCurrency(2 * int(new_item[key]))
+        new_item['Total'] = total_price.export_string()
 
 
         if 'cart' not in session:
@@ -99,13 +100,11 @@ def food_pdp(item, portion):
             #For some reason session['cart'].append(new_item) does not work across requests,
             #need to alter the list, then reasign to the session
             #otherwise some data drops
+            #session['total'] = [str('3.00'), int]
             total = session['total']
-            total[0] = float(total[0])
+            total[0] = CustomCurrency(total[0])
             total[0] += total_price
-            total[0] = round(total[0], 2)
-            total[0] = str(total[0])
-            if total[0][-2] == '.':
-                total[0] += '0'
+            total[0] = total[0].export_string()
 
             total[1] += 1
             session['total'] = total
