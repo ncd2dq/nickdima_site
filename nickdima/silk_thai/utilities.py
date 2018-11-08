@@ -1,4 +1,4 @@
-#from silk_thai.configuration import web_configuration
+from silk_thai.configuration import web_configuration
 from pytz import timezone
 from datetime import datetime
 from functools import wraps
