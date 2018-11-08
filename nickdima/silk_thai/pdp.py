@@ -81,6 +81,8 @@ def food_pdp(item, portion):
         if notes is not False:
             new_item['Notes'] = notes
 
+        print('THIS IS A NEW ITEM', new_item)
+
         # Get the total
         total_price = CustomCurrency(0)
         for key in new_item.keys():
