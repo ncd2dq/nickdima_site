@@ -108,7 +108,7 @@ class CustomCurrency(object):
         '''
         # what if the string '300' or '0' comes in?
 
-        if len(string_form >= 4) and '.' in string_form):
+        if len(string_form >= 4) and '.' in string_form:
             left_right = string_form.split('.')
             print('HERE IS TESTING', string_form, left_right)
             left_side = int(left_right[0]) * 100
