@@ -72,6 +72,7 @@ def summary():
         # we are not accepting online orders right now
         return render_template('checkout/not_accepting_online.html')
 
+    print(accept_delivery, accept_takeout)
     return render_template('checkout/order_summary.html', 
                             items=items, 
                             delivery_minimum_met=delivery_minimum_met, 
