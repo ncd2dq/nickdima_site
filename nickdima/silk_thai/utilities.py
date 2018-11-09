@@ -106,14 +106,30 @@ class CustomCurrency(object):
         '''
         string_form = '239023.23432' 'LEFT_SIDE.RIGHT_SIDE'
         '''
-        left_right = string_form.split('.')
-        print('HERE IS TESTING', string_form, left_right)
-        left_side = int(left_right[0]) * 100
-        if len(left_right[1]) == 1:
-            right_side = int(left_right[1]) * 10
-        elif len(left_right[1]) == 2:
-            right_side = int(left_right[1])
-        result = left_side + right_side
+        # what if the string '300' or '0' comes in?
+
+        if len(string_form >= 4 and '.' in string_form):
+            left_right = string_form.split('.')
+            print('HERE IS TESTING', string_form, left_right)
+            left_side = int(left_right[0]) * 100
+            if len(left_right[1]) == 1:
+                right_side = int(left_right[1]) * 10
+            elif len(left_right[1]) == 2:
+                right_side = int(left_right[1])
+            result = left_side + right_side
+        elif len(string_form <= 3):
+            if '.' in string_form:
+                if len(string_form[string_form.index('.'):]) < 2:
+                    result = string_form + '0'
+                if len(string_form[:string_form.index('.')]) < 1:
+                    result = '0' + string_form
+            else:
+                if len(string_form == 3):
+                    result = string_form[0] + '.' + string_form[1:]
+                if len(string_form == 2):
+                    result = '0.' + string_form
+                if len(string_form == 1):
+                    result = '0.0' + string_form
 
         return result
 
@@ -174,7 +190,6 @@ class CustomCurrency(object):
         return result
 
 if __name__ == '__main__':
-
     a = CustomCurrency('2.0')
     c = CustomCurrency(1232)
     d = '2.4'
