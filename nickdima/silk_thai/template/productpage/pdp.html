@@ -25,7 +25,7 @@
             <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">
                 Edit your food below!
                 <br>
-                {% if lunchtime == true %}
+                {% if lunch_time == true %}
                 Lunch portions are currently available
                 {% endif %}
             </h3>
@@ -172,7 +172,7 @@
                                                 }
                                             }
                                         </script>
-                                        {% if lunch_time and selected_item['Lunch_Only'] == false %}
+                                        {% if lunch_time == true and selected_item['Lunch_Only'] == false %}
                                         Portion: <select name="lunch_dinner" id="lunch_dinner" onchange="changePortion();">
                                             {% if portion == 'dinner' %}
                                             <option value="Dinner">Dinner</option>
