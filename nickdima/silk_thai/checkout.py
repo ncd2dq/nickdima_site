@@ -67,7 +67,7 @@ def summary():
     cur_total = session['total']
     delivery_minimum_met = is_delivery_minimum_met(CustomCurrency(cur_total[0]))
 
-    return render_template('checkout/order_summary.html', items=items, delivery_minimum_met=delivery_minimum_met)
+    return render_template('checkout/order_summary.html', items=items, delivery_minimum_met=delivery_minimum_met, is_currently_open=read_configuration_is_open())
 
 
 def is_open(view):
