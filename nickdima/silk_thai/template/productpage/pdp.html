@@ -65,7 +65,7 @@
                                         function parseAdditionalPrice(string_val){
                                             //Takes a string with $XX.XX in it and returns integer cents
                                             if(string_val.indexOf('$') != -1){
-                                                let price = string_val.slice(val.indexOf('$') + 1, string_val.length);
+                                                let price = string_val.slice(string_val.indexOf('$') + 1, string_val.length);
                                                 let left_right = price.split('.');
                                                 let left = parseInt(left_right[0]) * 100;
                                                 let right = parseInt(left_right[1]);
