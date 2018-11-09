@@ -56,19 +56,30 @@
                                     </div>
                                     {% endif %}
                                     <div class="item-role px-2">
-                                        <p class="mbr-fonts-style display-5" id="the_price">Price: {% if portion == 'dinner' %}{{ selected_item['Base Price'] }}{% else %}{{ selected_item['Lunch_Version']['Base Price'] }}{% endif %}</p>
+                                        <p class="mbr-fonts-style display-5" id="the_price">Price: ${% if portion == 'dinner' %}{{ selected_item['Base Price'] }}{% else %}{{ selected_item['Lunch_Version']['Base Price'] }}{% endif %}</p>
                                     </div>
 
                                     <!--Price Updater Script-->
                                     <script>
 
-                                        function parseExtraPrice(val) {
-                                            //Parse the value by first looking for the $
-                                            if (val.indexOf('$') != -1) {
-                                                let price = val.slice(val.indexOf('$') + 1, val.length);
-                                                return parseInt(price, 10);
-                                            }
-                                            return 0;
+                                        function parseAdditionalPrice(string_val){
+                                            //Takes a string with $XX.XX in it and returns integer cents
+                                            if(string_val.indexOf('$') != -1){
+                                                let price = string_val.slice(val.indexOf('$') + 1, val.length);
+                                                let left_right = price.split('.');
+                                                let left = parseInt(left_right[0]) * 100;
+                                                let right = parseInt(left_right[1]);
+                                                return left + right;
+                                            } 
+                                            return 0
+                                        }
+
+                                        function parsePriceStrings(string_val){
+                                            //Takes a string with XX.XX in it and returns integer cents
+                                            let left_right = string_val.split('.');
+                                            let left = parseInt(left_right[0]) * 100;
+                                            let right = parseInt(left_right[1]);
+                                            return left + right;
                                         }
 
                                         function changePrice() {
@@ -86,35 +97,49 @@
                                             //Parse the values for just the numeric value extra price
                                             let topping_elm, extra_elm, extra_rice_elm;
 
+                                            try{
+                                                base_price = parsePriceStrings(base_price);
+                                            } catch (err){
+                                                console.log(err)
+                                                base_price = 0;
+                                            }
+
                                             try {
                                                 topping_elm = document.getElementById('topping').value;
                                             } catch (err) {
                                                 console.log(err);
-                                                topping_elm = '0';
+                                                topping_elm = '0.00';
                                             }
 
                                             try {
                                                 extra_elm = document.getElementById('extra').value;
                                             } catch (err) {
                                                 console.log(err);
-                                                extra_elm = '0';
+                                                extra_elm = '0.00';
                                             }
                                             try {
-                                                extra_rice_elm = '$' + document.getElementById('extra_rice').value;
+                                                extra_rice_elm = document.getElementById('extra_rice').value + '.00';
                                             } catch (err) {
                                                 console.log(err);
-                                                extra_rice_elm = '0';
+                                                extra_rice_elm = '0.00';
                                             }
 
-                                            let topping = parseExtraPrice(topping_elm);
-                                            let extra = parseExtraPrice(extra_elm);
-                                            let extra_rice = parseExtraPrice(extra_rice_elm);
+                                            //parseAdditional returns integer cents
+                                            let topping = parseAdditionalPrice(topping_elm);
+                                            let extra = parseAdditionalPrice(extra_elm);
+                                            let extra_rice = parsePriceStrings(extra_rice_elm);
 
                                             let cur_price = document.getElementById('the_price');
 
                                             let additional = topping + extra + (extra_rice * 2);
-                                            //The cur_price updates to the new value, because the base_price is a float, we need to convert first
-                                            cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
+                                            let total_actual_price = (additional + base_price);
+                                            total_actual_price = total_actual_price.toString();
+
+                                            total_actual_price = total_actual_price.slice(0, total_actual_price.length - 2) + '.' + total_actual_price.slice(total_actual_price.length - 2, total_actual_price.length);
+
+                                            cur_price.innerText = 'Price: $' + total_actual_price;
+
+                                            //cur_price.innerText = 'Price: ' + (parseInt(base_price, 10) + additional) + base_price.toString().slice(base_price.toString().length - 3, base_price.toString().length);
                                         }
                                     </script>
                                     <!--End price updater-->
