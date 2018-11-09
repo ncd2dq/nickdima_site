@@ -95,7 +95,10 @@ def food_pdp(item, portion):
                     total_price += CustomCurrency(new_item[key][1])
                 if key == 'Extra_Rice':
                     total_price += CustomCurrency(2 * int(new_item[key]))
-        new_item['Total'] = total_price.export_string()
+
+        total_price = total_price.export_string()
+        
+        new_item['Total'] = total_price
 
 
         if 'cart' not in session:
