@@ -11,4 +11,5 @@ def menu():
 
     lunch_time = is_lunch()
 
+    print('IS IT LUNCH TIME', lunch_time)
     return render_template('menu/menu.html', all_items_dict=db, lunch_time=lunch_time)

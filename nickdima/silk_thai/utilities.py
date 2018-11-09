@@ -59,7 +59,7 @@ def is_lunch():
     week_day, day_hour, day_minute = get_day_hour_minute()
     if web_configuration['lunch_hours'][week_day] is False:
         lunch_time = False
-    elif day_hour < web_configuration['lunch_hours'][week_day][0] or day_hour > web_configuration['lunch_hours'][week_day][1]:
+    elif day_hour < web_configuration['lunch_hours'][week_day][0] or day_hour >= web_configuration['lunch_hours'][week_day][1]:
         lunch_time = False
 
     print('Is it lunch time?', lunch_time)
