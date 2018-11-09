@@ -207,7 +207,7 @@
                                             <!-- Display "Chicken +$2" if extra price"-->
                                             With <select name="topping" id="topping" onchange="changePrice();">
                                                 {% for topping in selected_item['Toppings'] %}
-                                                <option value="{{ topping[0] }}{% if topping[1] != 0.00 %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != 0.00 %} +${{ topping[1] }}{% endif %}</option>
+                                                <option value="{{ topping[0] }}{% if topping[1] != '0.00' %}+${{ topping[1] }}{% endif %}">{{ topping[0] }}{% if topping[1] != '0.00' %} +${{ topping[1] }}{% endif %}</option>
                                                 {% endfor %}
                                             </select>
                                             <br><br>
