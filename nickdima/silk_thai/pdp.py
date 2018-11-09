@@ -199,7 +199,7 @@ def convert_all_prices_to_strings(food_item_dict):
         print(food_item_dict['Extra'])
         for index, elm in enumerate(food_item_dict['Extra']):
             new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
-            new_extra_list.append(new_elm).export_string()
+            new_extra_list.append(new_elm)
         food_item_dict['Extra'] = new_extra_list
 
     if food_item_dict['Lunch_Version'] is not False:
@@ -210,7 +210,7 @@ def convert_all_prices_to_strings(food_item_dict):
             print(food_item_dict['Lunch_Version']['Toppings'])
             for index, elm in enumerate(food_item_dict['Lunch_Version']['Toppings']):
                 new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
-                new_lunch_toppings_list.append(new_elm).export_string()
+                new_lunch_toppings_list.append(new_elm)
             food_item_dict['Extra'] = new_lunch_toppings_list
 
     return food_item_dict
