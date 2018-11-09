@@ -117,18 +117,18 @@ class CustomCurrency(object):
             elif len(left_right[1]) == 2:
                 right_side = int(left_right[1])
             result = left_side + right_side
-        elif len(string_form <= 3):
+        elif len(string_form) <= 3:
             if '.' in string_form:
                 if len(string_form[string_form.index('.'):]) < 2:
                     result = string_form + '0'
                 if len(string_form[:string_form.index('.')]) < 1:
                     result = '0' + string_form
             else:
-                if len(string_form == 3):
+                if len(string_form) == 3:
                     result = string_form[0] + '.' + string_form[1:]
-                if len(string_form == 2):
+                if len(string_form) == 2:
                     result = '0.' + string_form
-                if len(string_form == 1):
+                if len(string_form) == 1:
                     result = '0.0' + string_form
 
                 result = int(result)
