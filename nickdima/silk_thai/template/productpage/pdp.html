@@ -98,8 +98,11 @@
                                             let topping_elm, extra_elm, extra_rice_elm;
 
                                             try{
+                                                console.log(base_price)
                                                 base_price = base_price.toString();
+                                                console.log(base_price)
                                                 base_price = parsePriceStrings(base_price);
+                                                console.log(base_price)
                                             } catch (err){
                                                 console.log(err)
                                                 base_price = 0;
@@ -134,11 +137,8 @@
 
                                             let additional = topping + extra + (extra_rice * 2);
 
-                                            console.log(additional, base_price);
                                             let total_actual_price = (additional + base_price);
-                                            console.log(total_actual_price);
                                             total_actual_price = total_actual_price.toString();
-                                            console.log(total_actual_price);
 
 
                                             total_actual_price = total_actual_price.slice(0, total_actual_price.length - 2) + '.' + total_actual_price.slice(total_actual_price.length - 2, total_actual_price.length);
