@@ -76,6 +76,10 @@
 
                                         function parsePriceStrings(string_val){
                                             //Takes a string with XX.XX in it and returns integer cents
+                                            if(string_val.indexOf('.') == -1){
+                                                string_val += '.00';
+                                            }
+
                                             let left_right = string_val.split('.');
                                             let left = parseInt(left_right[0]) * 100;
                                             let right = parseInt(left_right[1]);
