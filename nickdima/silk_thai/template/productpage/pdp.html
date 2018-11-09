@@ -133,10 +133,13 @@
                                             let cur_price = document.getElementById('the_price');
 
                                             let additional = topping + extra + (extra_rice * 2);
-                                            let total_actual_price = (additional + base_price);
-                                            total_actual_price = total_actual_price.toString();
 
-                                            console.log(topping, extra, extra_rice, cur_price, additional, total_actual_price);
+                                            console.log(additional, base_price);
+                                            let total_actual_price = (additional + base_price);
+                                            console.log(total_actual_price);
+                                            total_actual_price = total_actual_price.toString();
+                                            console.log(total_actual_price);
+
 
                                             total_actual_price = total_actual_price.slice(0, total_actual_price.length - 2) + '.' + total_actual_price.slice(total_actual_price.length - 2, total_actual_price.length);
 
