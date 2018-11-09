@@ -4,6 +4,12 @@ from datetime import datetime
 from functools import wraps
 from flask import session
 
+def is_accepting_delivery_takeout():
+    delivery = web_configuration['accepting_delivery']
+    takeout  = web_configuration['accepting_takeout']
+
+    return delivery, takeout
+
 def is_delivery_minimum_met(order_total):
     '''
     ::param:: order_total is type(CustomCurrency)

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
-from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page, CustomCurrency
+from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page, CustomCurrency, is_accepting_delivery_takeout
 from functools import wraps
 
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
@@ -67,7 +67,26 @@ def summary():
     cur_total = session['total']
     delivery_minimum_met = is_delivery_minimum_met(CustomCurrency(cur_total[0]))
 
-    return render_template('checkout/order_summary.html', items=items, delivery_minimum_met=delivery_minimum_met, is_currently_open=read_configuration_is_open())
+    accept_delivery, accept_takeout = is_accepting_delivery_takeout()
+    if read_configuration_is_open() and not accept_delivery and not accept_takeout:
+        # we are not accepting online orders right now
+        return render_template('checkout/not_accepting_online.html')
+
+    return render_template('checkout/order_summary.html', 
+                            items=items, 
+                            delivery_minimum_met=delivery_minimum_met, 
+                            is_currently_open=read_configuration_is_open(),
+                            accept_delivery=accept_delivery,
+                            accept_takeout=accept_takeout
+                            )
+
+def prepare_cart_as_string():
+    '''
+    Takes the total and items from the session and formats it into a prepared string for emailing
+    '''
+    total, cart = session['total'], session['cart']
+
+
 
 
 def is_open(view):
@@ -115,5 +134,4 @@ def referred_by_summary_page(view):
 def confirmation():
     session.clear()
     return render_template('checkout/order_confirmation.html')
-
 

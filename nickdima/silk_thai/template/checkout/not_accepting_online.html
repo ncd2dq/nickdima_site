@@ -3,35 +3,26 @@
 
 <head>
     {% include 'universal.html' %}
-    <meta name="description" content="Web Maker Description">
-    <title>Confirmation</title>
+    <meta name="description" content="Site Creator Description">
+    <title>Order Summary</title>
     {% include 'universal-css-links.html' %}
-
 </head>
 
 <body>
     <!--Navigation bar-->
     {% include 'nav.html' %}
     <!--End navigation bar-->
-    <section class="header11 cid-r0R4aaf7m2" id="header11-l">
 
-        <!-- Block parameters controls (Blue "Gear" panel) -->
+    <section class="features16 cid-r0R1Wm1xUa" id="features16-i">
 
-        <!-- End block parameters -->
+        <div class="container align-center">
+            <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+                We are currently not accepting new online orders, check back soon. If you have already submitted your order, it will be prepared for you as normal.
+                
+                Our apologies for this inconvenience!
+            </h2>
 
-
-        <div class="container align-left">
-            <div class="media-container-column mbr-white col-md-12">
-                <h3 class="mbr-section-subtitle py-3 mbr-fonts-style display-5">
-                    Thank You For Ordering!</h3>
-                <h1 class="mbr-section-title py-3 mbr-fonts-style display-1">Your Order Should Be Ready In: &lt;&gt; Minutes</h1>
-                <p class="mbr-text py-3 mbr-fonts-style display-5">If you enjoyed your experience, please leave feedback!</p>
-                <div class="mbr-section-btn py-4"><a class="btn btn-md btn-primary display-4" href="{{ url_for('homepage.contact') }}">Feedback</a>
-                    <a class="btn btn-md btn-white-outline display-4" href="{{ url_for('menu.menu') }}">Back To Menu</a></div>
-            </div>
         </div>
-
-
     </section>
 
 
@@ -45,7 +36,6 @@
     <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
     <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
     <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-
 
 </body>
 

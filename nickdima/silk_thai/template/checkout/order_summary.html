@@ -2,7 +2,6 @@
 <html>
 
 <head>
-    <!-- Site made with Mobirise Website Builder v4.8.1, https://mobirise.com -->
     {% include 'universal.html' %}
     <meta name="description" content="Site Creator Description">
     <title>Order Summary</title>
@@ -14,10 +13,7 @@
     {% include 'nav.html' %}
     <!--End navigation bar-->
 
-    <section class="engine"><a href="https://mobiri.se/o">portfolio web templates</a></section>
     <section class="features16 cid-r0R1Wm1xUa" id="features16-i">
-
-
 
         <div class="container align-center">
             <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
@@ -74,55 +70,6 @@
                 {% endfor %}
                 {% endif %}
 
-                <!--NEED ONE OF THESE FOR ALL IMAGES BEING DISPLAYED
-        <div class="team-item col-lg-3 col-md-6">
-                <div class="item-image">
-                    <img src="assets/images/drunken-noodle-510x383.jpg" alt="" title="">
-                </div>
-                <div class="item-caption py-3">
-                    <div class="item-name px-2">
-                        <p class="mbr-fonts-style display-5">
-                           Item 1</p>
-                    </div>
-                    <div class="item-role px-2">
-                        <p>Price: &lt;&gt;</p>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="team-item col-lg-3 col-md-6">
-                <div class="item-image">
-                    <img src="assets/images/pad-see-ew-510x383.jpg" alt="" title="">
-                </div>
-                <div class="item-caption py-3">
-                    <div class="item-name px-2">
-                        <p class="mbr-fonts-style display-5">
-                           Item 2</p>
-                    </div>
-                    <div class="item-role px-2">
-                        <p>Price: &lt;&gt;</p>
-                    </div>
-
-                </div>
-            </div><div class="team-item col-lg-3 col-md-6">
-                <div class="item-image">
-                    <img src="assets/images/yellow-curry2-510x724.jpg" alt="" title="">
-                </div>
-                <div class="item-caption py-3">
-                    <div class="item-name px-2">
-                        <p class="mbr-fonts-style display-5">
-                           Item 3</p>
-                    </div>
-                    <div class="item-role px-2">
-                        <p>Price: &lt;&gt;</p>
-                    </div>
-
-                </div>
-            </div></div>
-            
-            -->
-
             </div>
     </section>
 
@@ -150,10 +97,16 @@
                             Select Order Type
                         </p>
                         <p class="mbr-fonts-style display-5">
+                            {% if accept_takeout == true %}
                             <input type="radio" id="takeout" name="order_type" value="takeout" checked> Takeout
+                            {% else %}
+                            We are not accepting new takeout orders at this time
+                            {% endif %}
                             <br>
-                            {% if delivery_minimum_met == true %}
+                            {% if delivery_minimum_met == true and accept_delivery == true %}
                             <input type="radio" id="delivery" name="order_type" value="Delivery"> Delivery
+                            {% elif accept_delivery == false %}
+                            We are not accepting new delivery orders at this time
                             {% else %}
                             Must meet $20 minimum for delivery
                             {% endif %}
@@ -178,8 +131,6 @@
     <script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
     <script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
     <script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
-    <!--THIS HANDLES FORM SUBMISSION<script src="{{ url_for('checkout.static', filename='assets/formoid/formoid.min.js') }}"></script>-->
-
 
 </body>
 
