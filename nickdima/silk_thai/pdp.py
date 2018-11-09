@@ -94,7 +94,7 @@ def food_pdp(item, portion):
                     print(new_item[key][1])
                     total_price += CustomCurrency(new_item[key][1])
                 if key == 'Extra_Rice':
-                    total_price += CustomCurrency(2 * int(new_item[key]))
+                    total_price += CustomCurrency(2 * int(new_item[key]) * 100)
 
         total_price = total_price.export_string()
 
