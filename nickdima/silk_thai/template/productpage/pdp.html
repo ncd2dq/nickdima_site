@@ -488,6 +488,9 @@ function parsePriceStrings(string_val){
             final_price = parsePriceStrings(final_price.slice(final_price.indexOf('$') + 1, final_price.length));
 
             if (cart_text.indexOf('$') == -1 ) {
+                final_price = total_price.toString();
+                final_price = final_price.slice(0, final_price.length - 2) + '.' + final_price.slice(final_price.length - 2, final_price.length);
+
                 cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
             } else {
                 //Update total price count
