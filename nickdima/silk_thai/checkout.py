@@ -21,8 +21,12 @@ def remove_item_from_session(remove_id):
     for item in cur_cart:
         if item['Id'] == int(remove_id):
             # Subtract item price from order total
+            print('item total', item['Total'])
+            print('1',cur_total)
             cur_total[0] = CustomCurrency(cur_total[0])
+            print('2',cur_total)
             cur_total[0] -= CustomCurrency(item['Total'])
+            print('3',cur_total)
             cur_total[0] = cur_total[0].export_string()
 
             cur_total[1] -= 1
