@@ -209,7 +209,7 @@ db = {
     },
 
     'Tempura': {
-        'Base' : 'Edamame',
+        'Base' : 'Tempura',
         'Base Price' : 795,
         'Description' : False,
         'Img_URL' : PLACE_HOLDER_IMAGE,
