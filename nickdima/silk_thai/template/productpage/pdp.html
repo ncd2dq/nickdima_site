@@ -460,6 +460,23 @@
             }
         }
 
+
+// START EX
+function parsePriceStrings(string_val){
+    //Takes a string with XX.XX in it and returns integer cents
+    if(string_val.indexOf('.') == -1){
+        string_val += '.00';
+    }
+
+    let left_right = string_val.split('.');
+    let left = parseInt(left_right[0]) * 100;
+    let right = parseInt(left_right[1]);
+    return left + right;
+}
+// START EX
+
+
+
         function change_cart_before_post() {
             //Automatically changes cart price to give user sensation that page auto added to cart
             //since keeping modal showing while post request refreshes page is hard
@@ -468,20 +485,18 @@
             let cart_text = cart_span.innerText;
 
             let final_price = document.getElementById('the_price').innerText;
-            final_price = parseFloat(final_price.slice(7, final_price.length));
+            final_price = parsePriceStrings(final_price.slice(final_price.indexOf('$') + 1, final_price.length));
 
             if (cart_text.indexOf('$') == -1 ) {
                 cart_span.innerHTML = '&nbsp;Cart 1, $' + final_price;
             } else {
                 //Update total price count
-                let total_price = cart_text.slice(cart_text.indexOf(',') + 3, cart_text.length);
-                total_price = parseFloat(total_price)
+                let total_price = cart_text.slice(cart_text.indexOf('$') + 1, cart_text.length);
+                total_price = parsePriceStrings(total_price)
                 total_price += final_price
-                total_price = Number((total_price).toFixed(2));
+
                 total_price = total_price.toString();
-                if (total_price[total_price.length - 2] == '.') {
-                    total_price += '0';
-                }
+                total_price = total_price.slice(0, total_price.length - 2) + '.' + total_price.slice(total_price.length - 2, total_price.length);
 
                 //Update item count
                 let cur_item_count = cart_text.slice(6, cart_text.indexOf(','));
