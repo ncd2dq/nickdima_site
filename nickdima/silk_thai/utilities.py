@@ -98,7 +98,7 @@ class CustomCurrency(object):
         return CustomCurrency(self.int_cents_form + other.int_cents_form)
 
     def __sub__(self, other):
-        CustomCurrency(self.int_cents_form - other.int_cents_form)
+        return CustomCurrency(self.int_cents_form - other.int_cents_form)
 
     def create_integer_cents_form(self, string_form):
         '''
