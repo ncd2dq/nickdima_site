@@ -131,6 +131,8 @@ class CustomCurrency(object):
                 if len(string_form == 1):
                     result = '0.0' + string_form
 
+                result = int(result)
+
         return result
 
     def add_string(self, string_number):
