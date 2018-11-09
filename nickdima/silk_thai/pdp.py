@@ -97,7 +97,7 @@ def food_pdp(item, portion):
                     total_price += CustomCurrency(2 * int(new_item[key]))
 
         total_price = total_price.export_string()
-        
+
         new_item['Total'] = total_price
 
 
@@ -113,7 +113,7 @@ def food_pdp(item, portion):
             #session['total'] = [str('3.00'), int]
             total = session['total']
             total[0] = CustomCurrency(total[0])
-            total[0] += total_price
+            total[0] += CustomCurrency(total_price)
             total[0] = total[0].export_string()
 
             total[1] += 1
