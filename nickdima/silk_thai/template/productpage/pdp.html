@@ -98,6 +98,7 @@
                                             let topping_elm, extra_elm, extra_rice_elm;
 
                                             try{
+                                                base_price = base_price.toString();
                                                 base_price = parsePriceStrings(base_price);
                                             } catch (err){
                                                 console.log(err)
