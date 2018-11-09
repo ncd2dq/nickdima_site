@@ -57,6 +57,12 @@ def summary():
         else:
             # Cannot checkout with no items in cart
             return redirect(url_for('checkout.summary'))
+
+    accept_delivery, accept_takeout = is_accepting_delivery_takeout()
+    if read_configuration_is_open() and not accept_delivery and not accept_takeout:
+        # we are not accepting online orders right now
+        return render_template('checkout/not_accepting_online.html')
+        
     try:
         items = session['cart']
     except KeyError:
@@ -70,11 +76,6 @@ def summary():
     # session['tota'] -> [total, quantity]
     cur_total = session['total']
     delivery_minimum_met = is_delivery_minimum_met(CustomCurrency(cur_total[0]))
-
-    accept_delivery, accept_takeout = is_accepting_delivery_takeout()
-    if read_configuration_is_open() and not accept_delivery and not accept_takeout:
-        # we are not accepting online orders right now
-        return render_template('checkout/not_accepting_online.html')
 
     print('HERE IS YOUR DEBUG TESTING SPOT---------')
     print(accept_delivery, accept_takeout)
