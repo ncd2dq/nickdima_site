@@ -141,6 +141,7 @@ def food_pdp(item, portion):
     # Determine if the food item exists
     if db[item]:
         selected_item = db[item]
+        selected_item = convert_all_prices_to_strings(selected_item)
     else:
         # Or flash the error
         return "<h1>Our Apologies, that food item does not exist</h1>"
@@ -177,3 +178,36 @@ def removePricing(form_val):
         new_str = form_val.split('+')[0]
         return new_str
     return form_val
+
+def convert_all_prices_to_strings(food_item_dict):
+    '''
+    Convert all prices within food object to strings to simplify front end
+    '''
+
+    food_item_dict['Base Price'] = CustomCurrency(food_item_dict['Base Price']).export_string()
+
+    if food_item_dict['Toppings'] is not False:
+        new_toppings_list = []
+        for index, elm in enumerate(food_item_dict['Toppings']):
+            elm[1] = CustomCurrency(elm[1]).export_string()
+            new_toppings_list.append(elm)
+        food_item_dict['Toppings'] = new_toppings_list
+
+    if food_item_dict['Extra'] is not False:
+        new_extra_list = []
+        for index, elm in enumerate(food_item_dict['Extra']):
+            elm[1] = CustomCurrency(elm[1]).export_string()
+            new_extra_list.append(elm).export_string()
+        food_item_dict['Extra'] = new_extra_list
+
+    if food_item_dict['Lunch_Version'] is not False:
+        food_item_dict['Lunch_Version']['Base Price'] = CustomCurrency(food_item_dict['Lunch_Version']['Base Price']).export_string()
+        
+        if food_item_dict['Lunch_Version']['Toppings'] is not False:
+            new_lunch_toppings_list = []
+            for index, elm in enumerate(food_item_dict['Lunch_Version']['Toppings']):
+                elm[1] = CustomCurrency(elm[1]).export_string()
+                new_lunch_toppings_list.append(elm).export_string()
+            food_item_dict['Extra'] = new_lunch_toppings_list
+
+    return food_item_dict
