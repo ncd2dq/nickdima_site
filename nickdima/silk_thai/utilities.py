@@ -5,6 +5,14 @@ from functools import wraps
 from flask import session
 
 def is_accepting_delivery_takeout():
+    '''
+    ::return:: delivery is boolean
+    ::return:: takeout is boolean
+
+    Reads configuration file to see if Silk Thai is currently accepting
+    new delivery orders and/or takeout orders
+    '''
+
     delivery = web_configuration['accepting_delivery']
     takeout  = web_configuration['accepting_takeout']
 
@@ -12,24 +20,31 @@ def is_accepting_delivery_takeout():
 
 def is_delivery_minimum_met(order_total):
     '''
-    ::param:: order_total is type(CustomCurrency)
-    Returns if the delivery minimum criterion is met
+    ::param:: order_total is CustomCurrency
+
+    ::return:: boolean
+
+    Return if the delivery minimum criterion (from configuration) is met
     '''
+
     return order_total.is_larger(CustomCurrency(web_configuration['delivery_minimum_cents']))
 
 def get_day_hour_minute():
     '''
-    Return the Day of Week, Hour of Day, Minute of Day
+    ::return:: integers
+
+    Monday = 0 --> Sunday = 6
+    Hour = 1 --> 24
     '''
-    # Monday = 0, Sunday = 6
-    # Hour in range(1, 25)
     tz = timezone('EST')
     week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
     return week_day, day_hour, day_minute
 
 def read_configuration_is_open():
     '''
-    Using the configuration file, determine if Silk Thai is accepting orders
+    ::return:: bolean
+
+    Using the configuration file, determine if Silk Thai is open for business
     '''
     is_currently_open = True
     week_day, day_hour, day_minute = get_day_hour_minute()
@@ -53,7 +68,9 @@ def read_configuration_is_open():
 
 def is_lunch():
     '''
-    Return a boolean - are we serving lunch?
+    ::return:: boolean
+
+    Read configuration file to determine if it is lunch time
     '''
     lunch_time = True
     week_day, day_hour, day_minute = get_day_hour_minute()
@@ -69,7 +86,14 @@ def is_lunch():
 
 def is_not_summary_page(view):
     '''
-    Ensures users cannot skip summary page
+    DECORATOR
+
+    # TODO: add app_teardown_context that turns this False as well so that
+    a user cannot leave the silk thai domain from the summary page, preserving the True
+
+    Ensures that the 'from_summary' parameter is false as soon as you are not on the summary
+    page. This ensures that you cannot proceed to checkout without coming directly from the
+    summary page.
     '''
     @wraps(view)
     def wrapped(*args, **kwargs):
@@ -82,6 +106,18 @@ def is_not_summary_page(view):
 
 class CustomCurrency(object):
     '''
+    ::param:: int_or_string -> integer (in cents) or a string representation as Dollar.Cents '2.24'
+    with always 2 decimal places and at least the 1's place: '0.00' '1.00' '0.01'
+
+    ::Methods::
+    is_larger
+    create_integer_cents_form
+    add_string
+    add_int_cents
+    multi_string_scalar
+    multi_int_scalar
+    export_string
+
     This class will be used for handling currency.
     -Store as an integer in cents when performing maths
     -Export as a string dollar/cents form
