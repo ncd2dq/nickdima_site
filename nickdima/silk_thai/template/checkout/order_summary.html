@@ -103,10 +103,10 @@
                             We are not accepting new takeout orders at this time
                             {% endif %}
                             <br>
-                            {% if delivery_minimum_met == true and accept_delivery == true %}
-                            <input type="radio" id="delivery" name="order_type" value="Delivery"> Delivery
-                            {% elif accept_delivery == false %}
+                            {% if accept_delivery == false %}
                             We are not accepting new delivery orders at this time
+                            {% elif delivery_minimum_met == true and accept_delivery == true %}
+                            <input type="radio" id="delivery" name="order_type" value="Delivery"> Delivery
                             {% else %}
                             Must meet $20 minimum for delivery
                             {% endif %}
