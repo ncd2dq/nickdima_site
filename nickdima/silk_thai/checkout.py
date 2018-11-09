@@ -60,7 +60,11 @@ def summary():
     try:
         items = session['cart']
     except KeyError:
-        return render_template('checkout/order_summary.html', empty_cart='No items in cart!')
+        return render_template('checkout/order_summary.html', 
+                            empty_cart='No items in cart!',                            
+                            is_currently_open=read_configuration_is_open(),
+                            accept_delivery=accept_delivery,
+                            accept_takeout=accept_takeout)
 
     # Determine if delivery minimum met
     # session['tota'] -> [total, quantity]
