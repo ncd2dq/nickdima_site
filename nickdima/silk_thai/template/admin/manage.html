@@ -7,7 +7,7 @@
 </head>
 <body>
 	<button id="to_logout">Logout</button>
-
+	<br>
 	You made it to the manage page
 	<br>
 	<br>
@@ -15,7 +15,7 @@
 
 
 	<script>
-		let logout_buttom = document.getElementById('to_logout');
+		let logout_button = document.getElementById('to_logout');
 		logout_button.onclick = function(){
 			window.href="{{ url_for('admin.logout' )}}";
 		}
