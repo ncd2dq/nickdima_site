@@ -177,6 +177,16 @@ def checkout():
     session['from_checkout'] = True
 
     if request.method == 'POST':
+
+
+        #TODO
+        #record customer information / payment information
+        #include tip in total
+        #charge credit card
+        #email receipt to customer
+        #email receipt to silk thai
+
+
         return redirect(url_for('checkout.confirmation'))
     # same as cart page except that "order details section is collecting info"
     # then abstract the most the top section as a template so I only have to change it once
@@ -199,6 +209,9 @@ def checkout():
 @is_not_summary_page
 @referred_by_checkout_page
 def confirmation():
+    #
+    #RECORD STORED CONFIRMATION DETAILS FROM SESSION TO DISPLAY ON THIS PAGE, THEN CLEAR SESSION
+    #
     session.clear()
     return render_template('checkout/order_confirmation.html')
 

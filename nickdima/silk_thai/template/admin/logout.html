@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+</head>
+<body>
+You made it to the logout page
+<br>
+{% if logged_out == true %}
+<form action="#" method="POST">
+	<input type='hidden' value='logout'>
+	<input type='submit' value="Logout">
+</form>
+{% else %}
+You are logged out
+{% endif %}
+</body>
+</html>
