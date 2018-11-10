@@ -5,8 +5,8 @@ web_configuration = {
     'delivery_time_minutes' : 60,
     'takeout_time_minutes' : 15,
     'delivery_minimum_cents' : 2000,
-    'accepting_takeout' : True,
-    'accepting_delivery' : True,
+    'accepting_takeout' : False,
+    'accepting_delivery' : False,
     'hours_of_operation' : {
                                 0: (11, 21, 30), 
                                 1: (11, 21, 30), 

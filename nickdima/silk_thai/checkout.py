@@ -125,7 +125,8 @@ def referred_by_summary_page(view):
         #url_for is just the end 'thai/order/summary'
         try:
             # If i just used referring urls then someone could spoof the checkout page
-            # TODO: refactor code so that the from_summary session is in a decorator
+            # Need the second part of the if because when you get / post to checkout.checkout, it runs this
+            # and post requests were False because request.referrer did not have checkout.summary in it
             if ((url_for('checkout.summary') in request.referrer and session['from_summary'] == True)
                 or (url_for('checkout.checkout') in request.referrer and request.method =='POST' and session['from_summary'] == True) ):
                 print('SUCCESSFULLY REFERRED BY SUMMARY PAGE')
