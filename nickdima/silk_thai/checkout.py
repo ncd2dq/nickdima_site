@@ -53,7 +53,16 @@ def summary():
         # Securely store in session that user came from summary so a user cannot skip summary page
         session['from_summary'] = True
         if 'total' in session:
-            return redirect(url_for('checkout.confirmation'))
+
+            order_type = request.form.get('order_type')
+            if order_type == 'delivery' or order_type == 'takeout':
+                # validate that we are accepting takeout / delivery, that minimum is met
+                session['order_type'] = order_type
+            else:
+                return redirect(url_for('checkout.summary'))
+
+            # TODO -- change this to continuing checkout process
+            return redirect(url_for('checkout.checkout'))
         else:
             # Cannot checkout with no items in cart
             return redirect(url_for('checkout.summary'))
@@ -86,14 +95,6 @@ def summary():
                             accept_delivery=accept_delivery,
                             accept_takeout=accept_takeout
                             )
-
-def prepare_cart_as_string():
-    '''
-    Takes the total and items from the session and formats it into a prepared string for emailing
-    '''
-    total, cart = session['total'], session['cart']
-
-
 
 
 def is_open(view):
@@ -133,11 +134,47 @@ def referred_by_summary_page(view):
 
     return wrapped
 
+def referred_by_checkout_page(view):
+    '''
+    Ensures that users can only get to the 
+    '''
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+        #request.referrer is the full url 'http://www.nickdima.com/thai/order/summary'
+        #url_for is just the end 'thai/order/summary'
+        try:
+            # If i just used referring urls then someone could spoof the checkout page
+            # TODO: refactor code so that the from_summary session is in a decorator
+            if url_for('checkout.checkout') in request.referrer and session['from_checkout'] == True:
+                print('SUCCESSFULLY REFERRED TO CONFIRMATION PAGE')
+                return view(*args, **kwargs)
+            else:
+                return redirect(url_for('menu.menu'))
+        except Exception as e:
+            return redirect(url_for('menu.menu')) 
+
+    return wrapped
+
+
+# Menu --> PDP --> Summary --> Checkout --> Confirmation
+
+@bp.route('/checkout', methods=['GET', 'POST'])
+@is_open
+@referred_by_summary_page
+def checkout():
+    session['from_checkout'] = True
+
+    if request.method == 'POST':
+        return redirect(url_for('checkout.confirmation'))
+    # same as cart page except that "order details section is collecting info"
+    # then abstract the most the top section as a template so I only have to change it once
+    return 'THIS IS A TESTING PAGE <form method="post"><input type="submit" value="test"></form>'
+
+
 # The route decorator must come first as it is what registers the function
 # if it isn't first you'll register the unwrapped view
 @bp.route('/confirmation', methods=['GET'])
-@is_open
-@referred_by_summary_page
+@referred_by_checkout_page
 def confirmation():
     session.clear()
     return render_template('checkout/order_confirmation.html')

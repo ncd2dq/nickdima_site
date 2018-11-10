@@ -1,12 +1,13 @@
 from flask import Blueprint, render_template, request, session, redirect, url_for
 from silk_thai.food_db import get_db
-from silk_thai.utilities import is_lunch, is_not_summary_page, CustomCurrency
+from silk_thai.utilities import is_lunch, is_not_summary_page, is_not_checkout_page, CustomCurrency
 
 bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static', template_folder='template')
 
 #portion will be /dinner or /lunch
 @bp.route('/<string:item>/<string:portion>', methods=['GET', 'POST'])
 @is_not_summary_page
+@is_not_checkout_page
 def food_pdp(item, portion):
     db = get_db()
     session['from_summary'] = False

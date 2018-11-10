@@ -4,6 +4,7 @@ from datetime import datetime
 from functools import wraps
 from flask import session
 
+
 def is_accepting_delivery_takeout():
     '''
     ::return:: delivery is boolean
@@ -18,6 +19,7 @@ def is_accepting_delivery_takeout():
 
     return delivery, takeout
 
+
 def is_delivery_minimum_met(order_total):
     '''
     ::param:: order_total is CustomCurrency
@@ -29,6 +31,7 @@ def is_delivery_minimum_met(order_total):
 
     return order_total.is_larger(CustomCurrency(web_configuration['delivery_minimum_cents']))
 
+
 def get_day_hour_minute():
     '''
     ::return:: integers
@@ -39,6 +42,7 @@ def get_day_hour_minute():
     tz = timezone('EST')
     week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
     return week_day, day_hour, day_minute
+
 
 def read_configuration_is_open():
     '''
@@ -66,6 +70,7 @@ def read_configuration_is_open():
     print('Are we currently open?', is_currently_open)
     return is_currently_open
 
+
 def is_lunch():
     '''
     ::return:: boolean
@@ -82,6 +87,26 @@ def is_lunch():
     print('Is it lunch time?', lunch_time)
 
     return lunch_time
+
+def is_not_checkout_page(view):
+    '''
+    DECORATOR
+
+    # TODO: add app_teardown_context that turns this False as well so that
+    a user cannot leave the silk thai domain from the summary page, preserving the True
+
+    Ensures that the 'from_checkout' parameter is false as soon as you are not on the checkout
+    page. This ensures that you cannot proceed to confirmation without coming directly from the
+    checkout page.
+    '''
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+
+        session['from_checkout'] = False
+
+        return view(*args, **kwargs)
+
+    return wrapped
 
 
 def is_not_summary_page(view):
@@ -103,6 +128,7 @@ def is_not_summary_page(view):
         return view(*args, **kwargs)
 
     return wrapped
+
 
 class CustomCurrency(object):
     '''
@@ -242,6 +268,72 @@ class CustomCurrency(object):
         result = '{}.{}'.format(left_side, right_side)
 
         return result
+
+
+class SilkCustomer(object):
+
+    def __init__(self):
+        self.first_name = None
+        self.last_name = None
+        self.city = None
+        self.state = None
+        self.zip_code = None
+        self.street_address = None
+        self.email_address = None
+        self.phone_number = None
+
+    def export_customer_details(self):
+        pass
+
+
+class SilkOrder(object):
+
+    '''
+    ::param:: self.order_time -> Datetime oject
+    ::param:: self.estimated_ready_duration -> Minutes integer
+    '''
+
+    def __init__(self):
+        self.order_number = None
+        self.total_price_cents = None
+        self.total_items = None
+        self.cart = None
+        self.order_type = None # Takeout / delivery
+        self.special_instructions = None # For driver?
+
+        self.order_time = None
+        self.estimated_ready_duration = None
+
+    def export_order_details(self):
+        '''
+        
+        '''
+        pass
+
+
+class OrderInterface(object):
+    '''
+    Interfaces with SilkOrder, SilkCustomer, email, database, silk resturaunt printer
+    -Send email
+    -Prepare full string (order and customer details)
+    -Iterfa
+    '''
+
+    def __init__(self):
+        pass
+
+    def record_details(self):
+        '''
+        Put order details in database
+        '''
+        pass
+
+    def export_details(self):
+        '''
+        Prepare customer / order details for email
+        '''
+        pass
+
 
 if __name__ == '__main__':
 

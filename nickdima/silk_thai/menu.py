@@ -1,10 +1,12 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 from silk_thai.food_db import get_db
-from silk_thai.utilities import is_lunch
+from silk_thai.utilities import is_lunch, is_not_checkout_page, is_not_summary_page
 
 bp = Blueprint('menu', __name__, url_prefix='/thai/menu', static_folder='static', template_folder='template')
 
 @bp.route('/', methods=['GET'])
+@is_not_checkout_page
+@is_not_summary_page
 def menu():
     db = get_db()
     session['from_summary'] = False
