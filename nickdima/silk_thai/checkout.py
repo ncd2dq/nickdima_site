@@ -39,6 +39,7 @@ def remove_item_from_session(remove_id):
 
 @bp.route('/cart_remover', methods=['POST'])
 @is_not_summary_page
+@is_not_checkout_page
 def cart_remover():
     remove_id = request.form.get('remove_id')
 
@@ -125,7 +126,7 @@ def referred_by_summary_page(view):
             # If i just used referring urls then someone could spoof the checkout page
             # TODO: refactor code so that the from_summary session is in a decorator
             if url_for('checkout.summary') in request.referrer and session['from_summary'] == True:
-                print('SUCCESSFULLY REFERRED TO SUMMARY PAGE')
+                print('SUCCESSFULLY REFERRED BY SUMMARY PAGE')
                 return view(*args, **kwargs)
             else:
                 return redirect(url_for('menu.menu'))
@@ -146,11 +147,14 @@ def referred_by_checkout_page(view):
             # If i just used referring urls then someone could spoof the checkout page
             # TODO: refactor code so that the from_summary session is in a decorator
             if url_for('checkout.checkout') in request.referrer and session['from_checkout'] == True:
-                print('SUCCESSFULLY REFERRED TO CONFIRMATION PAGE')
+                print('SUCCESSFULLY REFERRED BY CONFIRMATION PAGE')
                 return view(*args, **kwargs)
             else:
+                print('error 1 from checkout')
                 return redirect(url_for('menu.menu'))
         except Exception as e:
+            print('error 2 from checkout')
+            print(e)
             return redirect(url_for('menu.menu')) 
 
     return wrapped
