@@ -108,6 +108,7 @@ def is_open(view):
     def wrapped(*args, **kwargs):
 
         if not read_configuration_is_open():
+            print('We werent open so back to menu for you')
             return redirect(url_for('menu.menu'))
 
         return view(*args, **kwargs)
@@ -129,8 +130,11 @@ def referred_by_summary_page(view):
                 print('SUCCESSFULLY REFERRED BY SUMMARY PAGE')
                 return view(*args, **kwargs)
             else:
+                print('You werent referred by the summary page')
                 return redirect(url_for('menu.menu'))
         except Exception as e:
+            print(e)
+            print('the above caused an error from summary, back to menu')
             return redirect(url_for('menu.menu')) 
 
     return wrapped
