@@ -1,0 +1,49 @@
+{% extends 'order_parent.html' %}
+
+{% block title %}Order Checkout{% endblock %}
+{% block body %}
+<section class="mbr-section form3 cid-r0R3r9oDVn" id="form3-j">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="title col-12 col-lg-8">
+                <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                    Order Details</h2>
+                <h3 class="mbr-section-subtitle align-center pb-5 mbr-light mbr-fonts-style display-5">
+                    Items: {% if session['total'] is defined %}{{session['total'][1]}}{% else %}0{% endif %}
+                    <br>Total Price: {% if session['total'] is defined %}${{session['total'][0]}}{% else %}Free{% endif %}
+                </h3>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="container align-center">
+                <form action="{{ url_for('checkout.summary') }}" method="post">
+
+                    <p class="mbr-fonts-style display-5">
+                        Select Order Type
+                    </p>
+                    <p class="mbr-fonts-style display-5">
+                        {% if accept_takeout == true %}
+                        <input type="radio" id="takeout" name="order_type" value="takeout" checked> Takeout
+                        {% else %}
+                        We are not accepting new takeout orders at this time
+                        {% endif %}
+                        <br>
+                        {% if accept_delivery == false %}
+                        We are not accepting new delivery orders at this time
+                        {% elif delivery_minimum_met == true and accept_delivery == true %}
+                        <input type="radio" id="delivery" name="order_type" value="delivery"> Delivery
+                        {% else %}
+                        Must meet $20 minimum for delivery
+                        {% endif %}
+                        <br>
+                    </p>
+
+                    <button href="" type="submit" class="btn btn-primary display-4">{% if is_currently_open == true %}Continue Checkout{% else %}We Are Currently Closed{% endif %}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
