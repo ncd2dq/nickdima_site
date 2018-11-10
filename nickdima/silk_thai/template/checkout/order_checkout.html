@@ -9,7 +9,7 @@
             <div class="title col-12 col-lg-8">
                 <h2 class="align-center pb-2 mbr-fonts-style display-2">
                     Payment Details</h2>
-                <h3 class="mbr-section-subtitle align-center pb-5 mbr-fonts-style display-5">
+                <h3 class="mbr-section-subtitle align-center pb-5 mbr-dark mbr-fonts-style display-5">
                     Items: {{ item_count }}
                     <br>
                     Subtotal: ${{ subtotal }}
@@ -25,7 +25,7 @@
 
         <div class="row justify-content-center">
             <div class="container align-center">
-                <form action="{{ url_for('checkout.summary') }}" method="post">
+                <form action="{{ url_for('checkout.checkout') }}" method="post">
 
                     <p class="mbr-fonts-style display-5">
                         Credit Card Info
