@@ -16,8 +16,8 @@
 
 	<script>
 		let logout_button = document.getElementById('to_logout');
-		logout_button.onclick = function(){
-			window.href="{{ url_for('admin.logout' )}}";
+		logout_button.onclick = function() {
+			window.location.href="{{ url_for('admin.logout' )}}";
 		}
 	</script>
 </body>
