@@ -22,6 +22,20 @@ def login():
 
     return render_template('admin/login.html')
 
+def requires_login(view):
+
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+
+        #check if username / password are correct
+        if session['admin_check'] == 'SECRET_CHANGE':
+            return view(*args, **kwargs)
+        else:
+            print('Sorry, you are not an admin')
+            session.clear()
+            return redirect(url_for('homepage.home'))
+
+    return wrapped
 
 @bp.route('/logout', methods=['GET', 'POST'])
 @requires_login
@@ -40,18 +54,3 @@ def manage():
 
     return render_template('admin/manage.html')
 
-
-def requires_login(view):
-
-    @wraps(view)
-    def wrapped(*args, **kwargs):
-
-        #check if username / password are correct
-        if session['admin_check'] == 'SECRET_CHANGE':
-            return view(*args, **kwargs)
-        else:
-            print('Sorry, you are not an admin')
-            session.clear()
-            return redirect(url_for('homepage.home'))
-
-    return wrapped
