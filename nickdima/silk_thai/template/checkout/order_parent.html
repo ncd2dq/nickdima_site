@@ -18,8 +18,10 @@
         <div class="container align-center">
             <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
                 {% if checkout_summary == true %}Your Order{% else %}Enter Your Information At Bottom{% endif %}</h2>
+            {% if checkout_summary == true %}
             <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">Make Any Edits Here To Quantity Before Checkout</h3>
             <div class="row media-row">
+            {% endif %}
 
                 {% if empty_cart is defined %}
                 <div class="team-item col-lg-3 col-md-6">

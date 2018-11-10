@@ -181,9 +181,16 @@ def checkout():
     # same as cart page except that "order details section is collecting info"
     # then abstract the most the top section as a template so I only have to change it once
     items = session['cart']
-    return render_template('checkout/order_checkout.html', items=items, checkout_summary=False)
-
-    return 'THIS IS A TESTING PAGE <form method="post"><input type="submit" value="test"></form>'
+    return render_template('checkout/order_checkout.html', 
+                            items=items, 
+                            checkout_summary=False, 
+                            is_currently_open=read_configuration_is_open(),
+                            item_count=1,
+                            subtotal=2,
+                            tax_total=3,
+                            total_with_tax=400,
+                            order_type=session['order_type']
+                            )
 
 
 # The route decorator must come first as it is what registers the function
