@@ -46,6 +46,7 @@ def logout():
     if request.method == 'POST':
         session.clear()
         logged_out = True
+        print('logged admin out')
 
     return render_template('admin/logout.html', logged_out=logged_out)
 
