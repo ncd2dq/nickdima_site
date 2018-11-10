@@ -24,6 +24,6 @@ web_configuration = {
                         4: (11, 13),  
                         5: False, 
                         6: False
-                    }
+                    },
     'silk_thai_email': 'example@example.com'
 }
