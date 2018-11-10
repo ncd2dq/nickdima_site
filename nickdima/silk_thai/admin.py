@@ -17,6 +17,7 @@ def login():
             session['admin_check'] = 'SECRET_CHANGE'
             return redirect(url_for('admin.manage'))
         else:
+            session.clear()
             return 'Your attempt has been logged'
 
 
@@ -29,9 +30,13 @@ def requires_login(view):
     def wrapped(*args, **kwargs):
 
         #check if username / password are correct
-        if session['admin_check'] != 'SECRET_CHANGE':
-            print('Sorry, you are not an admin')
-            session.clear()
+        try:
+            if session['admin_check'] != 'SECRET_CHANGE':
+                print('Sorry, you are not an admin')
+                session.clear()
+                return redirect(url_for('homepage.home'))
+        except Exception as e:
+            print(e)
             return redirect(url_for('homepage.home'))
 
         return view(*args, **kwargs)
