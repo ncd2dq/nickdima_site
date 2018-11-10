@@ -13,13 +13,13 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
 
+        # TODO, COMPARE THIS TO ADMIN PASSWORD HASH IN DATABASE
         if username == 'adminuser' and password == 'adminpass':
             session['admin_check'] = 'SECRET_CHANGE'
             return redirect(url_for('admin.manage'))
         else:
             session.clear()
             return 'Your attempt has been logged'
-
 
     return render_template('admin/login.html')
 
@@ -29,7 +29,6 @@ def requires_login(view):
     @wraps(view)
     def wrapped(*args, **kwargs):
 
-        #check if username / password are correct
         try:
             if session['admin_check'] != 'SECRET_CHANGE':
                 print('Sorry, you are not an admin')
