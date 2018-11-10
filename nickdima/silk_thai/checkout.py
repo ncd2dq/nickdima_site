@@ -80,7 +80,8 @@ def summary():
                             empty_cart='No items in cart!',                            
                             is_currently_open=read_configuration_is_open(),
                             accept_delivery=accept_delivery,
-                            accept_takeout=accept_takeout)
+                            accept_takeout=accept_takeout,
+                            checkout_summary=True)
 
     # Determine if delivery minimum met
     # session['tota'] -> [total, quantity]
@@ -94,7 +95,8 @@ def summary():
                             delivery_minimum_met=delivery_minimum_met, 
                             is_currently_open=read_configuration_is_open(),
                             accept_delivery=accept_delivery,
-                            accept_takeout=accept_takeout
+                            accept_takeout=accept_takeout,
+                            checkout_summary=True
                             )
 
 
@@ -178,6 +180,16 @@ def checkout():
         return redirect(url_for('checkout.confirmation'))
     # same as cart page except that "order details section is collecting info"
     # then abstract the most the top section as a template so I only have to change it once
+    items = session['cart']
+    return render_template('checkout/order_checkout.html', 
+                            items=items, 
+                            delivery_minimum_met=delivery_minimum_met, 
+                            is_currently_open=read_configuration_is_open(),
+                            accept_delivery=accept_delivery,
+                            accept_takeout=accept_takeout,
+                            checkout_summary=False
+                            )
+
     return 'THIS IS A TESTING PAGE <form method="post"><input type="submit" value="test"></form>'
 
 

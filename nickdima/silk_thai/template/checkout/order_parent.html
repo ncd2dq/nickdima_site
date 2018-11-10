@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% block head %}
+	{% include 'universal.html' %}
+	<meta name="description" content="Site Creator Description">
+	<title>{% block title %}{% endblock %}</title>
+	{% include 'universal-css-links.html' %}
+{% endblock %}
+</head>
+<body>
+    <!--Navigation bar-->
+    {% include 'nav.html' %}
+    <!--End navigation bar-->
+
+    <section class="features16 cid-r0R1Wm1xUa" id="features16-i">
+
+        <div class="container align-center">
+            <h2 class="pb-3 mbr-fonts-style mbr-section-title display-2">
+                {% if checkout_summary == true %}Your Order{% else %}Enter Your Information At Bottom{% endif %}</h2>
+            <h3 class="pb-5 mbr-section-subtitle mbr-fonts-style mbr-light display-5">Make Any Edits Here To Quantity Before Checkout</h3>
+            <div class="row media-row">
+
+                {% if empty_cart is defined %}
+                <div class="team-item col-lg-3 col-md-6">
+                    <p class="mbr-fonts-style display-5">{{empty_cart}}</p>
+                </div>
+                {% else %}
+                {% for item in items %}
+                <div class="team-item col-lg-3 col-md-6">
+                    <div class="item-image">
+                        <img src="{{ url_for('food.static', filename=item['Img_url']) }}" alt="" title="">
+                    </div>
+                    <div class="item-caption py-3">
+                        <div class="item-name px-2">
+                            <p class="mbr-fonts-style display-5">
+                                {{item['Title']}}
+                                {% if item['Topping'] != false %}with {{item['Topping'][0]}}{% endif %}</p>
+                            {% if item['Spice'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Spice: {{item['Spice']}}</p>
+                            {% endif %}
+                            {% if item['Extra'][0] != 'None' and item['Extra'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Extra: {{item['Extra'][0]}}</p>
+                            {% endif %}
+                            {% if item['Extra_Rice'] != '0' and item['Extra_Rice'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Extra Rice: {{item['Extra_Rice']}}</p>
+                            {% endif %}
+                            {% if item['Portion'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Portion: {{item['Portion_Type']}}</p>
+                            {% endif %}
+                            {% if item['Notes'] != false %}
+                            <p class="mbr-fonts-style display-6">
+                                Notes: {{item['Notes']}}</p>
+                            {% endif %}
+                        </div>
+                        <div class="item-role px-2">
+                            <p>Price: ${{ item['Total'] }}</p>
+                        </div>
+                        <!-- This is not included on the checkout page, cannot remove items at that point-->
+                        {% if checkout_summary == true %}
+                        <form class="mbr-fonts-style display-6" method='POST' action='{{ url_for("checkout.cart_remover") }}'>
+                            <input type='hidden' name='remove_id' value='{{ item["Id"] }}'>
+                            <input type='submit' class="btn btn-primary display-6" value='Remove'>
+                        </form>
+                        {% endif %}
+
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+
+            </div>
+    </section>
+
+	{% block body %}{% endblock %}
+
+	{% include 'universal-bottom.html' %}
+
+	<script src="{{ url_for('checkout.static', filename='assets/web/assets/jquery/jquery.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/popper/popper.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/tether/tether.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/smoothscroll/smooth-scroll.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/dropdown/js/script.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/touchswipe/jquery.touch-swipe.min.js') }}"></script>
+	<script src="{{ url_for('checkout.static', filename='assets/theme/js/script.js') }}"></script>
+</body>
+</html>
