@@ -23,24 +23,6 @@ def login():
     return render_template('admin/login.html')
 
 
-
-def is_open(view):
-    '''
-    Ensures that users can only proceed to checkout from the summary page if the store is open
-    '''
-
-    # Must use wraps or Flask doesn't know the correct name of the wrapped view function
-    @wraps(view)
-    def wrapped(*args, **kwargs):
-
-        if not read_configuration_is_open():
-            print('We werent open so back to menu for you')
-            return redirect(url_for('menu.menu'))
-
-        return view(*args, **kwargs)
-
-    return wrapped
-
 def requires_login(view):
 
     @wraps(view)
