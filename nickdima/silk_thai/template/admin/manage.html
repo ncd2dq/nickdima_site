@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 </head>
 <body>
-You made it to the manage page
-<br>
-<br>
-Do your dirty work here
+	<button id="to_logout">Logout</button>
+
+	You made it to the manage page
+	<br>
+	<br>
+	Do your dirty work here
+
+
+	<script>
+		let logout_buttom = document.getElementById('to_logout');
+		logout_button.onclick = function(){
+			window.href="{{ url_for('admin.logout' )}}";
+		}
+	</script>
 </body>
 </html>
