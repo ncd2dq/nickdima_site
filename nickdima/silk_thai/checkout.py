@@ -189,7 +189,7 @@ def checkout():
                             subtotal=2,
                             tax_total=3,
                             total_with_tax=400,
-                            order_type=session['order_type']
+                            order_type=session['order_type'].capitalize()
                             )
 
 
