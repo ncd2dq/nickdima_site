@@ -126,7 +126,8 @@ def referred_by_summary_page(view):
         try:
             # If i just used referring urls then someone could spoof the checkout page
             # TODO: refactor code so that the from_summary session is in a decorator
-            if url_for('checkout.summary') in request.referrer and session['from_summary'] == True:
+            if ((url_for('checkout.summary') in request.referrer and session['from_summary'] == True)
+                or (url_for('checkout.checkout') in request.referrer and request.method =='POST' and session['from_summary'] == True) ):
                 print('SUCCESSFULLY REFERRED BY SUMMARY PAGE')
                 return view(*args, **kwargs)
             else:
@@ -150,8 +151,7 @@ def referred_by_checkout_page(view):
         try:
             # If i just used referring urls then someone could spoof the checkout page
             # TODO: refactor code so that the from_summary session is in a decorator
-            if ((url_for('checkout.checkout') in request.referrer and session['from_checkout'] == True) 
-                or (request.method =='POST' and session['from_checkout'] == True) ):
+            if url_for('checkout.checkout') in request.referrer and session['from_checkout'] == True:
                 print('SUCCESSFULLY REFERRED BY CONFIRMATION PAGE')
                 return view(*args, **kwargs)
             else:
