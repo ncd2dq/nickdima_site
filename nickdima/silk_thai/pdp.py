@@ -224,7 +224,7 @@ def ensureExists(*args):
     '''Make sure that a form value exists or is False'''
     form_val_list = []
     print('this is args', args)
-    for form_val in args:
+    for form_val in args[0]:
         print('each arg value', form_val)
         if form_val is None:
             form_val_list.append(False)
