@@ -158,23 +158,6 @@ def food_pdp(item, portion):
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
 
 
-def ensureExists(*args):
-    '''Make sure that a form value exists or is False'''
-    form_val_list = []
-
-    for form_val in args:
-        if form_val is None:
-            form_val_list.append(False)
-
-        elif form_val == '':
-            form_val_list.append(False)
-
-        else:
-            form_val_list.append(form_val)
-
-    return form_val_list
-
-
 def removePricing(form_val):
     '''Remove the "+$2" part of string from form values'''
     if form_val is False:
@@ -235,3 +218,21 @@ def get_all_pdp_forms():
     portion_type = request.form.get('portion_type')
 
     return spice, base, extra_rice, notes, topping, extra, portion_type
+
+
+def ensureExists(*args):
+    '''Make sure that a form value exists or is False'''
+    form_val_list = []
+
+    for form_val in args:
+        if form_val is None:
+            form_val_list.append(False)
+
+        elif form_val == '':
+            form_val_list.append(False)
+
+        else:
+            form_val_list.append(form_val)
+
+    print(form_val_list)
+    return form_val_list
