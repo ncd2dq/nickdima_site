@@ -240,6 +240,9 @@ def remove_pricing_symbol(*args):
             new_val = form_val.split('+')[0]
             form_vals.append(new_val)
 
+        else:
+            form_vals.append(form_val)
+
     print('debug here')
     print(args)
     print(form_vals)
