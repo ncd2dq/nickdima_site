@@ -17,7 +17,6 @@ Copy Paste Template ---
 '''
 
 # Ingredient Spelling
-
 CHICKEN = 'Chicken'
 PORK = 'Pork'
 VEGGIE = 'Veggie'
@@ -26,9 +25,7 @@ BEEF = 'Beef'
 SEAFOOD = 'Seafood'
 CRISPY_DUCK = 'Crispy Duck'
 
-# End Ingredient Spelling
-
-
+# Ingredient choices and prices
 FULL_DINNER_TOPPINGS = [(CHICKEN, 0), (PORK, 0), (BEEF, 0), (VEGGIE, 0), (SHRIMP, 200), (SEAFOOD, 300), (CRISPY_DUCK, 300)]
 MAIN_DISH_TOPPINGS = [(CHICKEN, 0), (PORK, 0), (BEEF, 0), (VEGGIE, 0), (SHRIMP, 300), (SEAFOOD, 300)]
 EXTRA_DINNER_TOPPINGS = [('None', 0), (CHICKEN, 300), (PORK, 300), (BEEF, 300), (VEGGIE, 300), (SHRIMP, 500), (SEAFOOD, 500), (CRISPY_DUCK, 400)]
@@ -37,6 +34,7 @@ SOUP_DINNER_TOPPINS = [(VEGGIE, 0), (CHICKEN, 100), (SHRIMP, 500), (SEAFOOD, 500
 FULL_LUNCH_TOPPINGS = [(CHICKEN, 0), (PORK, 0), (BEEF, 0), (VEGGIE, 0), (SHRIMP, 200)]
 SPICE_RANGE = ['Normal', 0, 1, 2, 3, 4, 5] 
 
+# Categories
 APPETIZERS = 'Appetizers'
 SALADS = 'Salads'
 SOUPS = 'Soups'
@@ -48,6 +46,7 @@ TOGO_BEVERAGES = 'To-Go Beverages'
 
 PLACE_HOLDER_IMAGE = 'assets/images/calamari1-960x640-800x533.jpg'
 
+# Entire food assortment
 db = {
     # TEST ITEMS START
     'Drunken_noodles': {

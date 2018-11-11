@@ -1,3 +1,7 @@
+#---Website user flow
+Homepage --> Menu --> PDP --> Summary --> Checkout --> Confirmation
+
+
 #---Food Database:
 { 'base_food_name_found_in_urls' : {'ATTRIBUTES'} }
 #THE BASE URL MUST MATCH THE "ITEM=" in the URL_FOR on the menu page
@@ -19,7 +23,7 @@ Attributes:
 
 #ALL CURRENCY SHOULD ONLY EVER BE REPRESENTED EXTERNALLY IN STRING '3.40' FORM OR INTERNALLY IN INTEGER(CENTS)
 #---Session entries:
-'total' : [total_cost, total_items] --> Types [string('3.10', int]
+'total' : [total_cost, total_items] --> Types [string('3.10'), int]
 'from_summary' :
 'cart' :
 

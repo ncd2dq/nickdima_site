@@ -4,16 +4,14 @@ from silk_thai.utilities import is_lunch, is_not_checkout_page, is_not_summary_p
 
 bp = Blueprint('menu', __name__, url_prefix='/thai/menu', static_folder='static', template_folder='template')
 
+
 @bp.route('/', methods=['GET'])
 @is_not_checkout_page
 @is_not_summary_page
 def menu():
     db = get_db()
-    #TODO pull items from DB only if they are available
-    #Also items that don't have ingredients that are not available
-    session['from_summary'] = False
-
+    # TODO pull items from DB only if they are available
+    # Also items that don't have ingredients that are not available
     lunch_time = is_lunch()
 
-    print('IS IT LUNCH TIME', lunch_time)
     return render_template('menu/menu.html', all_items_dict=db, lunch_time=lunch_time)

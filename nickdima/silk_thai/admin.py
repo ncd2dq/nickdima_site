@@ -3,7 +3,6 @@ from functools import wraps
 
 bp = Blueprint('admin', __name__, url_prefix='/thai/admin', static_folder='static', template_folder='template')
 
-
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     
@@ -42,6 +41,7 @@ def requires_login(view):
 
     return wrapped
 
+
 @bp.route('/logout', methods=['GET', 'POST'])
 @requires_login
 def logout():
@@ -53,6 +53,7 @@ def logout():
         print('logged admin out')
 
     return render_template('admin/logout.html', logged_out=logged_out)
+
 
 @bp.route('/manage', methods=['GET', 'POST'])
 @requires_login

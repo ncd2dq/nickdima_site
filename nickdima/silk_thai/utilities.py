@@ -13,7 +13,6 @@ def is_accepting_delivery_takeout():
     Reads configuration file to see if Silk Thai is currently accepting
     new delivery orders and/or takeout orders
     '''
-
     delivery = web_configuration['accepting_delivery']
     takeout  = web_configuration['accepting_takeout']
 
@@ -28,7 +27,6 @@ def is_delivery_minimum_met(order_total):
 
     Return if the delivery minimum criterion (from configuration) is met
     '''
-
     return order_total.is_larger(CustomCurrency(web_configuration['delivery_minimum_cents']))
 
 
@@ -40,7 +38,12 @@ def get_day_hour_minute():
     Hour = 1 --> 24
     '''
     tz = timezone('EST')
-    week_day, day_hour, day_minute = datetime.now(tz).weekday(), datetime.now(tz).time().hour, datetime.now(tz).time().minute    
+    week_day, day_hour, day_minute = (
+                                        datetime.now(tz).weekday(), 
+                                        datetime.now(tz).time().hour, 
+                                        datetime.now(tz).time().minute 
+                                    )   
+
     return week_day, day_hour, day_minute
 
 
@@ -53,21 +56,19 @@ def read_configuration_is_open():
     is_currently_open = True
     week_day, day_hour, day_minute = get_day_hour_minute()
 
-    print(week_day, day_hour, day_minute)
     if web_configuration['hours_of_operation'][week_day] == False:
-        print('Plain old false')
-        is_currently_open = False
-    elif day_hour < web_configuration['hours_of_operation'][week_day][0]:
-        print('closed reason 1')
-        is_currently_open = False
-    elif day_hour == web_configuration['hours_of_operation'][week_day][1] and day_minute >= web_configuration['hours_of_operation'][week_day][2]:
-        print('closed reason 2')
-        is_currently_open = False
-    elif day_hour > web_configuration['hours_of_operation'][week_day][1]:
-        print('closed reason 3')
         is_currently_open = False
 
-    print('Are we currently open?', is_currently_open)
+    elif day_hour < web_configuration['hours_of_operation'][week_day][0]:
+        is_currently_open = False
+
+    elif (day_hour == web_configuration['hours_of_operation'][week_day][1] 
+        and day_minute >= web_configuration['hours_of_operation'][week_day][2]):
+        is_currently_open = False
+
+    elif day_hour > web_configuration['hours_of_operation'][week_day][1]:
+        is_currently_open = False
+
     return is_currently_open
 
 
@@ -79,14 +80,15 @@ def is_lunch():
     '''
     lunch_time = True
     week_day, day_hour, day_minute = get_day_hour_minute()
+
     if web_configuration['lunch_hours'][week_day] is False:
         lunch_time = False
-    elif day_hour < web_configuration['lunch_hours'][week_day][0] or day_hour >= web_configuration['lunch_hours'][week_day][1]:
+    elif (day_hour < web_configuration['lunch_hours'][week_day][0] 
+        or day_hour >= web_configuration['lunch_hours'][week_day][1]):
         lunch_time = False
 
-    print('Is it lunch time?', lunch_time)
-
     return lunch_time
+
 
 def is_not_checkout_page(view):
     '''
@@ -101,7 +103,6 @@ def is_not_checkout_page(view):
     '''
     @wraps(view)
     def wrapped(*args, **kwargs):
-
         session['from_checkout'] = False
 
         return view(*args, **kwargs)
@@ -122,7 +123,6 @@ def is_not_summary_page(view):
     '''
     @wraps(view)
     def wrapped(*args, **kwargs):
-
         session['from_summary'] = False
 
         return view(*args, **kwargs)
@@ -151,15 +151,22 @@ class CustomCurrency(object):
     def __init__(self, int_or_string):
         if type(int_or_string) == int:
             self.int_cents_form = int_or_string
+
         elif type(int_or_string) == str:
             self.string_form = int_or_string
             self.int_cents_form = self.create_integer_cents_form(self.string_form)
+
         else:
             raise Exception('Not an int or string CustomCurrency')
 
     def is_larger(self, other):
+        '''
+        Allows you to compare CustomCurrency instances
+        '''
         if self.int_cents_form > other.int_cents_form:
+
             return True
+
         return False
 
     def __add__(self, other):
@@ -168,57 +175,92 @@ class CustomCurrency(object):
     def __sub__(self, other):
         return CustomCurrency(self.int_cents_form - other.int_cents_form)
 
+    def _create_integer_cents_form_from_standard(self, string_form):
+        '''
+        Convert a universal representation 'X.XX' into cents
+
+        ::param string_form:: string of form 'X.XX'
+        '''
+        left_right = string_form.split('.')
+        left_side = int(left_right[0]) * 100
+
+        # '0.2' becomes 20
+        if len(left_right[1]) == 1:
+            right_side = int(left_right[1]) * 10
+
+        # '0.20' stays 20
+        elif len(left_right[1]) == 2:
+            right_side = int(left_right[1])
+
+        result = left_side + right_side
+
+        return result
+
+    def _create_integer_cents_standard_form(self, string_form):
+        '''
+        Convert non-standard string representations of money into standard string form
+
+        ::param string_form:: string of form '.XX' '.X' 'X.X' 
+        '''
+        result = ''
+        # Form '.20' or '0.2' or '.2'
+        if '.' in string_form:
+            # Form '0.2'
+            if len(string_form[string_form.index('.') + 1:]) < 2:
+                result = string_form + '0'
+
+            # Form '.2' becomes '0.2'
+            if len(string_form[:string_form.index('.')]) < 1:
+                result = '0' + string_form
+
+        else:
+            if len(string_form) == 3:
+                result = string_form[0] + '.' + string_form[1:]
+
+            if len(string_form) == 2:
+                result = '0.' + string_form
+
+            if len(string_form) == 1:
+                result = '0.0' + string_form
+
+        return result
+
     def create_integer_cents_form(self, string_form):
         '''
         string_form = '239023.23432' 'LEFT_SIDE.RIGHT_SIDE'
+
+        ::param string_form:: string representation of money
+
+        Parse a string representation of dollar and cents '0.00' or '.14' or '2'
+        and return integer cents representation
         '''
-        # what if the string '300' or '0' comes in?
+        # Form '0.00'
         if len(string_form) >= 4 and '.' in string_form:
-            left_right = string_form.split('.')
-            left_side = int(left_right[0]) * 100
-            if len(left_right[1]) == 1:
-                right_side = int(left_right[1]) * 10
-            elif len(left_right[1]) == 2:
-                right_side = int(left_right[1])
-            result = left_side + right_side
+            result = self._create_integer_cents_form_from_standard(string_form)
+
+        # First convert to a universal format 'X.XX' then same process as above
         elif len(string_form) <= 3:
-            if '.' in string_form:
-                if len(string_form[string_form.index('.') + 1:]) < 2:
-                    result = string_form + '0'
-                if len(string_form[:string_form.index('.')]) < 1:
-                    result = '0' + string_form
-            else:
-                if len(string_form) == 3:
-                    result = string_form[0] + '.' + string_form[1:]
-                if len(string_form) == 2:
-                    result = '0.' + string_form
-                if len(string_form) == 1:
-                    result = '0.0' + string_form
-
-
-            left_right = result.split('.')
-            left_side = int(left_right[0]) * 100
-            if len(left_right[1]) == 1:
-                right_side = int(left_right[1]) * 10
-            elif len(left_right[1]) == 2:
-                right_side = int(left_right[1])
-            result = left_side + right_side
+            result = self._create_integer_cents_standard_form(string_form)
+            result = self._create_integer_cents_form_from_standard(result)
 
         return result
 
     def add_string(self, string_number):
         '''
+        Add together a string representation of money and this instance
+
         Return CustomCurrency instance
         '''
         current_amount = self.int_cents_form
         add_this = self.create_integer_cents_form(string_number)
-
         result = current_amount + add_this
 
         return CustomCurrency(result)
 
     def add_int_cents(self, int_cents):
         '''
+        Add together a integer cents of money and this instance
+
         Return CustomCurrency instance
         '''
         current_amount = self.int_cents_form
@@ -228,34 +270,35 @@ class CustomCurrency(object):
 
     def multi_string_scalar(self, string_scalar):
         '''
+        Multiply currency by a scalar string
+
         Return CustomCurrency instance
         '''
         current_amount = self.int_cents_form
         scalar = int(string_scalar)
-
         result = current_amount * scalar
 
         return CustomCurrency(result)
 
     def multi_int_scalar(self, int_scalar):
         '''
+        Multiply currency by a scalar int
+
         Return CustomCurrency instance
         '''
         current_amount = self.int_cents_form
         scalar = int_scalar
-
         result = current_amount * scalar
 
         return CustomCurrency(result)
 
     def export_string(self):
         '''
-        Return a string representation in dollar form 
+        Return a string representation in dollar form of this instance
         326 --> '3.26'
         300 --> '3.00'
         '''
         current_amount = str(self.int_cents_form)
-
         if self.int_cents_form <= 9:
             current_amount = '00' + current_amount
 
@@ -264,7 +307,6 @@ class CustomCurrency(object):
 
         left_side = current_amount[:-2]
         right_side = current_amount[-2:]
-
         result = '{}.{}'.format(left_side, right_side)
 
         return result
