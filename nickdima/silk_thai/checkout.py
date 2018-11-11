@@ -135,7 +135,7 @@ def referred_by_summary_page(view):
                         url_for('checkout.summary') in request.referrer 
                         and session['from_summary'] == True
                     )
-                or 
+                    or 
                     (
                         url_for('checkout.checkout') in request.referrer 
                         and request.method =='POST' 

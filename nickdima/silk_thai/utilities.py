@@ -63,7 +63,7 @@ def read_configuration_is_open():
         is_currently_open = False
 
     elif (day_hour == web_configuration['hours_of_operation'][week_day][1] 
-        and day_minute >= web_configuration['hours_of_operation'][week_day][2]):
+            and day_minute >= web_configuration['hours_of_operation'][week_day][2]):
         is_currently_open = False
 
     elif day_hour > web_configuration['hours_of_operation'][week_day][1]:
@@ -84,7 +84,7 @@ def is_lunch():
     if web_configuration['lunch_hours'][week_day] is False:
         lunch_time = False
     elif (day_hour < web_configuration['lunch_hours'][week_day][0] 
-        or day_hour >= web_configuration['lunch_hours'][week_day][1]):
+            or day_hour >= web_configuration['lunch_hours'][week_day][1]):
         lunch_time = False
 
     return lunch_time
