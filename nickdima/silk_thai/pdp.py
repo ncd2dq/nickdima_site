@@ -243,7 +243,4 @@ def remove_pricing_symbol(*args):
         else:
             form_vals.append(form_val)
 
-    print('debug here')
-    print(args)
-    print(form_vals)
     return form_vals
