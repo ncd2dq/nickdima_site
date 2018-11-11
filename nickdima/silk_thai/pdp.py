@@ -24,13 +24,8 @@ def food_pdp(item, portion):
     db = get_db()
     
     if request.method == 'POST':
-        spice, base, extra_rice, notes, topping, extra, portion_type = ensureExists(get_all_pdp_forms())
-
-        # These 2 can contain "+$3" in it, and that needs to be removed
-        topping = removePricing(topping)
-        extra = removePricing(extra)
-
-        print(spice, base, extra_rice, notes, topping, extra)
+        spice, base, extra_rice, notes, topping, extra, portion_type = ensure_exists(get_all_pdp_forms())
+        topping, extra = remove_pricing_symbol(topping, extra)
 
         # Final externally facing values should be:
         # {'Base': ('Pad_see_ew', '10.95'), 'Spice': 'Normal', 'Topping': ('Shrimp', '2.00'), 'Extra': ('Pork', '3.00'), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
@@ -158,16 +153,6 @@ def food_pdp(item, portion):
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
 
 
-def removePricing(form_val):
-    '''Remove the "+$2" part of string from form values'''
-    if form_val is False:
-        return False
-    if '+$' in form_val:
-        # Remove the +$2
-        new_str = form_val.split('+')[0]
-        return new_str
-    return form_val
-
 def convert_all_prices_to_strings(food_item_dict):
     '''
     Convert all prices within food object to strings to simplify front end
@@ -220,12 +205,16 @@ def get_all_pdp_forms():
     return spice, base, extra_rice, notes, topping, extra, portion_type
 
 
-def ensureExists(*args):
-    '''Make sure that a form value exists or is False'''
+def ensure_exists(*args):
+    '''
+    Make sure that a form value exists or is False
+
+    Note - *args puts all arguments inside a tuple and i'm already being passed a tuple
+    tuple(tuple(form_val, form_val, form_val))
+
+    '''
     form_val_list = []
-    print('this is args', args)
     for form_val in args[0]:
-        print('each arg value', form_val)
         if form_val is None:
             form_val_list.append(False)
 
@@ -235,5 +224,20 @@ def ensureExists(*args):
         else:
             form_val_list.append(form_val)
 
-    print(form_val_list)
     return form_val_list
+
+
+def remove_pricing_symbol(*args):
+    '''Remove the "+$2" part of string from form values'''
+
+    form_vals = []
+    for form_val in args:
+
+        if form_val is False:
+            form_vals.append(False)
+
+        if '+$' in form_val:
+            new_val = form_val.split('+')[0]
+            form_vals.append(new_val)
+
+    return form_vals
