@@ -9,6 +9,9 @@ bp = Blueprint('food', __name__, url_prefix='/thai/food', static_folder='static'
 @is_not_summary_page
 @is_not_checkout_page
 def food_pdp(item, portion):
+    #TODO only pull items that are available
+    #TODO remove the item's choices if the choices are unavailable
+    
     db = get_db()
     session['from_summary'] = False
     

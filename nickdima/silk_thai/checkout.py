@@ -36,7 +36,6 @@ def remove_item_from_session(remove_id):
             cur_cart.remove(item)
             session['cart'] = cur_cart
 
-
 @bp.route('/cart_remover', methods=['POST'])
 @is_not_summary_page
 @is_not_checkout_page

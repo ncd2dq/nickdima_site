@@ -4,6 +4,25 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+	<!-- Table styling -->
+	<style>
+		table {
+		    font-family: arial, sans-serif;
+		    border-collapse: collapse;
+		    width: 100%;
+		}
+
+		td, th {
+		    border: 1px solid #dddddd;
+		    text-align: left;
+		    padding: 8px;
+		}
+
+		tr:nth-child(even) {
+		    background-color: #dddddd;
+		}
+		</style>
 </head>
 <body>
 	<button id="to_logout">Logout</button>
@@ -19,10 +38,35 @@
 	<br>
 	<br>
 	<section id="ingredients">
-
+		<table>
+			<tr>
+				<th>Ingredient</th>
+				<th>Status</th>
+				<th>Change</th>
+			</tr>
+			<tr>
+				<td>Chicken</td>
+				<td>Available</td>
+				<td><button id='change_chicken'>Alter</button></td>
+			</tr>
+			<tr>
+				<td>Centro comercial Moctezuma</td>
+				<td>Available</td>
+				<td><button id='change_beef'>Alter</button></td>
+			</tr>
+			<tr>
+				<td>Shrimp</td>
+				<td>Unavailable</td>
+				<td><button id='change_shrimp'>Alter</button></td>
+			</tr>
+		</table>
 	</section>
 
 	<section id="specific_items">
+
+	</section>
+
+	<section id="web_config">
 
 	</section>
 

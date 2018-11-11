@@ -9,6 +9,8 @@ bp = Blueprint('menu', __name__, url_prefix='/thai/menu', static_folder='static'
 @is_not_summary_page
 def menu():
     db = get_db()
+    #TODO pull items from DB only if they are available
+    #Also items that don't have ingredients that are not available
     session['from_summary'] = False
 
     lunch_time = is_lunch()

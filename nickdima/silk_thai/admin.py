@@ -58,5 +58,10 @@ def logout():
 @requires_login
 def manage():
 
+    # Pass list of unavailable ingredients
+    # Pass list of ingredients
+    # Pass list of unavailable items
+    # Pass list of available items
+
     return render_template('admin/manage.html')
 
