@@ -128,24 +128,30 @@ def food_pdp(item, portion):
             print("TRIED TO GO TO MENU")
             return redirect(url_for('menu.menu'))
 
+    #
+    # Get Request
+    #
+
     # Determine if the food item exists
-    if db[item]:
+    try:
+
         selected_item = db[item]
         selected_item = convert_all_prices_to_strings(selected_item)
-    else:
-        # Or flash the error
+
+    except KeyError:
+
         return "<h1>Our Apologies, that food item does not exist</h1>"
 
-    # Do not allow users to go to lunch page for item if lunch version doesn't exist
     lunch_time = is_lunch()
-
     if selected_item['Lunch_Version'] == False:
         lunch_time = False
-    # TODO: replace with lunchtime calculation
+
     if portion == 'lunch' and selected_item['Lunch_Version'] == False:
+
         return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
 
     if portion == 'dinner' and selected_item['Lunch_Only'] == True:
+        
         return redirect(url_for('food.food_pdp', item=item, portion='lunch'))
 
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
