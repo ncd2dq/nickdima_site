@@ -25,7 +25,17 @@ Attributes:
 #---Session entries:
 'total' : [total_cost, total_items] --> Types [string('3.10'), int]
 'from_summary' :
-'cart' :
+'cart' : *See below for template of cart item*
+
+*cart item
+{
+'Base': ('Pad_see_ew', '10.95'), 
+'Spice': 'Normal', 
+'Topping': ('Shrimp', '2.00'), 
+'Extra': ('Pork', '3.00'), 
+'Extra_Rice': '2', 
+'Notes': 'Hello Test'
+}
 
 
 #---All food forum fields collected:

@@ -26,15 +26,13 @@ def food_pdp(item, portion):
     if request.method == 'POST':
         spice, base, extra_rice, notes, topping, extra, portion_type = ensure_exists(get_all_pdp_forms())
         topping, extra = remove_pricing_symbol(topping, extra)
-
-        # Final externally facing values should be:
-        # {'Base': ('Pad_see_ew', '10.95'), 'Spice': 'Normal', 'Topping': ('Shrimp', '2.00'), 'Extra': ('Pork', '3.00'), 'Extra_Rice': '2', 'Notes': 'Hello Test'}
-        new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
+        new_item = create_new_item()
         
         #
-        # PARSE FORM DATA AND RETRIEVE PRICES FROM FOOD_DB - THIS ENSURES USERS CAN'T HACK PRICING
+        # Parse form data and compare to exisitng items in the food_db. Additionally, take pricing values
+        # from the food database so that the client side doesn't send along price
+        # this ensures safety and legitimacy of final order price
         #
-
 
         # Find the correct dictionary key
         for key in db.keys():
@@ -244,3 +242,21 @@ def remove_pricing_symbol(*args):
             form_vals.append(form_val)
 
     return form_vals
+
+
+def create_new_item():
+    '''
+    Returns a new item template in the expected format for the cart
+
+    {
+    'Base': ('Pad_see_ew', '10.95'), 
+    'Spice': 'Normal', 
+    'Topping': ('Shrimp', '2.00'), 
+    'Extra': ('Pork', '3.00'), 
+    'Extra_Rice': '2', 
+    'Notes': 'Hello Test'
+    }
+    '''
+    new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
+
+    return new_item
