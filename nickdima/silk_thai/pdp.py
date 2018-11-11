@@ -236,8 +236,11 @@ def remove_pricing_symbol(*args):
         if form_val is False:
             form_vals.append(False)
 
-        if '+$' in form_val:
+        elif '+$' in form_val:
             new_val = form_val.split('+')[0]
             form_vals.append(new_val)
 
+    print('debug here')
+    print(args)
+    print(form_vals)
     return form_vals
