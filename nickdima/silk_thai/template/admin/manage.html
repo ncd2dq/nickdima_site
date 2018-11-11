@@ -23,9 +23,43 @@
 		tr:nth-child(even) {
 		    background-color: #dddddd;
 		}
+
+		.page_nav {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+		    list-style-type: none;
+		    margin: 0;
+		    padding: 0;
+		    overflow: hidden;
+		    background-color: #333;
+		}
+
+		.nav_item {
+		    float: left;
+		}
+
+		.nav_item .nav_link {
+		    display: block;
+		    color: white;
+		    text-align: center;
+		    padding: 14px 16px;
+		    text-decoration: none;
+		}
+
+		.nav_item .nav_link:hover {
+		    background-color: #111;
+		}
 		</style>
 </head>
 <body>
+	<ul class="page_nav">
+		<li class="nav_item"><a class="nav_link" href="#operation_table">Operation Details</a></li>
+		<li class="nav_item"><a class="nav_link" href="#ingredients_table">Ingredients</a></li>
+		<li class="nav_item"><a class="nav_link" href="#food_item_table">Food Items</a></li>
+	</ul>
+	<br>
+	<br>
 	<button id="to_logout">Logout</button>
 	<br>
 	<br>
@@ -40,7 +74,7 @@
 	<br>
 	<section id="web_config">
 		<form action="#" method="POST">
-			<table>
+			<table name="operation_table">
 				<caption>Operation Details</caption>
 				<tr>
 					<th>Attribute</th>
@@ -77,9 +111,11 @@
 	</section>
 	<br>
 	<br>
+	<hr>
+	<br>
 	<br>
 	<section id="ingredients">
-		<table>
+		<table name="ingredients_table">
 			<caption>Ingredients</caption>
 			<tr>
 				<th>Ingredient</th>
@@ -105,9 +141,11 @@
 	</section>
 	<br>
 	<br>
+	<hr>
+	<br>
 	<br>
 	<section id="specific_items">
-		<table>
+		<table name="food_item_table">
 			<caption>Food Items</caption>
 			<tr>
 				<th>Item</th>
