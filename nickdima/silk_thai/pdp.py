@@ -34,6 +34,8 @@ def food_pdp(item, portion):
         # this ensures safety and legitimacy of final order price
         #
 
+        # TODO CONTINUE PEP8-ING BELOW HERE
+
         # Find the correct dictionary key
         for key in db.keys():
             if db[key]['Base'] == base:
@@ -151,7 +153,7 @@ def food_pdp(item, portion):
         return redirect(url_for('food.food_pdp', item=item, portion='dinner'))
 
     if portion == 'dinner' and selected_item['Lunch_Only'] == True:
-        
+
         return redirect(url_for('food.food_pdp', item=item, portion='lunch'))
 
     return render_template('productpage/pdp.html', selected_item=selected_item, portion=portion, lunch_time=lunch_time)
@@ -159,25 +161,26 @@ def food_pdp(item, portion):
 
 def convert_all_prices_to_strings(food_item_dict):
     '''
-    Convert all prices within food object to strings to simplify front end
+    Convert all prices within selected food object to strings to simplify front end
     '''
-    print('ALL', food_item_dict)
     food_item_dict['Base Price'] = CustomCurrency(food_item_dict['Base Price']).export_string()
 
     if food_item_dict['Toppings'] is not False:
         new_toppings_list = []
-        print(food_item_dict['Toppings'])
+
         for index, elm in enumerate(food_item_dict['Toppings']):
             new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
             new_toppings_list.append(new_elm)
+
         food_item_dict['Toppings'] = new_toppings_list
 
     if food_item_dict['Extra'] is not False:
         new_extra_list = []
-        print(food_item_dict['Extra'])
+
         for index, elm in enumerate(food_item_dict['Extra']):
             new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
             new_extra_list.append(new_elm)
+
         food_item_dict['Extra'] = new_extra_list
 
     if food_item_dict['Lunch_Version'] is not False:
@@ -185,10 +188,11 @@ def convert_all_prices_to_strings(food_item_dict):
         
         if food_item_dict['Lunch_Version']['Toppings'] is not False:
             new_lunch_toppings_list = []
-            print(food_item_dict['Lunch_Version']['Toppings'])
+
             for index, elm in enumerate(food_item_dict['Lunch_Version']['Toppings']):
                 new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
                 new_lunch_toppings_list.append(new_elm)
+
             food_item_dict['Extra'] = new_lunch_toppings_list
 
     return food_item_dict
