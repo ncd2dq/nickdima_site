@@ -37,6 +37,8 @@ def food_pdp(item, portion):
         # TODO CONTINUE PEP8-ING BELOW HERE
 
         # Find the correct dictionary key
+        get_title_base_img_price(db, base, portion)
+        #REPLACE ABOVE
         for key in db.keys():
             if db[key]['Base'] == base:
                 new_item['Title'] = db[key]['Base']
@@ -270,3 +272,8 @@ def create_new_item():
     new_item = {'Id': False, 'Title': False, 'Base':False, 'Spice':False, 'Topping':False, 'Extra':False, 'Extra_Rice':False, 'Portion_Type':False, 'Notes':False, 'Img_url':False, 'Total':False}
 
     return new_item
+
+
+# Functions for building new_item for cart from form submission
+def get_title_base_img_price(db, base, portion):
+    pass
