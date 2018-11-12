@@ -1,8 +1,9 @@
 from silk_thai.configuration import web_configuration
 from pytz import timezone
-from datetime import datetime
+from datetime import datetime, timedelta
 from functools import wraps
 from flask import session
+import uuid # Used to create universal unique identifier for the order ID
 
 
 def is_accepting_delivery_takeout():
@@ -28,6 +29,13 @@ def is_delivery_minimum_met(order_total):
     Return if the delivery minimum criterion (from configuration) is met
     '''
     return order_total.is_larger(CustomCurrency(web_configuration['delivery_minimum_cents']))
+
+
+def get_datetime_obj():
+    tz = timezone('EST')
+    time_obj = datetime.now(tz)
+
+    return time_obj
 
 
 def get_day_hour_minute():
@@ -313,44 +321,139 @@ class CustomCurrency(object):
 
 
 class SilkCustomer(object):
+    '''
+    Container object to provide a pretty printed customer
+    details for the confirmation email / in-store printing
 
-    def __init__(self):
-        self.first_name = None
-        self.last_name = None
-        self.city = None
-        self.state = None
-        self.zip_code = None
-        self.street_address = None
-        self.email_address = None
-        self.phone_number = None
+    ::param:: All params should be valid strings
+    '''
+
+    def __init__(self, first_name='', last_name='', 
+                city='', state='', zip_code='', 
+                street_address='', apart_building_num='', email_address='', 
+                phone_number=''):
+        self.first_name = str(first_name)
+        self.last_name = str(last_name)
+        self.city = str(city)
+        self.state = str(state)
+        self.zip_code = str(zip_code)
+        self.street_address = str(street_address)
+        self.apart_building_num = str(apart_building_num)
+        self.email_address = str(email_address)
+        self.phone_number = str(phone_number)
 
     def export_customer_details(self):
-        pass
+        '''
+        Format customer details into an easy to read string for printing / emailing
+        '''
+        template = ("-------Customer Details--------"
+                    "\n\n{} {}"
+                    "\n{}, {}, {}"
+                    "\n{} {}"
+                    "\n{}"
+                    "\n{}"
+                    "\n\n-------------------------------"
+                    ).format(self.first_name,
+                            self.last_name,
+                            self.city,
+                            self.state,
+                            self.zip_code,
+                            self.street_address,
+                            self.apart_building_num,
+                            self.email_address,
+                            self.phone_number)
+
+        return template
 
 
 class SilkOrder(object):
 
     '''
-    ::param:: self.order_time -> Datetime oject
-    ::param:: self.estimated_ready_duration -> Minutes integer
+    ::param total_price:: CustomCurrency Object
+    ::param total_items:: Integer
+    ::param cart:: Session['cart'] as described in docs
+    ::param order_type:: String, takeout/delivery
+    ::param special_instructions:: String
+    ::param order_time:: Datetime.now() object from get_datetime_obj() function
+    use --> .date() .year .month .weekday() .hour .minute .second
+    ::param estimated_ready_duration:: Integer of minutes
     '''
 
-    def __init__(self):
-        self.order_number = None
-        self.total_price_cents = None
-        self.total_items = None
-        self.cart = None
-        self.order_type = None # Takeout / delivery
-        self.special_instructions = None # For driver?
+    def __init__(self, total_price, 
+                total_items, cart, 
+                order_type, special_instructions, 
+                estimated_ready_duration, uuid_complexity=20):
+        self.order_number = str(uuid.uuid4().hex[:uuid_complexity])
+        self.total_price = total_price
+        self.total_items = int(total_items)
+        self.cart = cart
+        self.order_type = str(order_type).capitalize()
+        self.special_instructions = str(special_instructions)
+        self.order_time = get_datetime_obj()
+        self.estimated_ready_time = self.order_time + timedelta(minutes=estimated_ready_duration)
 
-        self.order_time = None
-        self.estimated_ready_duration = None
+    def _create_cart_string(self):
+        '''
+        Turns the cart into a readable string
+        '''
+
+        # Item Name
+        # Item Topping
+        # Item Extra
+        # Portion Dinner/Lunch
+        # Notes
+        # Item Price
+        
+        return 'NO ITEMS IN CART'
+
+    def _convert_time_readable(self, time_obj):
+        '''
+        ::param time_obj:: datetime.now() object
+
+        Takes a datetime object and returns it in AM/PM style as a string
+        '''
+        ready_time_string = ''
+        if time_obj.hour >= 13:
+            ready_time_string = str(time_obj.hour % 12) + ':' + str(time_obj.minute) + 'pm'
+        if time_obj.hour == 12:
+            ready_time_string = str(time_obj.hour) + ':' + str(time_obj.minute) + 'pm'
+        elif time_obj.hour <= 11:
+            ready_time_string = str(time_obj.hour) + ':' + str(time_obj.minute) + 'am'
+
+        return ready_time_string
 
     def export_order_details(self):
         '''
         
         '''
-        pass
+        if self.order_type == 'Delivery':
+            ready_time_string = 'Deliver By: {}'
+
+        elif self.order_type == 'Takeout':
+            ready_time_string = 'Pick Up By: {}'
+
+        ready_time = self._convert_time_readable(self.estimated_ready_time)
+        ready_time_string = ready_time_string.format(ready_time)
+        order_time_string = self._convert_time_readable(self.order_time)
+        cart_string = self._create_cart_string()
+
+        template = ("---------Order Details---------"
+                    "\n\nConfirmation: {} \tDate: {}"
+                    "\nTime: {} \t{}"
+                    "\nItems: {}  \t\tPrice: {}"
+                    "\nOrder Type: {}"
+                    "\n\n----Items----"
+                    "\n{}"
+                    "\n\n--------------"
+                    "\n\nSpecial Instructions:"
+                    "\n{}"
+                    ).format(self.order_number, self.order_time.date(), 
+                            order_time_string, ready_time_string,
+                            self.total_items, self.total_price.export_string(),
+                            self.order_type, cart_string,
+                            self.special_instructions)
+
+        return template
 
 
 class OrderInterface(object):
@@ -362,7 +465,8 @@ class OrderInterface(object):
     '''
 
     def __init__(self):
-        pass
+        self.customer = None
+        self.order = None
 
     def record_details(self):
         '''
@@ -397,3 +501,14 @@ if __name__ == '__main__':
 
     test5 = z.add_int_cents(e)
     print(test5.export_string())
+
+
+    new_cust = SilkCustomer(first_name='Johnny', last_name='Dima', city='Cville', state='VA',
+                            zip_code='22903', street_address='1428 east river drive',
+                            apart_building_num='A', email_address='nichk@dima.com',
+                            phone_number='954-977-3883')
+
+    print(new_cust.export_customer_details())
+
+    o = SilkOrder(CustomCurrency(5000), 5, 'fake', 'delivery', 'Jack me off when here', 60)
+    print(o.export_order_details())
