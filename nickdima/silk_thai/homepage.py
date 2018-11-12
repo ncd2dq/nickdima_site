@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 from silk_thai.utilities import is_not_summary_page, is_not_checkout_page
 
+
 bp = Blueprint('homepage', __name__, url_prefix='/thai/home', static_folder='static', template_folder='template')
 
 

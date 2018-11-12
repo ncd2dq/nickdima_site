@@ -1,7 +1,21 @@
+'''
+The goal of the admin blueprint is to provide control of operational
+attributes to the website directly to the end-users
+
+Functionality will include:
+Changing web configuration (delivery time, takeout prep time, accepting orders, etc.)
+Changing food item availability
+Changing topping item availability
+
+#TODO send an email to the super user whenever an admin logs in
+(time stamp, ip, location)
+'''
 from flask import Blueprint, request, render_template, g, session, flash, redirect, url_for
 from functools import wraps
 
+
 bp = Blueprint('admin', __name__, url_prefix='/thai/admin', static_folder='static', template_folder='template')
+
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
@@ -29,12 +43,16 @@ def requires_login(view):
     def wrapped(*args, **kwargs):
 
         try:
+
             if session['admin_check'] != 'SECRET_CHANGE':
                 print('Sorry, you are not an admin')
                 session.clear()
+
                 return redirect(url_for('homepage.home'))
+
         except Exception as e:
             print(e)
+
             return redirect(url_for('homepage.home'))
 
         return view(*args, **kwargs)
@@ -50,7 +68,6 @@ def logout():
     if request.method == 'POST':
         session.clear()
         logged_out = True
-        print('logged admin out')
 
     return render_template('admin/logout.html', logged_out=logged_out)
 

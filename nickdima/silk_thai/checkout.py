@@ -2,7 +2,9 @@ from flask import Blueprint, request, render_template, g, session, flash, redire
 from silk_thai.utilities import read_configuration_is_open, is_delivery_minimum_met, is_not_summary_page, is_not_checkout_page, CustomCurrency, is_accepting_delivery_takeout
 from functools import wraps
 
+
 bp = Blueprint('checkout', __name__, url_prefix='/thai/order', static_folder='static', template_folder='template')
+
 
 def remove_item_from_session(remove_id):
     '''
