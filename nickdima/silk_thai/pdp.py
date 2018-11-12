@@ -26,74 +26,35 @@ def food_pdp(item, portion):
     if request.method == 'POST':
         spice, base, extra_rice, notes, topping, extra, portion_type = ensure_exists(get_all_pdp_forms())
         topping, extra = remove_pricing_symbol(topping, extra)
-        new_item = create_new_item()
-        
         #
         # Parse form data and compare to exisitng items in the food_db. Additionally, take pricing values
         # from the food database so that the client side doesn't send along price
         # this ensures safety and legitimacy of final order price
         #
 
-        # TODO CONTINUE PEP8-ING BELOW HERE
-
-        # Find the correct dictionary key
+        # TODO make new_item a class instead of all these different methods
+        new_item = create_new_item()
         new_item = get_title_base_img_price(db, base, portion, new_item)
-        #REPLACE ABOVE
-        # for key in db.keys():
-        #     if db[key]['Base'] == base:
-        #         new_item['Title'] = db[key]['Base']
-        #         if portion == 'dinner':
-        #             new_item['Base'] = (key, CustomCurrency(db[key]['Base Price']).export_string())
-        #         elif portion == 'lunch':
-        #             new_item['Base'] = (key, CustomCurrency(db[key]['Lunch_Version']['Base Price']).export_string())
-        #         new_item['Img_url'] = db[key]['Img_URL']
-
         new_item = get_topping(db, topping, portion, new_item)
-        # Find the correct topping tuple [0] because the new_item['Base'] is a tuple
-        # if topping is not False:
-        #     if portion == 'dinner':
-        #         for name, price in db[new_item['Base'][0]]['Toppings']:
-        #             if topping == name:
-        #                 new_item['Topping'] = (topping, CustomCurrency(price).export_string())
-        #     elif portion == 'lunch':
-        #         for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
-        #             if topping == name:
-        #                 new_item['Topping'] = (topping, CustomCurrency(price).export_string())
-
-        # Find the correct extra tuple
         new_item = get_extra(db, extra, new_item)
-        # if extra is not False:
-        #     for name, price in db[new_item['Base'][0]]['Extra']:
-        #         if extra == name:
-        #             new_item['Extra'] = (extra, CustomCurrency(price).export_string())
-
-
         new_item = get_spice_rice_portion_notes(spice, extra_rice, portion_type, notes, new_item)
-        # if spice is not False:
-        #     new_item['Spice'] = spice 
-        # if extra_rice is not False:
-        #     new_item['Extra_Rice'] = extra_rice
-        # if portion_type is not False:
-        #     new_item['Portion_Type'] = portion_type.capitalize()
-        # if notes is not False:
-        #     new_item['Notes'] = notes
 
+        # TODO CONTINUE PEP8-ING BELOW HERE
         # Get the total
-        total_price = CustomCurrency(0)
-        for key in new_item.keys():
-            if new_item[key] is not False:
-                if type(new_item[key]) == tuple:
-                    # ['name', str('3.00')]
-                    print('OH WOULD YOU LOOK HERE')
-                    print(total_price)
-                    print(new_item[key][1])
-                    total_price += CustomCurrency(new_item[key][1])
-                if key == 'Extra_Rice':
-                    total_price += CustomCurrency(2 * int(new_item[key]) * 100)
-
-        total_price = total_price.export_string()
-
+        total_price = get_total_price(new_item)
         new_item['Total'] = total_price
+        # total_price = CustomCurrency(0)
+        # for key in new_item.keys():
+        #     if new_item[key] is not False:
+        #         if type(new_item[key]) == tuple:
+        #             # ['name', str('3.00')]
+        #             print('OH WOULD YOU LOOK HERE')
+        #             print(total_price)
+        #             print(new_item[key][1])
+        #             total_price += CustomCurrency(new_item[key][1])
+        #         elif key == 'Extra_Rice':
+        #             total_price += CustomCurrency(2 * int(new_item[key]) * 100)
+        # total_price = total_price.export_string()
 
 
         if 'cart' not in session:
@@ -257,6 +218,10 @@ def remove_pricing_symbol(*args):
     return form_vals
 
 
+#
+# Functions for building new_item for cart from form submission ##############
+#
+# TODO make a class that recieves everything as an input in the __init__ and 'export' method spits out new_item
 def create_new_item():
     '''
     Returns a new item template in the expected format for the cart
@@ -274,10 +239,7 @@ def create_new_item():
 
     return new_item
 
-#
-# Functions for building new_item for cart from form submission ##############
-#
-# TODO make a class that recieves everything as an input in the __init__ and 'export' method spits out new_item
+
 def get_title_base_img_price(db, base, portion, new_item):
     '''
     Match the base name of the selected food item to one of the food objects
@@ -365,3 +327,26 @@ def get_spice_rice_portion_notes(spice, extra_rice, portion_type, notes, new_ite
         new_item['Notes'] = notes
 
     return new_item
+
+
+def get_total_price(new_item):
+    '''
+    Determine the string representation of the total price of the new_item in cart
+    '''
+    total_price = CustomCurrency(0)
+    for key in new_item.keys():
+
+        if new_item[key] is not False:
+
+            # All toppings and things with prices are tuples of form ('Name', Price)
+            if type(new_item[key]) == tuple:
+                print('OH WOULD YOU LOOK HERE')
+                print(total_price)
+                print(new_item[key][1])
+                total_price += CustomCurrency(new_item[key][1])
+
+            # Extra_Rice is not a tuple, just a number indication how much extra rice
+            elif key == 'Extra_Rice':
+                total_price += CustomCurrency(2 * int(new_item[key]) * 100)
+
+    return total_price.export_string()
