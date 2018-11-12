@@ -113,7 +113,6 @@ def convert_all_prices_to_strings(food_item_dict):
     '''
     Convert all prices within selected food object to strings to simplify front end
     '''
-    print('BEFORE CONVERSION', food_item_dict)
     food_item_dict['Base Price'] = CustomCurrency(food_item_dict['Base Price']).export_string()
 
     if food_item_dict['Toppings'] is not False:
@@ -125,7 +124,6 @@ def convert_all_prices_to_strings(food_item_dict):
 
         food_item_dict['Toppings'] = new_toppings_list
 
-    # Error Here
     if food_item_dict['Extra'] is not False:
         new_extra_list = []
 
@@ -146,8 +144,8 @@ def convert_all_prices_to_strings(food_item_dict):
                 new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
                 new_lunch_toppings_list.append(new_elm)
 
-            food_item_dict['Extra'] = new_lunch_toppings_list
-    print('AFTER CONVERSION', food_item_dict)
+            food_item_dict['Lunch_Version']['Toppings'] = new_lunch_toppings_list
+
     return food_item_dict
 
 
