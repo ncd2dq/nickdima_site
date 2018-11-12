@@ -41,49 +41,16 @@ def food_pdp(item, portion):
 
         total_price = get_total_price(new_item)
         new_item['Total'] = total_price
-
-        # TODO CONTINUE PEP8-ING BELOW HERE
         update_cart(new_item)
-        # if 'cart' not in session:
-        #     new_item['Id'] = 1
-        #     session['cart'] = [new_item]
 
-        #     session['total'] = [total_price, 1]
-        # else:
-        #     #For some reason session['cart'].append(new_item) does not work across requests,
-        #     #need to alter the list, then reasign to the session
-        #     #otherwise some data drops
-        #     #session['total'] = [str('3.00'), int]
-        #     total = session['total']
-        #     total[0] = CustomCurrency(total[0])
-        #     total[0] += CustomCurrency(total_price)
-        #     total[0] = total[0].export_string()
-
-        #     total[1] += 1
-        #     session['total'] = total
-
-        #     cur_cart = session['cart']
-            
-        #     # Determine unique id for item
-        #     all_ids = []
-        #     for cur_item in cur_cart:
-        #         all_ids.append(cur_item['Id'])
-        #     new_item['Id'] = max(all_ids) + 1
-
-        #     cur_cart.append(new_item)
-        #     session['cart'] = cur_cart
-
-        # This was indented too much so it didn't work before the cart had an item in it
+        # Based on option selected in modal, send the user to their desired page
         if request.form.get('modal-dest') == 'to_cart':
-            print("TRIED TO GO TO CART")
-            return redirect(url_for('checkout.summary'))
-        elif request.form.get('modal-dest') == 'to_menu':
-            print("TRIED TO GO TO MENU")
-            return redirect(url_for('menu.menu'))
 
-    #
-    # Get Request
-    #
+            return redirect(url_for('checkout.summary'))
+
+        elif request.form.get('modal-dest') == 'to_menu':
+
+            return redirect(url_for('menu.menu'))
 
     # Determine if the food item exists
     try:
