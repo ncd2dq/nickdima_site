@@ -36,6 +36,9 @@
                         <!--<input type="hidden" name="email" data-form-email="true" value="ueooonHttEaGH+Z4fHs/zZZd07VaBA4YnIwOVVwbREWUDEXb93hyZRpEy8B7NvUnnW6xrdJLRQvSB3ljRfNYF9mLz4pGtWb2rDzb7s546Gts5MF60z2ziD7Xfgcz9GIG" data-form-field="Email">-->
 
                         <!--Customer details-->
+                        <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                            Customer Information
+                        </h2>
                         <div class="row row-sm-offset">
                             <div class="col-md-4 multi-horizontal" data-for="fname">
                                 <div class="form-group">
@@ -68,29 +71,6 @@
                                     <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-g">
                                 </div>
                             </div>
-                            <div class="col-md-4 multi-horizontal" data-for="customerstreetaddress">
-                                <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="customerstreetaddress-form1-g">Street Address</label>
-                                    <input type="text" class="form-control" name="customerstreetaddress" required="true" id="customerstreetaddress-form1-g">
-                                </div>
-                            </div>
-                            <div class="col-md-4 multi-horizontal" data-for="customeraptbuilding">
-                                <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="customeraptbuilding-form1-g">Apt #, Floor, etc.</label>
-                                    <input type="text" class="form-control" name="customeraptbuilding" required="true" id="customeraptbuilding-form1-g">
-                                </div>
-                            </div>
-                            <div class="col-md-4 multi-horizontal" data-for="customercity">
-                                <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="customercity-form1-g">City</label>
-                                    <input type="email" class="form-control" name="customercity" required="true" id="customercity-form1-g">
-                                </div>
-                            </div>
-                        </div>
-                        <!--End customer Details -->
-
-                        <!--Billing Details-->
-                        <div class="row row-sm-offset">
                             <div class="col-md-4 multi-horizontal" data-for="streetaddress">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="streetaddress-form1-g">Street Address</label>
@@ -103,17 +83,56 @@
                                     <input type="text" class="form-control" name="aptbuilding" required="true" id="aptbuilding-form1-g">
                                 </div>
                             </div>
-
-                            <div class="col-md-4 multi-horizontal" data-for="zipcode">
-                                <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="zipcode-form1-g">Zip Code</label>
-                                    <input type="email" class="form-control" name="zipcode" required="true" id="email-form1-g">
-                                </div>
-                            </div>
                             <div class="col-md-4 multi-horizontal" data-for="city">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="city-form1-g">City</label>
                                     <input type="email" class="form-control" name="city" required="true" id="city-form1-g">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!--End customer Details -->
+
+                        <!--Billing Details-->
+                        <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                            Payment Information
+                        </h2>
+                        <div class="row row-sm-offset">
+                            <div class="col-md-4 multi-horizontal" data-for="billingfname">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="billingfname-form1-g">First Name</label>
+                                    <input type="text" class="form-control" name="billingfname" required="true" id="billingfname-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="billinglname">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="billinglname-form1-g">Last Name</label>
+                                    <input type="text" class="form-control" name="billinglname" required="true" id="billinglname-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="billingstreetaddress">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="billingstreetaddress-form1-g">Street Address</label>
+                                    <input type="text" class="form-control" name="billingstreetaddress" required="true" id="billingstreetaddress-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="billingaptbuilding">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="billingaptbuilding-form1-g">Apt #, Floor, etc.</label>
+                                    <input type="text" class="form-control" name="billingaptbuilding" required="true" id="billingaptbuilding-form1-g">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 multi-horizontal" data-for="zipcode">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="zipcode-form1-g">Zip Code</label>
+                                    <input type="email" class="form-control" name="zipcode" required="true" id="zipcode-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="billingcity">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="billingcity-form1-g">City</label>
+                                    <input type="email" class="form-control" name="billingcity" required="true" id="billingcity-form1-g">
                                 </div>
                             </div>
                             <div class="col-md-4 multi-horizontal" data-for="state">
@@ -126,6 +145,36 @@
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="country-form1-g">Country</label>
                                     <input type="email" class="form-control" name="country" required="true" id="country-form1-g">
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <h2 class="align-center pb-2 mbr-fonts-style display-2">
+                            Card Information
+                        </h2>
+                        <div class="row row-sm-offset">
+                            <div class="col-md-4 multi-horizontal" data-for="creditcardnumber">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="creditcardnumber-form1-g">Credit Card Number</label>
+                                    <input type="text" class="form-control" name="creditcardnumber" required="true" id="creditcardnumber-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="month">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="month-form1-g">Exp Month</label>
+                                    <input type="month" class="form-control" name="month" required="true" id="month-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="year">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="year-form1-g">Exp Year</label>
+                                    <input type="text" class="form-control" name="year" required="true" id="year-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="cvv">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="cvv-form1-g">CVV</label>
+                                    <input type="text" class="form-control" name="cvv" required="true" id="cvv-form1-g">
                                 </div>
                             </div>
                         </div>
