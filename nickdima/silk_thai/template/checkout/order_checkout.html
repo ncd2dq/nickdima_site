@@ -39,7 +39,7 @@
                         <h2 class="align-center pb-2 mbr-fonts-style display-2">
                             Customer Information
                         </h2>
-                        <div class="row row-sm-offset">
+                        <div class="row row-sm-offset" id="customer_informatin">
                             <div class="col-md-4 multi-horizontal" data-for="fname">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="fname-form1-g">First Name</label>
@@ -97,7 +97,7 @@
                         <h2 class="align-center pb-2 mbr-fonts-style display-2">
                             Payment Information
                         </h2>
-                        <div class="row row-sm-offset">
+                        <div class="row row-sm-offset" id="payment_information">
                             <div class="col-md-4 multi-horizontal" data-for="billingfname">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="billingfname-form1-g">First Name</label>
@@ -122,7 +122,6 @@
                                     <input type="text" class="form-control" name="billingaptbuilding" required="true" id="billingaptbuilding-form1-g">
                                 </div>
                             </div>
-
                             <div class="col-md-4 multi-horizontal" data-for="zipcode">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="zipcode-form1-g">Zip Code</label>
@@ -152,23 +151,17 @@
                         <h2 class="align-center pb-2 mbr-fonts-style display-2">
                             Card Information
                         </h2>
-                        <div class="row row-sm-offset">
+                        <div class="row row-sm-offset" id="card_information">
                             <div class="col-md-4 multi-horizontal" data-for="creditcardnumber">
                                 <div class="form-group">
                                     <label class="form-control-label mbr-fonts-style display-7" for="creditcardnumber-form1-g">Credit Card Number</label>
                                     <input type="text" class="form-control" name="creditcardnumber" required="true" id="creditcardnumber-form1-g">
                                 </div>
                             </div>
-                            <div class="col-md-4 multi-horizontal" data-for="month">
+                            <div class="col-md-4 multi-horizontal" data-for="expiration">
                                 <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="month-form1-g">Exp Month</label>
-                                    <input type="month" class="form-control" name="month" required="true" id="month-form1-g">
-                                </div>
-                            </div>
-                            <div class="col-md-4 multi-horizontal" data-for="year">
-                                <div class="form-group">
-                                    <label class="form-control-label mbr-fonts-style display-7" for="year-form1-g">Exp Year</label>
-                                    <input type="text" class="form-control" name="year" required="true" id="year-form1-g">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="expiration-form1-g">Expiration</label>
+                                    <input type="expiration" class="form-control" name="expiration" required="true" id="expiration-form1-g">
                                 </div>
                             </div>
                             <div class="col-md-4 multi-horizontal" data-for="cvv">
