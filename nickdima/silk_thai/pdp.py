@@ -43,34 +43,35 @@ def food_pdp(item, portion):
         new_item['Total'] = total_price
 
         # TODO CONTINUE PEP8-ING BELOW HERE
-        if 'cart' not in session:
-            new_item['Id'] = 1
-            session['cart'] = [new_item]
+        update_cart(new_item)
+        # if 'cart' not in session:
+        #     new_item['Id'] = 1
+        #     session['cart'] = [new_item]
 
-            session['total'] = [total_price, 1]
-        else:
-            #For some reason session['cart'].append(new_item) does not work across requests,
-            #need to alter the list, then reasign to the session
-            #otherwise some data drops
-            #session['total'] = [str('3.00'), int]
-            total = session['total']
-            total[0] = CustomCurrency(total[0])
-            total[0] += CustomCurrency(total_price)
-            total[0] = total[0].export_string()
+        #     session['total'] = [total_price, 1]
+        # else:
+        #     #For some reason session['cart'].append(new_item) does not work across requests,
+        #     #need to alter the list, then reasign to the session
+        #     #otherwise some data drops
+        #     #session['total'] = [str('3.00'), int]
+        #     total = session['total']
+        #     total[0] = CustomCurrency(total[0])
+        #     total[0] += CustomCurrency(total_price)
+        #     total[0] = total[0].export_string()
 
-            total[1] += 1
-            session['total'] = total
+        #     total[1] += 1
+        #     session['total'] = total
 
-            cur_cart = session['cart']
+        #     cur_cart = session['cart']
             
-            # Determine unique id for item
-            all_ids = []
-            for cur_item in cur_cart:
-                all_ids.append(cur_item['Id'])
-            new_item['Id'] = max(all_ids) + 1
+        #     # Determine unique id for item
+        #     all_ids = []
+        #     for cur_item in cur_cart:
+        #         all_ids.append(cur_item['Id'])
+        #     new_item['Id'] = max(all_ids) + 1
 
-            cur_cart.append(new_item)
-            session['cart'] = cur_cart
+        #     cur_cart.append(new_item)
+        #     session['cart'] = cur_cart
 
         # This was indented too much so it didn't work before the cart had an item in it
         if request.form.get('modal-dest') == 'to_cart':
@@ -327,9 +328,6 @@ def get_total_price(new_item):
 
             # All toppings and things with prices are tuples of form ('Name', Price)
             if type(new_item[key]) == tuple:
-                print('OH WOULD YOU LOOK HERE')
-                print(total_price)
-                print(new_item[key][1])
                 total_price += CustomCurrency(new_item[key][1])
 
             # Extra_Rice is not a tuple, just a number indication how much extra rice
@@ -337,3 +335,34 @@ def get_total_price(new_item):
                 total_price += CustomCurrency(2 * int(new_item[key]) * 100)
 
     return total_price.export_string()
+
+
+def update_cart(new_item):
+    '''
+    Modifies global session:
+    If session does not contain a cart, initializes at single item
+    If session contains cart, adds item with unique item id, adds item price to total
+    '''
+    if 'cart' not in session:
+        new_item['Id'] = 1
+        session['cart'] = [new_item]
+        session['total'] = [new_item['Total'], 1]
+
+    else:
+        total = session['total']
+        total[0] = CustomCurrency(total[0])
+        total[0] += CustomCurrency(new_item['Total'])
+        total[0] = total[0].export_string()
+        total[1] += 1
+        session['total'] = total
+
+        cur_cart = session['cart']
+        
+        # Determine unique id for item
+        all_ids = []
+        for cur_item in cur_cart:
+            all_ids.append(cur_item['Id'])
+        new_item['Id'] = max(all_ids) + 1
+
+        cur_cart.append(new_item)
+        session['cart'] = cur_cart
