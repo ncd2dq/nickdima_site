@@ -332,15 +332,15 @@ class SilkCustomer(object):
                 city='', state='', zip_code='', 
                 street_address='', apart_building_num='', email_address='', 
                 phone_number=''):
-        self.first_name = str(first_name)
-        self.last_name = str(last_name)
+        self.first_name = str(first_name) #
+        self.last_name = str(last_name) #
         self.city = str(city)
         self.state = str(state)
         self.zip_code = str(zip_code)
         self.street_address = str(street_address)
         self.apart_building_num = str(apart_building_num)
-        self.email_address = str(email_address)
-        self.phone_number = str(phone_number)
+        self.email_address = str(email_address) #
+        self.phone_number = str(phone_number) #
 
     def export_customer_details(self):
         '''
@@ -369,7 +369,10 @@ class SilkCustomer(object):
 class SilkOrder(object):
 
     '''
-    ::param total_price:: CustomCurrency Object
+    ::param price_order_price:: CustomerCurrency, price of all items
+    ::param price_order_tax:: CustomCurrency, item price tax
+    ::param price_tip:: CustomCurrency, tip for order
+    ::param price_total:: CustomCurrency, tax+tip+item price
     ::param total_items:: Integer
     ::param cart:: Session['cart'] as described in docs
     ::param order_type:: String, takeout/delivery
@@ -379,12 +382,17 @@ class SilkOrder(object):
     ::param estimated_ready_duration:: Integer of minutes
     '''
 
-    def __init__(self, total_price, 
-                total_items, cart, 
-                order_type, special_instructions, 
-                estimated_ready_duration, uuid_complexity=20):
+    def __init__(self, price_order_price, 
+                price_order_tax, price_tip,
+                price_total, total_items, 
+                cart, order_type, 
+                special_instructions, estimated_ready_duration, 
+                uuid_complexity=20):
         self.order_number = str(uuid.uuid4().hex[:uuid_complexity])
-        self.total_price = total_price
+        self.price_order_price = price_order_price
+        self.price_order_tax = price_order_tax
+        self.price_tip = price_tip
+        self.price_total = price_total
         self.total_items = int(total_items)
         self.cart = cart
         self.order_type = str(order_type).capitalize()
@@ -440,7 +448,13 @@ class SilkOrder(object):
         template = ("---------Order Details---------"
                     "\n\nConfirmation: {} \tDate: {}"
                     "\nTime: {} \t{}"
-                    "\nItems: {}  \t\tPrice: {}"
+                    "\nItems: {}"
+                    "\n------"
+                    "\nPrice: {}"
+                    "\nTax: {}"
+                    "\nTip: {}"
+                    "\nOrder Total: {}"
+                    "\n------"
                     "\nOrder Type: {}"
                     "\n\n----Items----"
                     "\n{}"
@@ -449,9 +463,10 @@ class SilkOrder(object):
                     "\n{}"
                     ).format(self.order_number, self.order_time.date(), 
                             order_time_string, ready_time_string,
-                            self.total_items, self.total_price.export_string(),
-                            self.order_type, cart_string,
-                            self.special_instructions)
+                            self.total_items, self.price_order_price.export_string(),
+                            self.price_order_tax.export_string(), self.price_tip.export_string(),
+                            self.price_total.export_string(), self.order_type, 
+                            cart_string, self.special_instructions)
 
         return template
 
@@ -467,6 +482,7 @@ class OrderInterface(object):
     def __init__(self):
         self.customer = None
         self.order = None
+        self.paid = "PREPAID -or- COLLECT PAYMENT"
 
     def record_details(self):
         '''
@@ -510,5 +526,5 @@ if __name__ == '__main__':
 
     print(new_cust.export_customer_details())
 
-    o = SilkOrder(CustomCurrency(5000), 5, 'fake', 'delivery', 'Jack me off when here', 60)
+    o = SilkOrder(CustomCurrency(5000), CustomCurrency(100), CustomCurrency(500), CustomCurrency(5600), 5, 'fake', 'delivery', 'Jack me off when here', 60)
     print(o.export_order_details())

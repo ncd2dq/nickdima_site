@@ -22,43 +22,63 @@
                 </h3>
             </div>
         </div>
+    </div>
 
-        <div class="row justify-content-center">
-            <div class="container align-center">
-                <form action="{{ url_for('checkout.checkout') }}" method="post">
+<!-- test form -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="media-container-column col-lg-8">
+                    <div data-form-alert="" hidden="">
+                        Thanks for filling out the form!
+                    </div>
 
-                    <p class="mbr-fonts-style display-5">
-                        Credit Card Info
-                        <br>
-                        -need to verify this stuff
-                        <br>
-                        -#
-                        <br>
-                        -cvv
-                        <br>
-                        -expiration
-                    </p>
-                    <p class="mbr-fonts-style display-5">
-                        Customer Info
-                        <br>
-                        -if delivery-address
-                        <br>
-                        -email-
-                        <br>
-                        -phone #-
-                    </p>
-                    <p class="mbr-fonts-style display-5">
-                    	Tip
-                    	-change tip price on html immediately (but include in form submission)
-                    </p>
-                    <p class="mbr-fonts-style display-5">
-                    	Special order instructions (knock, call, etc.)
-                    </p>
+                    <form class="mbr-form" action="{{ url_for('checkout.checkout') }}" method="post" data-form-title="Mobirise Form">
+                        <!--<input type="hidden" name="email" data-form-email="true" value="ueooonHttEaGH+Z4fHs/zZZd07VaBA4YnIwOVVwbREWUDEXb93hyZRpEy8B7NvUnnW6xrdJLRQvSB3ljRfNYF9mLz4pGtWb2rDzb7s546Gts5MF60z2ziD7Xfgcz9GIG" data-form-field="Email">-->
+                        <div class="row row-sm-offset">
+                            <div class="col-md-4 multi-horizontal" data-for="fname">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="fname-form1-g">First Name</label>
+                                    <input type="text" class="form-control" name="fname" required="true" id="fname-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="lname">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="lname-form1-g">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" required="true" id="lname-form1-g">
+                                </div>
+                            </div>
 
-                    <button href="" type="submit" class="btn btn-primary display-4">{% if is_currently_open == true %}Submit Order{% else %}We Are Currently Closed{% endif %}</button>
-                </form>
+                            <div class="col-md-4 multi-horizontal" data-for="email">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="email-form1-g">Email</label>
+                                    <input type="email" class="form-control" name="email" data-form-field="Email" required="" id="email-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="cemail">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="cemail-form1-g">Confirm Email</label>
+                                    <input type="email" class="form-control" name="cemail" data-form-field="Email" required="" id="email-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="phone-form1-g">Phone Number</label>
+                                    <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-g">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" data-for="message">
+                            <label class="form-control-label mbr-fonts-style display-7" for="message-form1-g">Special Instructions</label>
+                            <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="message-form1-g"></textarea>
+                        </div>
+
+                        <span class="input-group-btn">
+                            <button href="" type="submit" class="btn btn-primary btn-form display-4">{% if is_currently_open == true %}Submit Order{% else %}We Are Currently Closed{% endif %}</button>
+                        </span>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+<!-- test form -->
 </section>
 {% endblock %}
