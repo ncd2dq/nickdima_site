@@ -125,11 +125,13 @@ def convert_all_prices_to_strings(food_item_dict):
 
         food_item_dict['Toppings'] = new_toppings_list
 
+    # Error Here
     if food_item_dict['Extra'] is not False:
         new_extra_list = []
 
         for index, elm in enumerate(food_item_dict['Extra']):
             new_elm = (elm[0], CustomCurrency(elm[1]).export_string())
+            print(elm, new_elm)
             new_extra_list.append(new_elm)
 
         food_item_dict['Extra'] = new_extra_list
