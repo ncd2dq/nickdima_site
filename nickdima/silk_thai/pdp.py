@@ -37,45 +37,46 @@ def food_pdp(item, portion):
         # TODO CONTINUE PEP8-ING BELOW HERE
 
         # Find the correct dictionary key
-        get_title_base_img_price(db, base, portion)
+        new_item = get_title_base_img_price(db, base, portion, new_item)
         #REPLACE ABOVE
-        for key in db.keys():
-            if db[key]['Base'] == base:
-                new_item['Title'] = db[key]['Base']
-                if portion == 'dinner':
-                    new_item['Base'] = (key, CustomCurrency(db[key]['Base Price']).export_string())
-                elif portion == 'lunch':
-                    new_item['Base'] = (key, CustomCurrency(db[key]['Lunch_Version']['Base Price']).export_string())
-                new_item['Img_url'] = db[key]['Img_URL']
+        # for key in db.keys():
+        #     if db[key]['Base'] == base:
+        #         new_item['Title'] = db[key]['Base']
+        #         if portion == 'dinner':
+        #             new_item['Base'] = (key, CustomCurrency(db[key]['Base Price']).export_string())
+        #         elif portion == 'lunch':
+        #             new_item['Base'] = (key, CustomCurrency(db[key]['Lunch_Version']['Base Price']).export_string())
+        #         new_item['Img_url'] = db[key]['Img_URL']
 
+        new_item = get_topping(db, topping, portion, new_item)
         # Find the correct topping tuple [0] because the new_item['Base'] is a tuple
-        if topping is not False:
-            if portion == 'dinner':
-                for name, price in db[new_item['Base'][0]]['Toppings']:
-                    if topping == name:
-                        new_item['Topping'] = (topping, CustomCurrency(price).export_string())
-            elif portion == 'lunch':
-                for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
-                    if topping == name:
-                        new_item['Topping'] = (topping, CustomCurrency(price).export_string())
+        # if topping is not False:
+        #     if portion == 'dinner':
+        #         for name, price in db[new_item['Base'][0]]['Toppings']:
+        #             if topping == name:
+        #                 new_item['Topping'] = (topping, CustomCurrency(price).export_string())
+        #     elif portion == 'lunch':
+        #         for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
+        #             if topping == name:
+        #                 new_item['Topping'] = (topping, CustomCurrency(price).export_string())
 
         # Find the correct extra tuple
-        if extra is not False:
-            for name, price in db[new_item['Base'][0]]['Extra']:
-                if extra == name:
-                    new_item['Extra'] = (extra, CustomCurrency(price).export_string())
+        new_item = get_extra(db, extra, new_item)
+        # if extra is not False:
+        #     for name, price in db[new_item['Base'][0]]['Extra']:
+        #         if extra == name:
+        #             new_item['Extra'] = (extra, CustomCurrency(price).export_string())
 
 
-        if spice is not False:
-            new_item['Spice'] = spice 
-        if extra_rice is not False:
-            new_item['Extra_Rice'] = extra_rice
-        if portion_type is not False:
-            new_item['Portion_Type'] = portion_type.capitalize()
-        if notes is not False:
-            new_item['Notes'] = notes
-
-        print('THIS IS A NEW ITEM', new_item)
+        new_item = get_spice_rice_portion_notes(spice, extra_rice, portion_type, notes, new_item)
+        # if spice is not False:
+        #     new_item['Spice'] = spice 
+        # if extra_rice is not False:
+        #     new_item['Extra_Rice'] = extra_rice
+        # if portion_type is not False:
+        #     new_item['Portion_Type'] = portion_type.capitalize()
+        # if notes is not False:
+        #     new_item['Notes'] = notes
 
         # Get the total
         total_price = CustomCurrency(0)
@@ -273,7 +274,94 @@ def create_new_item():
 
     return new_item
 
+#
+# Functions for building new_item for cart from form submission ##############
+#
+# TODO make a class that recieves everything as an input in the __init__ and 'export' method spits out new_item
+def get_title_base_img_price(db, base, portion, new_item):
+    '''
+    Match the base name of the selected food item to one of the food objects
+    in the food database.
 
-# Functions for building new_item for cart from form submission
-def get_title_base_img_price(db, base, portion):
-    pass
+    ::param db:: python dictionary, food database
+    ::param base:: string, name of the food from client matching the db['Green_curry']['Green Curry'] 'Green Curry' string
+    ::param portion:: string, either 'lunch' or 'dinner'
+
+    Fill the new item attributes :Title: :Base: :Img_url:
+    '''
+    for key in db.keys():
+        if db[key]['Base'] == base:
+            new_item['Title'] = db[key]['Base']
+            if portion == 'dinner':
+                new_item['Base'] = (key, CustomCurrency(db[key]['Base Price']).export_string())
+            elif portion == 'lunch':
+                new_item['Base'] = (key, CustomCurrency(db[key]['Lunch_Version']['Base Price']).export_string())
+            new_item['Img_url'] = db[key]['Img_URL']
+
+    return new_item
+
+
+def get_topping(db, topping, portion, new_item):
+    '''
+    Matches the topping to the food database to determine if topping exists and what price
+    it is based on dinner/lunch menu
+
+    ::param db:: python dictionary, food database
+    ::param topping:: string, name of a food topping like 'Chicken' 'Shrimp', etc.
+    ::param portion:: string, either 'lunch' or 'dinner'
+
+    Fill the new item attribute :Topping: with ('Name', 'X.XX')
+    '''
+    # Find the correct topping tuple [0] because the new_item['Base'] is a tuple ('Name', 'X.XX')
+    if topping is not False:
+        if portion == 'dinner':
+            for name, price in db[new_item['Base'][0]]['Toppings']:
+                if topping == name:
+                    new_item['Topping'] = (topping, CustomCurrency(price).export_string())
+        elif portion == 'lunch':
+            for name, price in db[new_item['Base'][0]]['Lunch_Version']['Toppings']:
+                if topping == name:
+                    new_item['Topping'] = (topping, CustomCurrency(price).export_string())
+
+    return new_item
+
+
+def get_extra(db, extra, new_item):
+    '''
+    Matches the extra topping option to the food database to get the name and price
+
+    ::param db:: python dictionary, food database
+    ::param extra:: string, name of an extra food topping like 'Chicken' 'Shrimp', etc.
+
+    Fill the new item attribute :Extra: with ('Name', 'X.XX')
+    '''
+    if extra is not False:
+        for name, price in db[new_item['Base'][0]]['Extra']:
+            if extra == name:
+                new_item['Extra'] = (extra, CustomCurrency(price).export_string())
+
+    return new_item
+
+
+def get_spice_rice_portion_notes(spice, extra_rice, portion_type, notes, new_item):
+    '''
+    Adds the spice/extra_rice/portion_type/notes to the item being preparred
+    for the cart
+
+    ::param spice:: string, spice level
+    ::param extra_rice:: string, amount of extra rice
+    ::param portion_type:: string, 'lunch' or 'dinner'
+    ::param notes:: string, any notes a customer has entered for a specific item
+
+    Fill the new item attribute :Spice: :Extra_Rice: :Portion_Type: :Notes:
+    '''
+    if spice is not False:
+        new_item['Spice'] = spice 
+    if extra_rice is not False:
+        new_item['Extra_Rice'] = extra_rice
+    if portion_type is not False:
+        new_item['Portion_Type'] = portion_type.capitalize()
+    if notes is not False:
+        new_item['Notes'] = notes
+
+    return new_item
