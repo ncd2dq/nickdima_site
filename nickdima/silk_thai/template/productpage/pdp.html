@@ -234,6 +234,7 @@
                                             <!--Topping option-->
                                             <!--Itemname, Extra Price-->
                                             <!-- Display "Chicken +$2" if extra price"-->
+                                            <!--Extra rice is coupled with the extra option in jinja2 template-->
                                             Extra <select name="extra" id="extra" onchange="changePrice();">
                                                 {% for extra in selected_item['Extra'] %}
                                                 <option value="{{ extra[0] }}{% if extra[1] != '0.00' %}+${{ extra[1] }}{% endif %}">{{ extra[0] }}{% if extra[1] != '0.00' %} +${{ extra[1] }}{% endif %}</option>

@@ -39,24 +39,10 @@ def food_pdp(item, portion):
         new_item = get_extra(db, extra, new_item)
         new_item = get_spice_rice_portion_notes(spice, extra_rice, portion_type, notes, new_item)
 
-        # TODO CONTINUE PEP8-ING BELOW HERE
-        # Get the total
         total_price = get_total_price(new_item)
         new_item['Total'] = total_price
-        # total_price = CustomCurrency(0)
-        # for key in new_item.keys():
-        #     if new_item[key] is not False:
-        #         if type(new_item[key]) == tuple:
-        #             # ['name', str('3.00')]
-        #             print('OH WOULD YOU LOOK HERE')
-        #             print(total_price)
-        #             print(new_item[key][1])
-        #             total_price += CustomCurrency(new_item[key][1])
-        #         elif key == 'Extra_Rice':
-        #             total_price += CustomCurrency(2 * int(new_item[key]) * 100)
-        # total_price = total_price.export_string()
 
-
+        # TODO CONTINUE PEP8-ING BELOW HERE
         if 'cart' not in session:
             new_item['Id'] = 1
             session['cart'] = [new_item]
@@ -127,6 +113,7 @@ def convert_all_prices_to_strings(food_item_dict):
     '''
     Convert all prices within selected food object to strings to simplify front end
     '''
+    print('BEFORE CONVERSION', food_item_dict)
     food_item_dict['Base Price'] = CustomCurrency(food_item_dict['Base Price']).export_string()
 
     if food_item_dict['Toppings'] is not False:
@@ -158,7 +145,7 @@ def convert_all_prices_to_strings(food_item_dict):
                 new_lunch_toppings_list.append(new_elm)
 
             food_item_dict['Extra'] = new_lunch_toppings_list
-
+    print('AFTER CONVERSION', food_item_dict)
     return food_item_dict
 
 
