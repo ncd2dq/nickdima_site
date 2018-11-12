@@ -34,6 +34,8 @@
 
                     <form class="mbr-form" action="{{ url_for('checkout.checkout') }}" method="post" data-form-title="Mobirise Form">
                         <!--<input type="hidden" name="email" data-form-email="true" value="ueooonHttEaGH+Z4fHs/zZZd07VaBA4YnIwOVVwbREWUDEXb93hyZRpEy8B7NvUnnW6xrdJLRQvSB3ljRfNYF9mLz4pGtWb2rDzb7s546Gts5MF60z2ziD7Xfgcz9GIG" data-form-field="Email">-->
+
+                        <!--Customer details-->
                         <div class="row row-sm-offset">
                             <div class="col-md-4 multi-horizontal" data-for="fname">
                                 <div class="form-group">
@@ -66,12 +68,73 @@
                                     <input type="tel" class="form-control" name="phone" data-form-field="Phone" id="phone-form1-g">
                                 </div>
                             </div>
+                            <div class="col-md-4 multi-horizontal" data-for="customerstreetaddress">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="customerstreetaddress-form1-g">Street Address</label>
+                                    <input type="text" class="form-control" name="customerstreetaddress" required="true" id="customerstreetaddress-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="customeraptbuilding">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="customeraptbuilding-form1-g">Apt #, Floor, etc.</label>
+                                    <input type="text" class="form-control" name="customeraptbuilding" required="true" id="customeraptbuilding-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="customercity">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="customercity-form1-g">City</label>
+                                    <input type="email" class="form-control" name="customercity" required="true" id="customercity-form1-g">
+                                </div>
+                            </div>
                         </div>
+                        <!--End customer Details -->
+
+                        <!--Billing Details-->
+                        <div class="row row-sm-offset">
+                            <div class="col-md-4 multi-horizontal" data-for="streetaddress">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="streetaddress-form1-g">Street Address</label>
+                                    <input type="text" class="form-control" name="streetaddress" required="true" id="streetaddress-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="aptbuilding">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="aptbuilding-form1-g">Apt #, Floor, etc.</label>
+                                    <input type="text" class="form-control" name="aptbuilding" required="true" id="aptbuilding-form1-g">
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 multi-horizontal" data-for="zipcode">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="zipcode-form1-g">Zip Code</label>
+                                    <input type="email" class="form-control" name="zipcode" required="true" id="email-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="city">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="city-form1-g">City</label>
+                                    <input type="email" class="form-control" name="city" required="true" id="city-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="state">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="state-form1-g">State</label>
+                                    <input type="email" class="form-control" name="state" required="true" id="state-form1-g">
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="country">
+                                <div class="form-group">
+                                    <label class="form-control-label mbr-fonts-style display-7" for="country-form1-g">Country</label>
+                                    <input type="email" class="form-control" name="country" required="true" id="country-form1-g">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group" data-for="message">
                             <label class="form-control-label mbr-fonts-style display-7" for="message-form1-g">Special Instructions</label>
                             <textarea type="text" class="form-control" name="message" rows="7" data-form-field="Message" id="message-form1-g"></textarea>
                         </div>
-
+                        <!--Order details end-->
                         <span class="input-group-btn">
                             <button href="" type="submit" class="btn btn-primary btn-form display-4">{% if is_currently_open == true %}Submit Order{% else %}We Are Currently Closed{% endif %}</button>
                         </span>
