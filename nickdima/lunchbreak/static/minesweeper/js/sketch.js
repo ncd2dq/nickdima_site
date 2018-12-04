@@ -68,6 +68,7 @@ function keyPressed(){
                             cells[i][j].flagged = false;
                         } else {
                             cells[i][j].flagged = true;
+                            console.log('FLAGGING A CELL');
                         }           
                     }
                 }
