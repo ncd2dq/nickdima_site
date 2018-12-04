@@ -56,7 +56,9 @@ function draw() {
 function keyPressed(){
     // Space-Bar - only if they've already clicked
     if(keyCode == 32){
+        console.log('spacebar');
         if (first_click == false){
+            console.log('checking cells');
             
             for (i = 0; i < Tiles; i++){
                 for (j = 0; j < Tiles; j++){
