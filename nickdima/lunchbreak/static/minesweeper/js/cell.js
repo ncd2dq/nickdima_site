@@ -18,7 +18,7 @@ function Cell(x, y){
             if(this.flagged){
                 textSize(Tile_Dimension);
                 fill(255, 0, 0);
-                text('M', this.x + Tile_Dimension / 5, this.y + Tile_Dimension * 6 / 7);
+                text('M', this.x + Tile_Dimension / 6, this.y + Tile_Dimension * 6 / 7);
             }
         }
         
