@@ -6,6 +6,7 @@ function Cell(x, y){
     this.bomb = false;
     this.revealed = false;
     this.neighbor_bombs = 0;
+    this.flagged = false;
     
     
     this.show = function(){
@@ -13,6 +14,10 @@ function Cell(x, y){
         if (this.revealed == false){
             fill(cell_unrevealed_color);
             rect(this.x, this.y, Tile_Dimension, Tile_Dimension);
+
+            if(this.flagged){
+                text('M', this.x + Tile_Dimension / 3, this.y + Tile_Dimension * 6 / 7);
+            }
         }
         
         if (this.revealed == true && this.bomb == false){

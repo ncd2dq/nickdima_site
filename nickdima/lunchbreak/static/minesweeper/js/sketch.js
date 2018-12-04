@@ -53,6 +53,32 @@ function draw() {
 }
 
 
+function keyPressed(){
+    // Space-Bar - only if they've already clicked
+    if(keyCode == 32){
+        if (first_click == false){
+            
+            for (i = 0; i < Tiles; i++){
+                for (j = 0; j < Tiles; j++){
+                    if (mouseX >= cells[i][j].x 
+                        && mouseX < (cells[i][j].x + Tile_Dimension) 
+                        && mouseY >= cells[i][j].y 
+                        && mouseY < (cells[i][j].y + Tile_Dimension)){
+                        if(cells[i][j].flagged == true){
+                            cells[i][j].flagged = false;
+                        } else {
+                            cells[i][j].flagged = true;
+                        }           
+                    }
+                }
+            }
+
+        } 
+    }
+
+}
+
+
 function mousePressed(){
     // Logic that tests if a cell has been clicked on
     if (first_click == true){
