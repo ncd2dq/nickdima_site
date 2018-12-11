@@ -1,0 +1,9 @@
+class LogicGate{
+    constructor(){
+        
+    }
+    
+    show(){
+        
+    }
+}
