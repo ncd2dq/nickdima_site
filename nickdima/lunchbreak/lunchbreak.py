@@ -17,8 +17,7 @@ def home():
 @bp.route('/flocking')
 def flocking():
     # TEMPORARY FIX
-    return redirect('https://github.com/ncd2dq/flocking')
-
+    return redirect('https://ncd2dq.github.io/flocking/')
 
 @bp.route('/tetris')
 def tetris():
