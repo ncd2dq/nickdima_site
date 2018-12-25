@@ -235,6 +235,28 @@
                     </div>
                 </div>
             </div>
+            <!--update this to host on nickdima.com-->
+            <div class="card p-3 col-12 col-md-6 col-lg-2">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <img src="{{url_for('lunchbreak.static', filename='lunchbreak/assets/flocking_capture.png')}}" alt="flocking">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                            <a href="{{url_for('lunchbreak.flocking')}}">Flocking</a>
+                        </h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Tweak flocking parameters and simulate birds flying as a group!
+                        </p>
+                        <!--test button-->
+                        <div class="mbr-section-btn text-center">
+                        <a href="{{url_for('lunchbreak.tetris')}}" class="btn btn-primary display-4">
+                            Play
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
