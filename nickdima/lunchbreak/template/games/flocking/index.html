@@ -1,0 +1,22 @@
+{% block head %}
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=yes"/>
+    <!--Libraries-->
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/libraries/p5.min.js) }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/libraries/p5.sound.min.js) }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/libraries/p5.dom.min.js) }}"></script>
+    
+    <!--Game Logic-->
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/js/vector.js) }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/js/spatial_partitioning.js) }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/js/bird.js) }}"></script>
+    <script src="{{ url_for('lunchbreak.static', filename='flocking/js/sketch.js) }}"></script>
+{% endblock %}
+{% block content %}
+    <form action="http://www.nickdima.com/lunchbreak">
+        <input type="submit" value="Homepage">
+    </form>
+    <hr>
+    <div id="the_canvas">
+    </div>
+{% endblock %}
+
